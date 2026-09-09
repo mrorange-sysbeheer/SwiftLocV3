@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-09T02:45:56Z_
+_Generated 2026-09-09T12:49:48Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-09T02:45:56Z |
+| Generated | 2026-09-09T12:49:48Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 5680 |
+| Duplicates removed | 4953 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 518 |
+| Multi-source overlaps | 531 |
 | Score (min / avg / max) | 80 / 80.4 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 518 |
+| Corroborated (2+ sources) | 531 |
 | Earliest first_seen | 2019-07-15T19:15:16Z |
-| Newest first_seen | 2026-09-09T02:44:17Z |
+| Newest first_seen | 2026-09-09T12:48:09Z |
 
 ## Top indicators by score
 
@@ -39,13 +39,13 @@ _Generated 2026-09-09T02:45:56Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 5393 |
-| greensnow_blocklist | 5142 |
+| blocklist_de_ssh | 5294 |
+| greensnow_blocklist | 4248 |
+| nist_nvd_recent | 3600 |
 | ipsum_level5 | 3325 |
-| nist_nvd_recent | 3200 |
-| threatfox_export_json | 2570 |
+| threatfox_export_json | 2503 |
 | binarydefense_banlist | 2428 |
-| spamhaus_drop | 1707 |
+| spamhaus_drop | 1708 |
 | cisa_kev | 1699 |
 | tor_exit_nodes | 1341 |
 
@@ -53,29 +53,29 @@ _Generated 2026-09-09T02:45:56Z_
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3983 |
-| domain | 1715 |
-| ipv4_cidr | 1693 |
-| sha256 | 1313 |
-| url | 625 |
-| ipv4 | 326 |
-| sha1 | 229 |
-| md5 | 116 |
+| cve | 3974 |
+| domain | 1716 |
+| ipv4_cidr | 1701 |
+| sha256 | 1378 |
+| url | 592 |
+| ipv4 | 320 |
+| sha1 | 247 |
+| md5 | 72 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3983 |
-| threatfox | 2798 |
-| nvd | 2513 |
-| malware | 1795 |
+| cve | 3974 |
+| threatfox | 2683 |
+| nvd | 2505 |
+| malware | 1923 |
+| drop | 1701 |
+| spamhaus | 1701 |
 | exploited-in-the-wild | 1699 |
-| drop | 1693 |
-| spamhaus | 1693 |
-| high | 1177 |
 | etherhiding | 1161 |
-| medium | 737 |
+| high | 1145 |
+| medium | 796 |
 
 ## Multi-source overlaps
 
