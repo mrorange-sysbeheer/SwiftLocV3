@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-09T19:10:50Z_
+_Generated 2026-09-09T22:20:58Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-09T19:10:50Z |
+| Generated | 2026-09-09T22:20:58Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 5045 |
+| Duplicates removed | 5067 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 534 |
+| Multi-source overlaps | 539 |
 | Score (min / avg / max) | 80 / 80.4 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 534 |
+| Corroborated (2+ sources) | 539 |
 | Earliest first_seen | 2019-07-15T19:15:16Z |
-| Newest first_seen | 2026-09-09T19:08:05Z |
+| Newest first_seen | 2026-09-09T22:20:31Z |
 
 ## Top indicators by score
 
@@ -39,43 +39,43 @@ _Generated 2026-09-09T19:10:50Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 5193 |
-| nist_nvd_recent | 4500 |
-| greensnow_blocklist | 4447 |
+| blocklist_de_ssh | 5109 |
+| greensnow_blocklist | 4465 |
 | ipsum_level5 | 3325 |
-| threatfox_export_json | 2495 |
+| nist_nvd_recent | 3200 |
+| threatfox_export_json | 2710 |
 | binarydefense_banlist | 2428 |
 | spamhaus_drop | 1709 |
-| cisa_kev | 1699 |
-| tor_exit_nodes | 1341 |
+| cisa_kev | 1703 |
+| tor_exit_nodes | 1337 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 4078 |
-| ipv4_cidr | 1707 |
-| domain | 1695 |
-| sha256 | 1262 |
-| url | 644 |
-| ipv4 | 307 |
+| cve | 4056 |
+| domain | 1914 |
+| ipv4_cidr | 1708 |
+| sha256 | 1144 |
+| url | 588 |
+| ipv4 | 304 |
 | sha1 | 247 |
-| md5 | 60 |
+| md5 | 39 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 4078 |
-| threatfox | 2632 |
-| nvd | 2609 |
-| malware | 1867 |
-| drop | 1707 |
-| spamhaus | 1707 |
-| exploited-in-the-wild | 1699 |
-| high | 1163 |
-| etherhiding | 1161 |
-| medium | 781 |
+| cve | 4056 |
+| threatfox | 2822 |
+| nvd | 2587 |
+| drop | 1708 |
+| spamhaus | 1708 |
+| exploited-in-the-wild | 1703 |
+| malware | 1698 |
+| etherhiding | 1401 |
+| high | 1157 |
+| Sepolia | 829 |
 
 ## Multi-source overlaps
 
