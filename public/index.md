@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-09T12:49:48Z_
+_Generated 2026-09-09T19:10:50Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-09T12:49:48Z |
+| Generated | 2026-09-09T19:10:50Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 4953 |
+| Duplicates removed | 5045 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 531 |
+| Multi-source overlaps | 534 |
 | Score (min / avg / max) | 80 / 80.4 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 531 |
+| Corroborated (2+ sources) | 534 |
 | Earliest first_seen | 2019-07-15T19:15:16Z |
-| Newest first_seen | 2026-09-09T12:48:09Z |
+| Newest first_seen | 2026-09-09T19:08:05Z |
 
 ## Top indicators by score
 
@@ -41,13 +41,13 @@ _Generated 2026-09-09T12:49:48Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 5294 |
-| greensnow_blocklist | 4248 |
-| nist_nvd_recent | 3600 |
+| blocklist_de_ssh | 5193 |
+| nist_nvd_recent | 4500 |
+| greensnow_blocklist | 4447 |
 | ipsum_level5 | 3325 |
-| threatfox_export_json | 2503 |
+| threatfox_export_json | 2495 |
 | binarydefense_banlist | 2428 |
-| spamhaus_drop | 1708 |
+| spamhaus_drop | 1709 |
 | cisa_kev | 1699 |
 | tor_exit_nodes | 1341 |
 
@@ -55,29 +55,29 @@ _Generated 2026-09-09T12:49:48Z_
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3974 |
-| domain | 1716 |
-| ipv4_cidr | 1701 |
-| sha256 | 1378 |
-| url | 592 |
-| ipv4 | 320 |
+| cve | 4078 |
+| ipv4_cidr | 1707 |
+| domain | 1695 |
+| sha256 | 1262 |
+| url | 644 |
+| ipv4 | 307 |
 | sha1 | 247 |
-| md5 | 72 |
+| md5 | 60 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3974 |
-| threatfox | 2683 |
-| nvd | 2505 |
-| malware | 1923 |
-| drop | 1701 |
-| spamhaus | 1701 |
+| cve | 4078 |
+| threatfox | 2632 |
+| nvd | 2609 |
+| malware | 1867 |
+| drop | 1707 |
+| spamhaus | 1707 |
 | exploited-in-the-wild | 1699 |
+| high | 1163 |
 | etherhiding | 1161 |
-| high | 1145 |
-| medium | 796 |
+| medium | 781 |
 
 ## Multi-source overlaps
 
