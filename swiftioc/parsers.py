@@ -1,0 +1,1010 @@
+"""Parser registry and all source adapters (fetch_* functions).
+
+``http_get`` and ``load_feedparser`` are looked up through ``_pkg`` (a
+self-import of the ``swiftioc`` package) *at call time* rather than imported
+directly. This is deliberate, not an oversight: tests monkeypatch them as
+``monkeypatch.setattr(swiftioc, "http_get", ...)`` on the top-level package.
+A direct ``from .http_client import http_get`` would bind a local name at
+import time that the monkeypatch — which only reassigns the *package's*
+attribute — would never see, so parsers would keep hitting the real network
+in tests. ``_pkg.http_get(...)`` re-resolves the attribute on every call, so
+it always sees whatever ``swiftioc.http_get`` currently points to. The
+self-import is safe here because ``_pkg`` is only dereferenced inside
+function bodies, never at module-import time (see the circular-import note
+in ``__init__.py``).
+"""
+from __future__ import annotations
+
+import csv
+import io
+import json
+import os
+import re
+from datetime import datetime, timedelta
+from importlib import import_module
+from typing import Any, Callable, Dict, Iterable, List, Optional, Set, Tuple
+
+import requests
+
+import swiftioc as _pkg
+
+from .extract import extract_indicators_from_text
+from .http_client import ensure_text, logger
+from .models import (
+    CVE_RE,
+    DATE_FIELD_RE,
+    JA3_RE,
+    SHA256_RE,
+    TAGS_FIELD_RE,
+    Indicator,
+    classify,
+    defang_min,
+    iso,
+    now_utc,
+    parse_dt,
+)
+
+
+# ---------------- parser registry ----------------
+ParserFunc = Callable[..., List["Indicator"]]
+
+
+class ParserRegistry(dict):
+    def register(self, names: Iterable[str]) -> Callable[[ParserFunc], ParserFunc]:
+        def decorator(func: ParserFunc) -> ParserFunc:
+            for name in names:
+                key = name.lower()
+                if key in self:
+                    raise ValueError(f"Parser already registered for '{name}'")
+                self[key] = func
+            return func
+
+        return decorator
+
+
+PARSERS: ParserRegistry = ParserRegistry()
+
+
+def register_parser(*names: str) -> Callable[[ParserFunc], ParserFunc]:
+    if not names:
+        raise ValueError("At least one parser name is required")
+    return PARSERS.register(names)
+
+
+def resolve_parser(identifier: str) -> ParserFunc:
+    key = identifier.lower()
+    if key in PARSERS:
+        return PARSERS[key]
+    module_name: Optional[str] = None
+    attr_name: Optional[str] = None
+    if ":" in identifier:
+        module_name, attr_name = identifier.split(":", 1)
+    elif "." in identifier:
+        module_name, attr_name = identifier.rsplit(".", 1)
+    if not module_name or not attr_name:
+        raise KeyError(f"Unknown parser '{identifier}'")
+    module = import_module(module_name)
+    func = getattr(module, attr_name)
+    if not callable(func):
+        raise TypeError(f"Parser '{identifier}' is not callable")
+    return func  # type: ignore[return-value]
+
+
+
+# --------------- adapters (no hard-coded refs) ---------------
+@register_parser("kev", "cisa_kev")
+def fetch_cisa_kev(url: str, ref_url: str, source: str, ws: datetime) -> List[Indicator]:
+    data = json.loads(_pkg.http_get(url, name=source))
+    out: List[Indicator] = []
+    now = now_utc()
+    for it in data.get("vulnerabilities", []) or []:
+        if not isinstance(it, dict):
+            continue
+        cve = it.get("cveID")
+        pub = parse_dt(it.get("dateAdded"))
+        if not isinstance(cve, str) or not CVE_RE.fullmatch(cve.strip()):
+            continue
+        out.append(
+            Indicator(
+                indicator=cve.strip().upper(), type="cve", source=source,
+                first_seen=iso(pub or now), last_seen=iso(now),
+                confidence="high", tlp="CLEAR",
+                tags="cve,exploited-in-the-wild",
+                reference=ref_url or "",
+                context=it.get("shortDescription") or it.get("notes") or "CISA KEV",
+                vulnerability={"cisa_kev": {
+                    "source": source, "reference": ref_url,
+                    "catalog_checked_at": iso(now),
+                    "date_added": it.get("dateAdded"),
+                    "vendor": it.get("vendorProject"), "product": it.get("product"),
+                    "title": it.get("vulnerabilityName"),
+                    "description": it.get("shortDescription"),
+                    "required_action": it.get("requiredAction"), "due_date": it.get("dueDate"),
+                    "ransomware_use": it.get("knownRansomwareCampaignUse"), "notes": it.get("notes"),
+                }},
+            )
+        )
+    return out
+
+
+@register_parser("nvd", "nist_nvd", "nist_nvd_recent")
+def fetch_nvd_recent(url: str, ref_url: str, source: str, ws: datetime, *, api_key_env: Optional[str] = None) -> List[Indicator]:
+    now = now_utc()
+    # The NVD 2.0 API returns the *oldest* CVEs first (startIndex 0), so an
+    # unfiltered query yields 1999-era CVEs that the lookback window then drops,
+    # leaving zero. Constrain it to CVEs modified within the window (the API
+    # requires both bounds and caps the range at 120 days; a lookback window is
+    # always well inside that).
+    from urllib.parse import parse_qs, urlencode, urlparse
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+    # Match the NVD host by parsed hostname, not a substring of the whole URL,
+    # so a lookalike like nvd.nist.gov.evil.com or ?x=nvd.nist.gov can't trip it.
+    # Use endswith so the real config host (services.nvd.nist.gov) still matches.
+    is_nvd_host = host == "nvd.nist.gov" or host.endswith(".nvd.nist.gov")
+    if is_nvd_host:
+        query = parse_qs(parsed.query)
+        if not any(k in query for k in ("lastModStartDate", "pubStartDate")):
+            fmt = "%Y-%m-%dT%H:%M:%S.000"
+            start = max(ws, now - timedelta(days=119))
+            query["lastModStartDate"] = [start.strftime(fmt)]
+            query["lastModEndDate"] = [now.strftime(fmt)]
+            url = parsed._replace(query=urlencode(query, doseq=True)).geturl()
+    api_key = os.environ.get(api_key_env) if api_key_env else None
+    request_headers = {"apiKey": api_key} if api_key else None
+    text = ensure_text(_pkg.http_get(url, name=source, headers=request_headers))
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        logger.warning("%s returned invalid JSON", source)
+        return []
+    records = data.get("vulnerabilities") if isinstance(data, dict) else None
+    if not isinstance(records, list):
+        return []
+    # NVD uses offset pagination. The configured page size is 200 but busy
+    # modification windows routinely exceed that, so only consuming the first
+    # page silently dropped valid CVEs. Keep every page from this bounded time
+    # query while preserving the configured resultsPerPage value.
+    if is_nvd_host:
+        page_url = urlparse(url)
+        page_query = parse_qs(page_url.query)
+        try:
+            start_index = int(page_query.get("startIndex", ["0"])[0])
+            page_size = int(data.get("resultsPerPage") or page_query.get("resultsPerPage", [len(records)])[0])
+            total_results = int(data.get("totalResults") or len(records))
+        except (TypeError, ValueError):
+            start_index, page_size, total_results = 0, len(records), len(records)
+        if page_size > 0:
+            for next_index in range(start_index + page_size, start_index + total_results, page_size):
+                page_query["startIndex"] = [str(next_index)]
+                next_url = page_url._replace(query=urlencode(page_query, doseq=True)).geturl()
+                try:
+                    next_data = json.loads(ensure_text(_pkg.http_get(next_url, name=source, headers=request_headers)))
+                except (json.JSONDecodeError, requests.exceptions.RequestException) as exc:
+                    logger.warning("%s pagination stopped at startIndex %d: %s", source, next_index, exc)
+                    break
+                next_records = next_data.get("vulnerabilities") if isinstance(next_data, dict) else None
+                if not isinstance(next_records, list):
+                    logger.warning("%s returned no vulnerability list at startIndex %d", source, next_index)
+                    break
+                records.extend(next_records)
+                if not next_records:
+                    break
+    out: List[Indicator] = []
+
+    def extract_severity(entry: Dict[str, Any]) -> Optional[str]:
+        metrics = entry.get("metrics", {})
+        if not isinstance(metrics, dict):
+            return None
+        for key in ("cvssMetricV31", "cvssMetricV30", "cvssMetricV2"):
+            items = metrics.get(key)
+            if not isinstance(items, list):
+                continue
+            for metric in items:
+                if not isinstance(metric, dict):
+                    continue
+                if key == "cvssMetricV2":
+                    sev = metric.get("baseSeverity")
+                    if isinstance(sev, str):
+                        return sev.lower()
+                cvss = metric.get("cvssData")
+                if isinstance(cvss, dict):
+                    sev = cvss.get("baseSeverity")
+                    if isinstance(sev, str):
+                        return sev.lower()
+        return None
+
+    for item in records:
+        if not isinstance(item, dict):
+            continue
+        cve = item.get("cve")
+        if not isinstance(cve, dict):
+            continue
+        cve_id = cve.get("id")
+        if not isinstance(cve_id, str) or not CVE_RE.fullmatch(cve_id.strip()):
+            continue
+        published = parse_dt(cve.get("published"))
+        last_modified = parse_dt(cve.get("lastModified"))
+        first_seen = published or last_modified or now
+        # The request above is windowed on lastModStartDate/lastModEndDate
+        # (or pubStartDate for a differently-configured URL), so the
+        # recency gate must check the SAME dimension. Most CVEs the API
+        # returns for a "recently modified" window are old CVEs that were
+        # merely re-analyzed/re-scored today — checking `first_seen`
+        # (which prefers the original publish date) here discarded most or
+        # all of what the API just returned, intermittently zeroing this
+        # source out entirely.
+        recency_anchor = last_modified or first_seen
+        if recency_anchor and recency_anchor < ws:
+            continue
+        description = ""
+        for desc in cve.get("descriptions", []) or []:
+            if isinstance(desc, dict) and desc.get("lang", "").lower() == "en":
+                value = desc.get("value")
+                if isinstance(value, str):
+                    description = value.strip()
+                    break
+        severity = extract_severity(cve)
+        tags = {"cve", "nvd"}
+        if severity:
+            tags.add(severity.lower())
+        context = description or "NVD recent CVE"
+        out.append(
+            Indicator(
+                indicator=cve_id.strip().upper(),
+                type="cve",
+                source=source,
+                first_seen=iso(first_seen or now),
+                last_seen=iso(last_modified or first_seen or now),
+                confidence="high",
+                tlp="CLEAR",
+                tags=",".join(sorted(tags)),
+                reference=ref_url or "",
+                context=context,
+                vulnerability={"nvd": {
+                    "source": source,
+                    "reference": "https://nvd.nist.gov/vuln/detail/" + cve_id.strip().upper(),
+                    "published_at": cve.get("published"), "modified_at": cve.get("lastModified"),
+                    "status": cve.get("vulnStatus"), "severity": severity,
+                    "description": description,
+                }},
+            )
+        )
+    return out
+
+
+@register_parser("urlhaus")
+def fetch_urlhaus_csv(url: str, ref_url: str, source: str, ws: datetime, *, status_filter: str = "any") -> List[Indicator]:
+    text = ensure_text(_pkg.http_get(url, name=source))
+    out: List[Indicator] = []
+    now = now_utc()
+    for row in csv.reader(io.StringIO(text)):
+        if not row or row[0].startswith("#"):
+            continue
+        try:
+            # URLhaus CSV columns: id,dateadded,url,url_status,last_online,
+            # threat,tags,urlhaus_link,reporter. row[4] is a *timestamp*
+            # (last_online), NOT the threat — threat is row[5], tags row[6].
+            dateadded = parse_dt(row[1])
+            url_val = row[2]
+            url_status = (row[3] if len(row) > 3 else "").lower()
+            threat = row[5] if len(row) > 5 else ""
+            feed_tags = row[6] if len(row) > 6 else ""
+        except Exception:
+            continue
+        if status_filter != "any" and url_status != status_filter:
+            continue
+        if dateadded and dateadded < ws:
+            continue
+        t = classify(url_val) or "url"
+        tag_list = ["malware", threat] + [s.strip() for s in feed_tags.split(",")]
+        out.append(
+            Indicator(
+                indicator=defang_min(url_val), type=t, source=source,
+                first_seen=iso(dateadded or now), last_seen=iso(now),
+                confidence="high", tlp="CLEAR",
+                tags=",".join(dict.fromkeys(filter(None, tag_list))),
+                reference=ref_url or "", context=f"URLhaus: {threat or 'malware URL'}",
+            )
+        )
+    return out
+
+
+@register_parser("malwarebazaar")
+def fetch_malwarebazaar_csv(
+    url: str,
+    ref_url: str,
+    source: str,
+    ws: datetime,
+    *,
+    fallback_url: Optional[str] = None,
+    graceful_404: bool = False,
+) -> List[Indicator]:
+    try:
+        text = ensure_text(_pkg.http_get(url, name=source))
+    except Exception as e:
+        if not isinstance(e, requests.exceptions.HTTPError):
+            raise
+        resp = getattr(e, "response", None)
+        status = getattr(resp, "status_code", None)
+        if resp is not None and status == 404 and fallback_url:
+            logger.warning("%s 404, falling back to %s", url, fallback_url)
+            text = ensure_text(_pkg.http_get(fallback_url, name=f"{source}_fallback"))
+        elif resp is not None and status == 404 and graceful_404:
+            logger.warning("%s 404, treating as empty due to --grace-on-404", url)
+            return []
+        else:
+            raise
+    out: List[Indicator] = []
+    now = now_utc()
+    # Export columns: first_seen_utc, sha256_hash, md5_hash, sha1_hash,
+    # reporter, file_name, file_type_guess, mime_type, signature, ...
+    # Spaces precede quoted fields in the live export; skipinitialspace
+    # keeps commas in quoted filenames from shifting subsequent columns.
+    for row in csv.reader(io.StringIO(text), skipinitialspace=True):
+        if len(row) < 2 or row[0].strip().startswith("#"):
+            continue
+        first_seen = parse_dt(row[0].strip())
+        sha256 = row[1].strip()
+        if not SHA256_RE.fullmatch(sha256):
+            continue
+        # Column 7 is MIME type, never a fallback malware signature.
+        sig = row[8].strip() if len(row) > 8 else ""
+        if sig.lower() in {"", "n/a", "na", "none"}:
+            sig = ""
+        if first_seen and first_seen < ws:
+            continue
+        out.append(
+            Indicator(
+                indicator=sha256.lower(), type="sha256", source=source,
+                first_seen=iso(first_seen or now), last_seen=iso(now),
+                # A confirmed malware-sample hash from MalwareBazaar is a
+                # high-confidence, directly block-ready artifact — not a
+                # medium-confidence heuristic. Keeping it "medium" floored it
+                # below retention's cut and evicted scarce hash IOCs.
+                confidence="high", tlp="CLEAR",
+                tags=",".join(filter(None, ["malware", sig])),
+                reference=ref_url or "", context=f"MalwareBazaar: {sig}",
+            )
+        )
+    return out
+
+
+@register_parser("threatfox_recent", "threatfox_export_json")
+def fetch_threatfox_export_json(url: str, ref_url: str, source: str, ws: datetime) -> List[Indicator]:
+    text = ensure_text(_pkg.http_get(url, name=source))
+    raw = json.loads(text)
+    data: List[Dict[str, Any]]
+    if isinstance(raw, dict):
+        if isinstance(raw.get("data"), list):
+            # API POST response shape: {"query_status": ..., "data": [...]}
+            data = [row for row in raw["data"] if isinstance(row, dict)]
+        else:
+            # Export endpoint shape: {"<ioc_id>": [entry, ...], ...}
+            data = [
+                entry
+                for value in raw.values()
+                if isinstance(value, list)
+                for entry in value
+                if isinstance(entry, dict)
+            ]
+    elif isinstance(raw, list):
+        data = [row for row in raw if isinstance(row, dict)]
+    else:
+        data = []
+    now = now_utc()
+    out: List[Indicator] = []
+    tmap = {
+        "ipv4": "ipv4", "ipv6": "ipv6", "domain": "domain", "url": "url",
+        "md5": "md5", "sha1": "sha1", "sha256": "sha256",
+        # Export endpoint spellings.
+        "md5_hash": "md5", "sha1_hash": "sha1", "sha256_hash": "sha256",
+        "sha512_hash": "sha512",
+    }
+
+    def normalise_tags(value: Any) -> List[str]:
+        if isinstance(value, str):
+            return [t.strip() for t in value.split(",") if t.strip()]
+        if isinstance(value, (list, tuple)):
+            return [str(t).strip() for t in value if str(t).strip()]
+        return []
+
+    for row in data:
+        ioc = row.get("ioc") or row.get("ioc_value")
+        if not isinstance(ioc, str) or not ioc.strip():
+            continue
+        ioc = ioc.strip()
+        itype = (row.get("ioc_type") or "").lower()
+        seen = parse_dt(row.get("first_seen") or row.get("first_seen_utc"))
+        if seen and seen < ws:
+            continue
+        if itype == "ip:port":
+            # "1.2.3.4:443" -> classify the bare address; keeps the value
+            # comparable with other IP feeds so corroboration can match.
+            # IPv6 endpoints are RFC 3986 bracketed ("[2001:db8::1]:443").
+            # Splitting that form leaves brackets around the address, which
+            # classify() correctly rejects; unwrap it before validation.
+            if ioc.startswith("["):
+                end = ioc.find("]")
+                if end == -1 or not ioc[end + 1 :].startswith(":"):
+                    continue
+                host = ioc[1:end]
+            else:
+                host = ioc.rsplit(":", 1)[0]
+            t = classify(host)
+            if t not in {"ipv4", "ipv6"}:
+                continue
+            ioc = host
+        else:
+            t = tmap.get(itype)
+            if not t:
+                continue
+        # ThreatFox reports 0-100 confidence_level; map onto our bands.
+        level = row.get("confidence_level")
+        if isinstance(level, (int, float)):
+            confidence = "high" if level >= 75 else "medium" if level >= 40 else "low"
+        else:
+            confidence = "medium"
+        val = defang_min(ioc) if t in {"url", "domain", "ipv4", "ipv6"} else ioc
+        tags = normalise_tags(row.get("tags"))
+        out.append(
+            Indicator(
+                indicator=val, type=t, source=source,
+                first_seen=iso(seen or now), last_seen=iso(now),
+                confidence=confidence, tlp="CLEAR",
+                tags=",".join(sorted(set(["threatfox"] + tags))),
+                reference=ref_url or "",
+                context=row.get("malware_printable") or row.get("malware") or row.get("threat_type") or "ThreatFox recent",
+            )
+        )
+    return out
+
+
+@register_parser("feodo_ipblocklist")
+def fetch_feodo_ipblocklist(
+    url: str,
+    ref_url: str,
+    source: str,
+    ws: datetime,
+    *,
+    disable_window: bool = True,
+) -> List[Indicator]:
+    text = ensure_text(_pkg.http_get(url, name=source))
+    out: List[Indicator] = []
+    now = now_utc()
+
+    for row in csv.reader(io.StringIO(text)):
+        if not row:
+            continue
+
+        header_token = row[0].strip().lower()
+        if header_token.startswith("#") or header_token in {"first_seen_utc", "timestamp"}:
+            continue
+
+        try:
+            seen = parse_dt(row[0])
+            ip = row[1].strip()
+            family = row[5].strip() if len(row) > 5 else ""
+        except Exception:
+            continue
+        # A malformed value was previously emitted with a hardcoded ipv4
+        # type, bypassing the normal false-positive/validation path.
+        if classify(ip) != "ipv4":
+            continue
+
+        if not disable_window and seen and seen < ws:
+            continue
+
+        out.append(
+            Indicator(
+                indicator=defang_min(ip),
+                type="ipv4",
+                source=source,
+                first_seen=iso(seen or now),
+                last_seen=iso(now),
+                confidence="high",
+                tlp="CLEAR",
+                tags=",".join(filter(None, ["feodo", "c2", family])),
+                reference=ref_url or "",
+                context="Feodo Tracker C2 IP",
+            )
+        )
+
+    return out
+
+
+def _fetch_sslbl_ja3(
+    url: str,
+    ref_url: str,
+    source: str,
+    ws: datetime,
+    *,
+    kind: str,
+    disable_window: bool = True,
+) -> List[Indicator]:
+    text = ensure_text(_pkg.http_get(url, name=source))
+    out: List[Indicator] = []
+    now = now_utc()
+
+    for row in csv.reader(io.StringIO(text)):
+        if not row:
+            continue
+
+        # abuse.ch SSLBL CSV columns: ja3_md5, firstseen, lastseen, listingreason.
+        # A valid JA3 hash in column 0 also filters out comment/header lines.
+        ja = row[0].strip()
+        if not JA3_RE.fullmatch(ja):
+            continue
+
+        first_seen = parse_dt(row[1]) if len(row) > 1 else None
+        if not disable_window and first_seen and first_seen < ws:
+            continue
+
+        desc = (row[3].strip() if len(row) > 3 else "")
+
+        out.append(
+            Indicator(
+                indicator=ja.lower(),
+                type=("ja3" if kind == "ja3" else "ja3s"),
+                source=source,
+                first_seen=iso(first_seen or now),
+                last_seen=iso(now),
+                # SSLBL only lists fingerprints tied to confirmed malware C2 —
+                # a high-confidence artifact, promoted so scarce JA3 IOCs
+                # aren't pruned below retention's cut.
+                confidence="high",
+                tlp="CLEAR",
+                tags=",".join(filter(None, ["sslbl", "tls", "fingerprint", desc])),
+                reference=ref_url or "",
+                context=f"SSLBL {('JA3' if kind == 'ja3' else 'JA3S')} fingerprint",
+            )
+        )
+
+    return out
+
+
+@register_parser("sslbl_ja3")
+def fetch_sslbl_ja3(url: str, ref_url: str, source: str, ws: datetime) -> List[Indicator]:
+    return _fetch_sslbl_ja3(url, ref_url, source, ws, kind="ja3")
+
+
+@register_parser("spamhaus_drop")
+def fetch_spamhaus_drop(url: str, ref_url: str, source: str, ws: datetime) -> List[Indicator]:
+    text = ensure_text(_pkg.http_get(url, name=source))
+    out: List[Indicator] = []
+    now = now_utc()
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith(";") or line.startswith("#"):
+            continue
+        cidr = line.split(";")[0].strip()
+        if classify(cidr) != "ipv4_cidr":
+            continue
+        out.append(
+            Indicator(
+                indicator=cidr, type="ipv4_cidr", source=source,
+                first_seen=iso(now), last_seen=iso(now),
+                confidence="high", tlp="CLEAR",
+                tags="spamhaus,drop", reference=ref_url or "",
+                context="Spamhaus DROP/EDROP network",
+            )
+        )
+    return out
+
+
+@register_parser("dshield_block")
+def fetch_dshield_block(url: str, ref_url: str, source: str, ws: datetime) -> List[Indicator]:
+    """SANS ISC / DShield "Recommended Block List": the top ~20 attacking
+    /24 netblocks over the last 3 days, aggregated from DShield's
+    distributed sensor network. Tab-delimited: start_ip, end_ip,
+    prefix_len, target_count, org, country, contact — independent of every
+    other source here (honeypot/firewall-log aggregation, not a single
+    vendor's malware feed), so overlap with them is genuine corroboration.
+    """
+    text = ensure_text(_pkg.http_get(url, name=source))
+    out: List[Indicator] = []
+    now = now_utc()
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        cols = line.split("\t")
+        if len(cols) < 4:
+            continue
+        start_ip, prefix_len, target_count = cols[0].strip(), cols[2].strip(), cols[3].strip()
+        cidr = f"{start_ip}/{prefix_len}"
+        if classify(cidr) != "ipv4_cidr":
+            continue
+        org = cols[4].strip() if len(cols) > 4 else ""
+        country = cols[5].strip() if len(cols) > 5 else ""
+        origin = f" ({org}, {country})" if org and org not in {"-", ""} else ""
+        out.append(
+            Indicator(
+                indicator=cidr, type="ipv4_cidr", source=source,
+                first_seen=iso(now), last_seen=iso(now),
+                confidence="medium", tlp="CLEAR",
+                tags="dshield,scanning,sans-isc", reference=ref_url or "",
+                context=f"DShield top-attacking netblock: {target_count} targets reporting scans{origin}",
+            )
+        )
+    return out
+
+
+@register_parser("sslbl_ja3s")
+def fetch_sslbl_ja3s(url: str, ref_url: str, source: str, ws: datetime) -> List[Indicator]:
+    return _fetch_sslbl_ja3(url, ref_url, source, ws, kind="ja3s")
+
+
+@register_parser("openphish")
+def fetch_openphish(url: str, ref_url: str, source: str, ws: datetime) -> List[Indicator]:
+    text = ensure_text(_pkg.http_get(url, name=source))
+    out: List[Indicator] = []
+    now = now_utc()
+    for u in text.splitlines():
+        u = u.strip()
+        if not u or not re.match(r"^(?:https?://)", u, flags=re.I):
+            continue
+        out.append(
+            Indicator(
+                indicator=defang_min(u), type="url", source=source,
+                first_seen=iso(now), last_seen=iso(now),
+                confidence="medium", tlp="CLEAR",
+                tags="phishing,openphish", reference=ref_url or "",
+                context="OpenPhish feed",
+            )
+        )
+    return out
+
+@register_parser("cins_army")
+def fetch_cins_army(url: str, ref_url: str, source: str, ws: datetime) -> List[Indicator]:
+    text = ensure_text(_pkg.http_get(url, name=source))
+    out: List[Indicator] = []
+    now = now_utc()
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if classify(line) == "ipv4":
+            out.append(
+                Indicator(
+                    indicator=defang_min(line), type="ipv4", source=source,
+                    first_seen=iso(now), last_seen=iso(now),
+                    confidence="low", tlp="CLEAR",
+                    tags="cins,scanning,suspicious", reference=ref_url or "",
+                    context="CINS Army IP",
+                )
+            )
+    return out
+
+
+@register_parser("tor_exit")
+def fetch_tor_exit(url: str, ref_url: str, source: str, ws: datetime) -> List[Indicator]:
+    text = ensure_text(_pkg.http_get(url, name=source))
+    out: List[Indicator] = []
+    now = now_utc()
+
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+
+        if classify(line) == "ipv4":
+            out.append(
+                Indicator(
+                    indicator=defang_min(line),
+                    type="ipv4",
+                    source=source,
+                    first_seen=iso(now),
+                    last_seen=iso(now),
+                    confidence="low",
+                    tlp="CLEAR",
+                    tags="tor,exit-node",
+                    reference=ref_url or "",
+                    context="Tor exit node list",
+                )
+            )
+
+    return out
+
+
+@register_parser("blocklist_txt")
+def fetch_blocklist_txt(url: str, ref_url: str, source: str, ws: datetime) -> List[Indicator]:
+    text = ensure_text(_pkg.http_get(url, name=source))
+    now = now_utc()
+    out: List[Indicator] = []
+    seen: Set[Tuple[str, str]] = set()
+    allowed_types = {"ipv4", "ipv6", "ipv4_cidr", "ipv6_cidr", "domain"}
+    src_lower = source.lower()
+
+    def derive_tags() -> Set[str]:
+        tags = {"blocklist"}
+        if "tor" in src_lower:
+            tags.update({"tor", "exit-node"})
+        if "ssh" in src_lower:
+            tags.update({"ssh", "bruteforce"})
+        if "greensnow" in src_lower:
+            tags.add("greensnow")
+        if "ci" in src_lower and "army" in src_lower:
+            tags.update({"scanner", "cins"})
+        if "compromised" in src_lower or "emergingthreats" in src_lower or src_lower.startswith("et_"):
+            tags.update({"compromised", "emerging-threats"})
+        if "binarydefense" in src_lower or "banlist" in src_lower:
+            tags.update({"scanner", "binarydefense"})
+        if "ipsum" in src_lower:
+            tags.update({"aggregated", "ipsum", "multi-list"})
+        return tags
+
+    tags = derive_tags()
+    confidence = "low" if "tor" in src_lower else "medium"
+
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or line.startswith(";"):
+            continue
+        if line.lower().startswith("exitaddress"):
+            parts = line.split()
+            tokens = parts[1:2]
+        else:
+            tokens = re.split(r"[\s,;]+", line)
+        for token in tokens:
+            token = token.strip()
+            if not token:
+                continue
+            itype = classify(token)
+            if itype not in allowed_types:
+                continue
+            value = defang_min(token) if itype in {"ipv4", "ipv6", "domain"} else token
+            key = (itype, value)
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append(
+                Indicator(
+                    indicator=value,
+                    type=itype,
+                    source=source,
+                    first_seen=iso(now),
+                    last_seen=iso(now),
+                    confidence=confidence,
+                    tlp="CLEAR",
+                    tags=",".join(sorted(tags)),
+                    reference=ref_url or "",
+                    context=f"Blocklist entry from {source}",
+                )
+            )
+    return out
+
+
+@register_parser("rss")
+def fetch_rss(url: str, ref_url: str, source: str, ws: datetime, *, per_entry_cap: int = 200, tolerate_missing: bool = False) -> List[Indicator]:
+    try:
+        fp = _pkg.load_feedparser()
+    except SystemExit:
+        if tolerate_missing:
+            logger.warning("feedparser not available; skipping RSS for %s", source)
+            return []
+        raise
+    try:
+        # Fetch through the shared client so RSS gets the same retry, response
+        # cap, redirect validation, raw capture, and diagnostics as every
+        # other source. Passing a URL directly to feedparser bypassed all of
+        # those controls.
+        feed = fp.parse(ensure_text(_pkg.http_get(url, name=source)))
+    except Exception as exc:
+        logger.warning("RSS parse failed for %s: %s", source, exc)
+        return []
+    if getattr(feed, "bozo", 0) and getattr(feed, "bozo_exception", None):
+        logger.debug("RSS %s reported a parse warning: %s", source, feed.bozo_exception)
+    now = now_utc()
+    out: List[Indicator] = []
+    feed_updated = parse_dt(getattr(getattr(feed, "feed", object()), "updated", None)) or now
+    for e in getattr(feed, "entries", []) or []:
+        published = None
+        for k in ("published", "updated"):
+            value = getattr(e, k, None)
+            if value:
+                published = parse_dt(value)
+                break
+        if not published:
+            published = feed_updated
+        if published and published < ws:
+            continue
+        text_parts = [getattr(e, "title", ""), getattr(e, "summary", "")]
+        for c in getattr(e, "content", []) or []:
+            text_parts.append(c.get("value", ""))
+        blob = "\n".join(filter(None, text_parts))
+        found = extract_indicators_from_text(blob)
+        if not found:
+            continue
+        seen: Set[Tuple[str, str]] = set()
+        count = 0
+        ref = getattr(e, "link", None) or ref_url or url
+        for t, val in found:
+            if count >= per_entry_cap:
+                break
+            k = (t, val)
+            if k in seen:
+                continue
+            seen.add(k)
+            count += 1
+            val_out = defang_min(val) if t in {"url", "domain", "ipv4", "ipv6"} else val
+            out.append(
+                Indicator(
+                    indicator=val_out, type=t, source=source,
+                    first_seen=iso(published or now), last_seen=iso(now),
+                    confidence="medium", tlp="CLEAR",
+                    tags="blog,osint", reference=ref or "", context=f"RSS: {source}",
+                )
+            )
+    return out
+
+
+# ---------------- universal parser ----------------
+@register_parser("universal", "auto", "generic", "phishstats")
+def fetch_universal(
+    url: str,
+    ref_url: str,
+    source: str,
+    ws: datetime,
+    *,
+    assume_recent: bool = True,
+    limit: Optional[int] = None,
+) -> List[Indicator]:
+    raw = _pkg.http_get(url, name=source)
+    text = ensure_text(raw)
+    now = now_utc()
+    candidates: List[Tuple[str, str, Optional[datetime], Set[str], str]] = []
+
+    def push_candidate(value: str, itype: str, seen: Optional[datetime], tags: Set[str], context: str) -> None:
+        if limit is not None and len(candidates) >= limit:
+            return
+        if seen and seen < ws:
+            return
+        candidates.append((value, itype, seen, set(tags), context))
+
+    def tagify(value: Any) -> Set[str]:
+        tags: Set[str] = set()
+        if isinstance(value, str):
+            parts = re.split(r"[,;/\s]+", value)
+            tags.update(t.strip().lower() for t in parts if t.strip())
+        elif isinstance(value, (list, tuple, set)):
+            for item in value:
+                if isinstance(item, str):
+                    tags.update(tagify(item))
+        return tags
+
+    def derive_seen_from_dict(data: Dict[str, Any]) -> Optional[datetime]:
+        for key, value in data.items():
+            if not isinstance(value, str):
+                continue
+            if DATE_FIELD_RE.search(key):
+                seen = parse_dt(value)
+                if seen:
+                    return seen
+        return None
+
+    def derive_tags_from_dict(data: Dict[str, Any]) -> Set[str]:
+        tags: Set[str] = set()
+        for key, value in data.items():
+            if TAGS_FIELD_RE.search(key):
+                tags.update(tagify(value))
+        return tags
+
+    def handle_text(blob: str, *, context: str, seen: Optional[datetime], tags: Set[str]) -> None:
+        for itype, token in extract_indicators_from_text(blob):
+            val = defang_min(token) if itype in {"url", "domain", "ipv4", "ipv6"} else token
+            push_candidate(val, itype, seen, tags, context)
+
+    def walk_json(
+        node: Any,
+        *,
+        path: Tuple[str, ...] = (),
+        inherited_seen: Optional[datetime] = None,
+        inherited_tags: Optional[Set[str]] = None,
+    ) -> None:
+        tags = set(inherited_tags or set())
+        seen = inherited_seen
+        if isinstance(node, dict):
+            seen = seen or derive_seen_from_dict(node)
+            tags |= derive_tags_from_dict(node)
+            for key, value in node.items():
+                new_path = path + (str(key),)
+                context = "/".join(new_path)
+                if isinstance(value, str):
+                    handle_text(value, context=context, seen=seen, tags=tags)
+                elif isinstance(value, (list, tuple)):
+                    walk_json(value, path=new_path, inherited_seen=seen, inherited_tags=tags)
+                elif isinstance(value, dict):
+                    walk_json(value, path=new_path, inherited_seen=seen, inherited_tags=tags)
+                elif isinstance(value, (int, float)):
+                    handle_text(str(value), context=context, seen=seen, tags=tags)
+        elif isinstance(node, (list, tuple)):
+            for idx, item in enumerate(node):
+                walk_json(
+                    item,
+                    path=path + (f"[{idx}]",),
+                    inherited_seen=inherited_seen,
+                    inherited_tags=inherited_tags,
+                )
+        elif isinstance(node, str):
+            handle_text(node, context="/".join(path) or source, seen=inherited_seen, tags=inherited_tags or set())
+        elif isinstance(node, (int, float)):
+            handle_text(str(node), context="/".join(path) or source, seen=inherited_seen, tags=inherited_tags or set())
+
+    def parse_as_json() -> bool:
+        try:
+            data = json.loads(text)
+        except Exception:
+            return False
+        walk_json(data, path=(source,))
+        return True
+
+    def parse_as_csv() -> bool:
+        try:
+            sample = "\n".join(text.splitlines()[:5])
+            dialect = csv.Sniffer().sniff(sample) if sample else csv.excel
+            reader = csv.reader(io.StringIO(text), dialect)
+        except Exception:
+            return False
+        header: Optional[List[str]] = None
+        for idx, row in enumerate(reader):
+            if not row or all(not cell.strip() for cell in row):
+                continue
+            if header is None:
+                header = [cell.strip() for cell in row]
+                if any(classify(cell) for cell in header) or not any(re.search(r"[A-Za-z]", cell or "") for cell in header):
+                    header = None
+                else:
+                    continue
+            context_base = f"{source}[{idx}]"
+            row_dict = {
+                header[i] if header and i < len(header) else f"col{i}": row[i] for i in range(len(row))
+            }
+            seen = derive_seen_from_dict(row_dict) if isinstance(row_dict, dict) else None
+            tags = derive_tags_from_dict(row_dict)
+            for key, value in row_dict.items():
+                if not isinstance(value, str):
+                    continue
+                handle_text(value, context=f"{context_base}/{key}", seen=seen, tags=tags)
+        return True
+
+    parsed = parse_as_json()
+    if not parsed:
+        parsed = parse_as_csv()
+    if not parsed:
+        handle_text(text, context=source, seen=None, tags=set())
+
+    uniq: Dict[Tuple[str, str], Indicator] = {}
+    for val, itype, seen, tags, context in candidates:
+        if limit is not None and len(uniq) >= limit:
+            break
+        first_seen_dt = seen or (now if assume_recent else None)
+        key = (itype, val)
+        if key in uniq:
+            indicator = uniq[key]
+            existing_tags = set(filter(None, indicator.tags.split(",")))
+            combined_tags = existing_tags | tags
+            indicator.tags = ",".join(sorted(combined_tags))
+            indicator.last_seen = iso(now)
+            if seen:
+                existing_first = parse_dt(indicator.first_seen)
+                if existing_first is None or seen < existing_first:
+                    indicator.first_seen = iso(seen)
+            continue
+        first_seen = first_seen_dt or now
+        if first_seen < ws:
+            continue
+        uniq[key] = Indicator(
+            indicator=val,
+            type=itype,
+            source=source,
+            first_seen=iso(first_seen),
+            last_seen=iso(now),
+            confidence="medium",
+            tlp="CLEAR",
+            tags=",".join(sorted(t for t in tags if t)),
+            reference=ref_url or "",
+            context=context or source,
+        )
+
+    return list(uniq.values())

@@ -1,0 +1,120 @@
+name: CI – SwiftIOC
+
+on:
+  push:
+    branches: [main]
+    paths: &ci-paths
+      - "swiftioc/**"
+      - "scripts/**"
+      - "tests/**"
+      - "public/index.html"
+      - "public/assets/**"
+      - "sources*.yml"
+      - "requirements*.txt"
+      - "pyproject.toml"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    branches: [main]
+    paths: *ci-paths
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  PYTHON_VERSION: "3.11"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-swiftioc-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Lint, audit, and self-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Test dashboard JavaScript
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          node --test public/assets/dashboard-core.test.js
+          node --check public/assets/dashboard-core.js
+          node --check public/assets/dashboard.js
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install runtime dependencies
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Dependency audit
+        uses: pypa/gh-action-pip-audit@1220774d901786e6f652ae159f7b6bc8fea6d266 # v1.1.0
+        with:
+          inputs: requirements.txt
+
+      - name: Install lint, type-check, and test tools
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          pip install -r requirements-dev.txt
+
+      - name: Ruff lint
+        run: ruff check .
+
+      - name: Pyright type check
+        run: pyright
+
+      - name: Self-test
+        run: python -m swiftioc --self-test
+
+      - name: Unit tests
+        run: pytest -q
+
+      - name: Dry run (end-to-end smoke test)
+        shell: bash
+        # Exercises the full collect -> score -> write -> diagnostics pipeline
+        # against sources.ci.yml: a tiny, fast, reliable 2-feed config (not the
+        # full production feed set, which rate-limits CI-runner IPs and made
+        # this step slow and flaky). Those feeds use graceful_fail, so a
+        # transient outage degrades to an empty run instead of a red check.
+        # timeout-minutes stays as a hard backstop against any network hang.
+        timeout-minutes: 4
+        run: |
+          set -Eeuo pipefail
+          mkdir -p public/diagnostics/raw
+          python -m swiftioc -v \
+            --out-dir public \
+            --sources sources.ci.yml \
+            --window-hours 6 \
+            --skip-rss \
+            --log-file public/diagnostics/run.log \
+            --log-format json \
+            --log-file-level DEBUG \
+            --save-raw-dir public/diagnostics/raw \
+            --diag-json public/diagnostics/run.json \
+            --report public/diagnostics/REPORT.md
+
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: ci-artifacts
+          retention-days: 7
+          if-no-files-found: warn
+          path: |
+            public/diagnostics/**
+            public/iocs/**

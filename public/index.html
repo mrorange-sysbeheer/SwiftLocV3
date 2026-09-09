@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SwiftIOC — Free Live IOC Feed: Scored Malicious IPs, Domains, URLs &amp; Hashes</title>
+    <meta
+      name="description"
+      content="Free, open-source threat intelligence feed of the latest malicious IPs, domains, URLs, and file hashes — scored, cross-source corroborated, and refreshed automatically. Download CSV, JSON, JSONL, or STIX 2.1."
+    />
+    <meta name="keywords" content="threat intelligence feed, malicious IP list, IOC feed, indicators of compromise, C2 IP blocklist, open source threat intel, STIX feed, free IOC download" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="canonical" href="https://harsim.ca/SwiftIOC-Automated-Threat-Intelligence-Collector/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SwiftIOC — Free Live IOC Feed" />
+    <meta
+      property="og:description"
+      content="The latest malicious IPs, domains, URLs, and hashes — scored, corroborated across sources, and updated automatically. Free CSV / JSON / STIX downloads."
+    />
+    <meta property="og:url" content="https://harsim.ca/SwiftIOC-Automated-Threat-Intelligence-Collector/" />
+    <meta name="twitter:card" content="summary" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="SwiftIOC — Newest High-Confidence IOCs"
+      href="feed.xml"
+    />
+    <!-- Start the data fetch as early as possible: the dashboard feed and the
+         run aggregates are the page's real content. -->
+    <link rel="preload" href="iocs/dashboard.jsonl" as="fetch" crossorigin="anonymous" />
+    <link rel="preload" href="diagnostics/run.json" as="fetch" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <!-- Google tag (gtag.js) for usage analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T7L8XCEG0S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      // Shared IOC/search state lives in the fragment so it is not sent to the
+      // server. Strip that fragment from analytics as well.
+      gtag('config', 'G-T7L8XCEG0S', {
+        page_location: `${window.location.origin}${window.location.pathname}${window.location.search}`,
+      });
+    </script>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/styles.css?v=16" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "SwiftIOC Threat Intelligence Feed",
+        "description": "Free, open-source, continuously updated feed of scored, cross-source-corroborated indicators of compromise (malicious IPs, domains, URLs, and file hashes) aggregated from CISA KEV, NVD, abuse.ch, Spamhaus, DShield/SANS ISC, and other public threat intelligence sources.",
+        "url": "https://harsim.ca/SwiftIOC-Automated-Threat-Intelligence-Collector/",
+        "license": "https://opensource.org/licenses/MIT",
+        "isAccessibleForFree": true,
+        "creator": {
+          "@type": "Organization",
+          "name": "SwiftIOC",
+          "url": "https://github.com/PKHarsimran/SwiftIOC-Automated-Threat-Intelligence-Collector"
+        },
+        "distribution": [
+          {
+            "@type": "DataDownload",
+            "encodingFormat": "text/csv",
+            "contentUrl": "https://harsim.ca/SwiftIOC-Automated-Threat-Intelligence-Collector/iocs/high_confidence.csv"
+          },
+          {
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "contentUrl": "https://harsim.ca/SwiftIOC-Automated-Threat-Intelligence-Collector/iocs/latest.json"
+          },
+          {
+            "@type": "DataDownload",
+            "encodingFormat": "application/stix+json",
+            "contentUrl": "https://harsim.ca/SwiftIOC-Automated-Threat-Intelligence-Collector/iocs/stix2.json"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body data-ioc-root=".">
+    <a class="skip-link" href="#live-preview">Skip to IOC results</a>
+    <div class="page-wrapper">
+      <nav class="top-nav" aria-label="SwiftIOC navigation">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">SwiftIOC</span>
+          <span class="brand-tagline">Threat Intelligence</span>
+        </a>
+        <div class="nav-links">
+          <a href="#ioc-lookup">Check an IOC</a>
+          <a href="#discovery">Discover</a>
+          <a href="#vulnerabilities">Vulnerabilities</a>
+          <a href="#campaign-graph">Campaign graph</a>
+          <a href="#live-preview">Browse feed</a>
+          <a href="#sources">Sources</a>
+          <a href="#indicator-types">Types</a>
+          <a href="#tags">Tags</a>
+          <a href="diagnostics/summary.html">Run diagnostics</a>
+        </div>
+      </nav>
+
+      <main id="main-content">
+      <header class="page-header">
+        <div class="signal-radar" aria-hidden="true">
+          <span class="radar-ring radar-ring-one"></span>
+          <span class="radar-ring radar-ring-two"></span>
+          <span class="radar-ring radar-ring-three"></span>
+          <span class="radar-crosshair"></span>
+          <span class="radar-sweep"></span>
+          <i class="radar-blip blip-one"></i>
+          <i class="radar-blip blip-two"></i>
+          <i class="radar-blip blip-three"></i>
+        </div>
+        <div class="page-header-main">
+          <div>
+            <p class="eyebrow">Open-source · refreshed every four hours</p>
+            <h1 class="section-title">Threat intelligence you can act on</h1>
+            <p class="page-header-subtitle">
+              Search, investigate, and export scored indicators from independent
+              threat feeds. Freshness and corroboration are built into every score.
+            </p>
+          </div>
+          <a
+            class="hero-download"
+            href="iocs/high_confidence.csv"
+            data-download-fallback="iocs/latest.csv"
+            data-fallback-title="Download complete feed"
+            data-fallback-caption="CSV · current snapshot"
+            download
+          >
+            <span>Download block-ready feed</span>
+            <small>High-confidence CSV</small>
+          </a>
+        </div>
+      </header>
+
+      <section id="ioc-lookup" class="ioc-lookup" aria-labelledby="ioc-lookup-heading">
+        <div class="lookup-heading">
+          <div>
+            <p class="eyebrow">Instant IOC lookup</p>
+            <h2 id="ioc-lookup-heading">Check an indicator</h2>
+          </div>
+          <p id="ioc-lookup-help">Raw and defanged IPs, domains, URLs, hashes, and CVEs are supported.</p>
+        </div>
+        <form class="lookup-form" data-lookup-form role="search">
+          <label class="sr-only" for="ioc-lookup-input">Indicator to check</label>
+          <input
+            id="ioc-lookup-input"
+            type="search"
+            data-lookup-input
+            class="lookup-input"
+            placeholder="Paste an IP, domain, URL, hash, or CVE…"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            aria-describedby="ioc-lookup-help"
+          />
+          <button type="submit" class="button-link primary" data-lookup-submit>
+            Search feed
+          </button>
+        </form>
+        <div
+          class="lookup-result"
+          data-lookup-result
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          hidden
+        ></div>
+      </section>
+
+      <section
+        id="investigation-workspace"
+        class="investigation-workspace"
+        data-investigation-root
+        aria-labelledby="investigation-heading"
+        hidden
+      >
+        <div class="investigation-heading">
+          <div>
+            <p class="eyebrow">Private analyst workspace</p>
+            <h2 id="investigation-heading">
+              Investigation queue
+              <span class="investigation-count" data-investigation-count>0</span>
+            </h2>
+            <p>Shortlist indicators while you triage. This queue stays in this browser.</p>
+          </div>
+          <div class="investigation-actions">
+            <button type="button" class="button ghost" data-investigation-copy>
+              Copy indicators
+            </button>
+            <button type="button" class="button ghost" data-investigation-csv>
+              Export CSV
+            </button>
+            <button type="button" class="button ghost" data-investigation-json>
+              Export JSON
+            </button>
+            <button type="button" class="button ghost detection-export" data-investigation-sigma>
+              Build Sigma
+            </button>
+            <button type="button" class="button ghost detection-export" data-investigation-suricata>
+              Build Suricata
+            </button>
+            <button type="button" class="button ghost danger" data-investigation-clear>
+              Clear queue
+            </button>
+          </div>
+        </div>
+        <ul class="investigation-list" data-investigation-list aria-label="Queued indicators"></ul>
+      </section>
+
+      <section
+        class="status-banner"
+        data-site-status-root
+        data-state="loading"
+        aria-label="Collection status"
+      >
+        <div class="status-badge" data-site-status-badge>
+          <span class="status-dot" aria-hidden="true"></span>
+          <span
+            class="status-label"
+            data-site-status-label
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          >Checking feed…</span>
+        </div>
+        <dl class="status-meta">
+          <div>
+            <dt>Last collected</dt>
+            <dd data-site-generated>—</dd>
+          </div>
+          <div>
+            <dt>Newest sighting</dt>
+            <dd data-site-updated>—</dd>
+          </div>
+          <div>
+            <dt>Source health</dt>
+            <dd data-site-sources>—</dd>
+          </div>
+          <div>
+            <dt>Collection window</dt>
+            <dd data-site-window>—</dd>
+          </div>
+        </dl>
+        <div
+          class="trend-sparkline"
+          data-trend-sparkline
+          hidden
+          role="img"
+          aria-label="Indicator count trend"
+        ></div>
+        <a class="status-details" href="diagnostics/summary.html">View diagnostics</a>
+      </section>
+
+      <section class="metrics-strip" aria-label="Top metrics">
+        <article class="metric-card">
+          <p class="metric-label">Total indicators</p>
+          <p class="metric-value" data-stat="total-indicators">—</p>
+          <p class="metric-caption" data-stat="feeds-online">
+            Across active sources
+          </p>
+        </article>
+
+        <article class="metric-card metric-card-accent">
+          <p class="metric-label">High-confidence</p>
+          <p class="metric-value" data-stat="high-confidence">—</p>
+          <p class="metric-caption" data-stat="high-confidence-caption">
+            Score ≥80 or 2+ sources
+          </p>
+        </article>
+
+        <article class="metric-card">
+          <p class="metric-label">Corroborated</p>
+          <p class="metric-value" data-stat="corroborated">—</p>
+          <p class="metric-caption" data-stat="corroborated-caption">
+            Confirmed by 2+ sources
+          </p>
+        </article>
+
+        <article class="metric-card">
+          <p class="metric-label">Avg score</p>
+          <p class="metric-value" data-stat="avg-score">—</p>
+          <p class="metric-caption">
+            <span data-stat="indicator-types">—</span> indicator types
+          </p>
+        </article>
+      </section>
+
+      <section
+        class="score-distribution"
+        data-score-distribution
+        hidden
+        aria-label="Score distribution"
+      >
+        <div class="score-distribution-head">
+          <span class="score-distribution-title">Threat score distribution</span>
+          <span class="score-legend" data-score-legend></span>
+        </div>
+        <div class="score-bar" data-score-bar role="img"
+          aria-label="Proportion of indicators by score band"></div>
+      </section>
+
+      <section class="delta-strip" data-delta-root hidden aria-labelledby="delta-heading">
+        <div class="delta-copy">
+          <p class="eyebrow">SOC Delta · since the previous collection</p>
+          <h2 id="delta-heading">What changed</h2>
+          <p>Poll the small event stream for additions, material updates, and removals from the published feed.</p>
+        </div>
+        <dl class="delta-counts">
+          <div><dt>Added</dt><dd data-stat="delta-added">0</dd></div>
+          <div><dt>Updated</dt><dd data-stat="delta-updated">0</dd></div>
+          <div><dt>Removed</dt><dd data-stat="delta-removed">0</dd></div>
+        </dl>
+        <div class="delta-actions">
+          <a class="button-link primary" href="iocs/delta.json" download>Delta JSON</a>
+          <a class="button-link" href="iocs/delta.jsonl" download>Event stream</a>
+        </div>
+      </section>
+
+      <section class="discovery-desk vulnerability-desk" id="vulnerabilities" aria-labelledby="vulnerability-heading" data-vulnerability-root>
+        <div class="discovery-heading">
+          <div>
+            <p class="eyebrow">Vulnerability collection · one record per CVE</p>
+            <h2 id="vulnerability-heading">Known exploited. Newly disclosed. Prioritized.</h2>
+            <p>Separate vulnerabilities from network and file indicators. Inspect known exploitation, affected products, and each provider’s evidence without joining unrelated CVEs into a campaign.</p>
+          </div>
+          <a class="button ghost" href="collections/vulnerabilities.json" data-vulnerability-download>Get collection JSON ↗</a>
+        </div>
+        <div class="discovery-lenses vulnerability-views" role="group" aria-label="Vulnerability view">
+          <button type="button" data-vulnerability-view="exploited" aria-pressed="true">Known exploited</button>
+          <button type="button" data-vulnerability-view="ransomware" aria-pressed="false">Ransomware evidence</button>
+          <button type="button" data-vulnerability-view="priority" aria-pressed="false">All CVEs · prioritized</button>
+          <button type="button" data-vulnerability-view="kev30" aria-pressed="false">Added to KEV · 30 days</button>
+          <button type="button" data-vulnerability-view="published7" aria-pressed="false">Published · 7 days</button>
+          <button type="button" data-vulnerability-view="updated7" aria-pressed="false">Updated · 7 days</button>
+        </div>
+        <p class="discovery-scope" data-vulnerability-view-help>Confirmed KEV records only, newest catalog additions first. An empty result means this collection has no matching KEV evidence; other CVEs are available in All CVEs.</p>
+        <div class="vulnerability-toolbar">
+          <label>Find a vulnerability
+            <input type="search" data-vulnerability-search placeholder="CVE, vendor, product, or description" autocomplete="off" />
+          </label>
+          <label>Exploitation evidence
+            <select data-vulnerability-status-filter>
+              <option value="all">All vulnerabilities</option>
+              <option value="known_exploited">CISA KEV · known exploited</option>
+              <option value="reported_exploitation">Reported · without structured KEV evidence</option>
+              <option value="not_established">Not established by this feed</option>
+            </select>
+          </label>
+          <button type="button" class="button ghost" data-vulnerability-refresh>Refresh collection</button>
+        </div>
+        <label class="vulnerability-rejected-control"><input type="checkbox" data-vulnerability-include-rejected /> Include NVD rejected records</label>
+        <p class="vulnerability-freshness" data-vulnerability-freshness role="status" hidden></p>
+        <p class="discovery-status" data-vulnerability-status role="status">Loading the vulnerability collection…</p>
+        <div class="discovery-cards vulnerability-cards" data-vulnerability-cards></div>
+        <div class="vulnerability-pagination">
+          <button type="button" class="button ghost" data-vulnerability-prev disabled>Previous</button>
+          <span data-vulnerability-page>Page 0 of 0</span>
+          <button type="button" class="button ghost" data-vulnerability-next disabled>Next</button>
+        </div>
+        <p class="discovery-scope">This collection covers the retained feed, not the complete KEV or NVD catalogs. Source windows, outages, and retention affect coverage. KEV membership records known exploitation; it does not date an attack or confirm one is happening now. Severity alone does not establish exploitation. These filters are independent of the IOC preview.</p>
+        <p class="discovery-scope">Building an IOC integration? <a href="collections/observables.jsonl" data-observables-download>Download the observable-only collection</a>. Existing combined exports remain available.</p>
+      </section>
+
+      <section class="discovery-desk" id="discovery" aria-labelledby="discovery-heading" data-discovery-root>
+        <div class="discovery-heading">
+          <div>
+            <p class="eyebrow">The discovery desk</p>
+            <h2 id="discovery-heading">Find your next lead.</h2>
+            <p>Follow the evidence behind the score. Explore corroboration, recent sightings, and uncommon tags in the loaded preview.</p>
+          </div>
+          <a class="button ghost" href="#live-preview">Refine the sample ↓</a>
+        </div>
+        <div class="discovery-toolbar">
+          <div class="discovery-lenses" role="group" aria-label="Discovery lens">
+            <button type="button" data-discovery-mode="corroborated" aria-pressed="true">01 · Cross-source</button>
+            <button type="button" data-discovery-mode="recent" aria-pressed="false">02 · Recent sightings</button>
+            <button type="button" data-discovery-mode="uncommon" aria-pressed="false">03 · Uncommon tags</button>
+          </div>
+          <button type="button" class="button ghost" data-discovery-export disabled>Export evidence brief</button>
+        </div>
+        <p class="discovery-status" data-discovery-status role="status">Loading the discovery sample…</p>
+        <div class="discovery-cards" data-discovery-cards></div>
+        <p class="discovery-empty" data-discovery-empty hidden>No leads match this lens. Try another lens or broaden the preview filters below.</p>
+        <p class="discovery-scope">Observables from the compact preview, not the complete feed. CVEs are listed in the vulnerability collection above. Preview filters apply here. Nothing is uploaded when you explore or export.</p>
+      </section>
+
+      <section
+        id="campaign-graph"
+        class="panel campaign-graph-section"
+        data-campaign-root
+        aria-labelledby="campaign-graph-heading"
+        hidden
+      >
+        <div class="panel-header campaign-graph-header">
+          <div>
+            <p class="eyebrow">Campaign lens · inferred relationships</p>
+            <h2 id="campaign-graph-heading" class="panel-title">Threat Campaign Graph</h2>
+            <p class="panel-subtitle">
+              Explore shared tags and reporting sources for observables. CVEs have their own collection above. These are investigation pivots,
+              not claims of common threat-actor ownership.
+            </p>
+          </div>
+          <div class="campaign-controls" aria-label="Campaign graph controls">
+            <div class="campaign-control-field">
+              <label for="campaign-mode">Connect through</label>
+              <select id="campaign-mode" data-campaign-mode>
+                <option value="all">Tags + sources</option>
+                <option value="tags">Tags only</option>
+                <option value="sources">Sources only</option>
+              </select>
+            </div>
+            <div class="campaign-control-field">
+              <label for="campaign-density">Detail level</label>
+              <select id="campaign-density" data-campaign-density>
+                <option value="24">Focused · 24 IOCs</option>
+                <option value="36" selected>Expanded · 36 IOCs</option>
+                <option value="48">Maximum · 48 IOCs</option>
+              </select>
+            </div>
+            <button type="button" class="button ghost" data-campaign-layout>
+              Remix layout
+            </button>
+          </div>
+        </div>
+        <div class="panel-body campaign-graph-body">
+          <div class="campaign-stage" data-campaign-stage>
+            <dl class="campaign-stage-stats" data-campaign-stats hidden>
+              <div><dt>High risk</dt><dd data-campaign-high>0</dd></div>
+              <div><dt>Corroborated</dt><dd data-campaign-corroborated>0</dd></div>
+              <div><dt>Avg score</dt><dd data-campaign-average>0</dd></div>
+              <div><dt>Visible IOCs</dt><dd data-campaign-visible>0</dd></div>
+            </dl>
+            <svg
+              data-campaign-graph
+              viewBox="0 0 1000 520"
+              role="group"
+              aria-label="Interactive relationship graph of indicators, tags, and reporting sources"
+            ></svg>
+            <div class="campaign-empty" data-campaign-empty hidden>
+              <strong>No shared pivots in this preview</strong>
+              <span>Try tags and sources together, or wait for the next feed refresh.</span>
+            </div>
+            <div class="campaign-legend" aria-label="Graph legend">
+              <span><i class="legend-node tag"></i>Tag pivot</span>
+              <span><i class="legend-node source"></i>Source pivot</span>
+              <span><i class="legend-node indicator"></i>Indicator</span>
+            </div>
+          </div>
+          <aside class="campaign-inspector" data-campaign-inspector aria-live="polite">
+            <p class="eyebrow">Selected node</p>
+            <h3 data-campaign-title>Select a node</h3>
+            <p data-campaign-description>
+              Choose a pivot to understand its reach, or choose an indicator to add it to your investigation queue.
+            </p>
+            <dl class="campaign-node-meta" data-campaign-meta hidden>
+              <div><dt>Kind</dt><dd data-campaign-kind>—</dd></div>
+              <div><dt>Connections</dt><dd data-campaign-connections>—</dd></div>
+              <div><dt>Score</dt><dd data-campaign-score>—</dd></div>
+              <div><dt>Sources</dt><dd data-campaign-sources>—</dd></div>
+              <div><dt>Last seen</dt><dd data-campaign-last-seen>—</dd></div>
+              <div><dt>TLP</dt><dd data-campaign-tlp>—</dd></div>
+            </dl>
+            <div class="campaign-detail-block" data-campaign-tags hidden>
+              <h4>Intelligence tags</h4>
+              <div class="campaign-tag-list" data-campaign-tag-list></div>
+            </div>
+            <div class="campaign-detail-block" data-campaign-related hidden>
+              <h4 data-campaign-related-heading>Connected nodes</h4>
+              <div class="campaign-related-list" data-campaign-related-list></div>
+            </div>
+            <a class="button ghost campaign-reference" data-campaign-reference
+              target="_blank" rel="noopener noreferrer" hidden>Open source report</a>
+            <button type="button" class="button detection-export" data-campaign-queue disabled>
+              Add indicator to queue
+            </button>
+            <p class="campaign-summary" data-campaign-summary>Building graph…</p>
+          </aside>
+        </div>
+      </section>
+
+      <div class="dashboard-main">
+        <section
+          id="live-preview"
+          class="panel"
+          aria-labelledby="live-preview-heading"
+        >
+          <div class="panel-header">
+            <div>
+              <h2 id="live-preview-heading" class="panel-title">
+                Live IOC preview
+              </h2>
+              <p class="panel-subtitle">
+                Filter and search the latest SwiftIOC feed.
+              </p>
+            </div>
+            <button
+              type="button"
+              class="panel-header-link"
+              data-preview-refresh
+              aria-label="Refresh IOC preview"
+            >
+              Refresh
+            </button>
+          </div>
+
+          <div
+            class="panel-body preview-panel"
+            data-preview-container
+            role="region"
+            aria-labelledby="live-preview-heading"
+            aria-busy="false"
+          >
+            <div class="preview-toolbar">
+              <div class="toolbar-search">
+                <label for="preview-search">Search this feed</label>
+                <input
+                  id="preview-search"
+                  type="search"
+                  inputmode="search"
+                  placeholder="Indicator, source, or tag…"
+                  data-preview-search
+                  autocomplete="off"
+                />
+              </div>
+              <div class="toolbar-controls">
+                <details class="facet-menu" data-facet-menu="types">
+                  <summary>
+                    <span>Type</span>
+                    <strong data-facet-summary="types">All types</strong>
+                  </summary>
+                  <fieldset data-facet-options="types" disabled>
+                    <legend class="sr-only">Filter by one or more IOC types</legend>
+                  </fieldset>
+                </details>
+
+                <details class="facet-menu" data-facet-menu="sources">
+                  <summary>
+                    <span>Source</span>
+                    <strong data-facet-summary="sources">All sources</strong>
+                  </summary>
+                  <fieldset data-facet-options="sources" disabled>
+                    <legend class="sr-only">Filter by one or more sources</legend>
+                  </fieldset>
+                </details>
+
+                <details class="facet-menu" data-facet-menu="tags">
+                  <summary>
+                    <span>Tag</span>
+                    <strong data-facet-summary="tags">All tags</strong>
+                  </summary>
+                  <fieldset data-facet-options="tags" disabled>
+                    <legend class="sr-only">Filter by one or more tags</legend>
+                  </fieldset>
+                </details>
+
+                <label class="toolbar-group" for="preview-highlight">
+                  <span>Signal</span>
+                  <select
+                    id="preview-highlight"
+                    data-preview-highlight
+                    disabled
+                  >
+                    <option value="all">Everything</option>
+                    <option value="high">High score (≥80)</option>
+                    <option value="corroborated">Corroborated (2+ sources)</option>
+                    <option value="new">New (first seen in 48h)</option>
+                  </select>
+                </label>
+
+                <details class="facet-menu" data-facet-menu="scoreBands">
+                  <summary>
+                    <span>Score band</span>
+                    <strong data-facet-summary="scoreBands">Any score</strong>
+                  </summary>
+                  <fieldset data-facet-options="scoreBands" disabled>
+                    <legend class="sr-only">Filter by one or more score bands</legend>
+                    <label><input type="checkbox" value="high" /> High · 80–100</label>
+                    <label><input type="checkbox" value="elevated" /> Elevated · 60–79</label>
+                    <label><input type="checkbox" value="moderate" /> Moderate · 40–59</label>
+                    <label><input type="checkbox" value="aging" /> Aging · below 40</label>
+                  </fieldset>
+                </details>
+
+                <details class="facet-menu" data-facet-menu="ageBands">
+                  <summary>
+                    <span>Last seen</span>
+                    <strong data-facet-summary="ageBands">Any time</strong>
+                  </summary>
+                  <fieldset data-facet-options="ageBands" disabled>
+                    <legend class="sr-only">Filter by one or more age ranges</legend>
+                    <label><input type="checkbox" value="day" /> Last 24 hours</label>
+                    <label><input type="checkbox" value="week" /> 1–7 days ago</label>
+                    <label><input type="checkbox" value="month" /> 8–30 days ago</label>
+                    <label><input type="checkbox" value="older" /> More than 30 days</label>
+                    <label><input type="checkbox" value="unknown" /> Unknown age</label>
+                  </fieldset>
+                </details>
+
+                <label class="toolbar-group" for="preview-limit">
+                  <span>Rows</span>
+                  <select id="preview-limit" data-preview-limit>
+                    <option value="12">12</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                </label>
+                <label class="toolbar-group mobile-sort" for="preview-sort-select">
+                  <span>Sort</span>
+                  <select id="preview-sort-select" data-preview-sort-select disabled>
+                    <option value="score:desc">Highest score</option>
+                    <option value="lastSeen:desc">Newest sighting</option>
+                    <option value="sources:desc">Most sources</option>
+                    <option value="indicator:asc">Indicator A–Z</option>
+                  </select>
+                </label>
+                <button
+                  type="button"
+                  class="button ghost clear-filters"
+                  data-preview-clear
+                  disabled
+                >
+                  Clear filters <span data-preview-filter-count hidden></span>
+                </button>
+                <button
+                  type="button"
+                  class="button ghost"
+                  data-preview-share
+                  disabled
+                >
+                  Share view
+                </button>
+                <button
+                  type="button"
+                  class="button ghost"
+                  data-preview-download
+                  disabled
+                  title="Download every matching indicator currently loaded in the dashboard preview"
+                >
+                  Download matching CSV
+                </button>
+                <span class="toolbar-export-note" data-preview-download-note>
+                  Exports matching indicators currently loaded in the preview.
+                </span>
+              </div>
+            </div>
+
+            <div class="preview-table-wrapper">
+              <div class="preview-state" data-preview-state data-state="loading">
+                <div class="preview-skeleton" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+                <p data-preview-state-message>Loading the latest indicators…</p>
+                <div class="preview-state-actions" data-preview-state-actions hidden>
+                  <button type="button" class="button primary" data-preview-retry>Retry</button>
+                  <a class="button ghost" href="iocs/latest.csv" download>Download CSV instead</a>
+                </div>
+              </div>
+              <table
+                class="preview-table"
+                data-preview-table
+                hidden
+                aria-label="Live indicators table"
+              >
+                <caption class="sr-only">
+                  Current SwiftIOC indicators. Activate a column heading to sort.
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" aria-sort="none"><button class="sort-button" data-preview-sort="indicator">Indicator <span aria-hidden="true">↕</span></button></th>
+                    <th scope="col" aria-sort="none"><button class="sort-button" data-preview-sort="type">Type <span aria-hidden="true">↕</span></button></th>
+                    <th scope="col" aria-sort="descending"><button class="sort-button" data-preview-sort="score">Score <span aria-hidden="true">↓</span></button></th>
+                    <th scope="col" aria-sort="none"><button class="sort-button" data-preview-sort="sources">Sources <span aria-hidden="true">↕</span></button></th>
+                    <th scope="col" aria-sort="none"><button class="sort-button" data-preview-sort="lastSeen">Last seen <span aria-hidden="true">↕</span></button></th>
+                    <th scope="col"><span class="sr-only">Row actions</span></th>
+                  </tr>
+                </thead>
+                <tbody data-preview-body></tbody>
+              </table>
+            </div>
+
+            <div
+              class="preview-summary"
+              data-preview-summary
+              hidden
+            >
+              <div class="preview-summary-main">
+                <span class="preview-summary-figure">
+                  <span data-preview-visible>0</span>/<span
+                    data-preview-total
+                    >0</span
+                  >
+                  highlighted
+                </span>
+                <span class="preview-summary-pill">
+                  <span data-preview-high>0</span> high-score
+                  (<span data-preview-high-percent>0%</span>)
+                </span>
+                <span class="preview-summary-pill">
+                  <span data-preview-corroborated>0</span> corroborated by 2+ sources
+                </span>
+                <span class="preview-summary-pill">
+                  Top tag:
+                  <span class="preview-summary-tag" data-preview-top-tag>—</span>
+                  (<span data-preview-top-tag-count>0</span>)
+                </span>
+              </div>
+              <div class="preview-summary-meta" data-preview-meta>
+                <span class="preview-summary-pill">
+                  Source pool: <span data-preview-pool>—</span>
+                </span>
+                <span class="preview-summary-pill">
+                  Origin: <span data-preview-origin>—</span>
+                </span>
+                <span class="preview-summary-pill">
+                  Refreshed: <span data-preview-refreshed>—</span>
+                  <span data-preview-relative></span>
+                </span>
+                <span class="preview-summary-pill">
+                  Window:
+                  <span data-preview-window>
+                    <span data-preview-oldest>—</span> →&nbsp;<span
+                      data-preview-newest
+                      >—</span
+                    >
+                    (<span data-preview-oldest-relative>—</span> /
+                    <span data-preview-newest-relative>—</span>)
+                  </span>
+                </span>
+              </div>
+            </div>
+
+            <p
+              class="preview-status"
+              data-preview-status
+              data-status="idle"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              Preparing live preview…
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="panel"
+          id="sources"
+          aria-labelledby="sources-heading"
+        >
+          <div class="panel-header">
+            <div>
+              <h2 id="sources-heading" class="panel-title">
+                Sources &amp; feeds
+              </h2>
+              <p class="panel-subtitle">
+                Active feeds and their contribution to this collection.
+              </p>
+            </div>
+          </div>
+          <div class="panel-body summary-tables">
+            <div class="table-card">
+              <div class="table-card-header">
+                <h3>Sources</h3>
+                <p>Top sources by indicator contribution.</p>
+              </div>
+              <table>
+                <caption class="sr-only">Indicator contribution by source</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Source</th>
+                    <th scope="col">Indicators</th>
+                    <th scope="col">Share</th>
+                  </tr>
+                </thead>
+                <tbody data-table="sources"></tbody>
+              </table>
+              <div class="table-card-actions">
+                <button
+                  type="button"
+                  class="button ghost"
+                  data-table-toggle="sources"
+                  aria-expanded="false"
+                >
+                  Show all sources
+                </button>
+                <p class="table-card-hint">
+                  On phones we only show the top entries. Expand to browse the full
+                  list without endless scrolling.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="table-card"
+              id="indicator-types"
+              aria-labelledby="indicator-types-heading"
+            >
+              <div class="table-card-header">
+                <h3 id="indicator-types-heading">Types</h3>
+                <p>Indicator types observed in this IOC bundle.</p>
+              </div>
+              <table>
+                <caption class="sr-only">Indicator totals by type</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Share</th>
+                  </tr>
+                </thead>
+                <tbody data-table="types"></tbody>
+              </table>
+              <div class="table-card-actions">
+                <button
+                  type="button"
+                  class="button ghost"
+                  data-table-toggle="types"
+                  aria-expanded="false"
+                >
+                  Show all types
+                </button>
+                <p class="table-card-hint">
+                  Expand for the full breakdown when you want the detailed view.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="table-card"
+              id="tags"
+              aria-labelledby="tags-heading"
+            >
+              <div class="table-card-header">
+                <h3 id="tags-heading">Tags</h3>
+                <p>Top tags across the full indicator set.</p>
+              </div>
+              <table>
+                <caption class="sr-only">Most frequent indicator tags</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Tag</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Share</th>
+                  </tr>
+                </thead>
+                <tbody data-table="tags"></tbody>
+              </table>
+              <div class="table-card-actions">
+                <button
+                  type="button"
+                  class="button ghost"
+                  data-table-toggle="tags"
+                  aria-expanded="false"
+                >
+                  Show all tags
+                </button>
+                <p class="table-card-hint">
+                  Open the full tag list in-place instead of scrolling through an
+                  endless stack on smaller screens.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section
+        class="top-threats"
+        data-top-threats-section
+        hidden
+        aria-labelledby="top-threats-heading"
+      >
+        <div class="section-heading">
+          <h2 id="top-threats-heading" class="panel-title">Top threats right now</h2>
+          <p class="panel-subtitle">
+            The highest-scoring, most cross-source-confirmed indicators from the latest run.
+          </p>
+        </div>
+        <div class="top-threats-grid" data-top-threats></div>
+      </section>
+
+      <section
+        id="exports"
+        class="panel"
+        aria-labelledby="exports-heading"
+      >
+        <div class="panel-header">
+          <div>
+            <h2 id="exports-heading" class="panel-title">
+              Exports &amp; raw feeds
+            </h2>
+            <p class="panel-subtitle">
+              Download the same SwiftIOC bundle in your preferred format.
+            </p>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="exports-grid">
+            <a
+              class="button-link exports-highlight"
+              href="iocs/high_confidence.csv"
+              data-download-fallback="iocs/latest.csv"
+              data-fallback-label="Complete CSV"
+              rel="nofollow"
+              download
+              title="Only score ≥80 or indicators confirmed by 2+ sources — block-ready"
+              >★ High-confidence CSV</a>
+            <a
+              class="button-link exports-highlight"
+              href="iocs/high_confidence.jsonl"
+              data-download-fallback="iocs/latest.jsonl"
+              data-fallback-label="Complete JSONL"
+              rel="nofollow"
+              download
+              title="Only score ≥80 or indicators confirmed by 2+ sources — block-ready"
+              >★ High-confidence JSONL</a>
+            <a
+              class="button-link"
+              href="iocs/latest.csv"
+              rel="nofollow"
+              download
+              >CSV</a>
+            <a
+              class="button-link"
+              href="iocs/latest.tsv"
+              rel="nofollow"
+              download
+              >TSV</a>
+            <a
+              class="button-link"
+              href="iocs/latest.json"
+              rel="nofollow"
+              download
+              >JSON</a>
+            <a
+              class="button-link"
+              href="iocs/latest.jsonl"
+              rel="nofollow"
+              download
+              >JSONL</a>
+            <a
+              class="button-link"
+              href="iocs/stix2.json"
+              rel="nofollow"
+              download
+              >STIX 2.1 bundle</a>
+            <a
+              class="button-link"
+              href="iocs/taxii2-envelope.json"
+              rel="nofollow"
+              download
+              >TAXII 2.1 envelope</a>
+            <a class="button-link detection-download" href="detections/sigma/network-iocs.yml"
+              data-detection-artifact="sigma/network-iocs.yml" download hidden>
+              Sigma network rules
+            </a>
+            <a class="button-link detection-download" href="detections/sigma/dns-iocs.yml"
+              data-detection-artifact="sigma/dns-iocs.yml" download hidden>
+              Sigma DNS rules
+            </a>
+            <a class="button-link detection-download" href="detections/suricata/swiftioc.rules" download>
+              Suricata rules
+            </a>
+            <a class="button-link detection-download" href="detections/dns/swiftioc.rpz" download>
+              DNS RPZ
+            </a>
+            <a class="button-link" href="detections/manifest.json">
+              Detection manifest
+            </a>
+          </div>
+          <p class="panel-footnote">
+            The ★ high-confidence feeds contain only indicators scoring ≥80 or
+            confirmed by 2+ independent sources — block-ready with minimal false
+            positives. All files come from the same SwiftIOC collector run that
+            powers the live dashboard above.
+          </p>
+        </div>
+      </section>
+      </main>
+    </div>
+
+    <div class="toast" data-toast role="status" aria-live="polite" aria-atomic="true" hidden></div>
+    <script defer src="assets/dashboard-core.js?v=16"></script>
+    <script defer src="assets/dashboard.js?v=16"></script>
+  </body>
+</html>

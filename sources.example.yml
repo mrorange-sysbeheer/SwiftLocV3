@@ -1,0 +1,127 @@
+# How far back to collect
+window_hours: 48
+
+apis:
+  # --- Official & Government Feeds ---
+  - name: cisa_kev
+    kind: json
+    parse: kev
+    url: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+    reference: https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+
+  - name: nist_nvd_recent
+    kind: json
+    parse: nvd
+    url: https://services.nvd.nist.gov/rest/json/cves/2.0/?resultsPerPage=200
+    reference: https://nvd.nist.gov/
+
+  # --- Abuse.ch Family ---
+  - name: urlhaus_recent_urls
+    kind: csv
+    parse: urlhaus
+    url: https://urlhaus.abuse.ch/downloads/csv_recent/
+    reference: https://urlhaus.abuse.ch/
+
+  - name: malwarebazaar_recent
+    kind: csv
+    parse: malwarebazaar
+    url: https://bazaar.abuse.ch/export/csv/recent/
+    reference: https://bazaar.abuse.ch/
+
+  - name: threatfox_export_json
+    kind: json
+    parse: threatfox_export_json
+    url: https://threatfox.abuse.ch/export/json/recent/
+    reference: https://threatfox.abuse.ch/browse/
+
+  - name: feodo_ipblocklist
+    kind: csv
+    parse: feodo_ipblocklist
+    url: https://feodotracker.abuse.ch/downloads/ipblocklist.csv
+    reference: https://feodotracker.abuse.ch/
+
+  - name: sslbl_ja3
+    kind: csv
+    parse: sslbl_ja3
+    url: https://sslbl.abuse.ch/blacklist/ja3_fingerprints.csv
+    reference: https://sslbl.abuse.ch/blacklist/
+
+  # --- Phishing Feeds ---
+  - name: openphish_feed
+    kind: csv
+    parse: openphish
+    url: https://openphish.com/feed.txt
+    reference: https://openphish.com/
+
+  - name: spamhaus_drop
+    kind: txt
+    parse: spamhaus_drop
+    url: https://www.spamhaus.org/drop/drop.txt
+    reference: https://www.spamhaus.org/blocklists/do-not-route-or-peer/
+
+  # SANS ISC / DShield's top-attacking netblocks, aggregated from their own
+  # distributed sensor network — independent of every abuse.ch/CINS/IPsum
+  # source above, so overlap with them is genuine cross-vendor corroboration.
+  - name: dshield_block
+    kind: txt
+    parse: dshield_block
+    url: https://feeds.dshield.org/block.txt
+    reference: https://isc.sans.edu/block.html
+
+  # --- Network / Malware IP Feeds ---
+  - name: blocklist_de_ssh
+    kind: txt
+    parse: blocklist_txt
+    url: https://lists.blocklist.de/lists/ssh.txt
+    reference: https://www.blocklist.de/en/
+
+  - name: greensnow_blocklist
+    kind: txt
+    parse: blocklist_txt
+    url: https://blocklist.greensnow.co/greensnow.txt
+    reference: https://greensnow.co/
+
+  - name: ci_army_list
+    kind: txt
+    parse: blocklist_txt
+    url: https://cinsscore.com/list/ci-badguys.txt
+    reference: https://cinsscore.com/
+
+  - name: tor_exit_nodes
+    kind: txt
+    parse: blocklist_txt
+    url: https://check.torproject.org/exit-addresses
+    reference: https://check.torproject.org/
+
+  # These IP feeds deliberately overlap with the scanner/C2 lists above and
+  # with each other, so IPs reported by several of them are cross-source
+  # "corroborated" and rise to the top of the score / high-confidence feed.
+  - name: et_compromised
+    kind: txt
+    parse: blocklist_txt
+    url: https://rules.emergingthreats.net/blockrules/compromised-ips.txt
+    reference: https://rules.emergingthreats.net/
+
+  - name: binarydefense_banlist
+    kind: txt
+    parse: blocklist_txt
+    url: https://www.binarydefense.com/banlist.txt
+    reference: https://www.binarydefense.com/
+
+  # IPsum aggregates 30+ public blocklists; level 5 = IPs present on >=5 of
+  # them, i.e. already externally corroborated bad actors.
+  - name: ipsum_level5
+    kind: txt
+    parse: blocklist_txt
+    url: https://raw.githubusercontent.com/stamparm/ipsum/master/levels/5.txt
+    reference: https://github.com/stamparm/ipsum
+
+# RSS support is built in (parse: rss). Security-blog feeds are intentionally
+# omitted from the defaults: their summaries rarely contain machine-readable
+# IOCs, so they mostly report zero. Add your own IOC-rich feeds here, e.g.:
+#
+# rss:
+#   - name: my_ioc_blog
+#     url: https://example.com/feed.xml
+#     reference: https://example.com/
+
