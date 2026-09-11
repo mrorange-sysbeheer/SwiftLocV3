@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-11T16:06:42Z_
+_Generated 2026-09-11T22:20:07Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-11T16:06:42Z |
+| Generated | 2026-09-11T22:20:07Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 5925 |
+| Duplicates removed | 5794 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 653 |
+| Multi-source overlaps | 657 |
 | Score (min / avg / max) | 80 / 80.5 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 653 |
+| Corroborated (2+ sources) | 657 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-11T16:04:49Z |
+| Newest first_seen | 2026-09-11T22:16:48Z |
 
 ## Top indicators by score
 
@@ -39,43 +39,43 @@ _Generated 2026-09-11T16:06:42Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| threatfox_export_json | 6004 |
-| blocklist_de_ssh | 5294 |
-| greensnow_blocklist | 4553 |
+| threatfox_export_json | 6253 |
+| blocklist_de_ssh | 5198 |
+| greensnow_blocklist | 4565 |
 | ipsum_level5 | 4011 |
-| nist_nvd_recent | 3354 |
 | binarydefense_banlist | 2896 |
+| nist_nvd_recent | 2683 |
 | spamhaus_drop | 1723 |
-| cisa_kev | 1705 |
-| tor_exit_nodes | 1336 |
+| cisa_kev | 1709 |
+| tor_exit_nodes | 1339 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 3979 |
-| cve | 2140 |
+| sha256 | 2977 |
+| cve | 2640 |
 | ipv4_cidr | 1722 |
-| domain | 1246 |
-| url | 353 |
+| domain | 1643 |
+| url | 428 |
 | sha1 | 290 |
-| ipv4 | 188 |
+| ipv4 | 218 |
 | md5 | 82 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 5433 |
-| rat | 3294 |
-| asyncrat | 3293 |
-| cve | 2140 |
+| threatfox | 5017 |
+| cve | 2640 |
+| rat | 2356 |
+| asyncrat | 2354 |
 | drop | 1722 |
 | spamhaus | 1722 |
-| exploited-in-the-wild | 1705 |
-| malware | 1097 |
-| etherhiding | 895 |
-| nvd | 675 |
+| exploited-in-the-wild | 1709 |
+| nvd | 1174 |
+| etherhiding | 1014 |
+| malware | 1013 |
 
 ## Multi-source overlaps
 
