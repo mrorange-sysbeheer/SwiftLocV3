@@ -243,10 +243,11 @@ test('builds deterministic campaign pivots and omits singleton relationships', (
     indicators: 2,
     relationships: 2,
     highScore: 2,
-    corroborated: 2,
+    corroborated: 0,
     averageScore: 85,
     tagPivots: 1,
     sourcePivots: 0,
+    availableProviders: 0, mappedProviders: 0, aggregates: 0, unmappedFeeds: 0,
   });
   assert.equal(graph.nodes.find((node) => node.kind === 'pivot').label, 'ransomware');
   assert.equal(graph.nodes.some((node) => node.label === 'singleton'), false);
@@ -299,9 +300,9 @@ test('campaign graph prunes pivots disconnected by the indicator cap', () => {
     maxPivots: 3,
     maxIndicators: 2,
   });
-  assert.equal(graph.stats.pivots, 1);
-  assert.equal(graph.stats.tagPivots, 1);
-  assert.equal(graph.nodes.filter((node) => node.kind === 'pivot').length, 1);
+  assert.equal(graph.stats.pivots, 2);
+  assert.equal(graph.stats.tagPivots, 2);
+  assert.equal(graph.nodes.filter((node) => node.kind === 'pivot').length, 2);
   assert.equal(graph.edges.length, 2);
 });
 
@@ -338,7 +339,7 @@ test('dashboard markup keeps IDs and labelled controls consistent', () => {
   assert.match(html, /data-campaign-density/);
   assert.match(html, /data-campaign-related-list/);
   assert.match(html, /data-campaign-reference/);
-  assert.match(html, /class="signal-radar"/);
+  assert.match(html, /data-tool-disclosure/);
   assert.match(html, /data-delta-root/);
   assert.match(html, /iocs\/delta\.jsonl/);
   assert.match(html, /iocs\/taxii2-envelope\.json/);
@@ -541,6 +542,198 @@ test('exploited and ransomware views require explicit evidence and never fall ba
 test('vulnerability release uses coordinated new asset cache keys', () => {
   const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
   for (const asset of ['styles.css', 'dashboard-core.js', 'dashboard.js']) {
-    assert.ok(html.includes(`assets/${asset}?v=16`));
+    assert.ok(html.includes(`assets/${asset}?v=33`));
+  }
+});
+
+test('compact preview honors mobile defaults and explicit shared row counts', () => {
+  assert.equal(core.readViewState('', '', 6).limit, 6);
+  assert.equal(core.readViewState('?rows=12', '', 6).limit, 12);
+  assert.equal(core.readViewState('?rows=999', '', 6).limit, 6);
+  assert.equal(core.readViewState('', '', -1).limit, 12);
+  const compact = core.readViewState('?rows=6');
+  const url = core.writeViewUrl('https://example.test/', compact);
+  assert.equal(core.readViewState(url.search, url.hash).limit, 6);
+  const mobileTwelve = core.writeViewUrl('https://example.test/', defaults, false, 6);
+  assert.equal(core.readViewState(mobileTwelve.search, '', 6).limit, 12);
+  const sharedDesktop = core.writeViewUrl('https://example.test/', defaults, true);
+  assert.equal(core.readViewState(sharedDesktop.search, sharedDesktop.hash, 6).limit, 12);
+});
+
+test('provider graph groups abuse.ch adapters and excludes directory and aggregate corroboration', () => {
+  const rows = [0, 1].map((i) => ({ ...row, indicator: `192.0.2.${i + 1}`, type: 'ipv4',
+    sourceList: ['threatfox_export_json', 'urlhaus_recent_urls', 'THREATFOX', 'ipsum_level5', 'tor_exit_nodes'],
+    sourceCount: 99, tags: ['threatfox', 'urlhaus', 'cins', 'export_json', 'scanner'],
+  }));
+  const graph = core.buildCampaignGraph(rows, { mode: 'all' });
+  const providers = graph.nodes.filter((node) => node.pivotKind === 'source');
+  assert.deepEqual(providers.map((node) => node.label).sort(), ['IPsum (aggregate)', 'abuse.ch']);
+  assert.equal(graph.stats.corroborated, 0);
+  assert.equal(graph.stats.mappedProviders, 1);
+  assert.equal(graph.nodes.filter((node) => node.kind === 'indicator').every((node) => node.sourceCount === 1), true);
+  assert.deepEqual(graph.nodes.filter((node) => node.pivotKind === 'tag').map((node) => node.label), ['scanner']);
+  assert.equal(providers.find((node) => node.label === 'abuse.ch').feeds.includes('urlhaus_recent_urls'), true);
+});
+
+test('provider sampling retains smaller genuine providers without inventing sources', () => {
+  const rows = Array.from({ length: 30 }, (_, i) => ({ ...row, indicator: `ioc-${i}.example`,
+    sourceList: [i < 28 ? 'threatfox_export_json' : 'ci_army_list'], score: i < 28 ? 99 : 60,
+  }));
+  const graph = core.buildCampaignGraph(rows, { mode: 'sources', maxIndicators: 4 });
+  assert.equal(graph.stats.indicators, 4);
+  assert.deepEqual(graph.nodes.filter((node) => node.kind === 'pivot').map((node) => node.label).sort(), ['CINS Army', 'abuse.ch']);
+  assert.equal(graph.nodes.filter((node) => node.kind === 'pivot').every((node) => node.count > 0), true);
+  assert.deepEqual(core.buildCampaignGraph(rows.slice().reverse(), { mode: 'sources', maxIndicators: 4 }), graph);
+  const one = core.buildCampaignGraph(rows.slice(0, 28), { mode: 'sources', maxIndicators: 24 });
+  assert.equal(one.stats.sourcePivots, 1);
+  assert.equal(one.stats.indicators, 24);
+});
+
+const briefingItem = (id = 'CVE-2026-1234') => ({
+  cve_id: id, exploitation_status: 'known_exploited', sources: ['kev'],
+  reports: { cisa_kev: { vendor: 'ExampleVendor', product: 'Router', required_action: 'Apply update',
+    ransomware_use: 'Unknown', date_added: '2020-01-01' }, nvd: { severity: 'high', status: 'Analyzed' } },
+});
+const briefingStart = () => core.seedBriefing([briefingItem()], { ...core.emptyBriefing(),
+  watches: [{ vendor: 'examplevendor', product: 'router' }],
+}, 1700000000);
+
+test('briefing seeds first matches without historical alerts and requires structured product matches', () => {
+  const state = briefingStart();
+  assert.deepEqual(core.buildBriefing([briefingItem()], state, 1700000000)[0].changes, []);
+  assert.equal(state.watches[0].ready, true);
+  assert.equal(core.matchesWatch(briefingItem(), { vendor: 'example', product: '' }), false);
+  assert.equal(core.matchesWatch({ ...briefingItem(), reports: { nvd: { description: 'ExampleVendor Router' } } }, state.watches[0]), false);
+  let pending = core.seedBriefing([], { ...core.emptyBriefing(), watches: state.watches.map((watch) => ({ ...watch, ready: false })) }, 1700000000);
+  assert.equal(pending.snapshotAt, null);
+  pending = core.seedBriefing([briefingItem()], pending, 1700000010);
+  assert.deepEqual(core.buildBriefing([briefingItem()], pending, 1700000010)[0].changes, []);
+});
+
+test('briefing compares material evidence, keeps changes until review, and suppresses stale comparisons', () => {
+  const state = briefingStart();
+  const changed = briefingItem();
+  changed.reports.cisa_kev.required_action = 'Install emergency update';
+  changed.reports.cisa_kev.ransomware_use = 'Known';
+  let result = core.buildBriefing([changed], state, 1700000010)[0];
+  assert.deepEqual(result.changes, ['Added ransomware evidence', 'Remediation changed']);
+  assert.equal(result.triage, 'new');
+  assert.deepEqual(core.buildBriefing([changed], state, 1699999999)[0].changes, []);
+  assert.equal(state.records[changed.cve_id].evidence.action, 'Apply update');
+  const reviewed = { ...state, records: { [changed.cve_id]: { evidence: core.briefingEvidence(changed), triage: 'reviewed' } } };
+  assert.equal(core.buildBriefing([changed], reviewed, 1700000010)[0].triage, 'reviewed');
+  const routine = briefingItem();
+  routine.reports.cisa_kev.catalog_checked_at = '2026-09-09T00:00:00Z';
+  routine.reports.nvd.modified_at = '2026-09-09T00:00:00Z';
+  assert.deepEqual(core.buildBriefing([routine], state, 1700000010)[0].changes, []);
+});
+
+test('investigating a newly matched CVE does not acknowledge its new evidence', () => {
+  const state = briefingStart();
+  const item = briefingItem('CVE-2026-9999');
+  state.records[item.cve_id] = { evidence: null, triage: 'investigating' };
+  const valid = core.normaliseBriefing(state);
+  assert.ok(valid);
+  const result = core.buildBriefing([item], valid, 1700000010)[0];
+  assert.equal(result.triage, 'investigating');
+  assert.deepEqual(result.changes, ['New to your watched collection']);
+});
+
+test('new watches do not acknowledge changes for existing watches; missing records keep their baseline', () => {
+  const state = briefingStart();
+  const changed = briefingItem(); changed.reports.cisa_kev.required_action = 'New action';
+  state.watches.push({ vendor: 'OtherVendor', product: '', ready: false });
+  const seeded = core.seedBriefing([changed], state, 1700000010);
+  assert.deepEqual(core.buildBriefing([changed], seeded, 1700000010)[0].changes, ['Remediation changed']);
+  const missing = core.seedBriefing([], seeded, 1700000020);
+  assert.ok(missing.records[changed.cve_id]);
+});
+
+test('malformed, incompatible, oversized, and future saved briefings cannot enable a baseline', () => {
+  const state = briefingStart();
+  assert.ok(core.normaliseBriefing(JSON.parse(JSON.stringify(state))));
+  for (const bad of [null, {}, { ...state, version: 99 }, { ...state, snapshotAt: Infinity },
+    { ...state, snapshotAt: Date.now() / 1000 + 5000 }, { ...state, records: { broken: {} } },
+    { ...state, watches: Array(21).fill(state.watches[0]) }, { ...state, snapshotAt: null }]) {
+    assert.equal(core.normaliseBriefing(bad), null);
+  }
+});
+
+
+test('graph search matches ordinary and defanged IOCs in either direction', () => {
+  for (const [ordinary, defanged] of [
+    ['77.239.124.108', '77[.]239[.]124[.]108'],
+    ['https://example.test/Payload?key=ABC', 'hxxps://example[.]test/Payload?key=ABC'],
+    ['http://example.test/path', 'hxxp://example[.]test/path'],
+    ['example.test', 'example[.]test'],
+  ]) {
+    assert.equal(core.graphNodeMatches({ kind: 'indicator', label: defanged }, ordinary), true);
+    assert.equal(core.graphNodeMatches({ kind: 'indicator', label: ordinary }, defanged), true);
+  }
+  assert.equal(core.graphNodeMatches({ kind: 'indicator', label: '77[.]239[.]124[.]108' }, '239.124'), true);
+  assert.equal(core.graphNodeMatches({ kind: 'indicator', label: '77[.]239[.]124[.]108' }, '77.239.124.109'), false);
+  assert.equal(core.graphNodeMatches(null, 'test'), false);
+  assert.equal(core.graphNodeMatches({ kind: 'indicator', label: 'test' }, '  '), false);
+});
+
+test('graph search keeps provider, feed, and tag matching literal', () => {
+  const pivot = { kind: 'pivot', label: 'Research[.]Team', feeds: ['hxxps://feed'] };
+  assert.equal(core.graphNodeMatches(pivot, 'research[.]team'), true);
+  assert.equal(core.graphNodeMatches(pivot, 'research.team'), false);
+  assert.equal(core.graphNodeMatches(pivot, 'https://feed'), false);
+  const indicator = { kind: 'indicator', label: '1[.]2[.]3[.]4',
+    row: { type: 'ipv4', tags: ['family[.]variant'] },
+    providers: [{ label: 'CINS Army', feeds: ['ci_army_list'] }] };
+  assert.equal(core.graphNodeMatches(indicator, 'ci_army_list'), true);
+  assert.equal(core.graphNodeMatches(indicator, 'CINS ARMY'), true);
+  assert.equal(core.graphNodeMatches(indicator, 'family[.]variant'), true);
+  assert.equal(core.graphNodeMatches(indicator, 'family.variant'), false);
+});
+
+test('selected-IOC SPL includes exact typed evidence and never emits an empty broad hunt', () => {
+  assert.equal(core.rowsToSpl([]).spl, '');
+  const hunt = core.rowsToSpl([
+    { type: 'ipv4', indicator: '1[.]2[.]3[.]4' }, { type: 'ipv6', indicator: '2001:db8::1' },
+    { type: 'ipv4_cidr', indicator: '10.0.0.0/8' }, { type: 'domain', indicator: 'Example[.]TEST' },
+    { type: 'sha256', indicator: 'A'.repeat(64) }, { type: 'cve', indicator: 'CVE-2026-1234' },
+  ]);
+  assert.equal(hunt.included, 5); assert.equal(hunt.skipped.length, 1);
+  assert.ok(hunt.spl.includes(`cidrmatch("1.2.3.4/32", 'src_ip') OR cidrmatch("1.2.3.4/32", 'dest_ip')`));
+  assert.ok(hunt.spl.includes('2001:db8::1/128'));
+  assert.ok(hunt.spl.includes(`lower(rtrim(trim('query'), "."))="example.test"`));
+  assert.ok(hunt.spl.includes('| where mvcount(swiftioc_matches)>0'));
+});
+
+test('selected URL SPL preserves case and escapes values as eval literals', () => {
+  const indicator = 'hxxps://example[.]test/Payload?q="x"|makeresults';
+  const hunt = core.rowsToSpl([{ type: 'url', indicator }, { type: 'url', indicator: 'https://example.test/payload' }]);
+  assert.equal(hunt.included, 2);
+  assert.ok(hunt.spl.includes("'url'=" + JSON.stringify(core.refang(indicator))));
+  assert.ok(!hunt.spl.includes('lower(url)'));
+  assert.equal(core.rowsToSpl([{ type: 'url', indicator: 'https://x.test/\n|makeresults' }]).spl, '');
+  assert.equal(core.rowsToSpl([{ type: 'ipv4', indicator: '999.1.1.1' }]).skipped.length, 1);
+});
+
+
+test('hunt settings scope searches and quote mapped event fields', () => {
+  const hunt = core.rowsToSpl([{ type: 'ipv4', indicator: '1.2.3.4' }], {
+    index: 'security-prod', earliest: '-1h', fields: { src_ip: 'source.ip', dest_ip: 'destination.ip' },
+  });
+  assert.ok(hunt.spl.startsWith('index=security-prod earliest=-1h latest=now'));
+  assert.ok(hunt.spl.includes(`cidrmatch("1.2.3.4/32", 'source.ip')`));
+  assert.ok(hunt.spl.includes('"source.ip" "destination.ip"'));
+  assert.ok(!hunt.spl.includes("'src_ip'"));
+});
+
+test('invalid settings cannot leave an executable or injected hunt', () => {
+  const rows = [{ type: 'ipv4', indicator: '1.2.3.4' }];
+  for (const options of [
+    { index: '' }, { index: '* OR index=*' }, { index: 'main|delete' },
+    { earliest: '-1h | delete' }, { fields: { src_ip: "x') OR true()" } },
+    { fields: { src_ip: '' } }, { fields: { src_ip: 'swiftioc_matches' } },
+    { fields: { query: 'wild*' } },
+  ]) {
+    const hunt = core.rowsToSpl(rows, options);
+    assert.equal(hunt.spl, ''); assert.ok(hunt.error);
   }
 });
