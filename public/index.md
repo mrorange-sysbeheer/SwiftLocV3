@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-11T03:39:18Z_
+_Generated 2026-09-11T08:44:27Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-11T03:39:18Z |
+| Generated | 2026-09-11T08:44:27Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6638 |
+| Duplicates removed | 6392 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 562 |
-| Score (min / avg / max) | 80 / 80.4 / 96 |
+| Multi-source overlaps | 647 |
+| Score (min / avg / max) | 80 / 80.5 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 562 |
+| Corroborated (2+ sources) | 647 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-11T03:37:52Z |
+| Newest first_seen | 2026-09-11T08:43:28Z |
 
 ## Top indicators by score
 
@@ -34,49 +34,49 @@ _Generated 2026-09-11T03:39:18Z_
 | ipv4: `43[.]156[.]71[.]43` | score 96, 4 sources |
 | ipv4: `45[.]17[.]39[.]120` | score 96, 4 sources |
 | ipv4: `68[.]233[.]116[.]124` | score 96, 4 sources |
-| sha256: `066f74af1398ed730c07f281018946359d16d6e8eccd6c99d9ec7e606d55005a` | score 88, 2 sources |
+| sha256: `0298b368f84837c39e3361517e0efc6ff0e1e25e17cdd34cfd297f15f4a149ff` | score 88, 2 sources |
 
 ## Per-source totals
 
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| threatfox_export_json | 6039 |
-| greensnow_blocklist | 5326 |
-| blocklist_de_ssh | 5286 |
+| threatfox_export_json | 6127 |
+| greensnow_blocklist | 5319 |
+| blocklist_de_ssh | 5229 |
 | ipsum_level5 | 4011 |
 | nist_nvd_recent | 3000 |
 | binarydefense_banlist | 2896 |
 | spamhaus_drop | 1711 |
 | cisa_kev | 1705 |
-| tor_exit_nodes | 1336 |
+| tor_exit_nodes | 1335 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 4110 |
-| cve | 1815 |
-| ipv4_cidr | 1683 |
-| domain | 1601 |
-| url | 365 |
-| sha1 | 225 |
-| ipv4 | 184 |
-| md5 | 17 |
+| sha256 | 4188 |
+| cve | 1760 |
+| ipv4_cidr | 1709 |
+| domain | 1327 |
+| url | 382 |
+| sha1 | 307 |
+| ipv4 | 228 |
+| md5 | 99 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 5549 |
+| threatfox | 5626 |
+| rat | 3295 |
 | asyncrat | 3293 |
-| rat | 3293 |
-| cve | 1815 |
+| cve | 1760 |
+| drop | 1709 |
+| spamhaus | 1709 |
 | exploited-in-the-wild | 1705 |
-| drop | 1683 |
-| spamhaus | 1683 |
-| malware | 1254 |
-| etherhiding | 1107 |
+| malware | 1291 |
+| etherhiding | 867 |
 | Polygon | 631 |
 
 ## Multi-source overlaps
