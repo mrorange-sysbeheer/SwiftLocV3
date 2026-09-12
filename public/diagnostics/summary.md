@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-12T03:42:09Z_
+_Generated 2026-09-12T08:28:46Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-12T03:42:09Z |
+| Generated | 2026-09-12T08:28:46Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6652 |
+| Duplicates removed | 6625 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 658 |
+| Multi-source overlaps | 663 |
 | Score (min / avg / max) | 80 / 80.5 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 658 |
+| Corroborated (2+ sources) | 663 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-12T03:31:23Z |
+| Newest first_seen | 2026-09-12T08:16:24Z |
 
 ## Top indicators by score
 
@@ -39,43 +39,43 @@ _Generated 2026-09-12T03:42:09Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| threatfox_export_json | 6255 |
-| greensnow_blocklist | 5436 |
-| blocklist_de_ssh | 5161 |
+| blocklist_de_ssh | 11284 |
+| threatfox_export_json | 8559 |
+| greensnow_blocklist | 5460 |
 | ipsum_level5 | 4059 |
 | binarydefense_banlist | 3111 |
-| nist_nvd_recent | 2400 |
+| nist_nvd_recent | 2635 |
 | spamhaus_drop | 1723 |
 | cisa_kev | 1709 |
-| tor_exit_nodes | 1339 |
+| tor_exit_nodes | 1337 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 2837 |
-| cve | 2640 |
-| domain | 1745 |
-| ipv4_cidr | 1722 |
+| sha256 | 3009 |
+| cve | 2607 |
+| ipv4_cidr | 1720 |
+| domain | 1593 |
 | url | 446 |
 | sha1 | 290 |
-| ipv4 | 238 |
+| ipv4 | 253 |
 | md5 | 82 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 4953 |
-| cve | 2640 |
-| rat | 2162 |
-| asyncrat | 2160 |
-| drop | 1722 |
-| spamhaus | 1722 |
+| threatfox | 5057 |
+| cve | 2607 |
+| rat | 2377 |
+| asyncrat | 2373 |
+| drop | 1720 |
+| spamhaus | 1720 |
 | exploited-in-the-wild | 1709 |
-| nvd | 1174 |
+| nvd | 1142 |
 | etherhiding | 1085 |
-| malware | 1077 |
+| malware | 1012 |
 
 ## Multi-source overlaps
 
