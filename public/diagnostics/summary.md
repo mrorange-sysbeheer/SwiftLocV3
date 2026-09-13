@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-13T18:36:40Z_
+_Generated 2026-09-13T22:12:50Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-13T18:36:40Z |
+| Generated | 2026-09-13T22:12:50Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6471 |
+| Duplicates removed | 6538 |
 | Sources reporting | 17 |
-| Indicator types | 8 |
-| Multi-source overlaps | 736 |
-| Score (min / avg / max) | 80 / 80.5 / 96 |
-| High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 736 |
+| Indicator types | 9 |
+| Multi-source overlaps | 792 |
+| Score (min / avg / max) | 79 / 80.6 / 96 |
+| High-score indicators (≥80) | 9971 |
+| Corroborated (2+ sources) | 792 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-13T18:36:27Z |
+| Newest first_seen | 2026-09-13T22:00:49Z |
 
 ## Top indicators by score
 
@@ -39,43 +39,44 @@ _Generated 2026-09-13T18:36:40Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 11464 |
+| blocklist_de_ssh | 11495 |
 | ipsum_level5 | 4677 |
-| greensnow_blocklist | 4026 |
-| threatfox_export_json | 3955 |
+| threatfox_export_json | 4045 |
+| greensnow_blocklist | 3983 |
 | binarydefense_banlist | 3373 |
 | spamhaus_drop | 1725 |
 | cisa_kev | 1709 |
-| tor_exit_nodes | 1325 |
-| nist_nvd_recent | 1032 |
+| tor_exit_nodes | 1324 |
+| et_compromised | 610 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 3315 |
-| cve | 2673 |
+| sha256 | 3383 |
+| cve | 2746 |
 | ipv4_cidr | 1724 |
-| domain | 933 |
-| url | 555 |
-| sha1 | 348 |
-| ipv4 | 312 |
-| md5 | 140 |
+| url | 594 |
+| domain | 519 |
+| sha1 | 418 |
+| ipv4 | 309 |
+| md5 | 210 |
+| ja3 | 97 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 4728 |
-| cve | 2673 |
+| threatfox | 4516 |
+| cve | 2746 |
 | rat | 2375 |
 | asyncrat | 2373 |
 | drop | 1724 |
 | spamhaus | 1724 |
 | exploited-in-the-wild | 1709 |
-| malware | 1339 |
-| nvd | 1208 |
-| ClickFix | 629 |
+| malware | 1431 |
+| nvd | 1281 |
+| high | 528 |
 
 ## Multi-source overlaps
 
