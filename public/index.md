@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-13T03:49:44Z_
+_Generated 2026-09-13T09:15:21Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-13T03:49:44Z |
+| Generated | 2026-09-13T09:15:21Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 7442 |
+| Duplicates removed | 7062 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 723 |
+| Multi-source overlaps | 722 |
 | Score (min / avg / max) | 80 / 80.5 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 723 |
+| Corroborated (2+ sources) | 722 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-13T03:45:19Z |
+| Newest first_seen | 2026-09-13T09:08:05Z |
 
 ## Top indicators by score
 
@@ -41,43 +41,43 @@ _Generated 2026-09-13T03:49:44Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 11361 |
-| greensnow_blocklist | 5144 |
+| blocklist_de_ssh | 11377 |
+| greensnow_blocklist | 5101 |
 | ipsum_level5 | 4677 |
-| threatfox_export_json | 4263 |
+| threatfox_export_json | 4008 |
 | binarydefense_banlist | 3373 |
 | spamhaus_drop | 1723 |
 | cisa_kev | 1709 |
-| nist_nvd_recent | 1473 |
-| tor_exit_nodes | 1329 |
+| nist_nvd_recent | 1461 |
+| tor_exit_nodes | 1327 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3150 |
-| sha256 | 3102 |
+| sha256 | 3176 |
+| cve | 3110 |
 | ipv4_cidr | 1722 |
-| domain | 706 |
-| url | 524 |
+| domain | 707 |
+| url | 506 |
 | sha1 | 348 |
-| ipv4 | 308 |
+| ipv4 | 291 |
 | md5 | 140 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 4438 |
-| cve | 3150 |
+| threatfox | 4488 |
+| cve | 3110 |
 | rat | 2376 |
 | asyncrat | 2373 |
 | drop | 1722 |
 | spamhaus | 1722 |
 | exploited-in-the-wild | 1709 |
-| nvd | 1685 |
-| malware | 1142 |
-| high | 513 |
+| nvd | 1645 |
+| malware | 1131 |
+| high | 687 |
 
 ## Multi-source overlaps
 
