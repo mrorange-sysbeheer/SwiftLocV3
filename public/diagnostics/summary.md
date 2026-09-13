@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-13T15:48:32Z_
+_Generated 2026-09-13T18:36:40Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-13T15:48:32Z |
+| Generated | 2026-09-13T18:36:40Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6476 |
+| Duplicates removed | 6471 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 735 |
+| Multi-source overlaps | 736 |
 | Score (min / avg / max) | 80 / 80.5 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 735 |
+| Corroborated (2+ sources) | 736 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-13T15:48:19Z |
+| Newest first_seen | 2026-09-13T18:36:27Z |
 
 ## Top indicators by score
 
@@ -39,43 +39,43 @@ _Generated 2026-09-13T15:48:32Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 11493 |
+| blocklist_de_ssh | 11464 |
 | ipsum_level5 | 4677 |
-| threatfox_export_json | 4346 |
-| greensnow_blocklist | 4054 |
+| greensnow_blocklist | 4026 |
+| threatfox_export_json | 3955 |
 | binarydefense_banlist | 3373 |
-| spamhaus_drop | 1724 |
+| spamhaus_drop | 1725 |
 | cisa_kev | 1709 |
-| tor_exit_nodes | 1323 |
-| nist_nvd_recent | 1177 |
+| tor_exit_nodes | 1325 |
+| nist_nvd_recent | 1032 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 3247 |
-| cve | 2660 |
-| ipv4_cidr | 1723 |
-| domain | 928 |
-| url | 643 |
+| sha256 | 3315 |
+| cve | 2673 |
+| ipv4_cidr | 1724 |
+| domain | 933 |
+| url | 555 |
 | sha1 | 348 |
-| ipv4 | 311 |
+| ipv4 | 312 |
 | md5 | 140 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 4830 |
-| cve | 2660 |
+| threatfox | 4728 |
+| cve | 2673 |
 | rat | 2375 |
 | asyncrat | 2373 |
-| drop | 1723 |
-| spamhaus | 1723 |
+| drop | 1724 |
+| spamhaus | 1724 |
 | exploited-in-the-wild | 1709 |
-| malware | 1251 |
-| nvd | 1195 |
-| ClickFix | 632 |
+| malware | 1339 |
+| nvd | 1208 |
+| ClickFix | 629 |
 
 ## Multi-source overlaps
 
