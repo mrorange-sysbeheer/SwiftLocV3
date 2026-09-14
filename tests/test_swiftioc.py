@@ -1364,3 +1364,41 @@ def test_collect_from_yaml_single_worker_matches(monkeypatch):
     rows_parallel = run(4)
     rows_serial = run(1)
     assert [r.indicator for r in rows_parallel] == [r.indicator for r in rows_serial]
+
+
+def test_nvd_retains_applicability_conditions_for_inventory_matching(monkeypatch):
+    now = si.now_utc()
+    configurations = [{"operator": "AND", "nodes": [{"operator": "OR", "cpeMatch": [{
+        "vulnerable": True, "criteria": "cpe:2.3:a:vendor:server:*:*:*:*:*:*:*:*",
+        "versionStartIncluding": "2.0", "versionEndExcluding": "3.0",
+    }]}]}]
+    payload = {"vulnerabilities": [{"cve": {"id": "CVE-2026-1234",
+        "published": si.iso(now), "lastModified": si.iso(now), "configurations": configurations}}]}
+    monkeypatch.setattr(si, "http_get", lambda *args, **kwargs: json.dumps(payload))
+    rows = si.fetch_nvd_recent("https://example.com/nvd", "ref", "nvd", now - timedelta(hours=1))
+    assert rows[0].vulnerability["nvd"]["configurations"] == configurations
+
+
+@pytest.mark.parametrize('field,value', [
+    ('indicator', ['8.8.8.8']), ('type', []), ('tags', None),
+    ('source', 12), ('last_seen', {}), ('score', '80'), ('score', True),
+    ('score', 101), ('sightings', None), ('sightings', 0), ('indicator', ''),
+])
+def test_previous_feed_skips_incompatible_field_types(tmp_path, field, value):
+    from dataclasses import asdict
+    good = asdict(_sample_indicator(indicator='8.8.8.8', type='ipv4'))
+    bad = {**good, field: value}
+    path = tmp_path / 'latest.jsonl'
+    path.write_text(json.dumps(bad) + '\n' + json.dumps(good) + '\n', encoding='utf-8')
+    loaded = si.load_previous_feed(path)
+    assert len(loaded) == 1
+    assert loaded[0].indicator == '8.8.8.8'
+    si.merge_with_previous([], loaded)
+
+
+def test_previous_feed_recovers_after_invalid_utf8_line(tmp_path):
+    from dataclasses import asdict
+    good = json.dumps(asdict(_sample_indicator(indicator='8.8.8.8', type='ipv4'))).encode()
+    path = tmp_path / 'latest.jsonl'
+    path.write_bytes(b'\xff\xfe broken\n' + good + b'\n')
+    assert [row.indicator for row in si.load_previous_feed(path)] == ['8.8.8.8']
