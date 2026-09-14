@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-14T09:30:11Z_
+_Generated 2026-09-14T17:54:40Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-14T09:30:11Z |
+| Generated | 2026-09-14T17:54:40Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6613 |
-| Sources reporting | 17 |
-| Indicator types | 8 |
-| Multi-source overlaps | 821 |
-| Score (min / avg / max) | 80 / 80.6 / 96 |
-| High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 821 |
+| Duplicates removed | 6020 |
+| Sources reporting | 16 |
+| Indicator types | 9 |
+| Multi-source overlaps | 823 |
+| Score (min / avg / max) | 79 / 80.5 / 96 |
+| High-score indicators (≥80) | 9624 |
+| Corroborated (2+ sources) | 823 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-14T09:24:40Z |
+| Newest first_seen | 2026-09-14T17:53:17Z |
 
 ## Top indicators by score
 
@@ -39,43 +39,44 @@ _Generated 2026-09-14T09:30:11Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 5128 |
-| greensnow_blocklist | 4932 |
+| blocklist_de_ssh | 5176 |
+| greensnow_blocklist | 4265 |
 | ipsum_level5 | 4238 |
 | binarydefense_banlist | 3643 |
 | spamhaus_drop | 1725 |
 | cisa_kev | 1709 |
-| threatfox_export_json | 1687 |
-| tor_exit_nodes | 1327 |
-| nist_nvd_recent | 665 |
+| tor_exit_nodes | 1224 |
+| nist_nvd_recent | 1156 |
+| et_compromised | 610 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 3509 |
-| cve | 2845 |
-| ipv4_cidr | 1613 |
-| url | 619 |
-| domain | 475 |
-| sha1 | 418 |
-| ipv4 | 311 |
-| md5 | 210 |
+| sha256 | 3555 |
+| cve | 3311 |
+| ipv4_cidr | 1724 |
+| url | 450 |
+| domain | 376 |
+| sha1 | 336 |
+| md5 | 128 |
+| ja3 | 97 |
+| ipv4 | 23 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 4582 |
-| cve | 2845 |
-| rat | 2395 |
+| threatfox | 3765 |
+| cve | 3311 |
+| rat | 2396 |
 | asyncrat | 2373 |
+| nvd | 1846 |
+| drop | 1724 |
+| spamhaus | 1724 |
 | exploited-in-the-wild | 1709 |
-| drop | 1613 |
-| spamhaus | 1613 |
-| malware | 1507 |
-| nvd | 1380 |
-| high | 536 |
+| malware | 1647 |
+| high | 686 |
 
 ## Multi-source overlaps
 
