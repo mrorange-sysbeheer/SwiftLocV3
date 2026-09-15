@@ -3,305 +3,305 @@
   <title>SwiftIOC — Newest High-Confidence IOCs</title>
   <link>https://github.com/PKHarsimran/SwiftIOC-Automated-Threat-Intelligence-Collector</link>
   <description>Freshest scored, cross-source-corroborated indicators of compromise.</description>
-  <lastBuildDate>Tue, 15 Sep 2026 16:31:27 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 15 Sep 2026 22:46:48 +0000</lastBuildDate>
     <item>
-      <title>[80] url: hxxp://123[.]4[.]171[.]86:60395/bin[.]sh</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
-      <guid isPermaLink="false">5e112a87-cf5e-58b2-908c-3b9e9b12cf54</guid>
-      <pubDate>Tue, 15 Sep 2026 16:30:20 +0000</pubDate>
+      <title>[80] ipv4_cidr: 109.160.32.0/24</title>
+      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
+      <guid isPermaLink="false">57e8a15a-86b2-51d2-a018-c797cd27399b</guid>
+      <pubDate>Tue, 15 Sep 2026 22:46:23 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://115[.]56[.]172[.]115:51655/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
-      <guid isPermaLink="false">cd285d85-e763-56c0-bb31-5efd9442d468</guid>
-      <pubDate>Tue, 15 Sep 2026 16:27:20 +0000</pubDate>
+      <title>[80] ipv4_cidr: 185.245.62.0/23</title>
+      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
+      <guid isPermaLink="false">541e18ab-f6e6-5e1d-ae0e-5924937bd9aa</guid>
+      <pubDate>Tue, 15 Sep 2026 22:46:23 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://125[.]41[.]3[.]155:58395/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
-      <guid isPermaLink="false">f7ef5f5e-4d50-5b74-8d96-561c14fefdc3</guid>
-      <pubDate>Tue, 15 Sep 2026 16:22:17 +0000</pubDate>
+      <title>[80] domain: townofmainbrook[.]ca</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">e3e19a91-436c-5b17-826f-fed2552a8d2b</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://222[.]136[.]20[.]146:39354/bin[.]sh</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
-      <guid isPermaLink="false">34ee5e72-4544-50ab-9751-f85bc8ff0ec2</guid>
-      <pubDate>Tue, 15 Sep 2026 16:22:12 +0000</pubDate>
+      <title>[80] domain: tpglighting[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">c46d83c2-cb29-5a9a-b151-88b85f9e185d</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91989</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">c94ae865-e88b-520f-ba74-2ab49f7f9a2d</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:58 +0000</pubDate>
+      <title>[80] domain: trdemo[.]com[.]au</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">945fc04e-1e30-53e5-a473-80eb4bfe2519</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91990</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">8ea2b9f3-3497-5e99-a1d0-b0e4d0f0f2f4</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:58 +0000</pubDate>
+      <title>[80] domain: tusbothfeld[.]de</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">6e80259c-b56d-55de-a5ed-83ba19fae251</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91991</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">892cb969-4690-553a-9ded-10b25e1fbd25</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:58 +0000</pubDate>
+      <title>[80] domain: urgenteyecarefl[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">ab34c622-2b0f-58de-b237-8e3a386c5ddc</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91992</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">3f0d71c2-7c22-54c1-82b8-da6147836b9e</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:58 +0000</pubDate>
+      <title>[80] domain: vibrant-digitals[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">dbda73fc-4576-5a86-a24b-5967a7384a98</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91985</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">dfaf27b3-f259-59d6-b46e-29b6de708938</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:57 +0000</pubDate>
+      <title>[80] domain: vinfast-vf9[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">e12b6811-9a14-50de-be66-3a00356a906e</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91986</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">d4e0de05-373d-5c1b-a301-3d1f051766bb</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:57 +0000</pubDate>
+      <title>[80] domain: vorsorgerecht[.]eu</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">56bbd9c0-c0d9-539f-a41b-dac7a6a82be4</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91987</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">5f3c974d-554f-5576-acb3-c7678a16f33f</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:57 +0000</pubDate>
+      <title>[80] domain: wazaandact[.]org</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">ae2cced8-5366-5477-999c-4c2488ac0a9b</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91988</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">055ef7f9-f157-5154-bb61-a1571229f395</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:57 +0000</pubDate>
+      <title>[80] domain: webde-ph[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">1d4273b2-af32-5f22-8ae1-d9a92969743b</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91981</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">faa48668-5bcd-5c6a-b668-6f2165c79dc9</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:55 +0000</pubDate>
+      <title>[80] domain: xtrappliances[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">7788bff0-8f2a-584a-b4f5-e80b286592c8</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91982</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">05c4fff8-4edc-5f65-a7b2-fe64b8ce2b10</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:55 +0000</pubDate>
+      <title>[80] domain: zkstudio[.]pl</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">776702f7-33af-55de-89a5-a9df3dd7355e</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91983</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">755d49e1-4e36-54b7-a09e-5d3cd1f62000</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:55 +0000</pubDate>
+      <title>[80] domain: rastakhabar[.]ir</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">f7836f9d-b902-5598-9921-6dc7ac024d3b</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91984</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">b97389e0-e9b0-5e84-9ea9-c0d6153464d1</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:55 +0000</pubDate>
+      <title>[80] domain: redx[.]club</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">21a533b0-117e-545c-8d8d-e13292635161</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91972</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">2f3046bb-1911-5176-92f8-571c92142ce0</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:54 +0000</pubDate>
+      <title>[80] domain: reedswitchcn[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">f36e5f85-6f31-571a-ab72-d96090d15b3c</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91973</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">c8146aba-b571-5b91-9ab0-7c21a1e8405d</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:54 +0000</pubDate>
+      <title>[80] domain: reitstall-klein-raden[.]de</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">662836ad-6aa7-56ed-a021-044e234ba26b</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91979</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">6aed0576-6e44-5de7-886d-66185b410d92</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:54 +0000</pubDate>
+      <title>[80] domain: rescuetraining[.]cz</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">0357ba0b-51ef-52ea-8bb8-3d2c6d23c105</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91980</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">ffeca8f0-aa81-518d-9a40-af4943b423d1</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:54 +0000</pubDate>
+      <title>[80] domain: shades-tours[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">cadb5f61-a019-5686-8e1b-80aea5a342e6</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91968</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">1d9923d3-7d6a-52df-8896-678e033d329c</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:53 +0000</pubDate>
+      <title>[80] domain: shop[.]bleibtreu-catering[.]de</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">149601c1-196a-5bb5-b4d7-489fc172c290</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91969</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">7ca3f9e8-c79b-5f4f-af6e-c2a705c3a6da</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:53 +0000</pubDate>
+      <title>[80] domain: simplamo[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">8648af08-9e08-57df-847d-d079d52663b2</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91970</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">cd5b03fb-b61d-53e3-91e1-a48877f47608</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:53 +0000</pubDate>
+      <title>[80] domain: solatiumptyltd[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">cbe0d4ad-8a68-5a26-aaff-7c84d83be87c</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91971</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">1ca2daba-a610-559a-9bd6-7eaa9459b9cd</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:53 +0000</pubDate>
+      <title>[80] domain: spd-kalkar[.]de</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">7f16a74c-c38b-5cd2-8a89-6b58b1a3884d</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91964</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">e3dbe104-878e-5ff4-8a72-38b90bc924c2</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:52 +0000</pubDate>
+      <title>[80] domain: supernovacrm[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">c42fc132-f2b0-5489-8fa2-927cec59fd69</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91965</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">8c2f0da6-c629-58da-9f1b-1fb4a722ff49</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:52 +0000</pubDate>
+      <title>[80] domain: thoitrangtrungnien[.]net</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">2cdf488a-9f2f-5aaa-a4e4-d0f56953e332</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91966</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">2926646e-9b47-5d62-9e6e-95f4b9de0c06</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:52 +0000</pubDate>
+      <title>[80] domain: mimiraml[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">cf8632df-86bc-5a44-9460-a5154f1d43c3</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91967</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">43cff136-18c4-54c8-914a-54cfea6c2ea2</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:52 +0000</pubDate>
+      <title>[80] domain: moringa-tulear[.]mg</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">be9964c9-b73e-5262-8aac-d5fe68c80006</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91960</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">bf358589-5415-57f5-b843-fdef353ea0ee</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:51 +0000</pubDate>
+      <title>[80] domain: neuraledge[.]digital</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">4bd145e7-e8de-5031-b61c-f531800cf3b9</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91961</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">8a4140c2-8948-5776-883f-8e393b5e6dca</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:51 +0000</pubDate>
+      <title>[80] domain: norisknorewardblog[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">5bbea464-6b94-5fc4-89b7-15a877600d8b</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91962</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">806fbb98-52c9-5bb7-84ef-a55ec4bcc2f4</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:51 +0000</pubDate>
+      <title>[80] domain: np-cyber[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">7b37e2d4-bea3-5120-98eb-834372f97cd3</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91963</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">b825ce00-81b5-5d4d-aa87-000778cd0bcf</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:51 +0000</pubDate>
+      <title>[80] domain: nujlmb[.]org[.]uk</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">f32c2698-d5a0-5c59-9cfb-cb34e0ad8be4</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91956</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">c01d872b-93d7-53cb-8592-223ada83d04b</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:50 +0000</pubDate>
+      <title>[80] domain: omda-info[.]de</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">53756f8d-dcd4-50a5-98bd-3f6c733cdda5</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91957</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,low,nvd</description>
-      <guid isPermaLink="false">98f03d93-16bd-574d-8ab4-e4597a183955</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:50 +0000</pubDate>
+      <title>[80] domain: pelnykolor[.]eu</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">0c9ced17-e120-53c8-9f68-b8fa559906b5</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91958</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">6c7d9021-9c98-5e59-8c6c-7d5c0850d5c1</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:50 +0000</pubDate>
+      <title>[80] domain: pizzeriatiodan[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">7f900a66-6666-563f-b666-a96507fceaa5</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91959</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">26ddee5a-d8ad-5fa9-9a4b-a37e52080819</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:50 +0000</pubDate>
+      <title>[80] domain: pro-welding[.]eu</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">4ce209f6-2649-5dca-b5fb-50b0e9391df7</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91951</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">5a9babab-9481-5675-b9d1-e9fad7a662fe</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:49 +0000</pubDate>
+      <title>[80] domain: itelkom[.]net</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">3b5789d6-9f88-5eb8-b401-4333d184c28c</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91952</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">c9cbcba7-ef50-574e-9e14-d22c9780e9fd</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:49 +0000</pubDate>
+      <title>[80] domain: janssensteijlen[.]nl</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">2bf03a09-bbb5-5127-95f5-74572db8d88f</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91953</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">fa753c83-c2bb-53c1-b319-1bb903a95699</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:49 +0000</pubDate>
+      <title>[80] domain: kajmunk[.]nl</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">ac926569-602b-5c3a-aebf-ae8385a1831f</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91954</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">2fb48f8f-dd20-5063-95fd-76339a87d4e0</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:49 +0000</pubDate>
+      <title>[80] domain: kolme-k[.]de</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">93d320c1-8f26-55cb-b5ca-91ec129ade6b</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91955</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">a677abea-2ad9-5933-a04c-60816e2c6de7</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:49 +0000</pubDate>
+      <title>[80] domain: landshuter-kurzfilmfestival[.]de</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">35d5ee52-38e0-5c47-acd9-76d0ec14223c</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91947</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">1a88b968-df1b-5af7-a2bb-621f21f21147</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:48 +0000</pubDate>
+      <title>[80] domain: litterateuronline[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">82139ef0-4ba0-56c7-b871-5be5c17bc7db</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91948</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">802fa525-b0c5-52fd-a39e-2b9ead000402</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:48 +0000</pubDate>
+      <title>[80] domain: living-b[.]it</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">4ee7ccd8-6bcf-58ac-ba0a-ce0373708418</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91949</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: critical,cve,nvd</description>
-      <guid isPermaLink="false">e9b076e5-1ca9-5c16-8bf6-972954bc174b</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:48 +0000</pubDate>
+      <title>[80] domain: maerkische-kartonagenfabrik[.]de</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">f22ffd39-94de-521c-b3f3-2ecd1eaafefb</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91950</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">757aa641-c3ad-575e-a42d-117e9d389a7e</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:48 +0000</pubDate>
+      <title>[80] domain: markgoldman[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">a0f2c5e1-f988-5770-9ecb-5682c6ac75c8</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91946</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">8608924e-9963-5c1e-8854-1cd85c0834c0</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:47 +0000</pubDate>
+      <title>[80] domain: maschiettomusic[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">b30504a0-050b-5519-8423-27d883a2be20</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91941</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">bf06798b-8405-5a39-bb17-97a2fe9ef3c7</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:46 +0000</pubDate>
+      <title>[80] domain: midnightoman-travel[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">f80da63c-108f-5b11-a21f-7849e4bbaff5</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91942</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">3d074b5e-09a0-52bc-aad1-e6f4d3264246</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:46 +0000</pubDate>
+      <title>[80] domain: fruitcity[.]africa</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">d92fa42b-e002-5043-bc09-f6f760121b35</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:06 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91943</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">6ab9854d-53b9-563a-8958-9d81069e6250</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:46 +0000</pubDate>
+      <title>[80] domain: gack-moebel[.]de</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">8415bc1b-3222-57ea-8a09-5576f098fcce</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:06 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-91944</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">892a79ad-e0f0-54c6-9e3b-372e9f57ae61</guid>
-      <pubDate>Tue, 15 Sep 2026 16:17:46 +0000</pubDate>
+      <title>[80] domain: gd-kcmco[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Sepolia,etherhiding,threatfox</description>
+      <guid isPermaLink="false">e78a6c4d-375a-503f-a138-3030f96e2757</guid>
+      <pubDate>Tue, 15 Sep 2026 22:40:06 +0000</pubDate>
     </item>
 </channel></rss>
