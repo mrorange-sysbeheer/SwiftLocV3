@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-15T03:56:57Z_
+_Generated 2026-09-15T09:19:51Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-15T03:56:57Z |
+| Generated | 2026-09-15T09:19:51Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 5676 |
+| Duplicates removed | 5379 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 840 |
+| Multi-source overlaps | 844 |
 | Score (min / avg / max) | 80 / 80.6 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 840 |
+| Corroborated (2+ sources) | 844 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-15T03:56:33Z |
+| Newest first_seen | 2026-09-15T09:19:07Z |
 
 ## Top indicators by score
 
@@ -41,43 +41,43 @@ _Generated 2026-09-15T03:56:57Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| greensnow_blocklist | 5054 |
-| blocklist_de_ssh | 4944 |
+| greensnow_blocklist | 5173 |
+| blocklist_de_ssh | 4924 |
+| threatfox_export_json | 4110 |
 | binarydefense_banlist | 3899 |
 | ipsum_level5 | 2865 |
-| threatfox_export_json | 2242 |
-| nist_nvd_recent | 1911 |
+| nist_nvd_recent | 1865 |
 | spamhaus_drop | 1725 |
 | cisa_kev | 1710 |
-| tor_exit_nodes | 1346 |
+| tor_exit_nodes | 1345 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 3669 |
-| cve | 3040 |
-| ipv4_cidr | 1043 |
-| domain | 797 |
-| url | 672 |
-| sha1 | 352 |
-| ipv4 | 283 |
-| md5 | 144 |
+| cve | 2710 |
+| sha256 | 2365 |
+| ipv4_cidr | 1724 |
+| domain | 1721 |
+| url | 759 |
+| sha1 | 319 |
+| ipv4 | 291 |
+| md5 | 111 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 4711 |
-| cve | 3040 |
-| rat | 2396 |
-| asyncrat | 2374 |
-| malware | 1770 |
+| threatfox | 4124 |
+| cve | 2710 |
+| malware | 2009 |
+| drop | 1724 |
+| spamhaus | 1724 |
 | exploited-in-the-wild | 1710 |
-| nvd | 1576 |
-| drop | 1043 |
-| spamhaus | 1043 |
-| ClickFix | 528 |
+| nvd | 1246 |
+| rat | 973 |
+| asyncrat | 952 |
+| Sepolia | 924 |
 
 ## Multi-source overlaps
 
