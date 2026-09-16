@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-16T09:12:46Z_
+_Generated 2026-09-16T16:23:42Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-16T09:12:46Z |
+| Generated | 2026-09-16T16:23:42Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 4640 |
-| Sources reporting | 16 |
+| Duplicates removed | 6202 |
+| Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 854 |
+| Multi-source overlaps | 868 |
 | Score (min / avg / max) | 80 / 80.6 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 854 |
+| Corroborated (2+ sources) | 868 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-16T09:05:05Z |
+| Newest first_seen | 2026-09-16T16:23:00Z |
 
 ## Top indicators by score
 
@@ -41,42 +41,42 @@ _Generated 2026-09-16T09:12:46Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 4717 |
+| blocklist_de_ssh | 4680 |
+| greensnow_blocklist | 4563 |
 | binarydefense_banlist | 4148 |
 | ipsum_level5 | 4117 |
-| threatfox_export_json | 3667 |
-| nist_nvd_recent | 3634 |
-| spamhaus_drop | 1725 |
-| cisa_kev | 1710 |
-| malwarebazaar_recent | 1356 |
-| tor_exit_nodes | 1345 |
+| nist_nvd_recent | 3400 |
+| threatfox_export_json | 3313 |
+| spamhaus_drop | 1715 |
+| cisa_kev | 1711 |
+| malwarebazaar_recent | 1648 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3573 |
-| sha256 | 2442 |
-| ipv4_cidr | 1613 |
-| domain | 1446 |
-| url | 528 |
-| sha1 | 220 |
-| ipv4 | 166 |
-| md5 | 12 |
+| cve | 3274 |
+| sha256 | 2765 |
+| ipv4_cidr | 1354 |
+| domain | 1327 |
+| url | 839 |
+| sha1 | 229 |
+| ipv4 | 191 |
+| md5 | 21 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3573 |
-| threatfox | 3319 |
-| nvd | 2109 |
-| malware | 2074 |
-| exploited-in-the-wild | 1710 |
-| drop | 1613 |
-| spamhaus | 1613 |
+| cve | 3274 |
+| threatfox | 3274 |
+| malware | 2690 |
+| nvd | 1810 |
+| exploited-in-the-wild | 1711 |
+| drop | 1354 |
+| spamhaus | 1354 |
+| etherhiding | 1026 |
 | Sepolia | 1010 |
-| etherhiding | 1006 |
 | rat | 956 |
 
 ## Multi-source overlaps
