@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-16T16:23:42Z_
+_Generated 2026-09-16T22:43:25Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-16T16:23:42Z |
+| Generated | 2026-09-16T22:43:25Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6202 |
+| Duplicates removed | 6231 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 868 |
+| Multi-source overlaps | 873 |
 | Score (min / avg / max) | 80 / 80.6 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 868 |
+| Corroborated (2+ sources) | 873 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-16T16:23:00Z |
+| Newest first_seen | 2026-09-16T22:42:53Z |
 
 ## Top indicators by score
 
@@ -41,43 +41,43 @@ _Generated 2026-09-16T16:23:42Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 4680 |
-| greensnow_blocklist | 4563 |
+| blocklist_de_ssh | 4717 |
+| greensnow_blocklist | 4430 |
 | binarydefense_banlist | 4148 |
 | ipsum_level5 | 4117 |
-| nist_nvd_recent | 3400 |
-| threatfox_export_json | 3313 |
+| threatfox_export_json | 3148 |
+| nist_nvd_recent | 2600 |
 | spamhaus_drop | 1715 |
-| cisa_kev | 1711 |
-| malwarebazaar_recent | 1648 |
+| cisa_kev | 1713 |
+| malwarebazaar_recent | 1675 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3274 |
-| sha256 | 2765 |
-| ipv4_cidr | 1354 |
-| domain | 1327 |
-| url | 839 |
+| cve | 3268 |
+| sha256 | 2925 |
+| domain | 1405 |
+| ipv4_cidr | 1166 |
+| url | 760 |
 | sha1 | 229 |
-| ipv4 | 191 |
+| ipv4 | 226 |
 | md5 | 21 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3274 |
-| threatfox | 3274 |
-| malware | 2690 |
-| nvd | 1810 |
-| exploited-in-the-wild | 1711 |
-| drop | 1354 |
-| spamhaus | 1354 |
+| threatfox | 3380 |
+| cve | 3268 |
+| malware | 2782 |
+| nvd | 1803 |
+| exploited-in-the-wild | 1713 |
+| drop | 1166 |
+| spamhaus | 1166 |
 | etherhiding | 1026 |
 | Sepolia | 1010 |
-| rat | 956 |
+| rat | 929 |
 
 ## Multi-source overlaps
 
