@@ -1,15 +1,15 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-16T22:43:25Z_
+_Generated 2026-09-17T03:59:20Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-16T22:43:25Z |
+| Generated | 2026-09-17T03:59:20Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6231 |
+| Duplicates removed | 7551 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
 | Multi-source overlaps | 873 |
@@ -17,7 +17,7 @@ _Generated 2026-09-16T22:43:25Z_
 | High-score indicators (≥80) | 10000 |
 | Corroborated (2+ sources) | 873 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-16T22:42:53Z |
+| Newest first_seen | 2026-09-17T03:58:58Z |
 
 ## Top indicators by score
 
@@ -39,43 +39,43 @@ _Generated 2026-09-16T22:43:25Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 4717 |
-| greensnow_blocklist | 4430 |
-| binarydefense_banlist | 4148 |
-| ipsum_level5 | 4117 |
-| threatfox_export_json | 3148 |
-| nist_nvd_recent | 2600 |
+| greensnow_blocklist | 5279 |
+| ipsum_level5 | 4835 |
+| blocklist_de_ssh | 4750 |
+| binarydefense_banlist | 4355 |
+| nist_nvd_recent | 3858 |
+| threatfox_export_json | 3100 |
 | spamhaus_drop | 1715 |
 | cisa_kev | 1713 |
-| malwarebazaar_recent | 1675 |
+| malwarebazaar_recent | 1698 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3268 |
-| sha256 | 2925 |
-| domain | 1405 |
-| ipv4_cidr | 1166 |
-| url | 760 |
+| cve | 3987 |
+| sha256 | 1955 |
+| ipv4_cidr | 1714 |
+| domain | 1145 |
+| url | 727 |
 | sha1 | 229 |
-| ipv4 | 226 |
+| ipv4 | 222 |
 | md5 | 21 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 3380 |
-| cve | 3268 |
-| malware | 2782 |
-| nvd | 1803 |
+| cve | 3987 |
+| malware | 2714 |
+| nvd | 2523 |
+| threatfox | 2180 |
+| drop | 1714 |
+| spamhaus | 1714 |
 | exploited-in-the-wild | 1713 |
-| drop | 1166 |
-| spamhaus | 1166 |
-| etherhiding | 1026 |
-| Sepolia | 1010 |
-| rat | 929 |
+| high | 1175 |
+| etherhiding | 748 |
+| Sepolia | 732 |
 
 ## Multi-source overlaps
 
