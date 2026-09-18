@@ -3,305 +3,305 @@
   <title>SwiftIOC — Newest High-Confidence IOCs</title>
   <link>https://github.com/PKHarsimran/SwiftIOC-Automated-Threat-Intelligence-Collector</link>
   <description>Freshest scored, cross-source-corroborated indicators of compromise.</description>
-  <lastBuildDate>Thu, 17 Sep 2026 22:44:02 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 18 Sep 2026 03:46:49 +0000</lastBuildDate>
     <item>
-      <title>[80] ipv4_cidr: 144.172.65.0/24</title>
+      <title>[80] ipv4_cidr: 205.196.192.0/21</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">fc49c18d-43b7-5de0-90bc-456e015dcdea</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">4ecc66f0-3d26-5ba8-aff4-f13c2c4f5e52</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 165.140.92.0/22</title>
+      <title>[80] ipv4_cidr: 205.196.200.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">8246b7b1-9be9-5528-9366-910623840f2c</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">30b4554e-8e51-541c-82a6-a5668f25852a</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 167.253.48.0/22</title>
+      <title>[80] ipv4_cidr: 205.196.28.0/22</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">166a48d1-4a58-5002-bcd2-6ffda5e60c93</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">3073bb65-502d-576c-aa12-408aa17239d7</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 190.196.253.0/24</title>
+      <title>[80] ipv4_cidr: 205.196.48.0/23</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">5e5ee7c8-20dc-5894-b0bf-0b6e0ba616d1</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">0363f078-5f0f-58f3-b261-61874e21f0f3</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 192.104.73.0/24</title>
+      <title>[80] ipv4_cidr: 205.196.51.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">8529d464-50ac-5fd9-b9db-39c772fa79bc</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">c9afbcf8-e520-5b2c-b4dd-6c5c96b2ed90</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 192.108.0.0/24</title>
+      <title>[80] ipv4_cidr: 205.196.52.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">a1b63c78-b694-5817-b907-644344dbf178</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">48ac0b4f-c538-5eb0-80ee-47e3f155a3ae</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 193.233.248.0/22</title>
+      <title>[80] ipv4_cidr: 205.196.53.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">58fec3c8-03d5-5037-8343-ae04359844a6</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">58602e18-7b02-50d7-86e1-c875f7bd67a6</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 194.59.30.0/24</title>
+      <title>[80] ipv4_cidr: 205.196.54.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">af4fe565-0207-5a7d-9cc2-134ec3791db9</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">32d24a7e-186c-567a-87a5-13d3806ed9c0</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.92.0/24</title>
+      <title>[80] ipv4_cidr: 205.196.55.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">9a4d578d-3ef0-54eb-85b9-e72b6a7e9e1f</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">bf4256dd-5dc5-582e-a68d-234359da64dd</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 198.135.205.0/24</title>
+      <title>[80] ipv4_cidr: 205.196.56.0/22</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">cc6c6a10-79b7-5a76-b732-89426fee9101</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">cf8d5184-bd4a-5bec-9400-7679b06b2399</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 198.136.189.0/24</title>
+      <title>[80] ipv4_cidr: 205.196.60.0/23</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">688643ff-4fb8-5534-8460-f064a2ad2b45</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">d779d5a0-0130-5492-bc0b-97c35f822139</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 198.178.193.0/24</title>
+      <title>[80] ipv4_cidr: 205.196.62.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">08d2f898-20ad-5622-86be-a3ec6186a4dc</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">019d3078-ccad-5063-bc87-67957e76116b</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 199.184.248.0/24</title>
+      <title>[80] ipv4_cidr: 205.196.67.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">0ceaaaef-ef51-5250-9884-82dc52506a91</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">3eb82bfe-b523-56db-8ebe-6d05bf13b200</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.179.64.0/20</title>
+      <title>[80] ipv4_cidr: 205.196.68.0/23</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">7b3d4648-0229-5137-a2d3-ffef0721f06c</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">3601033d-0f1d-55f9-8995-f8ee0381638e</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.187.156.0/22</title>
+      <title>[80] ipv4_cidr: 205.196.71.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">df32377d-3e43-5919-9c99-c3f8733b6187</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">16a20b9b-880b-5190-a7b9-1d284cecefb9</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.187.160.0/19</title>
+      <title>[80] ipv4_cidr: 205.196.72.0/22</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">18ceb961-9609-5519-8c42-c3b7ef3b8f5d</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">91eeb66d-1a6f-5db5-b8bb-9222704caf93</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.187.192.0/19</title>
+      <title>[80] ipv4_cidr: 205.196.76.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">b6515729-2815-5312-a00a-bb7a8f5b1cb8</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">e601ba11-d1b8-5224-a945-768d32e0b521</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.187.224.0/20</title>
+      <title>[80] ipv4_cidr: 205.196.96.0/23</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">d619ebbe-0ca9-5157-8663-1a4669d16ac6</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">54022ad6-f611-508e-b271-2ea0b6a23d40</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.187.240.0/21</title>
+      <title>[80] ipv4_cidr: 205.196.99.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">2cf09e09-704b-5c71-9c28-36b683f9cdbb</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">d64df5d1-8479-597e-a9f9-1c2207c1b318</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.187.248.0/22</title>
+      <title>[80] ipv4_cidr: 205.203.0.0/19</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">1adfa6c3-3f1e-565a-8306-8d4f2e76f3bb</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">cffc0678-2f09-5ce5-aeb1-bdbf2ab2daec</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.187.252.0/23</title>
+      <title>[80] ipv4_cidr: 205.203.224.0/19</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">da409852-f3eb-5517-816e-f079c06f02bd</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">65279a87-1dca-5690-8bb1-a70961a48243</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.19.38.0/23</title>
+      <title>[80] ipv4_cidr: 205.207.134.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">aea8318f-eed1-5f73-989c-7b80c2fcc223</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">354c03d6-1e62-588e-8951-6f265605ce6c</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.194.16.0/22</title>
+      <title>[80] ipv4_cidr: 205.207.75.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">48aad9e0-29d1-5f7a-860a-58b4c2490de0</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">c91cf2c5-1f0b-534c-aa89-6d2e0ec29815</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.194.40.0/21</title>
+      <title>[80] ipv4_cidr: 205.210.107.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">d0a0fde7-fb1c-58ea-8939-4bca4cc992c2</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">9317990a-236f-5328-a48d-df03d2c5012a</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.194.48.0/21</title>
+      <title>[80] ipv4_cidr: 205.210.139.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">85dfda01-5de9-5a3f-9402-639484aebf0a</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">5734cbd4-3e0e-552a-934c-4ea151e3bfb1</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.225.153.0/24</title>
+      <title>[80] ipv4_cidr: 205.210.171.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">13654858-f41e-5fe4-a8ac-910f9da7529f</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">05231bda-2f75-5a51-aa76-91d0a4ef718a</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.225.226.0/23</title>
+      <title>[80] ipv4_cidr: 205.210.172.0/22</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">02f04568-972f-584f-a545-bcc7ce567c42</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">430a5b39-a801-531d-8469-145402c625e3</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.227.32.0/19</title>
+      <title>[80] ipv4_cidr: 205.210.249.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">9706a032-8b26-575d-bb40-be4b4f54c445</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">d268b484-e582-5444-b569-677e6831110e</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.232.0.0/18</title>
+      <title>[80] ipv4_cidr: 205.210.29.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">467b93f0-fa15-5ce8-a1ce-033e63d0d249</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">8f7acd19-dc7b-5b67-a5d0-e5c7ce42d1ed</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.235.16.0/20</title>
+      <title>[80] ipv4_cidr: 205.211.172.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">d8d5cc0d-806c-5ee9-be4c-e803da6bd607</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">75025e86-0dd8-57d8-9460-8aec87525516</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.235.240.0/24</title>
+      <title>[80] ipv4_cidr: 205.211.179.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">6b032c33-13f6-5793-b5bb-6e73fba60d5b</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">8770baaf-6a0d-5fea-981a-fc90ed1e5d6c</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.235.242.0/24</title>
+      <title>[80] ipv4_cidr: 205.214.128.0/19</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">ca9380bd-7a85-5f96-a28b-8114e920c48e</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">a2a64bb5-50ec-5e58-bb3b-3735cd3a7c6e</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.235.252.0/24</title>
+      <title>[80] ipv4_cidr: 205.214.96.0/19</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">b0d1365c-ef34-5bb8-94dd-49af7798aa5d</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">9b7a12d5-4ceb-5a71-a11c-dd8881f8ca30</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.236.0.0/19</title>
+      <title>[80] ipv4_cidr: 205.215.236.0/22</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">a36f445a-29ed-5a5b-8f9e-22afabdc15b0</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">c5768cf9-9897-58bb-8e30-c9dd67f2d260</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.238.121.0/24</title>
+      <title>[80] ipv4_cidr: 205.233.156.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">53408f42-ac19-5240-a9a2-5b217ce5f215</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">764b491b-0537-50a7-9d95-b30cd8986bcb</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.238.137.0/24</title>
+      <title>[80] ipv4_cidr: 205.233.220.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">c6d565df-b92c-56fe-9ce6-f2d5489d3271</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">944c0101-3df6-5813-8091-5397210ebcab</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.238.170.0/24</title>
+      <title>[80] ipv4_cidr: 205.233.224.0/20</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">67aa2aca-a373-50fd-85c5-859a29612412</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">2f92d7c9-7116-59ed-8953-2b2ec55f80eb</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.238.183.0/24</title>
+      <title>[80] ipv4_cidr: 205.236.18.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">54681d1b-4bf0-5158-a70b-5da3b8aacfda</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">2267fcb2-73c7-58a9-a16c-09d76e85d4ab</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.238.40.0/24</title>
+      <title>[80] ipv4_cidr: 205.236.185.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">7684b00b-22d0-59aa-a1fb-e3ef7ca8f5d1</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">eb4139c4-e751-5384-b6f7-1afbb73dde19</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.239.132.0/23</title>
+      <title>[80] ipv4_cidr: 205.236.189.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">3bf75a21-0d43-5f0d-973b-2c91de7e548a</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">694396a2-288a-54dd-b38e-f3c46f04d55f</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.239.134.0/23</title>
+      <title>[80] ipv4_cidr: 205.237.10.0/23</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">8c5ecc82-cb53-5812-b371-8dde569e1da5</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">e198e267-58fd-536f-9fd3-851cda409ec8</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.239.200.0/23</title>
+      <title>[80] ipv4_cidr: 205.237.12.0/22</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">fb901345-c2f5-5c08-a251-47116c3f5947</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">f6d9f673-04b6-5d71-a23b-60f1a3bc9e53</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.27.155.0/24</title>
+      <title>[80] ipv4_cidr: 205.237.16.0/22</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">483f80ce-d033-5d33-8817-37d45ce92ad4</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">9ded6849-0e52-5c08-a524-63584b5e1c59</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.27.202.0/24</title>
+      <title>[80] ipv4_cidr: 205.237.8.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">ce818807-7672-5880-95a6-7505520b5a20</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">3f56a7e2-26df-54e3-b670-29e16f8063bc</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.27.218.0/24</title>
+      <title>[80] ipv4_cidr: 206.121.28.0/22</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">c4250ff2-0e5d-566c-afa9-1d27f5bf4a54</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">d432eb26-e1b1-5d51-b572-88f85feb68dd</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.29.212.0/24</title>
+      <title>[80] ipv4_cidr: 206.121.32.0/23</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">c5b8c1d0-a9c8-5af6-8ccb-54abe1993e2b</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">38a96523-15e3-55c1-bbea-52657d4943f4</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.29.220.0/22</title>
+      <title>[80] ipv4_cidr: 206.123.145.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">40b79e98-9eb9-5806-a92e-349f53a216ed</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">db35f99f-ace6-5192-84e6-c8c4e8dc2481</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.29.224.0/24</title>
+      <title>[80] ipv4_cidr: 206.123.156.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">f6adad9a-0fa8-5c93-bd95-81260d134e24</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">69b99a99-cdd5-5621-aa3f-b0b4af8fd566</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.44.208.0/20</title>
+      <title>[80] ipv4_cidr: 206.125.16.0/20</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">a41f842d-2bed-5084-96ca-c71058251f14</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">6f0a9b56-378a-5e5a-a5f1-3616cddc7120</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 204.44.224.0/20</title>
+      <title>[80] ipv4_cidr: 206.130.180.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">28ad2136-08cd-5e66-b421-a14eb3787c3d</guid>
-      <pubDate>Thu, 17 Sep 2026 22:43:36 +0000</pubDate>
+      <guid isPermaLink="false">ff680853-77c9-5d32-80fb-df67fd1aacdd</guid>
+      <pubDate>Fri, 18 Sep 2026 03:46:10 +0000</pubDate>
     </item>
 </channel></rss>

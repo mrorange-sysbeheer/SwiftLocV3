@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-17T22:44:00Z_
+_Generated 2026-09-18T03:46:48Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-17T22:44:00Z |
+| Generated | 2026-09-18T03:46:48Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6779 |
+| Duplicates removed | 7483 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 894 |
+| Multi-source overlaps | 893 |
 | Score (min / avg / max) | 80 / 80.6 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 894 |
+| Corroborated (2+ sources) | 893 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-17T22:43:36Z |
+| Newest first_seen | 2026-09-18T03:46:10Z |
 
 ## Top indicators by score
 
@@ -39,26 +39,26 @@ _Generated 2026-09-17T22:44:00Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| ipsum_level5 | 4835 |
-| blocklist_de_ssh | 4714 |
-| binarydefense_banlist | 4355 |
-| greensnow_blocklist | 4297 |
-| threatfox_export_json | 2688 |
-| nist_nvd_recent | 2600 |
+| greensnow_blocklist | 5098 |
+| blocklist_de_ssh | 4719 |
+| binarydefense_banlist | 4595 |
+| ipsum_level5 | 4517 |
+| threatfox_export_json | 2665 |
+| nist_nvd_recent | 2200 |
 | spamhaus_drop | 1714 |
 | cisa_kev | 1713 |
-| malwarebazaar_recent | 1507 |
+| malwarebazaar_recent | 1515 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
 | cve | 3948 |
-| sha256 | 2327 |
-| ipv4_cidr | 1534 |
-| url | 858 |
-| domain | 761 |
-| ipv4 | 276 |
+| sha256 | 2483 |
+| ipv4_cidr | 1386 |
+| url | 851 |
+| domain | 762 |
+| ipv4 | 274 |
 | sha1 | 252 |
 | md5 | 44 |
 
@@ -67,15 +67,15 @@ _Generated 2026-09-17T22:44:00Z_
 | Tag | Indicators |
 | --- | ---: |
 | cve | 3948 |
-| malware | 3124 |
+| malware | 3273 |
 | nvd | 2484 |
-| threatfox | 2011 |
+| threatfox | 2010 |
 | exploited-in-the-wild | 1713 |
-| drop | 1534 |
-| spamhaus | 1534 |
+| drop | 1386 |
+| spamhaus | 1386 |
 | high | 1169 |
-| malware_download | 626 |
-| medium | 483 |
+| malware_download | 619 |
+| Mirai | 508 |
 
 ## Multi-source overlaps
 
@@ -87,9 +87,9 @@ _Generated 2026-09-17T22:44:00Z_
 | ipv4: 103[.]176[.]64[.]36 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 103[.]182[.]132[.]154 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 114[.]111[.]53[.]214 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
-| ipv4: 164[.]90[.]236[.]107 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 176[.]65[.]139[.]206 | blocklist_de_ssh, et_compromised, ipsum_level5, threatfox_export_json |
 | ipv4: 43[.]129[.]53[.]19 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 43[.]156[.]71[.]43 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
+| ipv4: 45[.]17[.]39[.]120 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 
 For more detail see [diagnostics/REPORT.md](diagnostics/REPORT.md) and the machine-readable feeds in [iocs/](iocs/).
