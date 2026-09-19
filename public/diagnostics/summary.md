@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-19T15:34:14Z_
+_Generated 2026-09-19T18:28:29Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-19T15:34:14Z |
+| Generated | 2026-09-19T18:28:29Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 9443 |
+| Duplicates removed | 9485 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 951 |
+| Multi-source overlaps | 956 |
 | Score (min / avg / max) | 80 / 80.6 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 951 |
+| Corroborated (2+ sources) | 956 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-19T15:30:14Z |
+| Newest first_seen | 2026-09-19T18:16:23Z |
 
 ## Top indicators by score
 
@@ -39,26 +39,26 @@ _Generated 2026-09-19T15:34:14Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 12167 |
+| blocklist_de_ssh | 12095 |
 | ipsum_level5 | 6371 |
-| greensnow_blocklist | 5070 |
+| greensnow_blocklist | 5113 |
 | binarydefense_banlist | 4792 |
-| nist_nvd_recent | 3200 |
+| nist_nvd_recent | 2465 |
 | cisa_kev | 1716 |
 | spamhaus_drop | 1713 |
-| malwarebazaar_recent | 1564 |
-| tor_exit_nodes | 1358 |
+| malwarebazaar_recent | 1599 |
+| tor_exit_nodes | 1356 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3827 |
-| sha256 | 2820 |
+| cve | 3784 |
+| sha256 | 2887 |
 | ipv4_cidr | 1712 |
-| url | 597 |
-| domain | 452 |
-| ipv4 | 282 |
+| url | 554 |
+| domain | 461 |
+| ipv4 | 292 |
 | sha1 | 259 |
 | md5 | 51 |
 
@@ -66,16 +66,16 @@ _Generated 2026-09-19T15:34:14Z_
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3827 |
-| malware | 3419 |
-| nvd | 2364 |
+| cve | 3784 |
+| malware | 3443 |
+| nvd | 2321 |
+| threatfox | 1737 |
 | exploited-in-the-wild | 1716 |
-| threatfox | 1713 |
 | drop | 1712 |
 | spamhaus | 1712 |
-| high | 825 |
-| Mirai | 597 |
-| medium | 524 |
+| high | 789 |
+| Mirai | 580 |
+| medium | 556 |
 
 ## Multi-source overlaps
 
