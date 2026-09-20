@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-20T09:13:49Z_
+_Generated 2026-09-20T15:40:11Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-20T09:13:49Z |
+| Generated | 2026-09-20T15:40:11Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 10073 |
+| Duplicates removed | 9148 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 970 |
+| Multi-source overlaps | 999 |
 | Score (min / avg / max) | 80 / 80.6 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 970 |
+| Corroborated (2+ sources) | 999 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-20T09:05:06Z |
+| Newest first_seen | 2026-09-20T15:28:24Z |
 
 ## Top indicators by score
 
@@ -41,43 +41,43 @@ _Generated 2026-09-20T09:13:49Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 12175 |
+| blocklist_de_ssh | 12033 |
 | ipsum_level5 | 6191 |
-| greensnow_blocklist | 5891 |
 | binarydefense_banlist | 5004 |
-| nist_nvd_recent | 2166 |
-| malwarebazaar_recent | 1777 |
+| greensnow_blocklist | 4797 |
+| threatfox_export_json | 1828 |
+| nist_nvd_recent | 1789 |
 | cisa_kev | 1716 |
-| spamhaus_drop | 1713 |
-| tor_exit_nodes | 1364 |
+| spamhaus_drop | 1712 |
+| malwarebazaar_recent | 1664 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3922 |
-| sha256 | 3121 |
+| cve | 3820 |
+| sha256 | 3223 |
 | ipv4_cidr | 1712 |
-| url | 519 |
-| ipv4 | 268 |
+| url | 542 |
+| ipv4 | 254 |
 | sha1 | 250 |
-| domain | 166 |
+| domain | 157 |
 | md5 | 42 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3922 |
-| malware | 3658 |
-| nvd | 2459 |
+| cve | 3820 |
+| malware | 3783 |
+| nvd | 2357 |
 | exploited-in-the-wild | 1716 |
 | drop | 1712 |
 | spamhaus | 1712 |
-| threatfox | 1397 |
-| high | 860 |
-| Mirai | 630 |
-| medium | 587 |
+| threatfox | 1403 |
+| high | 787 |
+| Mirai | 631 |
+| medium | 573 |
 
 ## Multi-source overlaps
 
