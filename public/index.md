@@ -2,16 +2,16 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-20T18:32:51Z_
+_Generated 2026-09-20T22:15:39Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-20T18:32:51Z |
+| Generated | 2026-09-20T22:15:39Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 9185 |
+| Duplicates removed | 9166 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
 | Multi-source overlaps | 1003 |
@@ -19,7 +19,7 @@ _Generated 2026-09-20T18:32:51Z_
 | High-score indicators (≥80) | 10000 |
 | Corroborated (2+ sources) | 1003 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-20T18:27:16Z |
+| Newest first_seen | 2026-09-20T22:04:30Z |
 
 ## Top indicators by score
 
@@ -41,43 +41,43 @@ _Generated 2026-09-20T18:32:51Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 12036 |
+| blocklist_de_ssh | 12034 |
 | ipsum_level5 | 6191 |
 | binarydefense_banlist | 5004 |
-| greensnow_blocklist | 4703 |
-| threatfox_export_json | 1728 |
+| greensnow_blocklist | 4641 |
+| threatfox_export_json | 1727 |
 | cisa_kev | 1716 |
 | spamhaus_drop | 1712 |
-| malwarebazaar_recent | 1660 |
-| tor_exit_nodes | 1372 |
+| malwarebazaar_recent | 1684 |
+| tor_exit_nodes | 1373 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3789 |
-| sha256 | 3327 |
+| cve | 3805 |
+| sha256 | 3343 |
 | ipv4_cidr | 1711 |
-| url | 478 |
+| url | 481 |
 | sha1 | 250 |
-| ipv4 | 238 |
-| domain | 165 |
+| ipv4 | 217 |
+| domain | 151 |
 | md5 | 42 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| malware | 3836 |
-| cve | 3789 |
-| nvd | 2326 |
+| malware | 3864 |
+| cve | 3805 |
+| nvd | 2342 |
 | exploited-in-the-wild | 1716 |
 | drop | 1711 |
 | spamhaus | 1711 |
-| threatfox | 1386 |
-| high | 778 |
-| Mirai | 652 |
-| medium | 565 |
+| threatfox | 1342 |
+| high | 786 |
+| Mirai | 634 |
+| medium | 581 |
 
 ## Multi-source overlaps
 
