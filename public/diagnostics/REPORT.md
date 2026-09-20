@@ -4,51 +4,51 @@
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-20T15:40:11Z |
+| Generated | 2026-09-20T18:32:51Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 9148 |
-| Carried forward | 3051 |
+| Duplicates removed | 9185 |
+| Carried forward | 3412 |
 | Expired (score < 20) | 0 |
 | Aged out (> 30d) | 0 |
-| Pruned over cap (10000) | 38508 |
+| Pruned over cap (10000) | 38089 |
 | Stored | 10000 |
 | Score (min / avg / max) | 80 / 80.6 / 96 |
 | High-confidence indicators | 10000 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-20T15:28:24Z |
+| Newest first_seen | 2026-09-20T18:27:16Z |
 
 ## Per-source counts
 
 | Source | Indicators |
 | --- | ---: |
 | binarydefense_banlist | 5004 |
-| blocklist_de_ssh | 12033 |
+| blocklist_de_ssh | 12036 |
 | ci_army_list | 15000 |
 | cisa_kev | 1716 |
 | dshield_block | 20 |
 | et_compromised | 675 |
 | feodo_ipblocklist | 5 |
-| greensnow_blocklist | 4797 |
+| greensnow_blocklist | 4703 |
 | ipsum_level5 | 6191 |
-| malwarebazaar_recent | 1664 |
-| nist_nvd_recent | 1789 |
+| malwarebazaar_recent | 1660 |
+| nist_nvd_recent | 1295 |
 | openphish_feed | 300 |
 | spamhaus_drop | 1712 |
 | sslbl_ja3 | 97 |
-| threatfox_export_json | 1828 |
-| tor_exit_nodes | 1373 |
-| urlhaus_recent_urls | 401 |
+| threatfox_export_json | 1728 |
+| tor_exit_nodes | 1372 |
+| urlhaus_recent_urls | 348 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3820 |
-| sha256 | 3223 |
-| ipv4_cidr | 1712 |
-| url | 542 |
-| ipv4 | 254 |
+| cve | 3789 |
+| sha256 | 3327 |
+| ipv4_cidr | 1711 |
+| url | 478 |
 | sha1 | 250 |
-| domain | 157 |
+| ipv4 | 238 |
+| domain | 165 |
 | md5 | 42 |

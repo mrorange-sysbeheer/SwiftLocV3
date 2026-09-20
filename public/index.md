@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-20T15:40:11Z_
+_Generated 2026-09-20T18:32:51Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-20T15:40:11Z |
+| Generated | 2026-09-20T18:32:51Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 9148 |
+| Duplicates removed | 9185 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 999 |
+| Multi-source overlaps | 1003 |
 | Score (min / avg / max) | 80 / 80.6 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 999 |
+| Corroborated (2+ sources) | 1003 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-20T15:28:24Z |
+| Newest first_seen | 2026-09-20T18:27:16Z |
 
 ## Top indicators by score
 
@@ -41,43 +41,43 @@ _Generated 2026-09-20T15:40:11Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 12033 |
+| blocklist_de_ssh | 12036 |
 | ipsum_level5 | 6191 |
 | binarydefense_banlist | 5004 |
-| greensnow_blocklist | 4797 |
-| threatfox_export_json | 1828 |
-| nist_nvd_recent | 1789 |
+| greensnow_blocklist | 4703 |
+| threatfox_export_json | 1728 |
 | cisa_kev | 1716 |
 | spamhaus_drop | 1712 |
-| malwarebazaar_recent | 1664 |
+| malwarebazaar_recent | 1660 |
+| tor_exit_nodes | 1372 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3820 |
-| sha256 | 3223 |
-| ipv4_cidr | 1712 |
-| url | 542 |
-| ipv4 | 254 |
+| cve | 3789 |
+| sha256 | 3327 |
+| ipv4_cidr | 1711 |
+| url | 478 |
 | sha1 | 250 |
-| domain | 157 |
+| ipv4 | 238 |
+| domain | 165 |
 | md5 | 42 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3820 |
-| malware | 3783 |
-| nvd | 2357 |
+| malware | 3836 |
+| cve | 3789 |
+| nvd | 2326 |
 | exploited-in-the-wild | 1716 |
-| drop | 1712 |
-| spamhaus | 1712 |
-| threatfox | 1403 |
-| high | 787 |
-| Mirai | 631 |
-| medium | 573 |
+| drop | 1711 |
+| spamhaus | 1711 |
+| threatfox | 1386 |
+| high | 778 |
+| Mirai | 652 |
+| medium | 565 |
 
 ## Multi-source overlaps
 
