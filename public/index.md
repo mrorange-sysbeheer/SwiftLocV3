@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-20T22:15:39Z_
+_Generated 2026-09-21T03:56:59Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-20T22:15:39Z |
+| Generated | 2026-09-21T03:56:59Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 9166 |
+| Duplicates removed | 9996 |
 | Sources reporting | 17 |
-| Indicator types | 8 |
-| Multi-source overlaps | 1003 |
-| Score (min / avg / max) | 80 / 80.6 / 96 |
-| High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1003 |
+| Indicator types | 9 |
+| Multi-source overlaps | 1011 |
+| Score (min / avg / max) | 79 / 80.6 / 96 |
+| High-score indicators (≥80) | 9646 |
+| Corroborated (2+ sources) | 1011 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-20T22:04:30Z |
+| Newest first_seen | 2026-09-21T03:50:46Z |
 
 ## Top indicators by score
 
@@ -41,43 +41,44 @@ _Generated 2026-09-20T22:15:39Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 12034 |
-| ipsum_level5 | 6191 |
-| binarydefense_banlist | 5004 |
-| greensnow_blocklist | 4641 |
-| threatfox_export_json | 1727 |
+| blocklist_de_ssh | 12008 |
+| ipsum_level5 | 5793 |
+| greensnow_blocklist | 5655 |
+| binarydefense_banlist | 5194 |
+| threatfox_export_json | 1821 |
 | cisa_kev | 1716 |
 | spamhaus_drop | 1712 |
-| malwarebazaar_recent | 1684 |
-| tor_exit_nodes | 1373 |
+| malwarebazaar_recent | 1654 |
+| tor_exit_nodes | 1374 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3805 |
-| sha256 | 3343 |
+| cve | 3589 |
+| sha256 | 3266 |
 | ipv4_cidr | 1711 |
-| url | 481 |
-| sha1 | 250 |
-| ipv4 | 217 |
-| domain | 151 |
-| md5 | 42 |
+| url | 638 |
+| sha1 | 236 |
+| domain | 224 |
+| ipv4 | 211 |
+| ja3 | 97 |
+| md5 | 28 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| malware | 3864 |
-| cve | 3805 |
-| nvd | 2342 |
+| malware | 3944 |
+| cve | 3589 |
+| nvd | 2126 |
 | exploited-in-the-wild | 1716 |
 | drop | 1711 |
 | spamhaus | 1711 |
-| threatfox | 1342 |
-| high | 786 |
-| Mirai | 634 |
-| medium | 581 |
+| threatfox | 1384 |
+| high | 757 |
+| Mirai | 641 |
+| medium | 556 |
 
 ## Multi-source overlaps
 
