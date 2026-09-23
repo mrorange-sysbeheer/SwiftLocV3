@@ -1,11 +1,5 @@
 [
   {
-    "ts": "2026-09-05T14:26:23Z",
-    "total": 10000,
-    "high_confidence": 6512,
-    "score_avg": 79.8
-  },
-  {
     "ts": "2026-09-05T17:52:29Z",
     "total": 10000,
     "high_confidence": 6369,
@@ -535,6 +529,12 @@
   },
   {
     "ts": "2026-09-23T09:10:13Z",
+    "total": 10000,
+    "high_confidence": 10000,
+    "score_avg": 80.7
+  },
+  {
+    "ts": "2026-09-23T16:21:42Z",
     "total": 10000,
     "high_confidence": 10000,
     "score_avg": 80.7

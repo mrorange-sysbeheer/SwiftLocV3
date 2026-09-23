@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-23T09:10:13Z_
+_Generated 2026-09-23T16:21:42Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-23T09:10:13Z |
+| Generated | 2026-09-23T16:21:42Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 9139 |
+| Duplicates removed | 8307 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 1122 |
+| Multi-source overlaps | 1130 |
 | Score (min / avg / max) | 80 / 80.7 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1122 |
+| Corroborated (2+ sources) | 1130 |
 | Earliest first_seen | 2016-05-11T01:59:46Z |
-| Newest first_seen | 2026-09-23T09:09:44Z |
+| Newest first_seen | 2026-09-23T16:21:09Z |
 
 ## Top indicators by score
 
@@ -41,43 +41,43 @@ _Generated 2026-09-23T09:10:13Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 11879 |
-| greensnow_blocklist | 5899 |
+| blocklist_de_ssh | 11776 |
 | binarydefense_banlist | 5581 |
 | ipsum_level5 | 4822 |
-| threatfox_export_json | 3046 |
+| greensnow_blocklist | 4802 |
+| threatfox_export_json | 4074 |
 | nist_nvd_recent | 2400 |
+| malwarebazaar_recent | 1727 |
 | cisa_kev | 1721 |
 | spamhaus_drop | 1712 |
-| malwarebazaar_recent | 1505 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 2616 |
-| cve | 2491 |
-| domain | 1844 |
-| ipv4_cidr | 1271 |
-| url | 1216 |
-| sha1 | 265 |
-| ipv4 | 240 |
-| md5 | 57 |
+| sha256 | 2408 |
+| cve | 2326 |
+| domain | 1969 |
+| ipv4_cidr | 1707 |
+| url | 1074 |
+| ipv4 | 248 |
+| sha1 | 238 |
+| md5 | 30 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 3643 |
-| malware | 3424 |
-| cve | 2491 |
+| threatfox | 3661 |
+| malware | 3143 |
+| cve | 2326 |
 | exploited-in-the-wild | 1721 |
-| ClickFix | 1328 |
-| drop | 1271 |
-| spamhaus | 1271 |
-| nvd | 1032 |
-| malware_download | 865 |
-| Mirai | 696 |
+| drop | 1707 |
+| spamhaus | 1707 |
+| ClickFix | 1285 |
+| nvd | 867 |
+| Mirai | 743 |
+| malware_download | 737 |
 
 ## Multi-source overlaps
 
