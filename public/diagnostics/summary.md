@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-24T16:44:20Z_
+_Generated 2026-09-24T23:05:21Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-24T16:44:20Z |
+| Generated | 2026-09-24T23:05:21Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 8393 |
+| Duplicates removed | 8710 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 1166 |
+| Multi-source overlaps | 1168 |
 | Score (min / avg / max) | 80 / 80.7 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1166 |
+| Corroborated (2+ sources) | 1168 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-09-24T16:43:56Z |
+| Newest first_seen | 2026-09-24T23:04:54Z |
 
 ## Top indicators by score
 
@@ -39,41 +39,41 @@ _Generated 2026-09-24T16:44:20Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 11675 |
+| blocklist_de_ssh | 11626 |
 | binarydefense_banlist | 5786 |
+| greensnow_blocklist | 5476 |
 | ipsum_level5 | 4859 |
-| threatfox_export_json | 4749 |
-| greensnow_blocklist | 4623 |
-| nist_nvd_recent | 2800 |
-| malwarebazaar_recent | 2259 |
-| cisa_kev | 1721 |
+| threatfox_export_json | 4503 |
+| nist_nvd_recent | 2600 |
+| malwarebazaar_recent | 2488 |
+| cisa_kev | 1723 |
 | spamhaus_drop | 1710 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 2881 |
-| domain | 2363 |
-| cve | 2231 |
-| ipv4_cidr | 1406 |
-| url | 694 |
+| sha256 | 2944 |
+| domain | 2281 |
+| cve | 2253 |
+| ipv4_cidr | 1412 |
+| url | 680 |
 | sha1 | 230 |
-| ipv4 | 173 |
+| ipv4 | 178 |
 | md5 | 22 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 3928 |
-| malware | 3295 |
-| cve | 2231 |
-| exploited-in-the-wild | 1721 |
-| drop | 1406 |
-| spamhaus | 1406 |
-| Mirai | 1254 |
-| ClickFix | 1200 |
+| threatfox | 3691 |
+| malware | 3504 |
+| cve | 2253 |
+| exploited-in-the-wild | 1723 |
+| drop | 1412 |
+| spamhaus | 1412 |
+| Mirai | 1378 |
+| ClickFix | 1225 |
 | etherhiding | 1100 |
 | victim | 1041 |
 
