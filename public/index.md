@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-09-24T09:06:46Z_
+_Generated 2026-09-24T16:44:20Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-24T09:06:46Z |
+| Generated | 2026-09-24T16:44:20Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 9066 |
+| Duplicates removed | 8393 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 1141 |
+| Multi-source overlaps | 1166 |
 | Score (min / avg / max) | 80 / 80.7 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1141 |
+| Corroborated (2+ sources) | 1166 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-09-24T09:05:43Z |
+| Newest first_seen | 2026-09-24T16:43:56Z |
 
 ## Top indicators by score
 
@@ -41,43 +41,43 @@ _Generated 2026-09-24T09:06:46Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 11752 |
+| blocklist_de_ssh | 11675 |
 | binarydefense_banlist | 5786 |
-| greensnow_blocklist | 5605 |
-| threatfox_export_json | 4923 |
 | ipsum_level5 | 4859 |
-| nist_nvd_recent | 2882 |
-| malwarebazaar_recent | 2153 |
+| threatfox_export_json | 4749 |
+| greensnow_blocklist | 4623 |
+| nist_nvd_recent | 2800 |
+| malwarebazaar_recent | 2259 |
 | cisa_kev | 1721 |
-| spamhaus_drop | 1712 |
+| spamhaus_drop | 1710 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 2605 |
-| domain | 2458 |
-| cve | 2256 |
-| ipv4_cidr | 1666 |
-| url | 645 |
-| sha1 | 216 |
-| ipv4 | 146 |
-| md5 | 8 |
+| sha256 | 2881 |
+| domain | 2363 |
+| cve | 2231 |
+| ipv4_cidr | 1406 |
+| url | 694 |
+| sha1 | 230 |
+| ipv4 | 173 |
+| md5 | 22 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 3942 |
-| malware | 2983 |
-| cve | 2256 |
+| threatfox | 3928 |
+| malware | 3295 |
+| cve | 2231 |
 | exploited-in-the-wild | 1721 |
-| drop | 1666 |
-| spamhaus | 1666 |
-| ClickFix | 1191 |
+| drop | 1406 |
+| spamhaus | 1406 |
+| Mirai | 1254 |
+| ClickFix | 1200 |
 | etherhiding | 1100 |
 | victim | 1041 |
-| Mirai | 1036 |
 
 ## Multi-source overlaps
 
