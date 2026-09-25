@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-25T16:48:37Z_
+_Generated 2026-09-25T23:09:57Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-25T16:48:37Z |
+| Generated | 2026-09-25T23:09:57Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 8387 |
+| Duplicates removed | 8697 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 1194 |
+| Multi-source overlaps | 1200 |
 | Score (min / avg / max) | 80 / 80.7 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1194 |
+| Corroborated (2+ sources) | 1200 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-09-25T16:40:05Z |
+| Newest first_seen | 2026-09-25T23:09:41Z |
 
 ## Top indicators by score
 
@@ -40,42 +40,42 @@ _Generated 2026-09-25T16:48:37Z_
 | --- | ---: |
 | ci_army_list | 15000 |
 | binarydefense_banlist | 5974 |
+| greensnow_blocklist | 5727 |
 | ipsum_level5 | 5065 |
-| blocklist_de_ssh | 5013 |
-| greensnow_blocklist | 4885 |
-| threatfox_export_json | 3307 |
-| malwarebazaar_recent | 2138 |
-| nist_nvd_recent | 2000 |
-| cisa_kev | 1725 |
+| blocklist_de_ssh | 5015 |
+| threatfox_export_json | 3248 |
+| nist_nvd_recent | 2600 |
+| malwarebazaar_recent | 1985 |
+| cisa_kev | 1726 |
 | spamhaus_drop | 1710 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 3034 |
-| domain | 2416 |
-| cve | 2133 |
-| ipv4_cidr | 1212 |
-| url | 790 |
-| sha1 | 222 |
-| ipv4 | 179 |
-| md5 | 14 |
+| cve | 2588 |
+| sha256 | 2576 |
+| domain | 2448 |
+| ipv4_cidr | 1265 |
+| url | 713 |
+| sha1 | 228 |
+| ipv4 | 162 |
+| md5 | 20 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
 | threatfox | 3908 |
-| malware | 3631 |
-| cve | 2133 |
-| exploited-in-the-wild | 1725 |
-| etherhiding | 1547 |
-| Mirai | 1467 |
+| malware | 3128 |
+| cve | 2588 |
+| exploited-in-the-wild | 1726 |
+| etherhiding | 1563 |
 | victim | 1328 |
-| drop | 1212 |
-| spamhaus | 1212 |
-| ClickFix | 900 |
+| drop | 1265 |
+| spamhaus | 1265 |
+| nvd | 1142 |
+| Mirai | 1104 |
 
 ## Multi-source overlaps
 
