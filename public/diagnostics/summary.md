@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-24T23:05:21Z_
+_Generated 2026-09-25T04:01:36Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-24T23:05:21Z |
+| Generated | 2026-09-25T04:01:36Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 8710 |
+| Duplicates removed | 9268 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
 | Multi-source overlaps | 1168 |
-| Score (min / avg / max) | 80 / 80.7 / 96 |
+| Score (min / avg / max) | 80 / 80.6 / 96 |
 | High-score indicators (≥80) | 10000 |
 | Corroborated (2+ sources) | 1168 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-09-24T23:04:54Z |
+| Newest first_seen | 2026-09-25T03:59:30Z |
 
 ## Top indicators by score
 
@@ -39,43 +39,43 @@ _Generated 2026-09-24T23:05:21Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 11626 |
-| binarydefense_banlist | 5786 |
-| greensnow_blocklist | 5476 |
-| ipsum_level5 | 4859 |
-| threatfox_export_json | 4503 |
-| nist_nvd_recent | 2600 |
-| malwarebazaar_recent | 2488 |
+| blocklist_de_ssh | 11591 |
+| binarydefense_banlist | 5974 |
+| greensnow_blocklist | 5426 |
+| ipsum_level5 | 5065 |
+| threatfox_export_json | 4389 |
+| malwarebazaar_recent | 2642 |
 | cisa_kev | 1723 |
 | spamhaus_drop | 1710 |
+| nist_nvd_recent | 1600 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 2944 |
-| domain | 2281 |
+| sha256 | 3208 |
 | cve | 2253 |
-| ipv4_cidr | 1412 |
-| url | 680 |
+| ipv4_cidr | 1709 |
+| domain | 1651 |
+| url | 738 |
 | sha1 | 230 |
-| ipv4 | 178 |
+| ipv4 | 189 |
 | md5 | 22 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 3691 |
-| malware | 3504 |
+| malware | 3803 |
+| threatfox | 3095 |
 | cve | 2253 |
 | exploited-in-the-wild | 1723 |
-| drop | 1412 |
-| spamhaus | 1412 |
-| Mirai | 1378 |
-| ClickFix | 1225 |
+| drop | 1709 |
+| spamhaus | 1709 |
+| Mirai | 1607 |
 | etherhiding | 1100 |
 | victim | 1041 |
+| nvd | 807 |
 
 ## Multi-source overlaps
 
