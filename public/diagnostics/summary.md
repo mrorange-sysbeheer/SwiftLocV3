@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-25T09:33:05Z_
+_Generated 2026-09-25T16:48:37Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-25T09:33:05Z |
+| Generated | 2026-09-25T16:48:37Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 8866 |
+| Duplicates removed | 8387 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 1192 |
+| Multi-source overlaps | 1194 |
 | Score (min / avg / max) | 80 / 80.7 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1192 |
+| Corroborated (2+ sources) | 1194 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-09-25T09:18:12Z |
+| Newest first_seen | 2026-09-25T16:40:05Z |
 
 ## Top indicators by score
 
@@ -40,42 +40,42 @@ _Generated 2026-09-25T09:33:05Z_
 | --- | ---: |
 | ci_army_list | 15000 |
 | binarydefense_banlist | 5974 |
-| greensnow_blocklist | 5482 |
-| blocklist_de_ssh | 5065 |
 | ipsum_level5 | 5065 |
-| threatfox_export_json | 3178 |
-| malwarebazaar_recent | 2422 |
-| cisa_kev | 1723 |
+| blocklist_de_ssh | 5013 |
+| greensnow_blocklist | 4885 |
+| threatfox_export_json | 3307 |
+| malwarebazaar_recent | 2138 |
+| nist_nvd_recent | 2000 |
+| cisa_kev | 1725 |
 | spamhaus_drop | 1710 |
-| tor_exit_nodes | 1388 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 3384 |
-| cve | 2319 |
-| ipv4_cidr | 1709 |
-| domain | 1356 |
-| url | 786 |
-| sha1 | 230 |
-| ipv4 | 194 |
-| md5 | 22 |
+| sha256 | 3034 |
+| domain | 2416 |
+| cve | 2133 |
+| ipv4_cidr | 1212 |
+| url | 790 |
+| sha1 | 222 |
+| ipv4 | 179 |
+| md5 | 14 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| malware | 3946 |
-| threatfox | 2910 |
-| cve | 2319 |
-| exploited-in-the-wild | 1723 |
-| Mirai | 1710 |
-| drop | 1709 |
-| spamhaus | 1709 |
-| etherhiding | 1051 |
-| victim | 1041 |
-| nvd | 873 |
+| threatfox | 3908 |
+| malware | 3631 |
+| cve | 2133 |
+| exploited-in-the-wild | 1725 |
+| etherhiding | 1547 |
+| Mirai | 1467 |
+| victim | 1328 |
+| drop | 1212 |
+| spamhaus | 1212 |
+| ClickFix | 900 |
 
 ## Multi-source overlaps
 
