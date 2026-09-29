@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-09-29T17:50:32Z_
+_Generated 2026-09-29T23:32:24Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-09-29T17:50:32Z |
+| Generated | 2026-09-29T23:32:24Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 5639 |
+| Duplicates removed | 5911 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 1349 |
+| Multi-source overlaps | 1360 |
 | Score (min / avg / max) | 80 / 80.7 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1349 |
+| Corroborated (2+ sources) | 1360 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-09-29T17:50:04Z |
+| Newest first_seen | 2026-09-29T23:24:29Z |
 
 ## Top indicators by score
 
@@ -39,43 +39,43 @@ _Generated 2026-09-29T17:50:32Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 5421 |
-| greensnow_blocklist | 4934 |
+| greensnow_blocklist | 5762 |
+| blocklist_de_ssh | 5455 |
 | ipsum_level5 | 4242 |
-| threatfox_export_json | 2635 |
-| nist_nvd_recent | 1989 |
+| threatfox_export_json | 2573 |
+| nist_nvd_recent | 2400 |
 | cisa_kev | 1729 |
 | spamhaus_drop | 1694 |
-| tor_exit_nodes | 1396 |
-| malwarebazaar_recent | 1194 |
+| tor_exit_nodes | 1407 |
+| malwarebazaar_recent | 1202 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 3314 |
-| cve | 3090 |
+| cve | 3245 |
+| sha256 | 3154 |
 | ipv4_cidr | 1693 |
-| url | 853 |
-| domain | 562 |
-| sha1 | 231 |
-| ipv4 | 214 |
-| md5 | 43 |
+| url | 828 |
+| domain | 572 |
+| sha1 | 245 |
+| ipv4 | 206 |
+| md5 | 57 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| malware | 3812 |
-| cve | 3090 |
-| threatfox | 2436 |
+| malware | 3620 |
+| cve | 3245 |
+| threatfox | 2485 |
+| nvd | 1804 |
 | exploited-in-the-wild | 1729 |
 | drop | 1693 |
 | spamhaus | 1693 |
-| nvd | 1648 |
-| Mirai | 1513 |
-| malware_download | 663 |
-| high | 546 |
+| Mirai | 1412 |
+| malware_download | 627 |
+| high | 577 |
 
 ## Multi-source overlaps
 
