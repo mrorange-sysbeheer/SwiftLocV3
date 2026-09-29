@@ -3,305 +3,305 @@
   <title>SwiftIOC — Newest High-Confidence IOCs</title>
   <link>https://github.com/PKHarsimran/SwiftIOC-Automated-Threat-Intelligence-Collector</link>
   <description>Freshest scored, cross-source-corroborated indicators of compromise.</description>
-  <lastBuildDate>Tue, 29 Sep 2026 00:16:20 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 29 Sep 2026 10:30:14 +0000</lastBuildDate>
     <item>
-      <title>[80] ipv4_cidr: 194.11.246.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">70d439b1-81e8-565f-b697-dea94c608a76</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] url: hxxp://116[.]140[.]72[.]57:42295/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">b6c8ae6c-4155-56aa-9488-b26a7b39c748</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:20 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 194.180.64.0/20</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">3e5e386a-3eb8-512f-9b4a-e3128216836c</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-96422</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">c70c4823-9115-5757-8a95-4d64a91280aa</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:17 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 194.26.192.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">5a315118-a5d9-5665-9032-4dda96c893f3</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-96423</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">f341bf90-86ec-5cf2-9e3c-db9c10cb1a36</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:17 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 194.26.29.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">e40784bc-fec0-5ffb-aded-bd8a87708de6</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-96415</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">96c12c6d-c4dc-5b62-9f17-0fd5dd283a11</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:16 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 194.26.69.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">048daffe-465b-5058-9837-7db67006a5ef</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-96416</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">c68336b2-e6c2-5b19-816f-2024a042adf3</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:16 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 194.38.20.0/22</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">d7fb11b5-1491-52f5-815a-364511b6bf15</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-96417</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">8dffcc9c-0f81-50a5-968c-0855d58f5004</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:16 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 194.38.21.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">3e016355-4316-5c55-98ec-acc0364f5fef</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-96418</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">d95921b0-a672-5d4e-adc2-ef17c977724f</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:16 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 194.38.22.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">84af9102-d893-5498-be1d-8fe3897c66b4</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-96419</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">031c3034-87cf-58ed-84d5-967b7d489f85</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:16 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 194.41.60.0/23</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">28a42cb5-eda8-5cd7-9e89-97a0d4bd6f26</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-96420</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">b3bbc53b-0404-579b-a0c3-351ea35987d7</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:16 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 194.62.244.0/22</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">6c5086a8-2ef7-5f59-8f44-2ffed94e46eb</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-96421</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">a1f0669f-e794-5a07-b0ce-fab24047ce70</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:16 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 194.85.250.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">50bb617f-e03a-55e3-bfc1-db4ca6b21c2d</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] url: hxxp://120[.]84[.]214[.]68:34472/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">51891cae-0e48-5828-95e0-56ea57cb9a89</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:16 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 195.133.16.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">16256eb0-a7cd-539c-b220-080cb0ae4685</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-95389</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">a10dddf7-bc7b-56bf-9736-9e64736bab05</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 195.177.92.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">12433286-021e-53b9-a028-53eb609dcc5a</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-95390</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">71a35c38-5fc8-52b5-bbaa-c485511e0c2a</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 195.178.148.0/23</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">e4d0ebf8-f0d9-55ef-9445-c3e794c8e5a9</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-95391</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">a16ca83a-64ea-506f-9435-bd2d316439b2</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 195.181.224.0/20</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">178e6e35-3fe8-5f57-8175-7f5017eb6ef8</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-95392</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">e26ba905-58a1-5c2d-9738-681aa37e812c</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 195.24.237.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">008e9056-b4a9-5b5e-a211-a96fafca81bb</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-95393</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">9175b361-6b43-595b-a34c-ce09caf5d98f</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 195.96.32.0/19</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">2bf31fae-ab76-5fe0-b993-80ba9b275a8e</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-95394</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">24649ac0-547a-5a4f-909b-76143268e8cf</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.10.61.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">98c1773a-5a89-5f2b-a158-2b6faf48eaca</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-95395</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">9eeb046c-df38-52d4-ab95-e03a97dddda1</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.10.62.0/23</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">72d539bd-13fc-580a-8d87-5bbb4e2ad231</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] url: hxxp://113[.]203[.]196[.]89:53938/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">678eef59-69cc-5874-9895-0ffd1da95642</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.10.64.0/19</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">731f0746-932a-5bf4-9c85-6c8e085e8035</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] url: hxxp://42[.]229[.]218[.]253:49209/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">c7978607-cb31-5f57-b0e5-850f3fe4d2ef</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.15.64.0/18</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">2cd417d7-074a-5bc3-8b25-77296a6bf917</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-95386</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">a8b174b0-3e5d-58ff-8d34-d3011caf8243</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:14 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.16.0.0/14</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">2fe665d0-f771-5961-8c8c-9714053f0b59</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-95387</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">4842802a-f52a-5c7a-a7ce-c3f70ecab509</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:14 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.216.1.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">325d8cf9-bc8a-563e-b4eb-07a8b210c2fb</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-95388</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">b62eff0f-88f4-5c33-bb1c-aa08d70b08ab</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:14 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.223.43.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">fa776c1b-7493-52d4-9d8a-010bf08d3b58</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-8065</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: critical,cve,nvd</description>
+      <guid isPermaLink="false">437a249e-88b3-5fe8-8340-051f9f857564</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:13 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.100.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">f27ee4aa-58aa-5b75-b164-3a8e27ae0e41</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-8066</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: critical,cve,nvd</description>
+      <guid isPermaLink="false">8cbdee44-dca2-55af-8841-9c73aa9e6232</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:13 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.102.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">7db0f251-7a96-52e4-8480-f8ea3204067c</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-8067</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">291410aa-8eeb-5a43-ac11-c0a51ffb5f1f</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:13 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.107.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">e758cf97-0bf1-5db9-8876-15c811f7c3ab</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-8937</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">b9028790-e427-5d40-b314-804b3ecc0bae</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:13 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.112.0/22</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">cd3232b5-ffe8-5b54-9bde-bba64adf5fb1</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-7395</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
+      <guid isPermaLink="false">331813b5-76a6-5115-a0fe-2a50f6159f55</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:12 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.116.0/23</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">594012dd-8f0b-5f9b-9143-cdb50748896b</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-76720</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">ee94c6b9-521c-5d6c-87fa-bd8299d3cb89</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:12 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.118.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">77eaf695-894b-5c0a-9401-2a71a18d986b</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-81862</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
+      <guid isPermaLink="false">1c9d21c8-a3ba-53dc-8732-5f45413739dc</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:12 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.121.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">db7db52d-0a8a-5d10-8260-973b51799e96</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-81914</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
+      <guid isPermaLink="false">73068803-e0e5-5af1-a204-535325df76a5</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:12 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.122.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">c760d833-0870-51b5-a21e-dd6b65ad8fe4</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-81930</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
+      <guid isPermaLink="false">42b1c05f-e89d-50bf-b51c-b2618ebc3119</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:12 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.66.0/23</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">8e027279-2d06-59c7-ad06-be91ffae856b</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-84739</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">5b7ff25b-0ea9-5a45-80d1-e9a8e2bb47be</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:12 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.69.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">713a5ae7-2c58-52f6-a60f-0de87ce94435</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-86843</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
+      <guid isPermaLink="false">48b1599d-13b1-5b8c-8b0f-4c1e83d6b9cb</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:12 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.80.0/23</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">0c0cdcc0-93c2-5961-a6bd-d7653d4657f8</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-11796</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
+      <guid isPermaLink="false">7830f17f-fc16-5b16-9262-4510c170dcef</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.85.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">0aae2b0d-d46f-5676-b7f5-e29b9ddd107c</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-15390</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
+      <guid isPermaLink="false">9d5ec2f0-5cd2-5893-9dd4-60666b3630d7</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.92.0/22</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">e1eaade5-f3c8-500a-bc4e-5531af625aaf</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-19547</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
+      <guid isPermaLink="false">7f70338e-0c23-5572-a698-9b8261f53ed6</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.96.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">16551bdc-cec2-52a8-9b0b-71c89377c657</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-4523</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,low,nvd</description>
+      <guid isPermaLink="false">830ef243-7fb6-58b3-b5fb-fdac1a03c536</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.251.98.0/23</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">94bb0ba2-8813-5946-9650-f1b5dd569076</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-76718</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">52eac219-6c8b-5b0e-be04-08e702ba03c8</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 196.49.11.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">4e674e3c-1556-5462-ae44-c3bd7cbc4b74</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-76719</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">dc39ea73-9a01-531b-a932-9fc83ff0f7ea</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 197.11.156.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">3fc83ef1-6adb-5661-90e6-7fe022f43758</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-102473</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">fa9c90db-94af-5ecb-9d58-3bfa46b2cf75</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 197.231.248.0/22</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">0f5f0c09-5d47-5544-bfa3-9c0b9fdaa43c</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-102474</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">b1bd6198-d4d9-5795-8833-40aa1443e8c8</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 197.234.221.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">e91d8685-4ca6-5ce1-a1fd-12a685e6ea9a</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] cve: CVE-2026-10518</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">87d5ab37-80a4-5854-b074-4d65a4a009e4</guid>
+      <pubDate>Tue, 29 Sep 2026 10:17:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 198.102.222.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">a43a61f6-7b28-540d-9313-bd3c66af495a</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] url: hxxp://222[.]127[.]170[.]183:51305/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,mirai</description>
+      <guid isPermaLink="false">7fc2683e-bcb0-55f7-a743-c3e3f4ec71b2</guid>
+      <pubDate>Tue, 29 Sep 2026 10:02:31 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 198.13.64.0/21</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">b8286962-2db0-550f-b471-b8b66908f620</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] url: hxxp://115[.]62[.]176[.]18:37375/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,Mozi</description>
+      <guid isPermaLink="false">58778340-b62d-5060-b11b-f5c7cb604e59</guid>
+      <pubDate>Tue, 29 Sep 2026 10:02:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 198.13.72.0/23</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">3557b750-4ba3-5d70-8060-6245a6ae6bdb</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] url: hxxp://120[.]84[.]215[.]61:50677/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">17d18323-b028-512c-8bc8-4ff236a95689</guid>
+      <pubDate>Tue, 29 Sep 2026 10:02:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 198.133.120.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">7abb8bac-369d-5407-83cd-8562f3b3c76a</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] url: hxxp://222[.]142[.]93[.]87:45263/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,mirai</description>
+      <guid isPermaLink="false">5af36c61-b788-51f4-afd3-1dc7f8c88923</guid>
+      <pubDate>Tue, 29 Sep 2026 10:02:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 198.133.88.0/22</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">f02c78eb-9eca-5f52-bcdb-52126e073146</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] url: hxxp://210[.]208[.]106[.]68:41787/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,mirai</description>
+      <guid isPermaLink="false">9f44474e-494e-5397-b99f-591f2eb0cd5f</guid>
+      <pubDate>Tue, 29 Sep 2026 10:02:14 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 198.134.139.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">87e8a9a6-9328-58f9-b765-dfdf1fee517b</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] url: hxxp://42[.]230[.]206[.]118:44734/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">9265542a-8a49-50db-a9c3-73d8960310ba</guid>
+      <pubDate>Tue, 29 Sep 2026 10:02:14 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 198.135.237.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">c673fb27-e126-5338-817d-c93fec919f35</guid>
-      <pubDate>Tue, 29 Sep 2026 00:15:22 +0000</pubDate>
+      <title>[80] url: hxxp://115[.]57[.]254[.]244:47288/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,Mozi</description>
+      <guid isPermaLink="false">7987f7f7-a579-59b4-b16e-0df656b79ce5</guid>
+      <pubDate>Tue, 29 Sep 2026 09:47:21 +0000</pubDate>
     </item>
 </channel></rss>
