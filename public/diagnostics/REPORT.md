@@ -4,19 +4,19 @@
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-03T04:23:17Z |
+| Generated | 2026-10-03T13:08:24Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 3413 |
-| Carried forward | 2930 |
+| Duplicates removed | 2115 |
+| Carried forward | 2584 |
 | Expired (score < 20) | 0 |
 | Aged out (> 30d) | 0 |
-| Pruned over cap (10000) | 25781 |
+| Pruned over cap (10000) | 24582 |
 | Stored | 10000 |
 | Score (min / avg / max) | 80 / 80.7 / 96 |
 | High-confidence indicators | 10000 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-03T04:05:18Z |
+| Newest first_seen | 2026-10-03T13:08:12Z |
 
 ## Per-source counts
 
@@ -29,30 +29,32 @@
 | dshield_block | 20 |
 | et_compromised | 621 |
 | feodo_ipblocklist | 5 |
-| greensnow_blocklist | 5640 |
+| greensnow_blocklist | 0 |
 | ipsum_level5 | 3528 |
-| malwarebazaar_recent | 1165 |
-| nist_nvd_recent | 400 |
+| malwarebazaar_recent | 984 |
+| nist_nvd_recent | 2188 |
 | openphish_feed | 300 |
 | spamhaus_drop | 1693 |
 | sslbl_ja3 | 97 |
-| threatfox_export_json | 2861 |
-| tor_exit_nodes | 1376 |
-| urlhaus_recent_urls | 752 |
+| threatfox_export_json | 4810 |
+| tor_exit_nodes | 1388 |
+| urlhaus_recent_urls | 673 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 3170 |
-| cve | 2484 |
-| ipv4_cidr | 1673 |
-| domain | 1156 |
-| url | 1107 |
-| ipv4 | 214 |
-| sha1 | 144 |
-| md5 | 52 |
+| sha256 | 3259 |
+| cve | 2593 |
+| domain | 1998 |
+| url | 973 |
+| ipv4_cidr | 778 |
+| ipv4 | 193 |
+| sha1 | 149 |
+| md5 | 57 |
 
 ## Issues
 
+- ⚠️ **greensnow_blocklist**: 503 Server Error: Service Unavailable for url: https://blocklist.greensnow.co/greensnow.txt
 - ⚠️ **blocklist_de_ssh** returned zero indicators
+- ⚠️ **greensnow_blocklist** returned zero indicators
