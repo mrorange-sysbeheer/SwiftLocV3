@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-10-04T19:18:03Z_
+_Generated 2026-10-04T22:52:12Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-04T19:18:03Z |
+| Generated | 2026-10-04T22:52:12Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 2791 |
+| Duplicates removed | 2775 |
 | Sources reporting | 16 |
 | Indicator types | 8 |
-| Multi-source overlaps | 1405 |
+| Multi-source overlaps | 1422 |
 | Score (min / avg / max) | 80 / 80.7 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1405 |
+| Corroborated (2+ sources) | 1422 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-04T19:17:55Z |
+| Newest first_seen | 2026-10-04T22:50:23Z |
 
 ## Top indicators by score
 
@@ -41,26 +41,26 @@ _Generated 2026-10-04T19:18:03Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| threatfox_export_json | 4894 |
-| greensnow_blocklist | 4305 |
+| threatfox_export_json | 4785 |
+| greensnow_blocklist | 4258 |
 | ipsum_level5 | 3731 |
-| cisa_kev | 1733 |
+| cisa_kev | 1734 |
 | spamhaus_drop | 1692 |
-| tor_exit_nodes | 1398 |
 | binarydefense_banlist | 1397 |
-| malwarebazaar_recent | 1036 |
-| urlhaus_recent_urls | 864 |
+| tor_exit_nodes | 1384 |
+| malwarebazaar_recent | 972 |
+| urlhaus_recent_urls | 868 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 3934 |
-| cve | 1925 |
+| sha256 | 3909 |
+| cve | 1901 |
 | ipv4_cidr | 1691 |
-| domain | 1250 |
-| url | 996 |
-| ipv4 | 173 |
+| domain | 1264 |
+| url | 1016 |
+| ipv4 | 188 |
 | sha1 | 26 |
 | md5 | 5 |
 
@@ -68,16 +68,16 @@ _Generated 2026-10-04T19:18:03Z_
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 4653 |
-| malware | 2803 |
-| Mirai | 2217 |
-| elf | 2152 |
-| cve | 1925 |
-| exploited-in-the-wild | 1733 |
+| threatfox | 4670 |
+| malware | 2826 |
+| Mirai | 2195 |
+| elf | 2154 |
+| cve | 1901 |
+| exploited-in-the-wild | 1734 |
 | drop | 1691 |
 | spamhaus | 1691 |
-| etherhiding | 960 |
-| malware_download | 818 |
+| etherhiding | 977 |
+| malware_download | 858 |
 
 ## Multi-source overlaps
 

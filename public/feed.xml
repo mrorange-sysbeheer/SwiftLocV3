@@ -3,305 +3,305 @@
   <title>SwiftIOC — Newest High-Confidence IOCs</title>
   <link>https://github.com/PKHarsimran/SwiftIOC-Automated-Threat-Intelligence-Collector</link>
   <description>Freshest scored, cross-source-corroborated indicators of compromise.</description>
-  <lastBuildDate>Sun, 04 Oct 2026 19:18:04 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 22:52:13 +0000</lastBuildDate>
     <item>
-      <title>[80] ipv4_cidr: 185.192.103.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">01a403cf-b34c-5472-b9a7-8b86485ad8b7</guid>
-      <pubDate>Sun, 04 Oct 2026 19:17:55 +0000</pubDate>
+      <title>[80] url: hxxp://27[.]215[.]124[.]85:40583/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
+      <guid isPermaLink="false">40ece05b-ee8b-5310-8e9f-c28c84f66392</guid>
+      <pubDate>Sun, 04 Oct 2026 22:50:23 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4: 8[.]145[.]54[.]119</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vshell</description>
-      <guid isPermaLink="false">0b5b5d6a-5d8f-5558-8dfb-8072247cfe37</guid>
-      <pubDate>Sun, 04 Oct 2026 19:05:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] ipv4: 124[.]221[.]195[.]107</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vshell</description>
-      <guid isPermaLink="false">54ca4ccc-8374-59cc-91b7-7c731e6c24f2</guid>
-      <pubDate>Sun, 04 Oct 2026 19:05:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] ipv4: 47[.]95[.]255[.]0</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vshell</description>
-      <guid isPermaLink="false">027347e8-ed77-586f-a7a9-9ad77a66dc2d</guid>
-      <pubDate>Sun, 04 Oct 2026 19:05:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] ipv4: 193[.]160[.]32[.]191</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: havoc,threatfox</description>
-      <guid isPermaLink="false">0615b258-0146-50af-81ad-31b076183bcc</guid>
-      <pubDate>Sun, 04 Oct 2026 19:05:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://163[.]142[.]95[.]133:35060/i</title>
+      <title>[80] url: hxxp://210[.]208[.]111[.]36:45746/i</title>
       <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">d031dfc3-32c8-5821-bb57-917d209ecabb</guid>
-      <pubDate>Sun, 04 Oct 2026 19:02:16 +0000</pubDate>
+      <guid isPermaLink="false">0361d831-2c8b-513e-b70b-c6073933a807</guid>
+      <pubDate>Sun, 04 Oct 2026 22:47:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://119[.]109[.]131[.]25:46544/i</title>
+      <title>[80] url: hxxp://115[.]57[.]230[.]101:45103/i</title>
       <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">638a2227-8ee2-50b2-b08c-f6ebd5996945</guid>
-      <pubDate>Sun, 04 Oct 2026 19:02:15 +0000</pubDate>
+      <guid isPermaLink="false">56fe2e51-b492-59c5-bf93-34e23593e2b5</guid>
+      <pubDate>Sun, 04 Oct 2026 22:47:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://222[.]127[.]77[.]227:55176/i</title>
+      <title>[80] url: hxxp://175[.]165[.]82[.]127:40349/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">2b2eb805-58ac-5d21-af71-9e13cd8680ea</guid>
+      <pubDate>Sun, 04 Oct 2026 22:47:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://185[.]9[.]139[.]117:56174/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">8a0f34e2-86d2-5ae9-9079-61dea0453a61</guid>
+      <pubDate>Sun, 04 Oct 2026 22:47:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://195[.]64[.]243[.]84:46567/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">329c77df-9e89-5f84-aa70-95ee6387a36b</guid>
+      <pubDate>Sun, 04 Oct 2026 22:47:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: cutstudios[.]life</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Malvertising,ScreenConnect,threatfox</description>
+      <guid isPermaLink="false">1380a0ac-896b-5621-9974-ef1a30083208</guid>
+      <pubDate>Sun, 04 Oct 2026 22:33:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: onlinecapcutedit[.]top</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Malvertising,ScreenConnect,threatfox</description>
+      <guid isPermaLink="false">6fde5cf7-a58e-501e-acc6-6c69f2b19f2b</guid>
+      <pubDate>Sun, 04 Oct 2026 22:33:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://112[.]239[.]102[.]153:56602/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,Mozi</description>
+      <guid isPermaLink="false">bd88347c-ce1e-5378-8d0b-0d13238e2ef8</guid>
+      <pubDate>Sun, 04 Oct 2026 22:32:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: relay[.]goruf[.]top</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: C2,ScreenConnect,threatfox</description>
+      <guid isPermaLink="false">25a703af-5f03-52cf-a475-1886f79c274f</guid>
+      <pubDate>Sun, 04 Oct 2026 22:32:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://101[.]108[.]103[.]170:55932/bin[.]sh</title>
       <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,mirai</description>
-      <guid isPermaLink="false">2db90432-93a2-5546-8e24-d733d926b42c</guid>
-      <pubDate>Sun, 04 Oct 2026 19:02:15 +0000</pubDate>
+      <guid isPermaLink="false">2d04e1e8-3a1e-5449-9bc0-083604f2fe9e</guid>
+      <pubDate>Sun, 04 Oct 2026 22:32:15 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://59[.]180[.]137[.]179:51827/i</title>
+      <title>[80] url: hxxp://117[.]63[.]140[.]246:35202/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,mirai</description>
+      <guid isPermaLink="false">d6e21cb6-c9b3-5f18-9747-d33017a8193a</guid>
+      <pubDate>Sun, 04 Oct 2026 22:32:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://61[.]52[.]36[.]98:52546/bin[.]sh</title>
       <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,Mozi</description>
-      <guid isPermaLink="false">8b1606d5-2828-5991-b8bc-e952545f00ff</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:22 +0000</pubDate>
+      <guid isPermaLink="false">30eb39aa-543e-5eb7-9f16-e2d1409195df</guid>
+      <pubDate>Sun, 04 Oct 2026 22:32:14 +0000</pubDate>
     </item>
     <item>
-      <title>[80] sha256: 6405e74062001cee6bd48304ef8fa7a1ef8851533b29a48f80dc9f06f2ba8fef</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Hajime,Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">c598f86a-e10d-5e2d-af3e-d0688ed3feff</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:15 +0000</pubDate>
+      <title>[80] url: hxxp://115[.]50[.]177[.]89:59352/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,mirai</description>
+      <guid isPermaLink="false">0ce1a34b-7498-5348-867e-4e8273cef77e</guid>
+      <pubDate>Sun, 04 Oct 2026 22:32:13 +0000</pubDate>
     </item>
     <item>
-      <title>[80] sha256: c1733f4b2ace718b484b9d63af7713ddda9c6e9a182fec4e55b80d6ee56f635c</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,exe,threatfox</description>
-      <guid isPermaLink="false">7ef367d9-2470-5561-8eaf-5466645bfe4e</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 73362f2cb172216654c2f73341cbf23eceb67e39f9c125e7b719d2d73f261fab</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,exe,threatfox,upx</description>
-      <guid isPermaLink="false">c737d179-f291-50d4-9980-d45317f1caf6</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://42[.]224[.]13[.]6:40505/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,Mozi</description>
-      <guid isPermaLink="false">7505970a-6856-56e9-9cb2-44876132651f</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 88a1d3a4b48679023f740e25593ba6c7618b342b29a3d5a9dfd90c508b2e49c2</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,exe,threatfox,upx</description>
-      <guid isPermaLink="false">75344fc8-2d52-53d5-845b-29825c10b921</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:12 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://176[.]90[.]0[.]152:34016/i</title>
+      <title>[80] url: hxxp://119[.]114[.]58[.]206:37192/i</title>
       <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">7de0ce1e-d371-5d27-a47b-ee01a57bc10c</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:12 +0000</pubDate>
+      <guid isPermaLink="false">48f25986-d506-59b8-a5e9-fb8af43f5fd3</guid>
+      <pubDate>Sun, 04 Oct 2026 22:32:13 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://202[.]1[.]26[.]20:60510/i</title>
+      <title>[80] url: hxxp://175[.]149[.]69[.]12:36126/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">9022f1c1-96af-5d51-ad6c-5f367baebd9b</guid>
+      <pubDate>Sun, 04 Oct 2026 22:32:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://182[.]116[.]121[.]105:35375/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">d297c3ae-37ce-5e05-ba7e-80260532bc9e</guid>
+      <pubDate>Sun, 04 Oct 2026 22:32:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://195[.]64[.]243[.]84:46567/bin[.]sh</title>
       <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,Mozi</description>
-      <guid isPermaLink="false">35347a03-64ef-5a9f-83f5-c1f77123d447</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:12 +0000</pubDate>
+      <guid isPermaLink="false">91e6d052-aec5-5c1f-b3e9-8c3e6b897ccd</guid>
+      <pubDate>Sun, 04 Oct 2026 22:32:13 +0000</pubDate>
     </item>
     <item>
-      <title>[80] sha256: bb39866f5148a58eb55efc7a54d87a859900f85fb5cc42213fa5a94fd4c76a1e</title>
+      <title>[80] url: hxxp://42[.]227[.]128[.]111:47712/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">9290e749-4fec-5da6-a44d-e295bdaf022b</guid>
+      <pubDate>Sun, 04 Oct 2026 22:32:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://42[.]86[.]171[.]184:38220/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
+      <guid isPermaLink="false">c113dbdb-44e2-503c-8677-264c09245ef9</guid>
+      <pubDate>Sun, 04 Oct 2026 22:30:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://glolsbs[.]top:5621/reports</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: remus,threatfox</description>
+      <guid isPermaLink="false">6661a5ed-232e-5dd0-af31-f92af11bf90c</guid>
+      <pubDate>Sun, 04 Oct 2026 22:25:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://nexssbs[.]sbs:9932/permissions</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: remus,threatfox</description>
+      <guid isPermaLink="false">448ce551-7b6a-52f2-97c4-3e4602a0cf2e</guid>
+      <pubDate>Sun, 04 Oct 2026 22:25:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://175[.]173[.]83[.]182:55460/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">7a08abbf-6116-5dfc-ae40-1c540486699d</guid>
+      <pubDate>Sun, 04 Oct 2026 22:17:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://123[.]11[.]37[.]175:53385/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,mirai</description>
+      <guid isPermaLink="false">02630a6c-eb7b-563f-ab72-e5eeaf676077</guid>
+      <pubDate>Sun, 04 Oct 2026 22:17:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-105164</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,low,nvd</description>
+      <guid isPermaLink="false">c36b7cba-94a3-510b-9e3b-4907e54ecfe9</guid>
+      <pubDate>Sun, 04 Oct 2026 22:16:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-105163</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">751460ef-b645-5b6b-9eee-23a1d60c92d2</guid>
+      <pubDate>Sun, 04 Oct 2026 22:16:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://175[.]173[.]83[.]182:55460/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">f8d7f2d6-2490-5846-99ab-ba306b15bfc1</guid>
+      <pubDate>Sun, 04 Oct 2026 22:16:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://103[.]152[.]100[.]5:55138/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
+      <guid isPermaLink="false">827a2097-c5bf-50cf-b535-600d1d0cd4d1</guid>
+      <pubDate>Sun, 04 Oct 2026 22:03:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://115[.]50[.]177[.]89:59352/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,mirai</description>
+      <guid isPermaLink="false">c5c36473-6e27-5efc-b245-817da5b3257a</guid>
+      <pubDate>Sun, 04 Oct 2026 22:02:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://175[.]149[.]69[.]12:36126/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">3c8ac3ee-665d-5973-8e5f-35b6677cdd41</guid>
+      <pubDate>Sun, 04 Oct 2026 22:02:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://59[.]97[.]249[.]223:52004/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,Mozi</description>
+      <guid isPermaLink="false">a6b4d5dc-342e-5b9b-ba13-b8b4c228f9a8</guid>
+      <pubDate>Sun, 04 Oct 2026 22:02:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://60[.]22[.]160[.]80:53487/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">8a4efc17-cbd3-5e8f-b019-f1416ff30ce2</guid>
+      <pubDate>Sun, 04 Oct 2026 22:02:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://123[.]11[.]37[.]175:53385/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,mirai</description>
+      <guid isPermaLink="false">1302cc7f-aeb2-5f55-bc52-1fac146b053a</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://42[.]227[.]128[.]111:47712/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">49f3f715-6e04-5185-a31a-b38100bcc30c</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxp://222[.]138[.]204[.]136:43912/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,Mozi</description>
+      <guid isPermaLink="false">e590b9e8-691f-5e7b-a936-611285ffd17d</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] sha256: a68bbc13289408eee17179859665e093c1652968d3828ac3c9105103071164e5</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx,wraith</description>
+      <guid isPermaLink="false">075912f4-d27f-5cd4-a1f0-97261030446e</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] sha256: 266feb3ba73d372c4296c2c915cdca8a99385608ad5939608184bf5b6088d6b4</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx,wraith</description>
+      <guid isPermaLink="false">a865622e-bcd7-5c29-a1d0-7c3163dfd855</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] sha256: 89a77d3ab866c1175a871b7d1a7427ceb9c1a631e1bdede1196b0f04f5cd29b8</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
+      <guid isPermaLink="false">08036552-0ff3-5fe4-aa28-31a65d385318</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] sha256: d0dc64eec7049199eb7516c17bd2daea7fdc14ee8c103f70f98a9340a1acfcfd</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
+      <guid isPermaLink="false">199a7d90-8dec-5f70-aef5-f9979da763e7</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] sha256: 0307e6000144077d429f477fbf400e043a64cb0ae9808603074178af39fa1e0f</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: Gafgyt,Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">e16a82fe-54d1-5243-904a-a2a2dbd9eb18</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:11 +0000</pubDate>
+      <guid isPermaLink="false">d12bb648-bfd3-5718-be2b-74191cbad51b</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://79[.]165[.]94[.]220:60716/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">aaaeecda-9c70-51d7-a9fc-b2ea010b1c26</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:11 +0000</pubDate>
+      <title>[80] sha256: 5401b5072072b0d8a3469f3dbc7fc62ad67f22519d029c981ed6230af40fab8a</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Gafgyt,Mirai,elf,threatfox</description>
+      <guid isPermaLink="false">11178cc2-2339-5c53-8e5b-4b22074a77c3</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] sha256: 675e38b86871fcde9f0b75e1a0df9e973e6928ffec3e017c643369650e6eab2c</title>
+      <title>[80] sha256: 2ff37f885f327d2dd5f12979bf33cc5c2dbb291aab61f22f88aac6962fc25fed</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Gafgyt,Mirai,elf,threatfox</description>
+      <guid isPermaLink="false">7019fe31-a356-5472-b10d-a2962a71cee3</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] sha256: 4d97b07632fe7aaeb4f0b4a300967721202e20a24cd742248a08ea7905cfe688</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Gafgyt,Mirai,elf,threatfox</description>
+      <guid isPermaLink="false">bf91372b-a14a-5c01-861e-4811c3d883d9</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] sha256: f68b88f248734b9823e3a56938d4b30874b7b0f90ba4b89371cba0e3894fad0a</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx</description>
-      <guid isPermaLink="false">233693ab-6792-5c86-8e7f-22fbd3ecb27d</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:06 +0000</pubDate>
+      <guid isPermaLink="false">bcdd73dc-e9f7-57bd-8d21-2eea1c3a8a83</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:03 +0000</pubDate>
     </item>
     <item>
-      <title>[80] sha256: 210edf2fb2b4cc1f9cc73b05858cd5524d402a00e4700e583aa1a746fae3b717</title>
+      <title>[80] sha256: 5cc1ee595d741ec25b89cfefd35513dcc556b2757f5bf059005a87909446f5a9</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
+      <guid isPermaLink="false">a51238bb-8965-516b-bbe6-7745dff6007c</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] sha256: 1d822b86c80ca3a3daeeeb295cb2a512e617d6f0b8660042dd200210baadfdcd</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx</description>
-      <guid isPermaLink="false">581801c1-e2cd-5b46-9162-4e20f8b8a840</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:05 +0000</pubDate>
+      <guid isPermaLink="false">d54df4ee-96a0-55b5-93d1-22c4d8c35a96</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:01 +0000</pubDate>
     </item>
     <item>
-      <title>[80] sha256: 32ead15908ca61088701ec6ee4c692658585746bafb52cce23c047d035fc91a5</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: 54e64e,PureLogsStealer,bat,dropped-by-Amadey,ps1,stealer,threatfox</description>
-      <guid isPermaLink="false">eed08030-8d8f-53e7-9aa9-5b341d34949e</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:04 +0000</pubDate>
+      <title>[80] sha256: 4086fbc79cacbd8bb4c3d915ef1811956c14e5e64a093015ec770c8784078f2b</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: GCleaner,exe,threatfox</description>
+      <guid isPermaLink="false">91899f26-64f3-51f2-b38d-f0830cb030a9</guid>
+      <pubDate>Sun, 04 Oct 2026 21:47:00 +0000</pubDate>
     </item>
     <item>
-      <title>[80] sha256: edfa292a63fa4b57855d2caae989243189435f4ee043ddbc5ee14c0652ed3694</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">25d703a4-26f9-5959-9cde-7a1a32e12b81</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:03 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 05e1003e63865a41fd2955642be8e217ee7b4e8500d673d87fd15ad93b6ec296</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">a2a12307-4f4e-5120-b253-83576511f7b3</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:02 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: b5513e73c83074342c5fc43ca2c6aa1db59b94bbbe564642106e3680e99de4eb</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">5075ed70-969e-50a5-b95e-9ce823f571c6</guid>
-      <pubDate>Sun, 04 Oct 2026 18:47:01 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 202c71cccc63a9bad0c94b898a6447c2723724c7c534bfb7f2143eb6a50a2196</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: AgentTesla,exe,threatfox</description>
-      <guid isPermaLink="false">be8ce1bc-8637-543f-a79c-6b18dbfe3419</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 28c0fd06d5941385aa22510ec520ad04f19a7cfd8c583e676d6113d1e00e5611</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">9cd64d39-e87a-5efd-bb94-1c4ae09c06d4</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:59 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: bc94f10c4b7da185b319cf4b6195321d4d456ff877324d905867df810880c22c</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">731cd83c-c849-5d8f-adf9-7c69b2d4b303</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: c9ccc5a26c2226dc4ff595af21db15018d6cb02f663df845ca3a498e6346e1e8</title>
+      <title>[80] sha256: 90f6d7ca30a617d97012174b52e6a6ee31becd10b168fd46dd27c8f3cd80e556</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx</description>
-      <guid isPermaLink="false">20c2917e-5616-529a-8e9e-06cd30a87ca0</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:56 +0000</pubDate>
+      <guid isPermaLink="false">4e308b3f-0967-5487-a6af-b27ba770468b</guid>
+      <pubDate>Sun, 04 Oct 2026 21:46:59 +0000</pubDate>
     </item>
     <item>
-      <title>[80] sha256: 5314592786ad4bfb70a5b35cc9a1b68a92f790badabf4a4755d1ca77eb35d27e</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx</description>
-      <guid isPermaLink="false">eaa40053-ccb2-5008-860c-99c0aea8be74</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:55 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 18433cf591844ace03783e15903e84b6e97812824c50f4b2f5aafc33cb0b0f25</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx</description>
-      <guid isPermaLink="false">3dd53b6a-16c3-50c7-bc9d-fb233a7d17d3</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:54 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 43c2df8d9d262beec1153288cf47d77a4a0a147f7b24197a9a29bdf662e51d96</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: AdaptixC2,exe,threatfox</description>
-      <guid isPermaLink="false">38f95f7a-eb7a-5a72-b2f9-c0bfa3e1830a</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: ef0d94d552e13da04d16d0a78c170fc443c06e4534a555c2f594b1bcf55f96c8</title>
+      <title>[80] sha256: dc42d433baaeac6aa5b9a953a16e0e05409fd9e6b89d1ff80024ebfcd5c16add</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">39fbaa07-3405-51d4-a327-fa3f7e4734ca</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:52 +0000</pubDate>
+      <guid isPermaLink="false">0fc8b192-eaf0-5222-bc32-178e1d0f72f9</guid>
+      <pubDate>Sun, 04 Oct 2026 21:46:58 +0000</pubDate>
     </item>
     <item>
-      <title>[80] sha256: 51d2fe42168aea37cbf45483b27c87bd82bff31ec092be890990f10fbdd69fbf</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">b44e73ea-136b-5c86-959d-325451362042</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:51 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: de48b45702c25d939ae1ecdd8ab9f5c79dfa530ee81a64bd7af564440ab46146</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,exe,threatfox</description>
-      <guid isPermaLink="false">499e547a-dbaa-506b-84d5-3f0994029e94</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:50 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 49be8673c9b97042288974db65266e3a55f0823d4f2e2b2537940cf889249267</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,exe,threatfox</description>
-      <guid isPermaLink="false">ee25475d-91ca-56d7-b7ec-6581035d792c</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 2817c85ca14445a6617aa8d484fc3a7c1eebd7b78070296ecc6a0080f1b64eb9</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,exe,threatfox</description>
-      <guid isPermaLink="false">90f3cd44-ae0f-5297-99b9-c1ed4ff75b83</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 20ecc208fc143c6ca1e640e44e2c18cc3a5cb10b686b285c28bcc2c6b7257229</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,exe,threatfox</description>
-      <guid isPermaLink="false">7fa30201-183e-5332-ae31-e93c4cca8551</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 195980ee55443d3a42b5a22844337d90519ce961e975dd3628aeb76a6f5cbe6a</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,exe,threatfox,upx</description>
-      <guid isPermaLink="false">b5adc57c-87f7-5dfb-ace2-4731104f5231</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 56b5dad237eac47f1ccc062e740ec9e7c38ed9001fda0ef61b254637f7a10d8d</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">10a2eace-5981-557e-bab6-7c6b2fc4e829</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:45 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: f367633134cf14d9bfa393bdbf246833d90268dc1ffade89051fb3023fa2e6c0</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">da79857e-ea15-5a62-a487-f4b1db9c53a3</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:44 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 178f533ef8e1a2515dc4bb1f3ba6a8ee13ca02184475fbfce38137025afe4dc1</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">0ecabf79-2bdd-5843-a847-a69757949169</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:41 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: c10abe0caa9c62fb247b0641beaa5577b63e5c08eae6a23989c1c7a0586300c3</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">6f81ae89-901b-552d-a980-c86827e507c6</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:40 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 19e1a79e5b5992999d75deee9c22ae3ecb5142a6714e76a284a9ae829737da3a</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">e2682ec3-f345-5b6e-ad1a-218132f0fc66</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:39 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: e9d578b368dc85285e4a02fd773fce75b5a8b63364dfeb0405324f9c878b3ce0</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx</description>
-      <guid isPermaLink="false">501d78d2-d9ec-5513-ab9b-96a78c945a31</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:38 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 1511fb0fd9e2e3cd0366f9a2a871bea1ee926bc93ae9bd90d4c7f328138c36c8</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx</description>
-      <guid isPermaLink="false">0e5743aa-e80c-578b-955e-8918216c0b13</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: bc1b5337acaf45129b9752bf96375e8d588cf0b806b4635790ebe74f6e862275</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox</description>
-      <guid isPermaLink="false">0b88e096-7d86-5687-90d3-61c913920b28</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 405965c18196ba4aec2803c6390e9663e3884e580680be62c09c8b6b9ec162cd</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx</description>
-      <guid isPermaLink="false">c22fcfbf-d96a-57de-b606-c6c20661c1bd</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:35 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 60cd4b2b51c75baf6cf8756a894e98d1fa199ceeda0a40cbeab267667ab6c0fc</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx</description>
-      <guid isPermaLink="false">ed5b9f71-8b44-5d04-86a9-5dd9345833ff</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:34 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 14794dd5d7d4e344e9eae3d99dc8823130edd2bc8041176c78dad97ca600013c</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx</description>
-      <guid isPermaLink="false">babafeb7-b492-5ebc-9390-e4fc34df483b</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:32 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: 31628a457ccf9220d56ebdca431d1c2ed5ffd8dbe412b39ef12ac362c7f7a95b</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mirai,elf,threatfox,upx</description>
-      <guid isPermaLink="false">4f6b6327-34e9-5459-9796-6199e770d638</guid>
-      <pubDate>Sun, 04 Oct 2026 18:46:31 +0000</pubDate>
+      <title>[80] sha256: 3941e3f0037c1c5dffbbc2079456c8aadb10710271a64f7ef0395877c983e3a7</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Gafgyt,Mirai,elf,threatfox</description>
+      <guid isPermaLink="false">ee08a7d4-9bf8-5588-bc90-86752b3f0394</guid>
+      <pubDate>Sun, 04 Oct 2026 21:46:57 +0000</pubDate>
     </item>
 </channel></rss>
