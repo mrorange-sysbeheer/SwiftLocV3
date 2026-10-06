@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-06T11:06:13Z_
+_Generated 2026-10-06T18:04:34Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-06T11:06:13Z |
+| Generated | 2026-10-06T18:04:34Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6124 |
+| Duplicates removed | 6119 |
 | Sources reporting | 17 |
 | Indicator types | 6 |
-| Multi-source overlaps | 1778 |
+| Multi-source overlaps | 1765 |
 | Score (min / avg / max) | 80 / 81.0 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1778 |
+| Corroborated (2+ sources) | 1765 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-06T11:04:58Z |
+| Newest first_seen | 2026-10-06T18:04:04Z |
 
 ## Top indicators by score
 
@@ -39,12 +39,12 @@ _Generated 2026-10-06T11:06:13Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| urlhaus_recent_urls | 14620 |
-| greensnow_blocklist | 4857 |
-| threatfox_export_json | 4460 |
+| urlhaus_recent_urls | 14596 |
+| greensnow_blocklist | 4970 |
+| blocklist_de_ssh | 4223 |
+| threatfox_export_json | 4170 |
 | ipsum_level5 | 4122 |
-| blocklist_de_ssh | 3859 |
-| nist_nvd_recent | 2032 |
+| nist_nvd_recent | 2200 |
 | binarydefense_banlist | 1976 |
 | cisa_kev | 1734 |
 | spamhaus_drop | 1641 |
@@ -53,27 +53,27 @@ _Generated 2026-10-06T11:06:13Z_
 
 | Type | Indicators |
 | --- | ---: |
-| url | 5703 |
-| cve | 2101 |
-| sha256 | 1953 |
-| ipv4_cidr | 154 |
-| domain | 50 |
-| ipv4 | 39 |
+| url | 3431 |
+| cve | 2071 |
+| sha256 | 1759 |
+| ipv4_cidr | 1640 |
+| domain | 1050 |
+| ipv4 | 49 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| malware | 7569 |
-| malware_download | 5696 |
-| zip | 5619 |
-| github | 5604 |
-| SmartLoader | 5595 |
-| LuaJIT-loader | 5591 |
-| cve | 2101 |
+| malware | 5103 |
+| malware_download | 3403 |
+| zip | 3217 |
+| github | 3203 |
+| LuaJIT-loader | 3188 |
+| SmartLoader | 3188 |
+| threatfox | 2617 |
+| cve | 2071 |
 | exploited-in-the-wild | 1734 |
-| threatfox | 1620 |
-| nvd | 676 |
+| drop | 1640 |
 
 ## Multi-source overlaps
 
