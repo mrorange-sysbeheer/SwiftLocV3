@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-06T18:04:34Z_
+_Generated 2026-10-06T23:39:04Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-06T18:04:34Z |
+| Generated | 2026-10-06T23:39:04Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6119 |
+| Duplicates removed | 6551 |
 | Sources reporting | 17 |
-| Indicator types | 6 |
-| Multi-source overlaps | 1765 |
-| Score (min / avg / max) | 80 / 81.0 / 96 |
+| Indicator types | 8 |
+| Multi-source overlaps | 1850 |
+| Score (min / avg / max) | 80 / 81.1 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1765 |
+| Corroborated (2+ sources) | 1850 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-06T18:04:04Z |
+| Newest first_seen | 2026-10-06T23:19:37Z |
 
 ## Top indicators by score
 
@@ -39,12 +39,12 @@ _Generated 2026-10-06T18:04:34Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| urlhaus_recent_urls | 14596 |
-| greensnow_blocklist | 4970 |
-| blocklist_de_ssh | 4223 |
-| threatfox_export_json | 4170 |
+| urlhaus_recent_urls | 14619 |
+| greensnow_blocklist | 5765 |
+| blocklist_de_ssh | 4465 |
+| threatfox_export_json | 4200 |
 | ipsum_level5 | 4122 |
-| nist_nvd_recent | 2200 |
+| nist_nvd_recent | 2800 |
 | binarydefense_banlist | 1976 |
 | cisa_kev | 1734 |
 | spamhaus_drop | 1641 |
@@ -53,25 +53,27 @@ _Generated 2026-10-06T18:04:34Z_
 
 | Type | Indicators |
 | --- | ---: |
-| url | 3431 |
-| cve | 2071 |
-| sha256 | 1759 |
+| url | 2957 |
+| cve | 2306 |
+| sha256 | 1771 |
 | ipv4_cidr | 1640 |
-| domain | 1050 |
-| ipv4 | 49 |
+| domain | 1093 |
+| md5 | 87 |
+| sha1 | 87 |
+| ipv4 | 59 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| malware | 5103 |
-| malware_download | 3403 |
-| zip | 3217 |
-| github | 3203 |
-| LuaJIT-loader | 3188 |
-| SmartLoader | 3188 |
-| threatfox | 2617 |
-| cve | 2071 |
+| malware | 4673 |
+| malware_download | 2925 |
+| threatfox | 2897 |
+| zip | 2663 |
+| github | 2656 |
+| LuaJIT-loader | 2643 |
+| SmartLoader | 2643 |
+| cve | 2306 |
 | exploited-in-the-wild | 1734 |
 | drop | 1640 |
 
