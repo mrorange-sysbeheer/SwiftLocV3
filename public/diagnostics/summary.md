@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-06T23:39:04Z_
+_Generated 2026-10-07T04:56:21Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-06T23:39:04Z |
+| Generated | 2026-10-07T04:56:21Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6551 |
+| Duplicates removed | 7493 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 1850 |
-| Score (min / avg / max) | 80 / 81.1 / 96 |
+| Multi-source overlaps | 1851 |
+| Score (min / avg / max) | 80 / 81.0 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1850 |
+| Corroborated (2+ sources) | 1851 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-06T23:19:37Z |
+| Newest first_seen | 2026-10-07T04:41:53Z |
 
 ## Top indicators by score
 
@@ -39,13 +39,13 @@ _Generated 2026-10-06T23:39:04Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| urlhaus_recent_urls | 14619 |
-| greensnow_blocklist | 5765 |
-| blocklist_de_ssh | 4465 |
-| threatfox_export_json | 4200 |
-| ipsum_level5 | 4122 |
+| urlhaus_recent_urls | 14692 |
+| greensnow_blocklist | 5746 |
+| ipsum_level5 | 4864 |
+| blocklist_de_ssh | 4712 |
+| threatfox_export_json | 3888 |
 | nist_nvd_recent | 2800 |
-| binarydefense_banlist | 1976 |
+| binarydefense_banlist | 2241 |
 | cisa_kev | 1734 |
 | spamhaus_drop | 1641 |
 
@@ -53,26 +53,26 @@ _Generated 2026-10-06T23:39:04Z_
 
 | Type | Indicators |
 | --- | ---: |
-| url | 2957 |
+| url | 2870 |
 | cve | 2306 |
-| sha256 | 1771 |
+| sha256 | 1819 |
 | ipv4_cidr | 1640 |
-| domain | 1093 |
+| domain | 1110 |
 | md5 | 87 |
 | sha1 | 87 |
-| ipv4 | 59 |
+| ipv4 | 81 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| malware | 4673 |
-| malware_download | 2925 |
-| threatfox | 2897 |
-| zip | 2663 |
-| github | 2656 |
-| LuaJIT-loader | 2643 |
-| SmartLoader | 2643 |
+| malware | 4614 |
+| threatfox | 2958 |
+| malware_download | 2824 |
+| zip | 2423 |
+| github | 2416 |
+| LuaJIT-loader | 2405 |
+| SmartLoader | 2405 |
 | cve | 2306 |
 | exploited-in-the-wild | 1734 |
 | drop | 1640 |
@@ -83,7 +83,6 @@ _Generated 2026-10-06T23:39:04Z_
 | --- | --- |
 | ipv4: 94[.]154[.]43[.]69 | binarydefense_banlist, blocklist_de_ssh, et_compromised, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 94[.]154[.]43[.]60 | binarydefense_banlist, blocklist_de_ssh, et_compromised, ipsum_level5, threatfox_export_json |
-| ipv4: 103[.]176[.]64[.]36 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 114[.]111[.]53[.]214 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 165[.]154[.]162[.]74 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 165[.]154[.]227[.]8 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
@@ -91,5 +90,6 @@ _Generated 2026-10-06T23:39:04Z_
 | ipv4: 45[.]198[.]224[.]184 | blocklist_de_ssh, et_compromised, ipsum_level5, threatfox_export_json |
 | ipv4: 45[.]78[.]201[.]248 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | cve: CVE-2008-4128 | cisa_kev, nist_nvd_recent |
+| cve: CVE-2009-3960 | cisa_kev, nist_nvd_recent |
 
 For more detail see [diagnostics/REPORT.md](diagnostics/REPORT.md) and the machine-readable feeds in [iocs/](iocs/).
