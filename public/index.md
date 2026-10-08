@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-10-08T15:20:47Z_
+_Generated 2026-10-08T21:07:26Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-08T15:20:47Z |
+| Generated | 2026-10-08T21:07:26Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 5505 |
+| Duplicates removed | 5503 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 1995 |
-| Score (min / avg / max) | 80 / 81.1 / 96 |
+| Multi-source overlaps | 2069 |
+| Score (min / avg / max) | 80 / 81.2 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1995 |
+| Corroborated (2+ sources) | 2069 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-08T15:19:57Z |
+| Newest first_seen | 2026-10-08T21:06:54Z |
 
 ## Top indicators by score
 
@@ -41,26 +41,26 @@ _Generated 2026-10-08T15:20:47Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| greensnow_blocklist | 4802 |
-| blocklist_de_ssh | 4758 |
+| blocklist_de_ssh | 4709 |
+| greensnow_blocklist | 4648 |
 | ipsum_level5 | 3385 |
-| nist_nvd_recent | 2600 |
+| nist_nvd_recent | 3000 |
 | binarydefense_banlist | 2520 |
-| urlhaus_recent_urls | 2002 |
-| threatfox_export_json | 1835 |
-| cisa_kev | 1734 |
+| urlhaus_recent_urls | 2066 |
+| threatfox_export_json | 1939 |
+| cisa_kev | 1739 |
 | spamhaus_drop | 1672 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 2678 |
-| sha256 | 2372 |
-| url | 2175 |
-| ipv4_cidr | 1530 |
-| domain | 630 |
-| ipv4 | 235 |
+| cve | 2613 |
+| sha256 | 2547 |
+| url | 2247 |
+| ipv4_cidr | 1168 |
+| domain | 786 |
+| ipv4 | 259 |
 | md5 | 190 |
 | sha1 | 190 |
 
@@ -68,16 +68,16 @@ _Generated 2026-10-08T15:20:47Z_
 
 | Tag | Indicators |
 | --- | ---: |
-| malware | 4315 |
-| threatfox | 3118 |
-| cve | 2678 |
-| malware_download | 2003 |
-| exploited-in-the-wild | 1734 |
-| drop | 1530 |
-| spamhaus | 1530 |
-| CheatSheet | 1331 |
-| nvd | 1275 |
-| exe | 1249 |
+| malware | 4501 |
+| threatfox | 3424 |
+| cve | 2613 |
+| malware_download | 2068 |
+| exploited-in-the-wild | 1739 |
+| CheatSheet | 1330 |
+| exe | 1270 |
+| nvd | 1213 |
+| drop | 1168 |
+| spamhaus | 1168 |
 
 ## Multi-source overlaps
 
