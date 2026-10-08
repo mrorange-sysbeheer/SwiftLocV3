@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-10-07T21:05:06Z_
+_Generated 2026-10-08T05:09:16Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-07T21:05:06Z |
+| Generated | 2026-10-08T05:09:16Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6611 |
+| Duplicates removed | 6153 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 1915 |
+| Multi-source overlaps | 1916 |
 | Score (min / avg / max) | 80 / 81.1 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1915 |
+| Corroborated (2+ sources) | 1916 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-07T21:04:34Z |
+| Newest first_seen | 2026-10-08T04:55:47Z |
 
 ## Top indicators by score
 
@@ -41,13 +41,13 @@ _Generated 2026-10-07T21:05:06Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| urlhaus_recent_urls | 14341 |
-| ipsum_level5 | 4864 |
-| blocklist_de_ssh | 4831 |
-| greensnow_blocklist | 4787 |
-| threatfox_export_json | 3281 |
-| nist_nvd_recent | 2400 |
-| binarydefense_banlist | 2241 |
+| urlhaus_recent_urls | 14387 |
+| greensnow_blocklist | 5499 |
+| nist_nvd_recent | 5444 |
+| blocklist_de_ssh | 4832 |
+| ipsum_level5 | 3385 |
+| threatfox_export_json | 2689 |
+| binarydefense_banlist | 2520 |
 | cisa_kev | 1734 |
 | spamhaus_drop | 1671 |
 
@@ -55,12 +55,12 @@ _Generated 2026-10-07T21:05:06Z_
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 2306 |
-| sha256 | 2171 |
-| url | 2032 |
+| cve | 3055 |
+| sha256 | 2256 |
 | ipv4_cidr | 1670 |
-| domain | 1328 |
-| ipv4 | 189 |
+| domain | 1361 |
+| url | 1161 |
+| ipv4 | 193 |
 | md5 | 152 |
 | sha1 | 152 |
 
@@ -68,16 +68,16 @@ _Generated 2026-10-07T21:05:06Z_
 
 | Tag | Indicators |
 | --- | ---: |
-| malware | 4044 |
-| threatfox | 3544 |
-| cve | 2306 |
-| malware_download | 1913 |
+| threatfox | 3596 |
+| malware | 3243 |
+| cve | 3055 |
 | exploited-in-the-wild | 1734 |
 | drop | 1670 |
 | spamhaus | 1670 |
-| zip | 1428 |
-| LuaJIT-loader | 1421 |
-| SmartLoader | 1421 |
+| nvd | 1649 |
+| malware_download | 1027 |
+| etherhiding | 975 |
+| Mirai | 673 |
 
 ## Multi-source overlaps
 
