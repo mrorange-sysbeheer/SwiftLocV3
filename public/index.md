@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-10-08T05:09:16Z_
+_Generated 2026-10-08T15:20:47Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-08T05:09:16Z |
+| Generated | 2026-10-08T15:20:47Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6153 |
+| Duplicates removed | 5505 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-source overlaps | 1916 |
+| Multi-source overlaps | 1995 |
 | Score (min / avg / max) | 80 / 81.1 / 96 |
 | High-score indicators (≥80) | 10000 |
-| Corroborated (2+ sources) | 1916 |
+| Corroborated (2+ sources) | 1995 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-08T04:55:47Z |
+| Newest first_seen | 2026-10-08T15:19:57Z |
 
 ## Top indicators by score
 
@@ -41,43 +41,43 @@ _Generated 2026-10-08T05:09:16Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| urlhaus_recent_urls | 14387 |
-| greensnow_blocklist | 5499 |
-| nist_nvd_recent | 5444 |
-| blocklist_de_ssh | 4832 |
+| greensnow_blocklist | 4802 |
+| blocklist_de_ssh | 4758 |
 | ipsum_level5 | 3385 |
-| threatfox_export_json | 2689 |
+| nist_nvd_recent | 2600 |
 | binarydefense_banlist | 2520 |
+| urlhaus_recent_urls | 2002 |
+| threatfox_export_json | 1835 |
 | cisa_kev | 1734 |
-| spamhaus_drop | 1671 |
+| spamhaus_drop | 1672 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3055 |
-| sha256 | 2256 |
-| ipv4_cidr | 1670 |
-| domain | 1361 |
-| url | 1161 |
-| ipv4 | 193 |
-| md5 | 152 |
-| sha1 | 152 |
+| cve | 2678 |
+| sha256 | 2372 |
+| url | 2175 |
+| ipv4_cidr | 1530 |
+| domain | 630 |
+| ipv4 | 235 |
+| md5 | 190 |
+| sha1 | 190 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 3596 |
-| malware | 3243 |
-| cve | 3055 |
+| malware | 4315 |
+| threatfox | 3118 |
+| cve | 2678 |
+| malware_download | 2003 |
 | exploited-in-the-wild | 1734 |
-| drop | 1670 |
-| spamhaus | 1670 |
-| nvd | 1649 |
-| malware_download | 1027 |
-| etherhiding | 975 |
-| Mirai | 673 |
+| drop | 1530 |
+| spamhaus | 1530 |
+| CheatSheet | 1331 |
+| nvd | 1275 |
+| exe | 1249 |
 
 ## Multi-source overlaps
 
