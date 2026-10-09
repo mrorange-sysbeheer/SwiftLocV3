@@ -1,15 +1,15 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-09T15:06:03Z_
+_Generated 2026-10-09T20:38:30Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-09T15:06:03Z |
+| Generated | 2026-10-09T20:38:30Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6626 |
+| Duplicates removed | 6704 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
 | Multi-group overlaps | 363 |
@@ -17,7 +17,7 @@ _Generated 2026-10-09T15:06:03Z_
 | High-score indicators (≥80) | 10000 |
 | 2+ reporting groups | 363 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-09T15:03:37Z |
+| Newest first_seen | 2026-10-09T20:38:07Z |
 
 ## Top indicators by score
 
@@ -40,42 +40,42 @@ _Generated 2026-10-09T15:06:03Z_
 | --- | ---: |
 | ci_army_list | 15000 |
 | ipsum_level5 | 4686 |
-| greensnow_blocklist | 4537 |
-| blocklist_de_ssh | 4447 |
-| nist_nvd_recent | 3600 |
+| greensnow_blocklist | 4452 |
+| blocklist_de_ssh | 4263 |
 | binarydefense_banlist | 2809 |
-| threatfox_export_json | 2013 |
+| nist_nvd_recent | 2400 |
+| threatfox_export_json | 2348 |
 | cisa_kev | 1739 |
-| urlhaus_recent_urls | 1699 |
-| spamhaus_drop | 1682 |
+| spamhaus_drop | 1684 |
+| urlhaus_recent_urls | 1633 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3357 |
-| url | 1963 |
-| ipv4_cidr | 1681 |
-| sha256 | 1620 |
-| domain | 766 |
-| ipv4 | 233 |
-| md5 | 190 |
-| sha1 | 190 |
+| cve | 3036 |
+| url | 1901 |
+| ipv4_cidr | 1683 |
+| sha256 | 1597 |
+| domain | 1027 |
+| md5 | 256 |
+| sha1 | 255 |
+| ipv4 | 245 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3357 |
-| malware | 3095 |
-| threatfox | 2148 |
-| nvd | 1958 |
+| cve | 3036 |
+| malware | 3017 |
+| threatfox | 2644 |
 | exploited-in-the-wild | 1739 |
-| malware_download | 1702 |
-| drop | 1681 |
-| spamhaus | 1681 |
-| CheatSheet | 1093 |
-| exe | 865 |
+| drop | 1683 |
+| spamhaus | 1683 |
+| nvd | 1637 |
+| malware_download | 1636 |
+| CheatSheet | 1102 |
+| exe | 882 |
 
 ## Multi-group reporting overlaps
 

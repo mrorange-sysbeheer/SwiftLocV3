@@ -3,305 +3,305 @@
   <title>SwiftIOC — Newest High-Confidence IOCs</title>
   <link>https://github.com/PKHarsimran/SwiftIOC-Automated-Threat-Intelligence-Collector</link>
   <description>Freshest scored indicators of compromise with publisher-aware provenance.</description>
-  <lastBuildDate>Fri, 09 Oct 2026 15:06:05 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 09 Oct 2026 20:38:32 +0000</lastBuildDate>
     <item>
-      <title>[80] ipv4_cidr: 101.99.82.0/23</title>
+      <title>[80] ipv4_cidr: 111.90.152.0/22</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">f27e2255-e09d-569e-a20c-775079cad6c5</guid>
-      <pubDate>Fri, 09 Oct 2026 15:03:37 +0000</pubDate>
+      <guid isPermaLink="false">7241d6b3-37eb-53b2-bc90-65fdecbd9752</guid>
+      <pubDate>Fri, 09 Oct 2026 20:38:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 101.99.85.0/24</title>
+      <title>[80] ipv4_cidr: 167.148.201.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">7502e74d-374a-52f8-abae-d280a940e423</guid>
-      <pubDate>Fri, 09 Oct 2026 15:03:37 +0000</pubDate>
+      <guid isPermaLink="false">1a0b2ad7-667c-54b4-9a8a-a40a6153f5af</guid>
+      <pubDate>Fri, 09 Oct 2026 20:38:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 101.99.88.0/23</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">ce916e4f-c2d5-5113-a814-9015cbd32ea3</guid>
-      <pubDate>Fri, 09 Oct 2026 15:03:37 +0000</pubDate>
+      <title>[80] domain: miraz[.]store</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClearFake,threatfox</description>
+      <guid isPermaLink="false">f1cc02ad-e73d-5f78-8d91-016d965a8a0b</guid>
+      <pubDate>Fri, 09 Oct 2026 20:32:54 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 101.99.90.0/23</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">fb5324e0-08c8-5539-93c1-8dfe7aec065c</guid>
-      <pubDate>Fri, 09 Oct 2026 15:03:37 +0000</pubDate>
+      <title>[80] url: hxxp://182[.]127[.]111[.]22:56903/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">4418b6a1-a31c-5223-82a7-278f45092f0d</guid>
+      <pubDate>Fri, 09 Oct 2026 20:32:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 101.99.92.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">fba54fe5-5fab-520b-8b85-a47cea571d9a</guid>
-      <pubDate>Fri, 09 Oct 2026 15:03:37 +0000</pubDate>
+      <title>[80] url: hxxp://182[.]117[.]76[.]135:52817/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">fe94181d-cc37-5f23-be3c-170986e2531b</guid>
+      <pubDate>Fri, 09 Oct 2026 20:32:06 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 111.90.147.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">ec0f05ee-a7c3-5455-8e29-b2a271993770</guid>
-      <pubDate>Fri, 09 Oct 2026 15:03:37 +0000</pubDate>
+      <title>[80] url: hxxp://125[.]44[.]215[.]216:39964/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">d6ddd761-f175-5ce8-b4d0-b99d0a245af2</guid>
+      <pubDate>Fri, 09 Oct 2026 20:32:05 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 111.90.158.0/23</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">9178c932-5585-5a04-bba6-7d29570311fe</guid>
-      <pubDate>Fri, 09 Oct 2026 15:03:37 +0000</pubDate>
+      <title>[80] url: hxxp://61[.]53[.]93[.]49:38979/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
+      <guid isPermaLink="false">1f52df63-1786-57e7-9ce5-c788e803fdc4</guid>
+      <pubDate>Fri, 09 Oct 2026 20:30:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4_cidr: 38.133.213.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">e3f426e5-de47-51de-823d-6ef0716c7999</guid>
-      <pubDate>Fri, 09 Oct 2026 15:03:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] ipv4_cidr: 38.134.3.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">b315ea1a-2732-56fd-832a-59b7c60951de</guid>
-      <pubDate>Fri, 09 Oct 2026 15:03:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] ipv4_cidr: 89.251.29.0/24</title>
-      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">b77470f6-d04e-5f20-942e-5d072009d640</guid>
-      <pubDate>Fri, 09 Oct 2026 15:03:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] domain: amberbulletins[.]store</title>
+      <title>[80] domain: solutionscc[.]com[.]au</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
-      <guid isPermaLink="false">2808d4a1-d4e9-5c06-aa94-a7997c4520e0</guid>
-      <pubDate>Fri, 09 Oct 2026 14:54:03 +0000</pubDate>
+      <guid isPermaLink="false">dcc7375c-8e0d-5a31-86d3-5839bd852a1a</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:12 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: amberdaily[.]store</title>
+      <title>[80] domain: sriharidasniwas[.]org</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
-      <guid isPermaLink="false">bf4f212b-0a5f-5af0-ad7d-0b610a1a06e9</guid>
-      <pubDate>Fri, 09 Oct 2026 14:54:03 +0000</pubDate>
+      <guid isPermaLink="false">6e64b9d0-619b-5644-a89a-f2723c2d697d</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:12 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: aliyunmail[.]app</title>
+      <title>[80] domain: schwabfinancialcare[.]com</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
-      <guid isPermaLink="false">aa9ab99f-1567-5f1f-a8de-cbe7f11d4a03</guid>
-      <pubDate>Fri, 09 Oct 2026 14:54:02 +0000</pubDate>
+      <guid isPermaLink="false">a4ffdb94-9c39-5c49-948c-2402f4866a6b</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://cdn[.]discordapp[.]com/attachments/1558114186817437841/1558114355260948561/bundle[.]zip?ex=6aca4292&amp;is=6ac8f112&amp;hm=e36aabee94a40f1c93398f5708dd71cd89f70a2b2e4f0233028f00621b5a5f2e&amp;</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,IRAHook</description>
-      <guid isPermaLink="false">5df83100-e561-56ac-b087-45a2e660daa2</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:44 +0000</pubDate>
+      <title>[80] domain: solarandsafety[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">303215e9-5e6d-5b33-8a74-189a1959ccbe</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://cdn[.]discordapp[.]com/attachments/1558090546633904308/1558090607027683399/bundle[.]zip?ex=6aca2c74&amp;is=6ac8daf4&amp;hm=f368654270984309f3f052b7969d1fdafb6fb00f448a68614de3746823cc20a4&amp;</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,IRAHook</description>
-      <guid isPermaLink="false">72bb2830-056f-568a-aa0c-cf663d6e9801</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:27 +0000</pubDate>
+      <title>[80] domain: srthoster[.]org</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">45851b7c-a032-561b-b9f8-2f1d358dccc2</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/lanferry/FiveM-Server-Unban/raw/HEAD/Silentum_Spoofer[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">62815946-14ab-586a-81ad-c3954fb6442f</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:14 +0000</pubDate>
+      <title>[80] domain: supermagnet[.]xyz</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">9e238054-5fd7-5149-bde1-1e1a123e90bf</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/roverles/FiveM-Server-Unban/raw/HEAD/Silentum_Spoofer[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">5687e70a-ff22-5223-b3b8-6965623b5013</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:13 +0000</pubDate>
+      <title>[80] domain: seven[.]com[.]pk</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">b2164905-f2cc-51e4-92a2-f1ffe870045d</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/ELCHAPOGTA/redENGINE-FiveM/raw/HEAD/license[.]dll</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,dll,github</description>
-      <guid isPermaLink="false">bf0b77b9-b213-51e7-a116-54a839afa5c2</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:09 +0000</pubDate>
+      <title>[80] domain: sileysewingmachines[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">2b8cde07-534a-5bbd-8ed7-a352e865e7cb</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/archcalls/FiveM-Server-Unban/raw/HEAD/Silentum_Spoofer[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">c7f5392d-1fbb-565a-8448-139c6a943da5</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:09 +0000</pubDate>
+      <title>[80] domain: sitecctv[.]com[.]au</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">4947f3c9-84a1-52c2-a7d4-7489b421c033</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/blestoff/Monotone-HWID-Spoofer/raw/HEAD/Monotone[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">2f428245-20f5-5c0a-a1ff-5047cb1501eb</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:09 +0000</pubDate>
+      <title>[80] domain: www[.]synnersys[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">d97c96a8-74dc-5fdf-a472-015713263b82</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/chamysooel/FiveM-Server-Unban/raw/HEAD/Silentum_Spoofer[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">01edbcd5-4d36-505e-aa24-ab0451e2c282</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:09 +0000</pubDate>
+      <title>[80] domain: stackdeans[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">afce23a6-9a69-5ed1-806a-bfe9d88f6833</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/hennisle/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">e0fef084-cf72-567d-a6ac-20173e99d24f</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:09 +0000</pubDate>
+      <title>[80] domain: tr[.]xelorkesselhaus[.]de</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">f50bcbce-6c1b-5070-93ac-abeea502bb3b</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/l3mmn1ia/Temp-Spoofer-LifeTime/raw/HEAD/TempSpoofer[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">8ffe6522-7904-5a7f-ad94-4e6b9932303a</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:09 +0000</pubDate>
+      <title>[80] domain: tradeverge[.]live</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">eb51674e-706a-5ebf-baa0-10ae7fa3182a</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/sevv1lsy/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">bc6b10fd-6bf0-5444-9968-2bc67b323490</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:09 +0000</pubDate>
+      <title>[80] domain: tubidy[.]my</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">43358c35-cb87-5fb8-9a6e-233520b2c11f</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:09 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/archrace/FiveM-Server-Unban/raw/HEAD/Silentum_Spoofer[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">5803e7e0-92d4-5a9d-92bd-121459319a05</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] domain: tcisbd[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">bf4f88d3-2b76-5bd2-8dcc-dc1bf8bfadae</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/bonnylith/Roblox-Script-Executor/raw/HEAD/Wave[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">c458c994-e9c9-52b6-94c6-e53694b3f0f6</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] domain: tradecom24[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">42e0f851-332d-56a4-b2f9-8a2ef1ed927e</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/candyblow/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">f6dd602d-664e-5c07-a700-1ca59f83af74</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] domain: trenz[.]biz[.]id</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">a41ecfa0-255d-56fd-a530-c2199b3fce3d</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:08 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/cansiorly/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">d5b5061b-8aef-5d50-8f63-07f17a379437</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] domain: trendupdate[.]biz[.]id</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">41e668e6-4045-5f86-84d6-34f83d0351b6</guid>
+      <pubDate>Fri, 09 Oct 2026 20:22:07 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/clatths/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">6bfa2539-6525-5ce3-9484-bc5e571f886a</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] url: hxxp://182[.]112[.]41[.]50:41326/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">cd887444-2315-5f09-9667-fd0e59bc1417</guid>
+      <pubDate>Fri, 09 Oct 2026 20:17:06 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/deelcis/Roblox-Script-Executor/raw/HEAD/Wave[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">da354f9b-b086-5a97-9867-87c8836c0075</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] domain: silklubricant[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">705b7e8b-9f8f-5fd2-b98b-41fbeb406b4b</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:04 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/derrixhan/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">a2e3ede7-64cb-5e60-9d30-f6e12134c543</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] domain: soirise[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">6d2b1bd3-89b9-5d21-b2c7-3197fd58c736</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:04 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/gratelond/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">18ff2ae3-2c87-546e-a180-86578ffedfe6</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] domain: slotpk[.]org</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">c2cb25fa-d458-567b-a9f9-a2095f09cf02</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:03 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/lannher/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">bb7f0cee-57b6-582e-ad94-cc2ef3449ae4</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] domain: slotteds[.]org</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">b2842977-05ad-5f81-a757-3d158b978639</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:03 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/lierghs/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">214d0d76-96fa-5373-9d49-454a8fd91ad6</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] domain: spaceman333asli[.]space</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">88981876-23f7-5f80-8a43-484c1a49c899</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:03 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/mentall1s/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">77de48e7-f950-5592-8619-54fbfcd5d2ff</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] domain: shangrilavillageresort[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">6427d078-6ad9-5b48-ae2b-58f2f53755c1</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:02 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/mineslance/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">231c2477-f168-5548-8add-674c8985d825</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:08 +0000</pubDate>
+      <title>[80] domain: slot888asligac0r[.]space</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">0630a8cb-f5ea-562e-836b-b0d9adcd4221</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:02 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/adapp1t/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">daee2f83-3383-5bbd-8f91-4f8267124939</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:07 +0000</pubDate>
+      <title>[80] domain: slot888gac0rvip[.]online</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">166c0500-5802-5eab-8e9f-2038309d455d</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:01 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/aerosteeld/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">67e04a35-6902-5989-b1fe-7fc30f89e840</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:07 +0000</pubDate>
+      <title>[80] domain: slot888pastijpe[.]space</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">50ea25f0-293e-5272-b960-ee8ec468c11c</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:01 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/artlims/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">d50d0775-05eb-5e17-aee1-35ff792b495e</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:07 +0000</pubDate>
+      <title>[80] domain: spaceman01gacors[.]online</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">cf596d75-e285-57dd-b9dc-12ed6670edfa</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:01 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/cassiefinney/Roblox-Script-Executor/raw/HEAD/Wave[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">b7c5d853-5fc0-5b99-86f7-3b236de81059</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:07 +0000</pubDate>
+      <title>[80] domain: surkhabfabric[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">6d99e636-2be6-520f-9a26-08c9a84989fe</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:01 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/champywiss/Roblox-Script-Executor/raw/HEAD/Wave[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">65269077-c607-5828-92fc-9a7dec18c9f3</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:07 +0000</pubDate>
+      <title>[80] domain: situstoto1[.]online</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">cc36cd13-bdfb-5946-b141-3a4ea3f44440</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:00 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/dirlands/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">ce964d5a-2fab-57ae-a2ff-fbc0e694e11a</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:07 +0000</pubDate>
+      <title>[80] domain: slot777gacors[.]online</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">eaf5cb1d-ea05-5877-b104-5b2fc04ae363</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:00 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/enzowipe/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">9a8fa596-41c6-5033-bf1e-afb1a51ae956</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:07 +0000</pubDate>
+      <title>[80] domain: slot888pastigac0r[.]space</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">d9faea9e-8740-5f8b-ac95-f4b7827249f1</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:00 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/limmadays/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">f4704566-de29-5182-a217-0134e48e0155</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:07 +0000</pubDate>
+      <title>[80] domain: spaceman4asli[.]space</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">f4f40134-cddb-5a27-8012-b844a399b806</guid>
+      <pubDate>Fri, 09 Oct 2026 20:12:00 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/fansyhook/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">b5b220cf-f382-5c8b-b9ec-da67c9efef1d</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:06 +0000</pubDate>
+      <title>[80] domain: slot777gac0rvip[.]online</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">0a1b2b4b-8f8d-5803-994c-19e8ee99044c</guid>
+      <pubDate>Fri, 09 Oct 2026 20:11:59 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/hannertMAX/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">91454f1c-d6bd-5c70-8d0d-14f60d4446d5</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:06 +0000</pubDate>
+      <title>[80] domain: slotprokamboja[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">4f82bb65-c0f2-5085-b373-ff215943bac1</guid>
+      <pubDate>Fri, 09 Oct 2026 20:11:59 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://github[.]com/rarr1ve/EulenCheats/raw/HEAD/Loader[.]exe</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,CheatSheet,exe,github</description>
-      <guid isPermaLink="false">63b84248-1921-586e-8799-007b2589ab9b</guid>
-      <pubDate>Fri, 09 Oct 2026 14:52:06 +0000</pubDate>
+      <title>[80] domain: spaceman1win[.]space</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">2920051a-932b-5daf-821c-518f85a74cf6</guid>
+      <pubDate>Fri, 09 Oct 2026 20:11:59 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4: 143[.]246[.]213[.]74</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: IRAHook,RAT,Stealer,threatfox</description>
-      <guid isPermaLink="false">097e45cd-3665-592b-9854-200eed701f1b</guid>
-      <pubDate>Fri, 09 Oct 2026 14:51:17 +0000</pubDate>
+      <title>[80] domain: tangoeventlive[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">f748db92-cc5e-59a8-974f-51fce7311e2e</guid>
+      <pubDate>Fri, 09 Oct 2026 20:11:59 +0000</pubDate>
     </item>
     <item>
-      <title>[80] sha256: dd16083e8b555de6f1852da430ca2f2192366bae191a2674ae2464a43a4f94d5</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: AMOS,ClickFix,Foxveil,macOS,quill,threatfox</description>
-      <guid isPermaLink="false">eb400b9d-32d0-5917-b115-26a133868054</guid>
-      <pubDate>Fri, 09 Oct 2026 14:51:17 +0000</pubDate>
+      <title>[80] domain: slickassist[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">7db0cc6e-a12a-52ee-ae76-b75b8a3fdc8d</guid>
+      <pubDate>Fri, 09 Oct 2026 20:11:58 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4: 135[.]136[.]140[.]39</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Remcos,basefri,c2,threatfox</description>
-      <guid isPermaLink="false">a4d061cc-ff99-5901-adbc-6990f79c3ec1</guid>
-      <pubDate>Fri, 09 Oct 2026 14:51:16 +0000</pubDate>
+      <title>[80] domain: soholat[.]sa</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">cb5f0786-0d9d-5039-9e5e-f59730e7c97d</guid>
+      <pubDate>Fri, 09 Oct 2026 20:11:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: spaceman1vip[.]online</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">5eda9af3-1abb-51b0-b43e-9dd99fe7454c</guid>
+      <pubDate>Fri, 09 Oct 2026 20:11:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: sprkljewelrystore[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">bbfa496b-9317-558a-a41d-cccc14c52c9f</guid>
+      <pubDate>Fri, 09 Oct 2026 20:11:58 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: secretcrush[.]fun</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: EtherHide,compromised,threatfox</description>
+      <guid isPermaLink="false">9c2d8a98-c9bb-543c-86f2-a636f7bbe503</guid>
+      <pubDate>Fri, 09 Oct 2026 20:11:57 +0000</pubDate>
     </item>
 </channel></rss>
