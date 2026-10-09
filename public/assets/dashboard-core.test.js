@@ -6,6 +6,48 @@ const fs = require('node:fs');
 const path = require('node:path');
 const core = require('./dashboard-core.js');
 
+test('CVE evidence tracks material changes without ingestion-date noise', () => {
+  const item = { cve_id: 'CVE-2026-1000', title: 'Gateway issue', exploitation_status: 'known_exploited',
+    reports: { cisa_kev: { vendor: 'Vendor', product: 'Gateway', required_action: 'Patch', catalog_checked_at: '2026-09-20' }, nvd: { severity: 'high' } } };
+  const before = core.vulnerabilityEvidence(item, { groups: ['beta', 'alpha', 'alpha'], matched: true });
+  const after = core.vulnerabilityEvidence({ ...item, reports: { ...item.reports,
+    cisa_kev: { ...item.reports.cisa_kev, catalog_checked_at: '2026-09-27' } } }, { groups: ['alpha', 'beta'], matched: true });
+  assert.deepEqual(core.vulnerabilityChanges(before, after), []);
+  assert.deepEqual(core.vulnerabilityChanges(null, after), ['New to this browser']);
+  assert.deepEqual(core.vulnerabilityChanges(before, { ...after, groups: ['alpha', 'gamma'], action: 'Mitigate', matched: false }),
+    ['Remediation changed', 'Group associations changed', 'SwiftIOC match changed']);
+  assert.deepEqual(core.vulnerabilityChanges(before, { ...after, description: 'New provider detail' }), ['Provider details changed']);
+});
+
+test('saved CVE views bound imported values and preserve complete comparison scope', () => {
+  assert.equal(core.normaliseVulnerabilityView(null), null);
+  assert.equal(core.normaliseVulnerabilityView([]), null);
+  const view = core.normaliseVulnerabilityView({ view: 'group-linked', layout: 'table', search: 'x'.repeat(250),
+    groupOnly: 'true', includeRejected: true, severity: 'critical', tier: 'act', change: 'reviewed',
+    comparison: ['alpha', 'beta', 'alpha', null, 'gamma', 'delta'], comparisonMode: 'union', unknown: 'drop' });
+  assert.equal(view.search.length, 200);
+  assert.equal(view.groupOnly, false);
+  assert.equal(view.includeRejected, true);
+  assert.equal(view.layout, 'table');
+  assert.equal(view.view, 'group-linked');
+  assert.equal(view.severity, 'critical');
+  assert.equal(view.change, 'reviewed');
+  assert.deepEqual(view.comparison, ['alpha', 'beta', 'gamma']);
+  assert.equal(view.comparisonMode, 'union');
+  assert.equal(view.unknown, undefined);
+  assert.equal(core.normaliseVulnerabilityView({ tier: 'bogus' }).tier, 'all');
+});
+
+test('CVE timeline excludes invalid and future group observations', () => {
+  const now = Date.parse('2026-09-27T12:00:00Z') / 1000;
+  const events = core.vulnerabilityTimeline({ reports: {} }, { recentChange: { at: '2027-01-01', group: 'alpha' } }, [
+    { group: 'alpha', receipt: { first_observed: '2026-09-01', last_observed: '2027-01-01' } },
+    { group: 'beta', receipt: { first_observed: 'invalid', last_observed: '1960-01-01' } },
+  ], now);
+  assert.equal(events.length, 1);
+  assert.equal(events[0].label, 'First observed for alpha');
+});
+
 const defaults = {
   type: 'all',
   source: 'all',
@@ -39,6 +81,54 @@ test('refangs raw and defanged indicators consistently', () => {
     core.matchesRow(row, { ...defaults, search: 'example.evil' }),
     true
   );
+});
+
+test('builds type-aware SPL that supports wildcard and explicit indexes', () => {
+  const wildcard = core.buildSplQuery(row, '*');
+  assert.match(wildcard, /^index=\* earliest=-30d/);
+  assert.match(wildcard, /query="example\.evil"/);
+  assert.match(wildcard, /dest_host="example\.evil"/);
+  assert.match(wildcard, /stats count/);
+
+  const selected = core.buildSplQuery(
+    { indicator: '203.0.113.8', type: 'ipv4' },
+    'index=firewall,proxy_*',
+    '-7d'
+  );
+  assert.match(selected, /^\(index=firewall OR index=proxy_\*\) earliest=-7d/);
+  assert.match(selected, /src_ip="203\.0\.113\.8"/);
+  assert.match(selected, /dest_ip="203\.0\.113\.8"/);
+});
+
+test('queued SPL supports all-index, wildcard, and multi-index scopes', () => {
+  const rows = [{ type: 'ipv4', indicator: '203.0.113.8' }];
+  assert.match(core.rowsToSpl(rows, { index: '*' }).spl, /^index=\*/);
+  assert.match(core.rowsToSpl(rows, { index: 'security_*' }).spl, /^index=security_\*/);
+  assert.match(
+    core.rowsToSpl(rows, { index: 'firewall, proxy_*' }).spl,
+    /^\(index=firewall OR index=proxy_\*\)/
+  );
+  assert.match(core.rowsToSpl(rows, { index: '* | delete' }).error, /wildcard index/);
+});
+
+test('SPL builder rejects injected indexes and escapes indicator strings', () => {
+  const query = core.buildSplQuery(
+    { indicator: 'bad"value', type: 'unknown' },
+    '* | delete',
+    'all time'
+  );
+  assert.equal(query, '');
+  const escaped = core.buildSplQuery({ indicator: 'bad"value', type: 'unknown' }, '*');
+  assert.match(escaped, /bad\\"value/);
+});
+
+test('SPL builder uses cidrmatch for network ranges', () => {
+  const query = core.buildSplQuery(
+    { indicator: '203.0.113.0/24', type: 'ipv4_cidr' },
+    '*'
+  );
+  assert.match(query, /where cidrmatch\("203\.0\.113\.0\/24", src_ip\)/);
+  assert.match(query, /cidrmatch\("203\.0\.113\.0\/24", dest_ip\)/);
 });
 
 test('combines source, tag, signal, score, and age facets', () => {
@@ -355,14 +445,22 @@ test('dashboard markup keeps IDs and labelled controls consistent', () => {
   );
 });
 
-test('discovery ranks actual source names, deduplicates IOCs, and explains corroboration', () => {
+test('discovery ranks reporting groups, deduplicates IOCs, and explains feed names', () => {
   const a = { ...row, indicator: 'a.example', sourceList: ['Feed-A', 'feed-a', 'unknown'], sourceCount: 99 };
   const b = { ...row, indicator: 'b.example', sourceList: ['Feed-A', 'Feed-B'] };
   const result = core.buildDiscovery([a, b, b], 'corroborated');
   assert.equal(result.sampleSize, 2);
   assert.equal(result.total, 1);
   assert.equal(result.findings[0].row.indicator, 'b.example');
-  assert.match(result.findings[0].reason, /do not establish source independence/);
+  assert.match(result.findings[0].label, /2 reporting groups · 2 feed names/);
+  assert.match(result.findings[0].reason, /do not prove independent observation/);
+  const aliases = { ...row, indicator: 'alias.example', sourceList: ['threatfox_export_json', 'urlhaus_recent_urls', 'ipsum_level5'] };
+  assert.equal(core.buildDiscovery([aliases], 'corroborated').total, 0);
+  const distinct = { ...aliases, sourceList: [...aliases.sourceList, 'blocklist_de_ssh'] };
+  const grouped = core.buildDiscovery([distinct], 'corroborated');
+  assert.equal(grouped.total, 1);
+  assert.match(grouped.findings[0].label, /2 reporting groups · 4 feed names/);
+  assert.match(grouped.findings[0].reason, /abuse.ch, blocklist.de/);
 });
 
 test('recent discovery excludes future, invalid, and old sightings', () => {
@@ -539,11 +637,69 @@ test('exploited and ransomware views require explicit evidence and never fall ba
   }
 });
 
-test('vulnerability release uses coordinated new asset cache keys', () => {
+test('group-linked CVE view and facet use exact published associations without changing CISA ransomware evidence', () => {
+  const kev = triageItem('CVE-1900-1234', 'known_exploited', '2026-09-07', '2020-01-01');
+  kev.reports.cisa_kev.ransomware_use = 'Unknown';
+  const broad = triageItem('CVE-1900-1235', 'not_established', null, '2026-09-08');
+  const unrelated = triageItem('CVE-1900-1236', 'not_established', null, '2026-09-08');
+  const evidence = new Map([
+    ['cve-1900-1234', { groups: ['akira'] }],
+    ['cve-1900-1235', { groups: ['akira', 'clop'] }],
+  ]);
+  const options = { view: 'group-linked', groupEvidence: evidence, now: triageNow };
+  assert.deepEqual(core.filterVulnerabilities([unrelated, broad, kev], '', 'all', options), [kev, broad]);
+  assert.deepEqual(core.filterVulnerabilities([unrelated, broad, kev], '', 'all', { ...options, group: 'clop' }), [broad]);
+  assert.deepEqual(core.filterVulnerabilities([unrelated, broad, kev], 'AKIRA', 'all', options), [kev, broad]);
+  assert.deepEqual(core.filterVulnerabilities([unrelated, broad, kev], '', 'all', { view: 'priority', groupOnly: true, groupEvidence: evidence, now: triageNow }), [kev, broad]);
+  assert.deepEqual(core.filterVulnerabilities([kev], '', 'all', { view: 'ransomware', groupEvidence: evidence, now: triageNow }), []);
+});
+
+test('vulnerability priority explains evidence without treating severity or groups as exploitation proof', () => {
+  const urgent = triageItem('CVE-2026-7001', 'known_exploited', '2026-09-01', '2026-08-01');
+  urgent.reports.cisa_kev.ransomware_use = 'Known';
+  urgent.reports.nvd.severity = 'critical';
+  const monitored = triageItem('CVE-2026-7002', 'not_established', null, '2026-08-01');
+  monitored.reports.nvd.severity = 'high';
+  const rejected = triageItem('CVE-2026-7003', 'known_exploited', '2026-09-01', '2026-08-01', '2026-08-01', 'Rejected');
+  assert.equal(core.vulnerabilityPriority(urgent, { groups: ['akira', 'clop'] }, triageNow).key, 'act');
+  assert.match(core.vulnerabilityPriority(urgent, { groups: ['akira', 'clop'] }, triageNow).why, /CISA KEV known exploitation/);
+  assert.equal(core.vulnerabilityPriority(monitored, { groups: ['akira'] }, triageNow).key, 'monitor');
+  assert.equal(core.vulnerabilityPriority(rejected, { groups: ['akira'] }, triageNow).key, 'context');
+});
+
+test('vulnerability timeline orders provider and reported group observations', () => {
+  const item = triageItem('CVE-2026-7100', 'known_exploited', '2026-09-02', '2026-08-01', '2026-09-04');
+  const events = core.vulnerabilityTimeline(item, { recentChange: { action: 'added', group: 'akira', at: '2026-09-05T00:00:00Z' } }, [
+    { group: 'akira', receipt: { first_observed: '2026-09-03T00:00:00Z', last_observed: '2026-09-06T00:00:00Z' } },
+  ], triageNow);
+  assert.deepEqual(events.map((event) => event.label), [
+    'Published by NVD', 'Added to CISA KEV', 'First observed for akira', 'NVD record updated', 'added: akira', 'Last confirmed for akira',
+  ]);
+});
+
+test('vulnerability aggregation ranks structured vendors and products deterministically', () => {
+  const item = (id, vendor, product) => ({ cve_id: id, reports: { cisa_kev: { vendor, product } } });
+  const result = core.vulnerabilityAggregation([
+    item('CVE-2026-7200', 'Vendor B', 'Product 1'), item('CVE-2026-7201', 'Vendor A', 'Product 1'), item('CVE-2026-7202', 'Vendor B', 'Product 2'),
+  ]);
+  assert.deepEqual(result.vendors, [{ name: 'Vendor B', total: 2 }, { name: 'Vendor A', total: 1 }]);
+  assert.deepEqual(result.products, [{ name: 'Product 1', total: 2 }, { name: 'Product 2', total: 1 }]);
+});
+
+test('page references current asset cache keys', () => {
   const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
-  for (const asset of ['styles.css', 'dashboard-core.js', 'dashboard.js']) {
-    assert.ok(html.includes(`assets/${asset}?v=38`));
+  for (const [asset, version] of Object.entries({ 'styles.css': 51, 'today.css': 49, 'today.js': 50,
+    'today-core.js': 50, 'dashboard.js': 54, 'dashboard-core.js': 52, 'group-intel.js': 48,
+    'group-intel-core.js': 50, 'sbom-core.js': 1, 'sbom.js': 1 })) {
+    assert.ok(html.includes(`assets/${asset}?v=${version}`));
   }
+});
+
+test('diagnostics page inline JavaScript parses', () => {
+  const html = fs.readFileSync(path.join(__dirname, '../diagnostics/summary.html'), 'utf8');
+  const script = html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(script);
+  assert.doesNotThrow(() => new Function(script));
 });
 
 test('compact preview honors mobile defaults and explicit shared row counts', () => {
@@ -575,6 +731,12 @@ test('provider graph groups abuse.ch adapters and excludes directory and aggrega
   assert.equal(providers.find((node) => node.label === 'abuse.ch').feeds.includes('urlhaus_recent_urls'), true);
 });
 
+test('official CVE feeds map to distinct named publishers', () => {
+  const providers = core.sourceProviders({ source: 'cisa_kev,nist_nvd_recent,ipsum_level5' });
+  assert.deepEqual(providers.map((provider) => [provider.id, provider.role]).sort(),
+    [['cisa', 'reporting'], ['ipsum', 'aggregate'], ['nvd', 'reporting']]);
+});
+
 test('provider sampling retains smaller genuine providers without inventing sources', () => {
   const rows = Array.from({ length: 30 }, (_, i) => ({ ...row, indicator: `ioc-${i}.example`,
     sourceList: [i < 28 ? 'threatfox_export_json' : 'ci_army_list'], score: i < 28 ? 99 : 60,
@@ -587,6 +749,50 @@ test('provider sampling retains smaller genuine providers without inventing sour
   const one = core.buildCampaignGraph(rows.slice(0, 28), { mode: 'sources', maxIndicators: 24 });
   assert.equal(one.stats.sourcePivots, 1);
   assert.equal(one.stats.indicators, 24);
+});
+
+test('constellation and lanes layout preserve bounded graph evidence without node collisions', () => {
+  const rows = Array.from({ length: 48 }, (_, index) => ({ ...row,
+    indicator: `ioc-${index}.example`, sourceList: [`custom-feed-${Math.floor(index / 6)}`], score: 80 - index % 6,
+  }));
+  const graph = core.buildCampaignGraph(rows, { mode: 'sources', maxPivots: 8, maxIndicators: 48 });
+  const before = JSON.stringify(graph.edges);
+  const orbit = core.layoutCampaignGraph(graph, 'orbit');
+  const rotated = core.layoutCampaignGraph(graph, 'orbit', 1);
+  const lanes = core.layoutCampaignGraph(graph, 'lanes');
+  assert.equal(orbit.positions.size, graph.nodes.length);
+  assert.equal(lanes.positions.size, graph.nodes.length);
+  assert.deepEqual([orbit.width, orbit.height], [1000, 760]);
+  assert.notDeepEqual([...orbit.positions], [...rotated.positions]);
+  const indicators = graph.nodes.filter((node) => node.kind === 'indicator').map((node) => orbit.positions.get(node.id));
+  for (const point of orbit.positions.values()) {
+    assert.ok(Number.isFinite(point.x) && Number.isFinite(point.y));
+    assert.ok(point.x >= 0 && point.x <= orbit.width && point.y >= 0 && point.y <= orbit.height);
+  }
+  for (let i = 0; i < indicators.length; i++) for (let j = i + 1; j < indicators.length; j++) {
+    assert.ok(Math.hypot(indicators[i].x - indicators[j].x, indicators[i].y - indicators[j].y) >= 39);
+  }
+  assert.equal(JSON.stringify(graph.edges), before);
+  assert.deepEqual([...core.layoutCampaignGraph(graph, 'orbit').positions], [...orbit.positions]);
+});
+
+test('graph focus contains only direct observed links and never mutates the full graph', () => {
+  const rows = [
+    { ...row, indicator: 'a.example', sourceList: ['threatfox_export_json', 'ci_army_list'] },
+    { ...row, indicator: 'b.example', sourceList: ['threatfox_export_json'] },
+    { ...row, indicator: 'c.example', sourceList: ['ci_army_list'] },
+  ];
+  const graph = core.buildCampaignGraph(rows, { mode: 'sources' });
+  const before = JSON.stringify(graph);
+  const indicator = graph.nodes.find((node) => node.label === 'a.example');
+  const focused = core.campaignGraphNeighborhood(graph, indicator.id);
+  assert.deepEqual([...focused.nodes].sort(), [indicator.id, ...graph.nodes.filter((node) => node.kind === 'pivot').map((node) => node.id)].sort());
+  assert.equal(focused.edges.size, 2);
+  assert.ok([...focused.edges].every((edge) => edge.target === indicator.id));
+  const pivot = graph.nodes.find((node) => node.label === 'abuse.ch');
+  assert.equal(core.campaignGraphNeighborhood(graph, pivot.id).edges.size, 2);
+  assert.equal(core.campaignGraphNeighborhood(graph, 'missing').nodes.size, 0);
+  assert.equal(JSON.stringify(graph), before);
 });
 
 const briefingItem = (id = 'CVE-2026-1234') => ({

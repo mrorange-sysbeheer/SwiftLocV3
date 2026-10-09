@@ -79,6 +79,19 @@
   const qsa = (selector, root = document) =>
     Array.from(root.querySelectorAll(selector));
 
+  document.addEventListener('click', (event) => {
+    if (event.target.closest?.('[data-row-actions-menu]')) return;
+    qsa('[data-row-actions-menu][open]').forEach((menu) => { menu.open = false; });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const openMenus = qsa('[data-row-actions-menu][open]');
+    if (!openMenus.length) return;
+    openMenus.forEach((menu) => { menu.open = false; });
+    openMenus[0].querySelector('summary')?.focus();
+  });
+
   const setText = (el, value) => {
     if (!el) return;
     el.textContent = value ?? '';
@@ -138,6 +151,36 @@
       .replace(/hxxps:\/\//gi, 'https://')
       .replace(/hxxp:\/\//gi, 'http://')
       .replace(/\[\.\]/g, '.'));
+
+  const copySplQuery = async (row) => {
+    if (!dashboardCore?.buildSplQuery) {
+      showToast('SPL query builder is unavailable.', 'error');
+      return;
+    }
+    let previous = '*';
+    try {
+      previous = window.localStorage?.getItem('swiftioc-spl-index') || '*';
+    } catch (error) {
+      // Reading storage can also fail in privacy mode.
+    }
+    const chosen = window.prompt(
+      'Splunk index (use * for every index, a wildcard such as security_*, or a comma-separated list):',
+      previous
+    );
+    if (chosen === null) return;
+    const index = normaliseString(chosen) || '*';
+    try {
+      window.localStorage?.setItem('swiftioc-spl-index', index);
+    } catch (error) {
+      // Storage can be unavailable in privacy mode; copying still works.
+    }
+    const query = dashboardCore.buildSplQuery(row, index);
+    if (!query) {
+      showToast('Enter *, wildcard index names, or a comma-separated index list.', 'error');
+      return;
+    }
+    await copyOrPrompt(query, 'Smart SPL query copied.', 'Copy this SPL query:');
+  };
 
   const coalesceString = (...values) => {
     for (const v of values) {
@@ -398,7 +441,7 @@
       if (!row) return;
       const selected = investigationWorkspace.has(row);
       button.setAttribute('aria-pressed', String(selected));
-      button.textContent = selected ? 'Queued' : 'Add to queue';
+      button.textContent = selected ? 'Queued ✓' : 'Add to queue';
       button.title = selected
         ? 'Remove this indicator from the investigation queue'
         : 'Keep this indicator in the browser-local investigation queue';
@@ -422,7 +465,7 @@
     });
     const selected = investigationWorkspace.has(row);
     button.setAttribute('aria-pressed', String(selected));
-    button.textContent = selected ? 'Queued' : 'Add to queue';
+    button.textContent = selected ? 'Queued ✓' : 'Add to queue';
     button.title = selected
       ? 'Remove this indicator from the investigation queue'
       : 'Keep this indicator in the browser-local investigation queue';
@@ -872,14 +915,23 @@
       const age = typeof factors.age_hours === 'number'
         ? Math.round(factors.age_hours) + 'h old'
         : 'unknown age';
+      if (!Array.isArray(factors.reporting_groups)) {
+        return 'Published score ' + factors.score + ' = confidence base ' +
+          factors.confidence_base + ' + feed-name bonus ' +
+          factors.corroboration_bonus + ', adjusted for ' + age +
+          ' using a ' + Math.round(factors.half_life_hours / 24) +
+          '-day half-life. This older snapshot counted feed names; the next collection will use reporting groups.';
+      }
+      const groups = factors.reporting_groups.join(', ') || 'none';
       return 'Score ' + factors.score + ' = confidence base ' +
-        factors.confidence_base + ' + corroboration ' +
+        factors.confidence_base + ' + reporting-group bonus ' +
         factors.corroboration_bonus + ', adjusted for ' + age +
-        ' using a ' + Math.round(factors.half_life_hours / 24) + '-day half-life.';
+        ' using a ' + Math.round(factors.half_life_hours / 24) + '-day half-life. Reporting groups: ' +
+        groups + '. Distinct groups do not prove independent observation.';
     }
     const sourceText = (row?.sourceCount || 0) >= 2
-      ? 'confirmed by ' + row.sourceCount + ' independent sources'
-      : 'reported by one source';
+      ? 'listed by ' + row.sourceCount + ' reporting groups (not independent verification)'
+      : (row?.sourceCount || 0) === 1 ? 'listed by one reporting group' : 'listed by aggregate/context feeds only';
     const age = formatRelativeTimeFromNow(row?.bestTimestamp);
     const freshnessText = age ? ' and last seen ' + age : '';
     if (typeof row?.score === 'number') {
@@ -967,7 +1019,7 @@
         if (key) sources.add(key);
       });
 
-      const multiSource = sourceParts.length >= 2;
+      const multiSource = (row.sourceCount || 0) >= 2;
       if (multiSource) {
         corroborated += 1;
       }
@@ -991,11 +1043,13 @@
         scoreBands.medium += 1;
       }
 
-      // Block-ready: high score OR confirmed by multiple independent sources.
+      // Review subset: a reporting group plus high score or multi-group reporting.
       if (
-        (typeof row.score === 'number' && row.score >= 80) ||
-        (typeof row.score !== 'number' && legacyConfidenceRank >= 3) ||
-        multiSource
+        (row.sourceCount || 0) >= 1 && (
+          (typeof row.score === 'number' && row.score >= 80) ||
+          (typeof row.score !== 'number' && legacyConfidenceRank >= 3) ||
+          multiSource
+        )
       ) {
         highConfidence += 1;
       }
@@ -1474,10 +1528,12 @@
     };
     const score = parseScore(row.score);
 
-    // The source field accumulates comma-separated feeds as the living feed
-    // merges runs; each independent feed corroborates the indicator.
+    // Keep raw feed names visible, but count known aliases by publisher.
+    // Aggregate/context feeds do not create corroboration.
     const sourceList = uniqueStrings((sourceRaw || '').split(','));
-    const sourceCount = sourceList.length;
+    const sourceCount = dashboardCore?.sourceProviders
+      ? dashboardCore.sourceProviders({ source: sourceRaw }).filter((provider) => provider.role === 'reporting' || provider.role === 'unmapped').length
+      : sourceList.length;
 
     const tagValues = [
       ...extractTags(row.tags),
@@ -2077,7 +2133,7 @@
     setStatText('high-confidence-caption', `${hcPct.toFixed(1)}% of the feed`);
     const corrPct =
       stats.total > 0 ? ((stats.corroborated ?? 0) / stats.total) * 100 : 0;
-    setStatText('corroborated-caption', `${corrPct.toFixed(1)}% multi-source`);
+    setStatText('corroborated-caption', `${corrPct.toFixed(1)}% multi-group reporting`);
 
     renderScoreDistribution(stats);
 
@@ -2173,6 +2229,8 @@
         : stats.activeSources || 0;
       const totalSources = sourceCounts.length || stats.activeSources || 0;
       const failureRows = Array.isArray(diag.failures) ? diag.failures : [];
+      const coverageRows = diag.source_coverage && typeof diag.source_coverage === 'object'
+        ? Object.entries(diag.source_coverage) : [];
       const emptySourceNames = Array.isArray(diag.empty_sources)
         ? diag.empty_sources
         : [];
@@ -2182,6 +2240,9 @@
       failureRows.forEach((failure) => {
         const source = normaliseLower(failure?.source ?? failure?.name);
         if (source) issueSources.add(source);
+      });
+      coverageRows.forEach(([source, coverage]) => {
+        if (['failed', 'truncated', 'empty'].includes(coverage?.state)) issueSources.add(normaliseLower(source));
       });
       const issueCount = issueSources.size || failureRows.length;
       const runTime = parseTimestamp(diag.ts)?.time ?? null;
@@ -2590,6 +2651,17 @@
       actionsCell.dataset.title = 'Actions';
       const actions = document.createElement('div');
       actions.className = 'preview-row-actions';
+      const menu = document.createElement('details');
+      menu.className = 'row-actions-menu';
+      menu.dataset.rowActionsMenu = '';
+      const menuToggle = document.createElement('summary');
+      menuToggle.className = 'button ghost row-action row-actions-toggle';
+      menuToggle.setAttribute('aria-label', 'More actions for ' + (row.indicator || 'indicator'));
+      menuToggle.title = 'More actions';
+      menuToggle.textContent = '•••';
+      const menuItems = document.createElement('div');
+      menuItems.className = 'row-actions-menu-items';
+      const closeMenu = () => { menu.open = false; };
       const copy = document.createElement('button');
       copy.type = 'button';
       copy.className = 'button ghost row-action';
@@ -2599,6 +2671,18 @@
         copy.disabled = true;
         await copyOrPrompt(row.indicator, 'Indicator copied to clipboard.', 'Copy this indicator:');
         copy.disabled = false;
+        closeMenu();
+      });
+      const spl = document.createElement('button');
+      spl.type = 'button';
+      spl.className = 'button ghost row-action';
+      spl.textContent = 'SPL';
+      spl.setAttribute('aria-label', 'Copy Splunk query for ' + (row.indicator || ''));
+      spl.addEventListener('click', async () => {
+        spl.disabled = true;
+        await copySplQuery(row);
+        spl.disabled = false;
+        closeMenu();
       });
       const toggle = document.createElement('button');
       toggle.type = 'button';
@@ -2614,9 +2698,18 @@
       download.addEventListener('click', () => {
         downloadJson(row);
         showToast('Indicator JSON downloaded.');
+        closeMenu();
       });
       const queue = makeInvestigationButton(row);
-      actions.append(queue, copy, toggle, download);
+      menuItems.append(copy, spl, toggle, download);
+      menu.append(menuToggle, menuItems);
+      menu.addEventListener('toggle', () => {
+        if (!menu.open) return;
+        qsa('[data-row-actions-menu][open]').forEach((candidate) => {
+          if (candidate !== menu) candidate.open = false;
+        });
+      });
+      actions.append(queue, menu);
       syncInvestigationButtons();
       actionsCell.appendChild(actions);
       tr.appendChild(actionsCell);
@@ -2668,6 +2761,7 @@
         toggle.setAttribute('aria-expanded', String(open));
         if (open) state.expanded.add(key);
         else state.expanded.delete(key);
+        closeMenu();
       });
       return [tr, detailRow];
     };
@@ -3183,11 +3277,44 @@
     const extraView = qs('[data-vulnerability-extra-view]', root);
     const help = qs('[data-vulnerability-view-help]', root);
     const freshness = qs('[data-vulnerability-freshness]', root);
+    const groupFilter = qs('[data-vulnerability-group-filter]', root);
+    const groupOnly = qs('[data-vulnerability-group-only]', root);
+    const groupExport = qs('[data-vulnerability-group-export]', root);
+    const groupStatus = qs('[data-vulnerability-group-status]', root);
+    const groupCount = qs('[data-group-linked-count]', root);
+    const layoutButtons = qsa('[data-vulnerability-layout]', root);
+    const saveViewButton = qs('[data-vulnerability-save-view]', root);
+    const savedViewsSelect = qs('[data-vulnerability-saved-views]', root);
+    const deleteViewButton = qs('[data-vulnerability-delete-view]', root);
+    const exportFormat = qs('[data-vulnerability-export-format]', root);
+    const exportPack = qs('[data-vulnerability-export-pack]', root);
+    const filterChips = qs('[data-vulnerability-filter-chips]', root);
+    const insights = qs('[data-vulnerability-insights]', root);
+    const compareA = qs('[data-vulnerability-compare-a]', root);
+    const compareB = qs('[data-vulnerability-compare-b]', root);
+    const compareC = qs('[data-vulnerability-compare-c]', root);
+    const severityFilter = qs('[data-vulnerability-severity]', root);
+    const changeFilter = qs('[data-vulnerability-change]', root);
+    const tierStrip = qs('[data-vulnerability-tiers]', root);
+    const storageNote = qs('[data-vulnerability-storage-note]', root);
+    const compareButton = qs('[data-vulnerability-compare]', root);
+    const compareResult = qs('[data-vulnerability-compare-result]', root);
+    const bulkBar = qs('[data-vulnerability-bulk]', root);
+    const selectedCount = qs('[data-vulnerability-selected-count]', root);
+    const drawer = qs('[data-vulnerability-drawer]', root);
+    const drawerTitle = qs('[data-vulnerability-drawer-title]', root);
+    const drawerBody = qs('[data-vulnerability-drawer-body]', root);
+    const drawerPosition = qs('[data-vulnerability-drawer-position]', root);
+    const drawerPrevious = qs('[data-vulnerability-drawer-prev]', root);
+    const drawerNext = qs('[data-vulnerability-drawer-next]', root);
     // Old HTML may remain in an intermediary cache during a deployment.
-    if (!extraView || !includeRejected || !help || !freshness || !views.length || !qs('[data-briefing-form]', root)) return;
+    if (!extraView || !includeRejected || !help || !freshness || !groupFilter || !groupOnly || !groupExport
+      || !groupStatus || !views.length || !qs('[data-briefing-form]', root) || layoutButtons.length !== 2
+      || !savedViewsSelect || !exportPack || !filterChips || !insights || !drawer || !bulkBar) return;
     const viewHelp = {
       briefing: 'Your watched products, with material evidence changes first. Rejected records remain visible for review. Routine timestamp updates do not create alerts.',
       exploited: 'Confirmed KEV records only, newest catalog additions first. An empty result means this collection has no matching KEV evidence; other CVEs are available in All CVEs.',
+      'group-linked': 'CVEs reported by ransomware.live as associated with one or more tracked groups. Associations do not prove current exploitation or local exposure.',
       ransomware: 'CISA KEV records explicitly marked Known for ransomware campaign use. Unknown and unreported values do not qualify.',
       priority: 'Known exploited first (newest KEV additions), then exploitation reports, then other CVEs. Publication dates order each remaining group.',
       kev30: 'Added to CISA KEV in the past 30 days, newest first. Catalog addition is not the date an attack occurred.',
@@ -3212,7 +3339,56 @@
     let page = 0;
     let loading = false;
     let failed = false;
-    const pageSize = 6;
+    let groupModel = null;
+    let groupFailed = false;
+    let groupEvidence = new Map();
+    let lastGroupResults = [];
+    let currentMatches = [];
+    let currentPageItems = [];
+    let keyboardIndex = -1;
+    let comparisonIds = null;
+    let comparisonLabel = '';
+    let comparisonGroups = [];
+    let comparisonMode = 'shared';
+    let tierFilter = 'all';
+    let vendorFilter = '';
+    let productFilter = '';
+    let allCurrentItems = [];
+    let publicCveSignals = null;
+    const signalFor = (id) => publicCveSignals?.items?.[id] || null;
+    let drawerItems = [];
+    let baseline = null;
+    let acknowledged = {};
+    let acknowledgedSnapshot = 0;
+    let acknowledgedGroupSnapshot = 0;
+    let visitStored = false;
+    const baselineKey = 'swiftioc-cve-evidence-baseline-v2';
+    const acknowledgementKey = 'swiftioc-cve-acknowledged-v2';
+    const selectedCves = new Set();
+    const workspaceKey = 'swiftioc-cve-workspace-v1';
+    let layout = 'cards';
+    let savedViews = [];
+    try {
+      const workspace = JSON.parse(window.localStorage.getItem(workspaceKey) || '{}');
+      if (['cards', 'table'].includes(workspace.layout)) layout = workspace.layout;
+      if (Array.isArray(workspace.views)) savedViews = workspace.views.filter((entry) => entry && typeof entry.name === 'string' && entry.name.length <= 60 && dashboardCore.normaliseVulnerabilityView(entry.state)).slice(0, 12)
+        .map((entry) => ({ name: entry.name, state: dashboardCore.normaliseVulnerabilityView(entry.state) }));
+    } catch { /* Browser storage is optional. */ }
+    const validEvidenceState = (value) => value?.version === 2 && Number.isFinite(value.snapshotAt)
+      && Number.isFinite(value.groupAt) && value.records && typeof value.records === 'object' && !Array.isArray(value.records)
+      && Object.keys(value.records).length <= 10000
+      && Object.entries(value.records).every(([id, evidence]) => /^CVE-\d{4}-\d{4,19}$/.test(id) && evidence && Array.isArray(evidence.groups));
+    try {
+      const saved = JSON.parse(localStorage.getItem(baselineKey) || 'null');
+      if (validEvidenceState(saved)) baseline = saved;
+      const reviewed = JSON.parse(localStorage.getItem(acknowledgementKey) || 'null');
+      if (validEvidenceState(reviewed)) {
+        acknowledged = reviewed.records;
+        acknowledgedSnapshot = reviewed.snapshotAt;
+        acknowledgedGroupSnapshot = reviewed.groupAt;
+      }
+    } catch { storageNote.textContent = 'Saved review data could not be read. A new baseline will be established.'; }
+    const pageSize = () => layout === 'table' ? 20 : 6;
     const addText = (parent, tag, value, className = '') => {
       const element = document.createElement(tag);
       element.textContent = value;
@@ -3235,6 +3411,277 @@
         link.rel = 'noopener noreferrer';
       }
       card.appendChild(details);
+    };
+    const day = (time) => time == null ? 'Unknown / invalid' : new Date(time * 1000).toISOString().slice(0, 10);
+    const storeWorkspace = () => {
+      try { window.localStorage.setItem(workspaceKey, JSON.stringify({ version: 1, layout, views: savedViews })); }
+      catch { storageNote.textContent = 'Storage unavailable or full. Changes last for this tab; back up saved views before leaving.'; }
+    };
+    const observationsFor = (record) => record && groupModel ? record.groups.map((group) => ({ group,
+      receipt: window.SwiftIOCGroupIntel.receipt(groupModel, record, group),
+    })).filter((entry) => entry.receipt) : [];
+    const priorityFor = (item, now = Date.now() / 1000) => dashboardCore.vulnerabilityPriority(item,
+      groupEvidence.get(item.cve_id.toLowerCase()) || null, now);
+    const isNewSinceVisit = (item) => {
+      if (!baseline || !evidenceReady() || snapshotTime < baseline.snapshotAt || Date.parse(groupModel.generatedAt) < baseline.groupAt) return false;
+      return dashboardCore.vulnerabilityChanges(baseline.records[item.cve_id], evidenceFor(item)).length > 0;
+    };
+    const evidenceFor = (item) => dashboardCore.vulnerabilityEvidence(item, groupEvidence.get(item.cve_id.toLowerCase()));
+    const evidenceReady = () => !loading && !failed && groupModel && !groupFailed && snapshotTime != null && snapshotTime <= Date.now() / 1000
+      && Number.isFinite(Date.parse(groupModel.generatedAt)) && Date.parse(groupModel.generatedAt) <= Date.now();
+    const isReviewed = (item) => Boolean(acknowledged[item.cve_id]) && dashboardCore.vulnerabilityChanges(acknowledged[item.cve_id], evidenceFor(item)).length === 0;
+    const markReviewed = (rows, reviewed = true) => {
+      if (!evidenceReady()) { showToast('Review state is paused until both evidence snapshots are available.'); return; }
+      if (snapshotTime < acknowledgedSnapshot || Date.parse(groupModel.generatedAt) < acknowledgedGroupSnapshot) {
+        showToast('This snapshot is older than your last review. Refresh before changing review status.'); return;
+      }
+      rows.forEach((item) => { if (reviewed) acknowledged[item.cve_id] = evidenceFor(item); else delete acknowledged[item.cve_id]; });
+      acknowledged = Object.fromEntries(Object.entries(acknowledged).slice(-10000));
+      acknowledgedSnapshot = snapshotTime;
+      acknowledgedGroupSnapshot = Date.parse(groupModel.generatedAt);
+      try { localStorage.setItem(acknowledgementKey, JSON.stringify({ version: 2, snapshotAt: snapshotTime, groupAt: Date.parse(groupModel.generatedAt), records: acknowledged })); }
+      catch { storageNote.textContent = 'Review state is available for this tab only; browser storage is unavailable or full.'; }
+      window.dispatchEvent(new CustomEvent('swiftioc:review-change', { detail: { version: 2, snapshotAt: acknowledgedSnapshot, groupAt: acknowledgedGroupSnapshot, records: acknowledged } }));
+      render();
+    };
+    const addPriority = (parent, item, now) => {
+      const priority = priorityFor(item, now);
+      const row = document.createElement('div');
+      row.className = 'vulnerability-priority';
+      row.dataset.tier = priority.key;
+      addText(row, 'strong', priority.label);
+      addText(row, 'p', priority.why);
+      parent.appendChild(row);
+      return priority;
+    };
+    const updateSavedViews = () => {
+      const selected = savedViewsSelect.value;
+      savedViewsSelect.replaceChildren(...[['', 'Saved views…'], ...savedViews.map((entry, index) => [String(index), entry.name])]
+        .map(([value, label]) => { const option = document.createElement('option'); option.value = value; option.textContent = label; return option; }));
+      if ([...savedViewsSelect.options].some((option) => option.value === selected)) savedViewsSelect.value = selected;
+      deleteViewButton.disabled = savedViewsSelect.value === '';
+    };
+    const captureView = () => ({ view, search: search.value, exploitation: filter.value, group: groupFilter.value,
+      groupOnly: groupOnly.checked, includeRejected: includeRejected.checked, layout, tier: tierFilter,
+      severity: severityFilter.value, change: changeFilter.value, vendor: vendorFilter, product: productFilter,
+      comparison: comparisonGroups, comparisonMode, briefingTriage: briefingTriage.value });
+    const applyView = (state) => {
+      state = dashboardCore.normaliseVulnerabilityView(state);
+      if (!state) return;
+      if (Object.hasOwn(viewHelp, state.view)) view = state.view;
+      search.value = typeof state.search === 'string' ? state.search.slice(0, 200) : '';
+      filter.value = [...filter.options].some((option) => option.value === state.exploitation) ? state.exploitation : 'all';
+      groupFilter.value = [...groupFilter.options].some((option) => option.value === state.group) ? state.group : '';
+      groupOnly.checked = state.groupOnly === true;
+      includeRejected.checked = state.includeRejected === true;
+      if (['cards', 'table'].includes(state.layout)) layout = state.layout;
+      tierFilter = state.tier; severityFilter.value = state.severity; changeFilter.value = state.change;
+      vendorFilter = state.vendor; productFilter = state.product; briefingTriage.value = state.briefingTriage;
+      comparisonGroups = state.comparison; comparisonMode = state.comparisonMode;
+      comparisonIds = null; comparisonLabel = ''; page = 0; storeWorkspace(); render();
+    };
+    const renderFilterChips = () => {
+      const chips = [];
+      if (view !== 'priority') chips.push(['view', `View: ${views.find((button) => button.dataset.vulnerabilityView === view)?.textContent.trim() || view}`]);
+      if (search.value.trim()) chips.push(['search', `Search: ${search.value.trim()}`]);
+      if (filter.value !== 'all') chips.push(['exploitation', `Evidence: ${filter.options[filter.selectedIndex].textContent}`]);
+      if (groupFilter.value) chips.push(['group', `Group: ${groupFilter.value}`]);
+      if (groupOnly.checked && view !== 'group-linked') chips.push(['groupOnly', 'Group-linked only']);
+      if (includeRejected.checked) chips.push(['rejected', 'Including rejected records']);
+      if (comparisonIds) chips.push(['comparison', comparisonLabel]);
+      if (tierFilter !== 'all') chips.push(['tier', `Priority: ${tierFilter}`]);
+      if (severityFilter.value !== 'all') chips.push(['severity', `Severity: ${severityFilter.value}`]);
+      if (changeFilter.value !== 'all') chips.push(['change', `Review: ${changeFilter.options[changeFilter.selectedIndex].textContent}`]);
+      if (vendorFilter) chips.push(['vendor', `Vendor: ${vendorFilter}`]);
+      if (productFilter) chips.push(['product', `Product: ${productFilter}`]);
+      filterChips.hidden = !chips.length;
+      filterChips.replaceChildren(...chips.map(([key, label]) => {
+        const button = addText(document.createDocumentFragment(), 'button', label, 'vulnerability-filter-chip');
+        button.type = 'button'; button.dataset.filterKey = key; button.title = `Remove ${label}`;
+        button.addEventListener('click', () => {
+          if (key === 'view') view = 'priority';
+          if (key === 'search') search.value = '';
+          if (key === 'exploitation') filter.value = 'all';
+          if (key === 'group') groupFilter.value = '';
+          if (key === 'groupOnly') groupOnly.checked = false;
+          if (key === 'rejected') includeRejected.checked = false;
+          if (key === 'comparison') { comparisonGroups = []; comparisonIds = null; comparisonLabel = ''; }
+          if (key === 'tier') tierFilter = 'all';
+          if (key === 'severity') severityFilter.value = 'all';
+          if (key === 'change') changeFilter.value = 'all';
+          if (key === 'vendor') vendorFilter = '';
+          if (key === 'product') productFilter = '';
+          page = 0; render();
+        });
+        return button;
+      }));
+      if (chips.length) {
+        const clear = addText(filterChips, 'button', 'Clear all', 'button ghost'); clear.type = 'button';
+        clear.addEventListener('click', () => applyView({ view: 'priority', layout }));
+      }
+    };
+    const renderInsights = (matches) => {
+      const aggregate = dashboardCore.vulnerabilityAggregation(matches);
+      const panel = (title, entries, kind) => {
+        const section = document.createElement('section'); section.className = 'vulnerability-insight';
+        addText(section, 'h4', title);
+        const list = document.createElement('div'); list.className = 'vulnerability-insight-list';
+        entries.slice(0, 6).forEach((entry) => {
+          const button = addText(list, 'button', `${entry.name} · ${entry.total}`);
+          button.type = 'button'; button.title = `Filter results for ${entry.name}`;
+          button.addEventListener('click', () => { if (kind === 'vendor') vendorFilter = entry.name; else productFilter = entry.name; page = 0; render(); });
+        });
+        if (!entries.length) addText(list, 'span', 'No structured values in this view.', 'vulnerability-meta');
+        section.appendChild(list); return section;
+      };
+      insights.replaceChildren(panel('Vendors in these results', aggregate.vendors, 'vendor'), panel('Products in these results', aggregate.products, 'product'));
+    };
+    const spreadsheetCell = (value) => {
+      let text = String(value ?? '');
+      if (/^[=+\-@\t\r]/.test(text)) text = `'${text}`;
+      return `"${text.replaceAll('"', '""')}"`;
+    };
+    const exportRows = (rows, formatName) => {
+      if (!rows.length || loading || failed) return false;
+      const enriched = rows.map((item) => {
+        const record = groupEvidence.get(item.cve_id.toLowerCase()) || null;
+        const priority = priorityFor(item);
+        return { cve_id: item.cve_id, title: item.title || '', vendor: item.reports?.cisa_kev?.vendor || '',
+          product: item.reports?.cisa_kev?.product || '', severity: item.reports?.nvd?.severity || '',
+          exploitation_status: item.exploitation_status, priority: priority.label, why: priority.why,
+          groups: record?.groups || [], sources: item.sources || [], reports: item.reports || {}, description: item.description || '',
+          public_signals: signalFor(item.cve_id),
+          vulnerability_snapshot: snapshotTime == null ? '' : new Date(snapshotTime * 1000).toISOString(), group_snapshot: groupModel?.generatedAt || '',
+          observations: observationsFor(record), timeline: dashboardCore.vulnerabilityTimeline(item, record, observationsFor(record)),
+          reviewed: isReviewed(item), changes: isNewSinceVisit(item) ? dashboardCore.vulnerabilityChanges(baseline.records[item.cve_id], evidenceFor(item)) : [],
+        };
+      });
+      const stamp = new Date().toISOString();
+      if (formatName === 'json') return downloadDetection(JSON.stringify({ schema_version: 1, generated_at: stamp,
+        source_snapshot_at: snapshotTime == null ? null : new Date(snapshotTime * 1000).toISOString(),
+        filters: captureView(), limitations: ['Priority tiers guide review; they do not prove local exposure.',
+          'Ransomware group associations are reported evidence, not proof of current exploitation or attribution.'], items: enriched,
+      }, null, 2), 'swiftioc-cve-analyst-pack.json', 'application/json');
+      if (formatName === 'markdown') {
+        const md = (value) => String(value ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replace(/[\r\n]+/g, ' ').replaceAll('|', '\\|');
+        const lines = ['# SwiftIOC vulnerability brief', '', `Generated: ${stamp}`, `Records: ${enriched.length}`, '',
+          '| CVE | Priority | Product | Severity | Groups | Why |', '|---|---|---|---|---|---|',
+          ...enriched.map((row) => `| ${[row.cve_id, row.priority, row.product, row.severity, row.groups.join(', '), row.why].map(md).join(' | ')} |`),
+          '', `Vulnerability snapshot: ${enriched[0]?.vulnerability_snapshot || 'Unavailable'}`, `Group snapshot: ${enriched[0]?.group_snapshot || 'Unavailable'}`,
+          ...enriched.flatMap((row) => ['', `## ${row.cve_id}`, md(row.title), md(row.description), `Action: ${md(row.reports.cisa_kev?.required_action || 'Verify remediation with the provider.')}`,
+            ...row.observations.map((entry) => `- ${md(entry.group)}: first observed ${md(entry.receipt.first_observed)}; last observed ${md(entry.receipt.last_observed)}`)]),
+          '', '> Priority guides review and does not establish local exposure. Group associations are reported evidence.'];
+        return downloadDetection(lines.join('\n'), 'swiftioc-cve-brief.md', 'text/markdown');
+      }
+      const headers = formatName === 'splunk'
+        ? ['cve_id', 'vendor', 'product', 'severity', 'priority', 'exploitation_status', 'groups', 'why', 'vulnerability_snapshot', 'group_snapshot']
+        : ['cve_id', 'title', 'vendor', 'product', 'severity', 'priority', 'exploitation_status', 'groups', 'sources', 'why', 'vulnerability_snapshot', 'group_snapshot'];
+      const csv = [headers.map(spreadsheetCell).join(','), ...enriched.map((row) => headers.map((key) =>
+        spreadsheetCell(Array.isArray(row[key]) ? row[key].join(';') : row[key])).join(','))].join('\r\n');
+      return downloadDetection(csv, formatName === 'splunk' ? 'swiftioc-cve-splunk-lookup.csv' : 'swiftioc-cves.csv', 'text/csv');
+    };
+    const updateBulkBar = () => {
+      bulkBar.hidden = selectedCves.size === 0;
+      const visible = currentMatches.filter((item) => selectedCves.has(item.cve_id)).length;
+      selectedCount.textContent = `${selectedCves.size.toLocaleString()} selected${visible < selectedCves.size ? ` · ${selectedCves.size - visible} outside this view` : ''}`;
+      qsa('button', bulkBar).forEach((button) => { button.disabled = loading || failed; });
+    };
+    const toggleSelected = (id) => {
+      if (selectedCves.has(id)) selectedCves.delete(id); else selectedCves.add(id);
+      updateBulkBar(); render();
+      const row = cards.querySelector(`[data-cve-id="${CSS.escape(id)}"]`); row?.querySelector('input[type="checkbox"]')?.focus({ preventScroll: true });
+    };
+    const buildDrawer = (item) => {
+      const facts = dashboardCore.vulnerabilityFacts(item);
+      const record = groupEvidence.get(item.cve_id.toLowerCase()) || null;
+      const publicSignal = signalFor(item.cve_id);
+      const observations = observationsFor(record);
+      drawerTitle.textContent = item.cve_id;
+      drawerBody.replaceChildren();
+      addText(drawerBody, 'p', item.title && item.title !== item.cve_id ? item.title : 'Title not supplied.', 'vulnerability-title');
+      addPriority(drawerBody, item, Date.now() / 1000);
+      const grid = document.createElement('div'); grid.className = 'vulnerability-drawer-grid';
+      [['Severity', item.reports?.nvd?.severity || 'Not supplied'], ['Vendor', item.reports?.cisa_kev?.vendor || 'Not supplied'],
+        ['Product', item.reports?.cisa_kev?.product || 'Not supplied'], ['Exploitation', labels[item.exploitation_status]],
+        ['Reported groups', record?.groups?.length || 0], ['Review state', isReviewed(item) ? 'Current evidence reviewed' : 'Needs review']]
+        .forEach(([label, value]) => { const fact = document.createElement('div'); fact.className = 'vulnerability-drawer-fact'; addText(fact, 'span', label); addText(fact, 'strong', value); grid.appendChild(fact); });
+      drawerBody.appendChild(grid);
+      const actions = document.createElement('div'); actions.className = 'vulnerability-drawer-actions';
+      const review = addText(actions, 'button', isReviewed(item) ? 'Mark unreviewed' : 'Mark reviewed', 'button ghost'); review.type = 'button'; review.disabled = !evidenceReady();
+      review.addEventListener('click', () => { markReviewed([item], !isReviewed(item)); buildDrawer(item); });
+      const copy = addText(actions, 'button', 'Copy CVE', 'button ghost'); copy.type = 'button'; copy.addEventListener('click', () => copyOrPrompt(item.cve_id, 'CVE copied.', 'Copy CVE:'));
+      drawerBody.appendChild(actions);
+      if (isNewSinceVisit(item)) addText(drawerBody, 'p', `Since last visit: ${dashboardCore.vulnerabilityChanges(baseline.records[item.cve_id], evidenceFor(item)).join(' · ')}`, 'vulnerability-caution');
+      if (facts.rejected) addText(drawerBody, 'p', 'Rejected NVD record: review the provider record before acting.', 'vulnerability-caution');
+      addText(drawerBody, 'h4', 'Description'); addText(drawerBody, 'p', item.description || 'No description supplied.');
+      if (item.reports?.cisa_kev?.required_action) { addText(drawerBody, 'h4', 'CISA required action'); addText(drawerBody, 'p', item.reports.cisa_kev.required_action); }
+      if (publicSignal) {
+        const external = document.createElement('section'); external.className = 'today-evidence-profile';
+        addText(external, 'h4', 'Additional public CVE signals');
+        if (publicSignal.epss) addText(external, 'p', `FIRST EPSS: ${(publicSignal.epss.probability * 100).toFixed(1)}% estimated chance of observed exploitation activity in the next 30 days (${(publicSignal.epss.percentile * 100).toFixed(1)} percentile). Forecast only—not current exploitation, severity or local risk.`);
+        const official = publicSignal.official_cve;
+        if (official) {
+          addText(external, 'p', `Official CVE record: ${official.status || 'status unavailable'}${official.updated_at ? ` · updated ${official.updated_at}` : ''}. ${(official.affected || []).slice(0, 5).map((part) => [part.vendor, part.product].filter(Boolean).join(' / ')).filter(Boolean).join('; ') || 'Affected-product details not supplied.'}`);
+          const versions = (official.affected || []).slice(0, 5).flatMap((part) => (part.versions || []).slice(0, 4).map((version) => `${[part.vendor, part.product].filter(Boolean).join(' / ')}: ${version.status || 'status unknown'} ${version.version || ''}${version.lessThan ? ` to <${version.lessThan}` : ''}${version.lessThanOrEqual ? ` to ≤${version.lessThanOrEqual}` : ''}`));
+          if (versions.length) addText(external, 'p', `Reported version statements (verify conditions with vendor): ${versions.join('; ')}`);
+          if (official.cisa_ssvc?.options) addText(external, 'p', `CISA SSVC: ${Object.entries(official.cisa_ssvc.options).map(([key, value]) => `${key} ${value}`).join(' · ')}. This is a separate CISA assessment, not confirmation of the named-group report.`);
+          const officialLink = addText(external, 'a', 'Open official CVE record ↗'); officialLink.href = safeHttpUrl(official.source_url) || `https://www.cve.org/CVERecord?id=${encodeURIComponent(item.cve_id)}`; officialLink.target = '_blank'; officialLink.rel = 'noopener noreferrer';
+        }
+        drawerBody.appendChild(external);
+      }
+      addText(drawerBody, 'h4', 'Evidence timeline');
+      const timeline = document.createElement('ol'); timeline.className = 'vulnerability-timeline';
+      dashboardCore.vulnerabilityTimeline(item, record, observations).forEach((event) => {
+        const li = document.createElement('li'); const time = addText(li, 'time', new Date(event.time * 1000).toLocaleString());
+        time.dateTime = new Date(event.time * 1000).toISOString(); addText(li, 'strong', event.label); addText(li, 'span', ` · ${event.source}`); timeline.appendChild(li);
+      });
+      if (!timeline.childElementCount) addText(timeline, 'li', 'No valid provider timeline dates are available.');
+      drawerBody.appendChild(timeline);
+      if (record?.groups?.length) {
+        addText(drawerBody, 'h4', 'Reported ransomware group associations');
+        const chips = document.createElement('div'); chips.className = 'vulnerability-group-chips';
+        record.groups.forEach((group) => { const link = addText(chips, 'a', group); link.href = window.SwiftIOCGroupIntel.url(group, 'cves'); });
+        drawerBody.appendChild(chips);
+        addText(drawerBody, 'p', 'Reported association only; this does not establish active exploitation, attribution, or exposure in your environment.');
+      }
+      addReport(drawerBody, 'CISA KEV evidence & action', item.reports?.cisa_kev, [
+        ['vendor', 'Vendor'], ['product', 'Product'], ['description', 'CISA description'], ['date_added', 'Added to catalog'],
+        ['catalog_checked_at', 'Catalog checked'], ['required_action', 'Required action'], ['due_date', 'Federal directive due date'], ['ransomware_use', 'Known ransomware campaign use'], ['notes', 'Notes'],
+      ]);
+      addReport(drawerBody, 'NVD publication & severity', item.reports?.nvd, [
+        ['published_at', 'Published'], ['modified_at', 'Modified'], ['status', 'Status'], ['severity', 'Severity'], ['description', 'NVD description'],
+      ]);
+      if (window.SwiftIOCToday) {
+        const profile = window.SwiftIOCToday.evidenceProfile(item, groupModel, snapshotTime == null ? null : new Date(snapshotTime * 1000).toISOString());
+        const quality = document.createElement('section'); quality.className = 'today-evidence-profile';
+        addText(quality, 'h4', 'Evidence quality & limitations');
+        addText(quality, 'p', `Vulnerability snapshot: ${profile.vulnerabilityFreshness} · Group snapshot: ${profile.groupFreshness}. Freshness windows: 48h / 72h; not attack dates.`);
+        profile.claims.forEach((claim) => { addText(quality, 'h5', claim.source); addText(quality, 'p', `${claim.finding} ${claim.boundary}`); });
+        addText(quality, 'p', profile.corroboration);
+        const gaps = document.createElement('ul'); profile.gaps.forEach((gap) => addText(gaps, 'li', gap)); quality.appendChild(gaps);
+        drawerBody.appendChild(quality);
+      }
+      if (!item.reports?.cisa_kev && !item.reports?.nvd && safeHttpUrl(item.reference)) {
+        const link = addText(drawerBody, 'a', 'Open authoritative CVE record ↗'); link.href = safeHttpUrl(item.reference); link.target = '_blank'; link.rel = 'noopener noreferrer';
+      }
+      if (record) {
+        const link = addText(drawerBody, 'a', 'Open group evidence map ↗'); link.href = `groups.html#${new URLSearchParams({ view: 'cves', q: item.cve_id })}`;
+      }
+      addText(drawerBody, 'p', `Sources: ${(item.sources || []).join(', ') || 'Not supplied'}`, 'vulnerability-meta');
+    };
+    const openDrawer = (item) => {
+      if (!item) return;
+      if (!drawer.open) drawerItems = [...currentMatches];
+      const index = drawerItems.findIndex((entry) => entry.cve_id === item.cve_id);
+      if (index < 0) return;
+      keyboardIndex = currentPageItems.findIndex((entry) => entry.cve_id === item.cve_id);
+      buildDrawer(item);
+      drawerPosition.textContent = `${index + 1} of ${drawerItems.length}`;
+      drawerPrevious.disabled = index === 0; drawerNext.disabled = index + 1 >= drawerItems.length;
+      drawer.dataset.index = String(index);
+      drawer.dataset.cveId = item.cve_id;
+      if (!drawer.open) drawer.showModal();
+      drawerBody.scrollTop = 0;
     };
     const briefingKey = 'swiftioc-cve-briefing-v1';
     let briefing = dashboardCore.emptyBriefing();
@@ -3275,6 +3722,7 @@
       } catch {
         briefingNotice = 'Browser storage is unavailable or full. Changes are kept for this tab only; export your briefing before leaving.';
       }
+      window.dispatchEvent(new CustomEvent('swiftioc:briefing-change', { detail: briefing }));
       return true;
     };
     const updateBriefingControls = () => {
@@ -3315,27 +3763,86 @@
       const now = Date.now() / 1000;
       const briefingEntries = dashboardCore.buildBriefing(items, briefing, snapshotTime);
       const briefById = new Map(briefingEntries.map((entry) => [entry.item.cve_id, entry]));
-      const eligible = dashboardCore.filterVulnerabilities(items, search.value, filter.value, { view, includeRejected: view === 'briefing' || includeRejected.checked, now });
+      const existingIds = new Set(items.map((item) => item.cve_id.toLowerCase()));
+      const includeGroupOnlyRecords = view === 'group-linked' || groupOnly.checked || groupFilter.value || comparisonGroups.length;
+      root.dataset.vulnerabilityActiveView = view;
+      root.dataset.vulnerabilityGroupMode = String(Boolean(includeGroupOnlyRecords));
+      const groupSupplement = [...groupEvidence.values()]
+        .filter((record) => !existingIds.has(record.value.toLowerCase()))
+        .map((record) => ({ cve_id: record.value, title: signalFor(record.value)?.official_cve?.description?.slice(0, 110) || record.value,
+          description: signalFor(record.value)?.official_cve?.description || 'Reported by ransomware.live, but detailed CISA/NVD evidence is not present in the current retained SwiftIOC vulnerability collection. Verify affected products, versions, severity, and remediation with an authoritative vulnerability record.',
+          exploitation_status: 'not_established', sources: ['ransomware.live'], reports: {},
+          reference: `https://nvd.nist.gov/vuln/detail/${encodeURIComponent(record.value)}`,
+        }));
+      allCurrentItems = [...items, ...groupSupplement];
+      if (comparisonGroups.length && groupModel) {
+        comparisonIds = new Set([...groupEvidence.values()].filter((record) => {
+          const count = comparisonGroups.filter((group) => record.groups.includes(group)).length;
+          return comparisonMode === 'shared' ? count === comparisonGroups.length : comparisonMode === 'unique' ? count === 1 : count > 0;
+        }).map((record) => record.value));
+        comparisonLabel = `${comparisonMode}: ${comparisonGroups.join(' + ')}`;
+      }
+      const filterItems = includeGroupOnlyRecords ? allCurrentItems : items;
+      const eligible = dashboardCore.filterVulnerabilities(filterItems, search.value, filter.value, {
+        view, includeRejected: view === 'briefing' || includeRejected.checked, now,
+        groupEvidence, group: groupFilter.value, groupOnly: groupOnly.checked,
+      });
       const eligibleIds = new Set(eligible.map((item) => item.cve_id));
       lastBriefingResults = !loading && !failed ? briefingEntries.filter((entry) => eligibleIds.has(entry.item.cve_id) && (briefingTriage.value === 'all' || (briefingTriage.value === 'new' ? entry.changes.length > 0 : briefingTriage.value === 'unreviewed' ? ['unreviewed', 'new'].includes(entry.triage) : entry.triage === briefingTriage.value))) : [];
-      const matches = view === 'briefing' ? lastBriefingResults.map((entry) => entry.item) : eligible;
+      let matches = view === 'briefing' ? lastBriefingResults.map((entry) => entry.item) : eligible;
+      if (comparisonIds) matches = matches.filter((item) => comparisonIds.has(item.cve_id));
+      matches = matches.filter((item) => (!vendorFilter || item.reports?.cisa_kev?.vendor === vendorFilter)
+        && (!productFilter || item.reports?.cisa_kev?.product === productFilter)
+        && (severityFilter.value === 'all' || (item.reports?.nvd?.severity || 'unknown').toLowerCase() === severityFilter.value)
+        && (changeFilter.value === 'all' || (changeFilter.value === 'changed' ? isNewSinceVisit(item) : changeFilter.value === 'reviewed' ? isReviewed(item) : !isReviewed(item))));
+      tierStrip.replaceChildren();
+      [['all', 'All priorities'], ['act', 'Act now'], ['investigate', 'Investigate'], ['monitor', 'Monitor'], ['context', 'Context only']].forEach(([key, label]) => {
+        const count = key === 'all' ? matches.length : matches.filter((item) => priorityFor(item, now).key === key).length;
+        const button = addText(tierStrip, 'button', `${label} · ${count}`, 'button ghost'); button.type = 'button';
+        button.setAttribute('aria-pressed', String(tierFilter === key)); button.disabled = loading || failed;
+        button.addEventListener('click', () => { tierFilter = key; page = 0; render(); });
+      });
+      if (tierFilter !== 'all') matches = matches.filter((item) => priorityFor(item, now).key === tierFilter);
+      currentMatches = matches;
+      lastGroupResults = matches.filter((item) => groupEvidence.has(item.cve_id.toLowerCase()));
       updateBriefingControls();
-      const rejectedCount = items.filter((item) => dashboardCore.vulnerabilityFacts(item, now).rejected).length;
+      updateSavedViews();
+      layoutButtons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.vulnerabilityLayout === layout)));
+      exportPack.disabled = loading || failed || !matches.length;
+      saveViewButton.disabled = loading || failed || !groupModel;
+      savedViewsSelect.disabled = loading || failed || !groupModel;
+      qs('[data-vulnerability-select-page]', root).disabled = loading || failed || !matches.length;
+      renderFilterChips();
+      renderInsights(matches);
+      updateBulkBar();
+      const rejectedCount = filterItems.filter((item) => dashboardCore.vulnerabilityFacts(item, now).rejected).length;
       views.forEach((button) => {
         button.setAttribute('aria-pressed', String(button.dataset.vulnerabilityView === view));
-        button.disabled = loading;
+        button.disabled = loading || (button.dataset.vulnerabilityView === 'group-linked' && (!groupModel || groupFailed));
       });
       help.textContent = viewHelp[view];
       extraView.value = ['ransomware', 'kev30', 'published7', 'updated7'].includes(view) ? view : '';
       extraView.disabled = loading;
+      const linkedInCollection = items.filter((item) => groupEvidence.has(item.cve_id.toLowerCase())).length;
+      const linkedTotal = groupEvidence.size;
+      if (groupCount) groupCount.textContent = groupModel ? linkedTotal.toLocaleString() : '';
+      groupFilter.disabled = loading || !groupModel || groupFailed;
+      groupOnly.disabled = loading || !groupModel || groupFailed || view === 'group-linked';
+      groupOnly.closest('label').hidden = view === 'group-linked';
+      groupExport.disabled = loading || failed || !lastGroupResults.length;
+      groupStatus.textContent = groupFailed
+        ? 'Group evidence is temporarily unavailable. CISA and NVD vulnerability views still work normally.'
+        : !groupModel ? 'Loading the published ransomware.live evidence snapshot…'
+        : `${linkedTotal.toLocaleString()} reported CVEs · ${linkedInCollection.toLocaleString()} enriched in SwiftIOC · ${Math.max(0, linkedTotal - linkedInCollection).toLocaleString()} need provider details · Snapshot ${new Date(groupModel.generatedAt).toLocaleString()} · Local filtering uses 0 API calls.`;
       includeRejected.closest('label').hidden = view === 'briefing';
       includeRejected.disabled = loading;
       freshness.hidden = loading || failed || snapshotTime == null || (now - snapshotTime >= 0 && now - snapshotTime <= 86400);
       freshness.textContent = snapshotTime > now ? 'Snapshot timestamp is in the future. Check the collector clock before treating this data as current.'
         : 'Snapshot is over 24 hours old. Recent views may be incomplete; refresh and check run diagnostics. Provider dates below describe their own records.';
-      const pages = Math.ceil(matches.length / pageSize);
+      const pages = Math.ceil(matches.length / pageSize());
       page = Math.min(page, Math.max(0, pages - 1));
       cards.replaceChildren();
+      cards.classList.toggle('is-table', layout === 'table');
       previous.disabled = loading || page === 0;
       next.disabled = loading || page + 1 >= pages;
       pageLabel.textContent = `Page ${pages ? page + 1 : 0} of ${pages}`;
@@ -3345,11 +3852,70 @@
         ? 'Collection unavailable. Refresh to retry; no previous results are displayed.'
         : `${matches.length} of ${items.length} CVEs · ${matches.filter((item) => item.exploitation_status === 'known_exploited').length} matching with CISA KEV evidence${!includeRejected.checked && rejectedCount ? ` · ${rejectedCount} rejected records hidden` : ''} · Snapshot ${generatedAt}${!matches.length ? ' · No matching vulnerabilities.' : ''}`;
       if (view === 'briefing' && !loading && !failed) status.textContent = `${matches.length} watched CVEs in this view · ${lastBriefingResults.filter((entry) => entry.changes.length).length} with new evidence · Snapshot ${generatedAt}${!matches.length ? ' · No matches. Check your watches and filters.' : ''}`;
-      if (loading || failed) return;
-      matches.slice(page * pageSize, (page + 1) * pageSize).forEach((item) => {
+      if ((view === 'group-linked' || groupOnly.checked || groupFilter.value) && !loading && !failed && groupModel) {
+        const withoutDetails = matches.filter((item) => !existingIds.has(item.cve_id.toLowerCase())).length;
+        status.textContent = `${matches.length} group-linked CVEs in this view · ${matches.filter((item) => item.exploitation_status === 'known_exploited').length} with CISA KEV evidence · ${withoutDetails} need additional provider details · Group snapshot ${new Date(groupModel.generatedAt).toLocaleString()}${!matches.length ? ' · No matches. Try another group or filter.' : ''}`;
+      }
+      if (loading || failed) { currentPageItems = []; if (drawer.open) drawer.close(); return; }
+      if (!visitStored && evidenceReady()) {
+        const groupAt = Date.parse(groupModel.generatedAt);
+        if (!baseline || (snapshotTime >= baseline.snapshotAt && groupAt >= baseline.groupAt)) {
+          const nextBaseline = { version: 2, snapshotAt: snapshotTime, groupAt, records: Object.fromEntries(allCurrentItems.slice(0, 10000).map((item) => [item.cve_id, evidenceFor(item)])) };
+          if (!baseline) baseline = nextBaseline;
+          try { localStorage.setItem(baselineKey, JSON.stringify(nextBaseline)); visitStored = true; }
+          catch { storageNote.textContent = 'Changes can be compared for this tab only; browser storage is unavailable or full.'; }
+        }
+      }
+      currentPageItems = matches.slice(page * pageSize(), (page + 1) * pageSize());
+      keyboardIndex = Math.min(keyboardIndex, currentPageItems.length - 1);
+      if (layout === 'table') {
+        const wrap = document.createElement('div'); wrap.className = 'vulnerability-table-wrap';
+        const table = document.createElement('table'); table.className = 'vulnerability-table';
+        const caption = addText(table, 'caption', 'Filtered vulnerability results', 'sr-only');
+        caption.textContent = `${matches.length} filtered vulnerability results`;
+        const head = document.createElement('thead'); const headRow = document.createElement('tr');
+        ['Select', 'CVE / title', 'Priority', 'Severity', 'Product', 'Evidence', 'Groups', 'Key date', 'Review'].forEach((label) => { const th = addText(headRow, 'th', label); th.scope = 'col'; });
+        head.appendChild(headRow); table.appendChild(head);
+        const body = document.createElement('tbody');
+        currentPageItems.forEach((item, index) => {
+          const facts = dashboardCore.vulnerabilityFacts(item, now);
+          const record = groupEvidence.get(item.cve_id.toLowerCase()) || null;
+          const row = document.createElement('tr'); row.dataset.cveId = item.cve_id;
+          row.tabIndex = 0;
+          if (index === keyboardIndex) row.classList.add('is-keyboard-active');
+          const selectCell = document.createElement('td'); const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox'; checkbox.checked = selectedCves.has(item.cve_id); checkbox.setAttribute('aria-label', `Select ${item.cve_id}`);
+          checkbox.addEventListener('click', (event) => event.stopPropagation());
+          checkbox.addEventListener('change', () => toggleSelected(item.cve_id)); selectCell.appendChild(checkbox); row.appendChild(selectCell);
+          const identity = document.createElement('td'); addText(identity, 'strong', item.cve_id);
+          addText(identity, 'span', item.title && item.title !== item.cve_id ? item.title : 'Title not supplied', 'vulnerability-table-title'); row.appendChild(identity);
+          if (isNewSinceVisit(item)) addText(identity, 'span', 'Changed since last visit', 'vulnerability-signal vulnerability-new-badge');
+          if (isReviewed(item)) addText(identity, 'span', 'Reviewed', 'vulnerability-signal');
+          const priorityCell = document.createElement('td'); addPriority(priorityCell, item, now); row.appendChild(priorityCell);
+          addText(row, 'td', item.reports?.nvd?.severity || 'Not supplied');
+          addText(row, 'td', item.reports?.cisa_kev?.product || 'Not supplied');
+          addText(row, 'td', item.exploitation_status === 'known_exploited' ? 'CISA KEV' : labels[item.exploitation_status]);
+          addText(row, 'td', record?.groups?.join(', ') || '—', 'vulnerability-table-groups');
+          addText(row, 'td', day(facts.added ?? facts.published));
+          const actionCell = document.createElement('td'); const open = addText(actionCell, 'button', 'Review', 'button ghost');
+          open.type = 'button'; open.addEventListener('click', (event) => { event.stopPropagation(); openDrawer(item); }); row.appendChild(actionCell);
+          row.addEventListener('click', () => openDrawer(item)); body.appendChild(row);
+        });
+        table.appendChild(body); wrap.appendChild(table); cards.appendChild(wrap);
+        return;
+      }
+      currentPageItems.forEach((item, index) => {
         const card = document.createElement('article');
         card.className = 'discovery-card vulnerability-card';
+        card.dataset.cveId = item.cve_id;
         card.dataset.exploitation = item.exploitation_status;
+        card.dataset.reviewed = String(isReviewed(item));
+        card.tabIndex = 0;
+        if (index === keyboardIndex) card.classList.add('is-keyboard-active');
+        const selectLabel = document.createElement('label'); selectLabel.className = 'vulnerability-card-select';
+        const select = document.createElement('input'); select.type = 'checkbox'; select.checked = selectedCves.has(item.cve_id);
+        select.setAttribute('aria-label', `Select ${item.cve_id}`); select.addEventListener('change', () => toggleSelected(item.cve_id));
+        selectLabel.append(select, document.createTextNode('Select')); card.appendChild(selectLabel);
         addText(card, 'p', labels[item.exploitation_status], 'vulnerability-evidence');
         addText(card, 'h3', item.cve_id);
         if (view === 'briefing') {
@@ -3379,19 +3945,60 @@
         const kev = item.reports?.cisa_kev;
         const nvd = item.reports?.nvd;
         const facts = dashboardCore.vulnerabilityFacts(item, now);
-        const day = (time) => time == null ? 'Unknown / invalid' : new Date(time * 1000).toISOString().slice(0, 10);
+        const groupRecord = groupEvidence.get(item.cve_id.toLowerCase()) || null;
+        const showGroupDetails = groupRecord && (view === 'group-linked' || groupOnly.checked || groupFilter.value);
+        addPriority(card, item, now);
         const timeline = document.createElement('div');
         timeline.className = 'vulnerability-dates';
         if (kev) addText(timeline, 'p', `Added to KEV: ${day(facts.added)}`);
         addText(timeline, 'p', `NVD published: ${day(facts.published)}`);
         if (facts.modified != null) addText(timeline, 'p', `NVD updated: ${day(facts.modified)}`);
         card.appendChild(timeline);
-        if (facts.ransomware) addText(card, 'p', 'CISA: known ransomware campaign use', 'vulnerability-caution');
+        const signals = document.createElement('div');
+        signals.className = 'vulnerability-signal-row';
+        if (isNewSinceVisit(item)) addText(signals, 'span', 'Changed since last visit', 'vulnerability-signal vulnerability-new-badge');
+        if (isReviewed(item)) addText(signals, 'span', 'Reviewed locally', 'vulnerability-signal');
+        if (groupRecord) addText(card, 'p', `Groups: ${groupRecord.groups.slice(0, 3).join(', ')}${groupRecord.groups.length > 3 ? ` +${groupRecord.groups.length - 3}` : ''}`, 'vulnerability-group-preview');
+        if (showGroupDetails && !groupRecord.matched) addText(signals, 'span', 'Group-only record · provider details needed', 'vulnerability-signal');
+        if (showGroupDetails && groupRecord.recentChange) addText(signals, 'span', groupRecord.recentChange.action === 'returned'
+          ? 'Returned association' : groupRecord.recentChange.action === 'added' ? 'New association' : 'New SwiftIOC match', 'vulnerability-signal');
+        if (signals.childElementCount) card.appendChild(signals);
+        if (showGroupDetails) {
+          const evidence = document.createElement('details');
+          evidence.className = 'vulnerability-group-evidence';
+          const previewGroups = groupRecord.groups.slice(0, 2).join(', ');
+          const remainingGroups = Math.max(0, groupRecord.groups.length - 2);
+          addText(evidence, 'summary', `Group evidence · ${previewGroups}${remainingGroups ? ` +${remainingGroups}` : ''}`);
+          const evidenceBody = document.createElement('div');
+          evidenceBody.className = 'vulnerability-group-evidence-body';
+          addText(evidence, 'p', `${groupRecord.groups.length} reported ${groupRecord.groups.length === 1 ? 'group association' : 'group associations'} · ${groupRecord.matched ? 'Exact CVE also exists in SwiftIOC' : 'No exact CVE match in the current SwiftIOC collection'}.`);
+          const chips = document.createElement('div');
+          chips.className = 'vulnerability-group-chips';
+          groupRecord.groups.forEach((group) => {
+            const link = addText(chips, 'a', group);
+            link.href = window.SwiftIOCGroupIntel.url(group, 'cves');
+            link.title = `Open reported evidence for ${group}`;
+          });
+          evidence.appendChild(chips);
+          const receipts = groupRecord.groups.map((group) => ({ group,
+            receipt: window.SwiftIOCGroupIntel.receipt(groupModel, groupRecord, group),
+          })).filter((entry) => entry.receipt);
+          const first = receipts.map((entry) => Date.parse(entry.receipt.first_observed)).filter(Number.isFinite);
+          const last = receipts.map((entry) => Date.parse(entry.receipt.last_observed)).filter(Number.isFinite);
+          if (first.length || last.length) addText(evidence, 'p', `First observed locally: ${first.length ? new Date(Math.min(...first)).toLocaleString() : 'Unknown'} · Last confirmed in snapshot: ${last.length ? new Date(Math.max(...last)).toLocaleString() : 'Unknown'}.`);
+          if (groupRecord.recentChange) addText(evidence, 'p', `${groupRecord.recentChange.action === 'returned' ? 'Association returned' : groupRecord.recentChange.action === 'added' ? 'Association added' : 'Now matches SwiftIOC'}: ${new Date(groupRecord.recentChange.at).toLocaleString()} (${groupRecord.recentChange.group}).`);
+          addText(evidence, 'p', 'Reported association only; this does not establish active exploitation or exposure in your environment.');
+          const mapLink = addText(evidence, 'a', 'Open CVE in group evidence map ↗');
+          mapLink.href = `groups.html#${new URLSearchParams({ view: 'cves', q: item.cve_id })}`;
+          [...evidence.children].filter((child) => child !== evidence.firstElementChild).forEach((child) => evidenceBody.appendChild(child));
+          evidence.appendChild(evidenceBody);
+          card.appendChild(evidence);
+        }
         if (facts.rejected) addText(card, 'p', 'Rejected by NVD · review the provider record before acting.', 'vulnerability-caution');
         if (item.exploitation_status === 'known_exploited' && (facts.checked == null || now - facts.checked > 86400)) {
           addText(card, 'p', `Historical KEV evidence · catalog check ${facts.checked == null ? 'unknown' : day(facts.checked)}. Refresh to verify current coverage.`, 'vulnerability-caution');
         }
-        if (kev?.required_action) addText(card, 'p', `CISA action: ${kev.required_action}`, 'vulnerability-action');
+        if (kev?.required_action && !showGroupDetails) addText(card, 'p', `CISA action: ${kev.required_action}`, 'vulnerability-action');
         addText(card, 'p', `Severity: ${nvd?.severity || 'Not supplied'} · ${kev?.product || 'Product not supplied'}${nvd?.status ? ` · NVD: ${nvd.status}` : ''}`, 'vulnerability-meta');
         // Keep long provider descriptions available without making cards unbounded.
         const summary = document.createElement('details');
@@ -3408,11 +4015,13 @@
           ['published_at', 'Published'], ['modified_at', 'Modified'], ['status', 'NVD status'],
           ['severity', 'Severity'], ['description', 'NVD description'],
         ]);
-        addText(card, 'p', `Reporting sources: ${item.sources.join(', ') || 'Not supplied'}`, 'vulnerability-meta');
+        const footer = document.createElement('footer');
+        footer.className = 'vulnerability-card-footer';
+        addText(footer, 'p', `Sources: ${item.sources.join(', ') || 'Not supplied'}`, 'vulnerability-meta');
         if (!kev && !nvd) {
           const reference = safeHttpUrl(item.reference);
           if (reference) {
-            const link = addText(card, 'a', 'Open reporting source ↗', 'vulnerability-meta');
+            const link = addText(footer, 'a', 'Open source ↗', 'vulnerability-meta');
             link.href = reference;
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
@@ -3421,7 +4030,11 @@
         const copy = addText(card, 'button', 'Copy CVE', 'button ghost');
         copy.type = 'button';
         copy.addEventListener('click', () => copyOrPrompt(item.cve_id, 'CVE copied.', 'Copy this CVE:'));
-        card.appendChild(copy);
+        const open = addText(footer, 'button', 'Review details', 'button ghost vulnerability-open');
+        open.type = 'button'; open.addEventListener('click', () => openDrawer(item));
+        footer.appendChild(copy);
+        card.appendChild(footer);
+        // Complete provider and group evidence is available in the shared drawer.
         cards.appendChild(card);
       });
     };
@@ -3462,6 +4075,7 @@
           detail: !failed && snapshotTime <= Date.now() / 1000 ? { items, generated_at: new Date(snapshotTime * 1000).toISOString() } : null,
         }));
         render();
+        reviewLinkedCve();
       }
     };
     briefingForm.addEventListener('submit', (event) => {
@@ -3498,6 +4112,162 @@
         })),
       }, null, 2), 'swiftioc-personal-cve-briefing.json', 'application/json');
     });
+    groupExport.addEventListener('click', () => {
+      if (!lastGroupResults.length || !groupModel) return;
+      const exported = lastGroupResults.map((item) => {
+        const record = groupEvidence.get(item.cve_id.toLowerCase());
+        return { ...item, ransomware_live: {
+          groups: record.groups, in_swiftioc: record.matched,
+          evidence_label: 'Reported association; current use and local exposure are not established.',
+          recent_change: record.recentChange || null, observations: record.groups.map((group) => ({ group,
+            receipt: window.SwiftIOCGroupIntel.receipt(groupModel, record, group),
+          })),
+        } };
+      });
+      downloadDetection(JSON.stringify({ schema_version: 1, generated_at: new Date().toISOString(),
+        source_snapshot_at: groupModel.generatedAt, filters: { view, group: groupFilter.value || null,
+          only_group_linked: view === 'group-linked' || groupOnly.checked, search: search.value, exploitation: filter.value },
+        limitations: ['Reported group associations do not establish current exploitation or local exposure.',
+          'A SwiftIOC match is an exact collection match, not independent corroboration.'], items: exported,
+      }, null, 2), 'swiftioc-group-linked-cves.json', 'application/json');
+    });
+    layoutButtons.forEach((button) => button.addEventListener('click', () => {
+      layout = button.dataset.vulnerabilityLayout;
+      page = 0; keyboardIndex = -1; storeWorkspace(); render();
+    }));
+    saveViewButton.addEventListener('click', () => {
+      const suggested = `${view === 'group-linked' ? 'Group-linked' : view === 'exploited' ? 'Known exploited' : 'CVE'}${groupFilter.value ? ` · ${groupFilter.value}` : ''}${search.value.trim() ? ` · ${search.value.trim()}` : ''}`;
+      const name = window.prompt('Name this saved vulnerability view:', suggested)?.trim();
+      if (!name) return;
+      const clean = name.slice(0, 60);
+      const existing = savedViews.findIndex((entry) => entry.name.toLowerCase() === clean.toLowerCase());
+      const entry = { name: clean, state: captureView() };
+      if (existing >= 0) savedViews[existing] = entry; else savedViews = [...savedViews, entry].slice(-12);
+      storeWorkspace(); updateSavedViews(); savedViewsSelect.value = String(existing >= 0 ? existing : savedViews.length - 1);
+      deleteViewButton.disabled = false; showToast(`Saved view: ${clean}`);
+    });
+    savedViewsSelect.addEventListener('change', () => {
+      deleteViewButton.disabled = savedViewsSelect.value === '';
+      if (savedViewsSelect.value !== '') applyView(savedViews[Number(savedViewsSelect.value)]?.state);
+    });
+    deleteViewButton.addEventListener('click', () => {
+      const index = Number(savedViewsSelect.value);
+      if (!Number.isInteger(index) || !savedViews[index]) return;
+      const name = savedViews[index].name; savedViews.splice(index, 1); storeWorkspace(); savedViewsSelect.value = ''; updateSavedViews();
+      showToast(`Deleted saved view: ${name}`);
+    });
+    exportPack.addEventListener('click', () => {
+      const scoped = currentMatches;
+      if (loading || failed || !scoped.length) return;
+      if (exportRows(scoped, exportFormat.value)) showToast(`Exported ${scoped.length.toLocaleString()} CVEs.`);
+    });
+    qs('[data-vulnerability-copy-selected]', root).addEventListener('click', () => {
+      copyOrPrompt([...selectedCves].sort().join('\n'), 'Selected CVE IDs copied.', 'Copy these CVE IDs:');
+    });
+    qs('[data-vulnerability-clear-selected]', root).addEventListener('click', () => { selectedCves.clear(); render(); });
+    qs('[data-vulnerability-review-selected]', root).addEventListener('click', () => {
+      markReviewed(allCurrentItems.filter((item) => selectedCves.has(item.cve_id)));
+    });
+    qs('[data-vulnerability-unreview-selected]', root).addEventListener('click', () => markReviewed(allCurrentItems.filter((item) => selectedCves.has(item.cve_id)), false));
+    qs('[data-vulnerability-export-selected]', root).addEventListener('click', () => { if (!loading && !failed) exportRows(allCurrentItems.filter((item) => selectedCves.has(item.cve_id)), exportFormat.value); });
+    qs('[data-vulnerability-select-page]', root).addEventListener('click', () => { currentPageItems.forEach((item) => selectedCves.add(item.cve_id)); render(); });
+    [severityFilter, changeFilter].forEach((control) => control.addEventListener('change', () => { page = 0; render(); }));
+    qs('[data-vulnerability-views-export]', root).addEventListener('click', () => downloadDetection(JSON.stringify({ schema_version: 1, views: savedViews }, null, 2), 'swiftioc-saved-cve-views.json', 'application/json'));
+    qs('[data-vulnerability-views-import]', root).addEventListener('change', async (event) => {
+      const file = event.target.files?.[0];
+      try {
+        if (!file || file.size > 100000) throw new Error('Choose a saved-views JSON file under 100 KB.');
+        const data = JSON.parse(await file.text());
+        if (data.schema_version !== 1 || !Array.isArray(data.views) || data.views.length > 12
+          || !data.views.every((entry) => typeof entry?.name === 'string' && entry.name.trim() && entry.name.length <= 60 && dashboardCore.normaliseVulnerabilityView(entry.state))) throw new Error('Invalid saved-views file. Nothing was imported.');
+        const merged = new Map(savedViews.map((entry) => [entry.name.toLowerCase(), entry]));
+        data.views.forEach((entry) => merged.set(entry.name.toLowerCase(), { name: entry.name, state: dashboardCore.normaliseVulnerabilityView(entry.state) }));
+        if (merged.size > 12) throw new Error('Import would exceed 12 saved views. Remove unused views first.');
+        savedViews = [...merged.values()]; storeWorkspace(); updateSavedViews(); showToast(`Imported ${data.views.length} saved views.`);
+      } catch (error) { showToast(error.message || 'Unable to import saved views.'); }
+      event.target.value = '';
+    });
+    qs('[data-vulnerability-follow-selected]', root).addEventListener('click', () => {
+      if (!canAcknowledge()) { showToast('Wait for a valid vulnerability snapshot before following products.'); return; }
+      const additions = items.filter((item) => selectedCves.has(item.cve_id)).map((item) => ({
+        vendor: item.reports?.cisa_kev?.vendor, product: item.reports?.cisa_kev?.product || '',
+      })).filter((watch) => typeof watch.vendor === 'string' && watch.vendor.trim())
+        .filter((watch, index, list) => list.findIndex((entry) => dashboardCore.watchKey(entry) === dashboardCore.watchKey(watch)) === index)
+        .filter((watch) => !briefing.watches.some((entry) => dashboardCore.watchKey(entry) === dashboardCore.watchKey(watch)));
+      const room = Math.max(0, 20 - briefing.watches.length);
+      const accepted = additions.slice(0, room);
+      if (!accepted.length) { showToast(additions.length && !room ? 'Your briefing already follows 20 products. Remove a watch before adding another.' : 'Selected CVEs have no new structured products to follow.'); return; }
+      if (saveBriefing(dashboardCore.seedBriefing(items, { ...briefing, watches: [...briefing.watches, ...accepted] }, snapshotTime))) {
+        showToast(`Following ${accepted.length} additional product${accepted.length === 1 ? '' : 's'}.${additions.length > room ? ' Watch limit reached; some products were not added.' : ''}`); render();
+      }
+    });
+    const compareGroups = () => {
+      const left = compareA.value; const right = compareB.value;
+      compareResult.replaceChildren();
+      const names = [...new Set([left, right, compareC.value].filter(Boolean))];
+      if (!groupModel || !left || !right || left === right || names.length < 2) { addText(compareResult, 'p', 'Choose at least two different groups to compare.'); return; }
+      const records = (name, kind) => new Set((groupModel.byGroup.get(name) || []).filter((record) => record.kind === kind).map((record) => record.value));
+      const cveSets = names.map((name) => records(name, 'cves'));
+      const ttpSets = names.map((name) => records(name, 'ttps'));
+      const sharedCves = [...cveSets[0]].filter((id) => cveSets.every((set) => set.has(id))).sort();
+      const sharedTtps = [...ttpSets[0]].filter((id) => ttpSets.every((set) => set.has(id))).sort();
+      const productSets = cveSets.map((set) => new Set(items.filter((item) => set.has(item.cve_id))
+        .map((item) => item.reports?.cisa_kev).filter((report) => report?.vendor && report?.product)
+        .map((report) => `${report.vendor} — ${report.product}`)));
+      const sharedProducts = [...productSets[0]].filter((product) => productSets.every((set) => set.has(product))).sort();
+      const headline = document.createElement('p');
+      addText(headline, 'strong', names.join(' ↔ '));
+      headline.appendChild(document.createTextNode(` · ${sharedCves.length} shared CVEs · ${sharedTtps.length} shared TTPs`));
+      compareResult.appendChild(headline);
+      addText(compareResult, 'p', sharedCves.length ? `Shared CVEs: ${sharedCves.slice(0, 12).join(', ')}${sharedCves.length > 12 ? ` +${sharedCves.length - 12}` : ''}` : 'No shared reported CVEs.');
+      addText(compareResult, 'p', sharedTtps.length ? `Shared TTPs: ${sharedTtps.slice(0, 12).join(', ')}${sharedTtps.length > 12 ? ` +${sharedTtps.length - 12}` : ''}` : 'No shared reported TTPs.');
+      if (sharedProducts.length) addText(compareResult, 'p', `Products common to the groups’ reported CVEs: ${sharedProducts.slice(0, 8).join(', ')}. The CVEs may differ; this does not establish current targeting.`);
+      names.forEach((name) => {
+        const unique = [...records(name, 'cves')].filter((id) => names.filter((other) => other !== name).every((other) => !records(other, 'cves').has(id)));
+        const details = document.createElement('details'); addText(details, 'summary', `${name}: ${unique.length} unique reported CVEs`);
+        addText(details, 'p', unique.join(', ') || 'None in this snapshot.'); compareResult.appendChild(details);
+      });
+      [['shared', 'Show shared CVEs'], ['union', 'Show all compared CVEs'], ['unique', 'Show unique CVEs']].forEach(([mode, label]) => {
+        const apply = addText(compareResult, 'button', label, 'button ghost'); apply.type = 'button';
+        apply.addEventListener('click', () => { applyView({ view: 'group-linked', layout, comparison: names, comparisonMode: mode }); });
+      });
+    };
+    compareButton.addEventListener('click', compareGroups);
+    window.addEventListener('swiftioc:review-cve', (event) => {
+      if (typeof event.detail !== 'string' || !/^CVE-\d{4}-\d{4,19}$/.test(event.detail) || loading || failed) return;
+      const item = allCurrentItems.find((entry) => entry.cve_id === event.detail);
+      if (!item) return;
+      if (drawer.open) drawer.close();
+      applyView({ view: groupEvidence.has(item.cve_id.toLowerCase()) ? 'group-linked' : 'priority', search: item.cve_id, layout, includeRejected: true });
+      openDrawer(item);
+    });
+    const reviewLinkedCve = () => {
+      const match = /^#cve=(CVE-\d{4}-\d{4,19})$/i.exec(window.location.hash);
+      if (match && !loading && !failed && (!drawer.open || drawer.dataset.cveId !== match[1].toUpperCase())) {
+        window.dispatchEvent(new CustomEvent('swiftioc:review-cve', { detail: match[1].toUpperCase() }));
+      }
+    };
+    window.addEventListener('hashchange', reviewLinkedCve);
+    qs('[data-vulnerability-drawer-close]', root).addEventListener('click', () => drawer.close());
+    drawerPrevious.addEventListener('click', () => { const index = Number(drawer.dataset.index); if (index > 0) openDrawer(drawerItems[index - 1]); });
+    drawerNext.addEventListener('click', () => { const index = Number(drawer.dataset.index); if (index + 1 < drawerItems.length) openDrawer(drawerItems[index + 1]); });
+    document.addEventListener('keydown', (event) => {
+      if (!root.contains(document.activeElement)) return;
+      if (drawer.open && event.key === 'Escape') { event.preventDefault(); drawer.close(); return; }
+      if (drawer.open || event.target.isContentEditable || event.target.closest('input,select,textarea,button,a,summary') || event.metaKey || event.ctrlKey || event.altKey) return;
+      const activeRow = event.target.closest('[data-cve-id]');
+      if (!activeRow) return;
+      keyboardIndex = currentPageItems.findIndex((item) => item.cve_id === activeRow.dataset.cveId);
+      const key = event.key.toLowerCase();
+      if (!['j', 'k', 'enter', 'x'].includes(key) || !currentPageItems.length) return;
+      event.preventDefault();
+      if (key === 'j') keyboardIndex = Math.min(currentPageItems.length - 1, keyboardIndex + 1);
+      if (key === 'k') keyboardIndex = Math.max(0, keyboardIndex < 0 ? 0 : keyboardIndex - 1);
+      if (key === 'enter') { openDrawer(currentPageItems[Math.max(0, keyboardIndex)]); return; }
+      if (key === 'x') { toggleSelected(currentPageItems[Math.max(0, keyboardIndex)].cve_id); return; }
+      render();
+      const focused = root.querySelector('.is-keyboard-active'); focused?.focus(); focused?.scrollIntoView({ block: 'nearest' });
+    });
     views.forEach((button) => button.addEventListener('click', () => {
       view = button.dataset.vulnerabilityView;
       if (view === 'briefing' && !briefing.watches.length) briefingSettings.open = true;
@@ -3507,6 +4277,7 @@
     window.addEventListener('swiftioc:review-cve', (event) => {
       const id = event.detail?.id;
       if (typeof id !== 'string' || !/^CVE-\d{4}-\d{4,}$/i.test(id)) return;
+      applyView({ view: 'priority', layout, search: id.toUpperCase(), includeRejected: true });
       search.value = id.toUpperCase();
       filter.value = 'all';
       view = 'priority';
@@ -3517,14 +4288,45 @@
       search.focus({ preventScroll: true });
     });
     extraView.addEventListener('change', () => { if (extraView.value) { view = extraView.value; page = 0; render(); } });
+    groupFilter.addEventListener('change', () => { page = 0; render(); });
+    groupOnly.addEventListener('change', () => { page = 0; render(); });
     includeRejected.addEventListener('change', () => { page = 0; render(); });
     // Re-evaluate rolling windows and freshness when an analyst returns to an
     // open tab, without resetting focus or collapsing evidence every minute.
-    document.addEventListener('visibilitychange', () => { if (!document.hidden && !loading) render(); });
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && !loading && !drawer.open) render(); });
     [search, filter].forEach((control) => control.addEventListener(control === search ? 'input' : 'change', () => { page = 0; render(); }));
     previous.addEventListener('click', () => { page -= 1; render(); });
     next.addEventListener('click', () => { page += 1; render(); });
     refresh.addEventListener('click', load);
+    window.SwiftIOCGroupIntel?.ready.then((model) => {
+      groupModel = model;
+      const events = Array.isArray(model.history?.events) ? model.history.events : [];
+      groupEvidence = new Map(model.records.filter((record) => record.kind === 'cves').map((record) => {
+        const recentChange = events.filter((event) => event.kind === 'cves' && event.value === record.value
+          && record.groups.includes(event.group) && ['added', 'returned', 'matched'].includes(event.action))
+          .sort((a, b) => Date.parse(b.at) - Date.parse(a.at))[0] || null;
+        return [record.value.toLowerCase(), { ...record, recentChange }];
+      }));
+      const groups = [...new Set([...groupEvidence.values()].flatMap((record) => record.groups))]
+        .sort((a, b) => a.localeCompare(b));
+      groupFilter.replaceChildren(...[['', 'All reported groups'], ...groups.map((group) => [group, group])].map(([value, label]) => {
+        const option = document.createElement('option'); option.value = value; option.textContent = label; return option;
+      }));
+      [compareA, compareB, compareC].forEach((select, index) => {
+        select.replaceChildren(...[['', `Choose group ${['A', 'B', 'C'][index]}`], ...[...model.groups.keys()].sort().map((group) => [group, group])]
+          .map(([value, label]) => { const option = document.createElement('option'); option.value = value; option.textContent = label; return option; }));
+        select.disabled = false;
+      });
+      compareButton.disabled = false;
+      render();
+      reviewLinkedCve();
+    }).catch(() => { groupFailed = true; render(); });
+    fetch(resolveIocUrl('cve_signals.json'), { cache: 'no-cache' }).then((response) => response.ok ? response.json() : null).then((data) => {
+      const age = Date.now() - Date.parse(data?.generated_at);
+      if (data?.schema_version === 1 && data.items && typeof data.items === 'object' && Number.isFinite(age) && age >= 0 && age <= 72 * 3600000) {
+        publicCveSignals = data; render();
+      }
+    }).catch(() => { /* Public enrichment is optional. */ });
     load();
   };
 
@@ -3582,6 +4384,12 @@
         const seen = document.createElement('p');
         seen.textContent = `Last seen: ${row.lastSeenDisplay || row.lastSeen || 'Unknown'} · TLP: ${row.tlp || 'Unmarked'}`;
         details.append(summary, seen, context);
+        if (mode === 'corroborated') {
+          const feeds = document.createElement('p');
+          feeds.textContent = `Feed names in this snapshot: ${row.sourceList?.join(', ') || row.source || 'Unknown'}. ` +
+            'Aggregate and context feeds do not add a reporting group.';
+          details.appendChild(feeds);
+        }
         const report = safeHttpUrl(row.reference);
         if (report) {
           const link = document.createElement('a');
@@ -3635,15 +4443,24 @@
   const initialiseCampaignGraph = () => {
     const root = qs('[data-campaign-root]');
     const svg = qs('[data-campaign-graph]', root);
-    if (!root || !svg || !dashboardCore?.buildCampaignGraph || !dashboardCore?.sourceProviders) return;
+    if (!root || !svg || !dashboardCore?.buildCampaignGraph || !dashboardCore?.layoutCampaignGraph || !dashboardCore?.campaignGraphNeighborhood || !dashboardCore?.sourceProviders) return;
     const mode = qs('[data-campaign-mode]', root);
     const density = qs('[data-campaign-density]', root);
+    const style = qs('[data-campaign-style]', root);
     const remix = qs('[data-campaign-layout]', root);
+    const zoomIn = qs('[data-campaign-zoom-in]', root);
+    const zoomOut = qs('[data-campaign-zoom-out]', root);
+    const fit = qs('[data-campaign-fit]', root);
+    const zoomLabel = qs('[data-campaign-zoom-label]', root);
     const search = qs('[data-campaign-search]', root);
     const searchResults = qs('[data-campaign-search-results]', root);
     const searchStatus = qs('[data-campaign-search-status]', root);
     const reset = qs('[data-campaign-reset]', root);
+    const focusButton = qs('[data-campaign-focus]', root);
     const exportGraph = qs('[data-campaign-export]', root);
+    const shortcuts = qs('[data-campaign-shortcuts]', root);
+    const shortcutList = qs('[data-campaign-shortcut-list]', root);
+    const viewStatus = qs('[data-campaign-view-status]', root);
     const empty = qs('[data-campaign-empty]', root);
     const title = qs('[data-campaign-title]', root);
     const description = qs('[data-campaign-description]', root);
@@ -3671,7 +4488,13 @@
     let entries = [];
     let graph = null;
     let selected = null;
+    let hovered = null;
+    let focusMode = false;
     let rotation = 0;
+    let baseView = { width: 1000, height: 760 };
+    let layoutPositions = new Map();
+    let zoom = 1, viewX = 0, viewY = 0;
+    let drag = null, ignoreNextClick = false;
     if (density && window.matchMedia?.('(max-width: 540px)').matches) {
       density.value = '24';
     }
@@ -3687,33 +4510,86 @@
       return element;
     };
 
-    const positionsFor = (nodes) => {
-      const pivots = nodes.filter((node) => node.kind === 'pivot');
-      const indicators = nodes.filter((node) => node.kind === 'indicator');
-      const positions = new Map();
-      const grouped = new Map(pivots.map((pivot) => [pivot.id, []]));
-      indicators.forEach((node) => {
-        // Balance shared indicators between their actual pivots instead of
-        // assigning every overlap to whichever edge sorts first.
-        const owners = pivots.filter((pivot) => graph.edges.some((edge) => edge.source === pivot.id && edge.target === node.id));
-        owners.sort((a, b) => grouped.get(a.id).length - grouped.get(b.id).length);
-        if (owners.length) grouped.get(owners[0].id).push(node);
+    const applyViewport = () => {
+      const width = baseView.width / zoom, height = baseView.height / zoom;
+      viewX = Math.max(0, Math.min(viewX, baseView.width - width));
+      viewY = Math.max(0, Math.min(viewY, baseView.height - height));
+      svg.setAttribute('viewBox', `${viewX} ${viewY} ${width} ${height}`);
+      svg.classList.toggle('is-zoomed', zoom > 1);
+      if (zoomLabel) zoomLabel.textContent = `${Math.round(zoom * 100)}%`;
+      if (zoomOut) zoomOut.disabled = !graph?.edges.length || zoom <= 1;
+      if (zoomIn) zoomIn.disabled = !graph?.edges.length || zoom >= 3;
+      if (fit) fit.disabled = !graph?.edges.length || zoom === 1;
+    };
+
+    const zoomBy = (factor) => {
+      const centerX = viewX + baseView.width / zoom / 2;
+      const centerY = viewY + baseView.height / zoom / 2;
+      zoom = Math.max(1, Math.min(3, Math.round(zoom * factor * 100) / 100));
+      viewX = centerX - baseView.width / zoom / 2;
+      viewY = centerY - baseView.height / zoom / 2;
+      applyViewport();
+    };
+
+    const paintHighlight = () => {
+      if (!graph) return;
+      const focus = hovered || selected;
+      const connected = new Set();
+      const neighborhood = focusMode && selected
+        ? dashboardCore.campaignGraphNeighborhood(graph, selected.id)
+        : null;
+      root.dataset.campaignLens = neighborhood ? 'focused' : 'all';
+      if (focus) graph.edges.forEach((edge) => {
+        if (edge.source === focus.id) connected.add(edge.target);
+        if (edge.target === focus.id) connected.add(edge.source);
       });
-      let top = 25;
-      const reverse = Math.round(rotation / (Math.PI / 7)) % 2 === 1;
-      pivots.forEach((pivot) => {
-        const members = grouped.get(pivot.id);
-        if (reverse) members.reverse();
-        const height = Math.max(95, Math.ceil(members.length / 5) * 75 + 20);
-        positions.set(pivot.id, { x: 145, y: top + height / 2 });
-        members.forEach((node, index) => positions.set(node.id, {
-          x: 350 + (index % 5) * 140,
-          y: top + 30 + Math.floor(index / 5) * 75,
-        }));
-        top += height;
+      qsa('[data-graph-node]', svg).forEach((element) => {
+        const active = element.dataset.graphNode === focus?.id;
+        const outside = Boolean(neighborhood) && !neighborhood.nodes.has(element.dataset.graphNode);
+        element.classList.toggle('is-outside-focus', outside);
+        element.setAttribute('tabindex', outside ? '-1' : '0');
+        element.setAttribute('aria-hidden', String(outside));
+        element.classList.toggle('is-selected', element.dataset.graphNode === selected?.id);
+        element.classList.toggle('is-previewed', active && focus !== selected);
+        element.setAttribute('aria-pressed', String(element.dataset.graphNode === selected?.id));
+        element.classList.toggle('is-connected', connected.has(element.dataset.graphNode));
+        element.classList.toggle('is-dimmed', Boolean(focus) && !active && !connected.has(element.dataset.graphNode));
       });
-      svg.setAttribute('viewBox', `0 0 1000 ${Math.max(260, top + 25)}`);
-      return positions;
+      qsa('[data-graph-edge]', svg).forEach((element) => {
+        const outside = Boolean(neighborhood) && element.dataset.source !== selected.id && element.dataset.target !== selected.id;
+        element.classList.toggle('is-outside-focus', outside);
+        const related = element.dataset.source === focus?.id || element.dataset.target === focus?.id;
+        element.classList.toggle('is-connected', Boolean(focus) && related);
+        element.classList.toggle('is-dimmed', Boolean(focus) && !related);
+      });
+      if (focusButton) {
+        focusButton.disabled = !selected;
+        focusButton.setAttribute('aria-pressed', String(Boolean(neighborhood)));
+        focusButton.textContent = neighborhood ? 'Show all links' : 'Focus links';
+      }
+      const shown = graph.nodes.filter((node) => node.kind === 'indicator' && (!neighborhood || neighborhood.nodes.has(node.id)));
+      setText(high, formatNumber(shown.filter((node) => node.score >= 80).length));
+      setText(corroborated, formatNumber(shown.filter((node) => node.sourceCount >= 2).length));
+      setText(average, formatNumber(shown.length ? Math.round(shown.reduce((total, node) => total + node.score, 0) / shown.length) : 0));
+      setText(visible, formatNumber(shown.length));
+      const status = neighborhood
+        ? `Focused on ${selected.label}: ${shown.length} of ${graph.stats.indicators} indicators and ${neighborhood.edges.size} of ${graph.edges.length} links shown. Other links are hidden, not removed from the data.`
+        : `${graph.stats.indicators} indicators and ${graph.edges.length} links shown. ${selected ? `Use Focus links to isolate ${selected.label}'s direct connections.` : 'Select a node to focus its direct connections.'}`;
+      if (viewStatus?.textContent !== status) setText(viewStatus, status);
+    };
+
+    const centerNeighborhood = () => {
+      if (!selected || !focusMode) return;
+      const neighborhood = dashboardCore.campaignGraphNeighborhood(graph, selected.id);
+      const points = [...neighborhood.nodes].map((id) => layoutPositions.get(id)).filter(Boolean);
+      if (!points.length) return;
+      const xs = points.map((point) => point.x), ys = points.map((point) => point.y);
+      const left = Math.min(...xs), right = Math.max(...xs);
+      const top = Math.min(...ys), bottom = Math.max(...ys);
+      zoom = Math.max(1, Math.min(2.2, baseView.width / (right - left + 230), baseView.height / (bottom - top + 190)));
+      viewX = (left + right) / 2 - baseView.width / zoom / 2;
+      viewY = (top + bottom) / 2 - baseView.height / zoom / 2;
+      applyViewport();
     };
 
     const selectNode = (node) => {
@@ -3725,19 +4601,9 @@
         if (edge.source === node.id) connected.add(edge.target);
         if (edge.target === node.id) connected.add(edge.source);
       });
-      qsa('[data-graph-node]', svg).forEach((element) => {
-        const active = element.dataset.graphNode === node.id;
-        const related = connected.has(element.dataset.graphNode);
-        element.classList.toggle('is-selected', active);
-        element.setAttribute('aria-pressed', String(active));
-        element.classList.toggle('is-connected', related);
-        element.classList.toggle('is-dimmed', !active && !related);
-      });
-      qsa('[data-graph-edge]', svg).forEach((element) => {
-        const related = element.dataset.source === node.id || element.dataset.target === node.id;
-        element.classList.toggle('is-connected', related);
-        element.classList.toggle('is-dimmed', !related);
-      });
+      hovered = null;
+      paintHighlight();
+      centerNeighborhood();
 
       const degree = graph.edges.filter((edge) => edge.source === node.id || edge.target === node.id).length;
       const relatedNodes = graph.nodes.filter((candidate) => connected.has(candidate.id));
@@ -3819,7 +4685,7 @@
           selectNode(node);
           const element = qsa('[data-graph-node]', svg).find((item) => item.dataset.graphNode === node.id);
           element?.focus({ preventScroll: true });
-          element?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
+          element?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'instant' });
         });
         return button;
       }));
@@ -3835,9 +4701,13 @@
         maxPivots: 8,
         maxIndicators: Number(density?.value) || 36,
       });
-      svg.innerHTML = '';
+      svg.replaceChildren();
       selected = null;
+      hovered = null;
+      root.dataset.campaignView = style?.value === 'lanes' ? 'lanes' : 'orbit';
+      if (remix) remix.textContent = root.dataset.campaignView === 'orbit' ? 'Rotate map' : 'Reverse rows';
       const nextSelected = graph.nodes.find((node) => node.id === selectedId) || null;
+      if (!nextSelected) focusMode = false;
       const hasGraph = graph.nodes.length > 0 && graph.edges.length > 0;
       if (empty) empty.hidden = hasGraph;
       svg.hidden = !hasGraph;
@@ -3848,6 +4718,22 @@
         exportGraph.disabled = !hasGraph;
         exportGraph.textContent = 'Export graph JSON';
       }
+      if (shortcuts && shortcutList) {
+        const leading = graph.nodes.filter((node) => node.kind === 'pivot')
+          .sort((a, b) => Number(b.role === 'reporting') - Number(a.role === 'reporting')
+            || Number(b.pivotKind === 'tag') - Number(a.pivotKind === 'tag')
+            || b.count - a.count || a.label.localeCompare(b.label)).slice(0, 3);
+        shortcutList.replaceChildren(...leading.map((node) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'campaign-shortcut';
+          button.textContent = `${node.label} · ${node.count} IOCs`;
+          button.title = `Explore ${node.label}: ${node.count} indicators in this displayed graph`;
+          button.addEventListener('click', () => selectNode(node));
+          return button;
+        }));
+        shortcuts.hidden = !leading.length;
+      }
       updateSearch();
       setText(high, formatNumber(graph.stats.highScore));
       setText(corroborated, formatNumber(graph.stats.corroborated));
@@ -3855,7 +4741,7 @@
       setText(visible, formatNumber(graph.stats.indicators));
       if (summary) {
         summary.textContent = hasGraph
-          ? `${formatNumber(graph.stats.relationships)} relationships across ${formatNumber(graph.stats.tagPivots)} tag and ${formatNumber(graph.stats.sourcePivots)} reporting groups (${graph.stats.mappedProviders} mapped providers, ${graph.stats.aggregates} aggregates, ${graph.stats.unmappedFeeds} unmapped feeds; ${graph.stats.availableProviders} eligible groups in the sample). Node size reflects mapped provider coverage; color reflects the collector score. Aggregates and unmapped feeds do not increase provider coverage. Shared reporting does not prove independent verification.`
+          ? `${formatNumber(graph.stats.relationships)} displayed links · ${formatNumber(graph.stats.tagPivots)} tag pivots · ${formatNumber(graph.stats.sourcePivots)} source pivots (${graph.stats.mappedProviders} mapped publisher${graph.stats.mappedProviders === 1 ? '' : 's'}, ${graph.stats.aggregates} aggregate feed${graph.stats.aggregates === 1 ? '' : 's'}, ${graph.stats.unmappedFeeds} unmapped feed${graph.stats.unmappedFeeds === 1 ? '' : 's'}). Indicator rings mark 2+ mapped publishers; color reflects the collector score. These links describe shared reporting or tags, not independent verification or campaign attribution.`
           : 'No repeated tags or sources were found in the current preview.';
       }
       const evidenceBlock = qs('[data-campaign-feed-evidence]', root);
@@ -3873,18 +4759,47 @@
         queue.disabled = true;
         queue.textContent = 'Add indicator to queue';
       }
-      if (!hasGraph) return;
+      if (!hasGraph) {
+        zoom = 1; viewX = 0; viewY = 0;
+        applyViewport();
+        if (focusButton) { focusButton.disabled = true; focusButton.setAttribute('aria-pressed', 'false'); focusButton.textContent = 'Focus links'; }
+        setText(viewStatus, 'No connections in the displayed sample.');
+        return;
+      }
 
-      const positions = positionsFor(graph.nodes);
+      const layout = dashboardCore.layoutCampaignGraph(graph, root.dataset.campaignView, rotation);
+      const positions = layout.positions;
+      layoutPositions = positions;
+      baseView = { width: layout.width, height: layout.height };
+      svg.style.aspectRatio = `${layout.width} / ${layout.height}`;
+      applyViewport();
+      if (layout.style === 'orbit') {
+        const guide = createSvg('g', { class: 'campaign-orbit-guide', 'aria-hidden': 'true' });
+        guide.append(
+          createSvg('circle', { cx: 500, cy: 380, r: 198 }),
+          createSvg('circle', { cx: 500, cy: 380, r: 310 }),
+        );
+        svg.appendChild(guide);
+      }
       const edgeLayer = createSvg('g', { class: 'campaign-edges' });
+      const pivotRoles = new Map(graph.nodes.filter((node) => node.kind === 'pivot').map((node) => [node.id, node.role || '']));
+      const orbitControl = (point, radius) => {
+        const dx = point.x - 500, dy = point.y - 380;
+        const distance = Math.hypot(dx, dy) || 1;
+        return { x: 500 + dx * radius / distance, y: 380 + dy * radius / distance };
+      };
       graph.edges.forEach((edge, index) => {
         const start = positions.get(edge.source);
         const end = positions.get(edge.target);
         if (!start || !end) return;
+        const first = layout.style === 'orbit' ? orbitControl(start, 237) : null;
+        const last = layout.style === 'orbit' ? orbitControl(end, 256) : null;
         const line = createSvg('path', {
-          d: `M ${start.x + 120} ${start.y} C ${start.x + 175} ${start.y}, ${end.x - 55} ${end.y}, ${end.x - 17} ${end.y}`,
+          d: layout.style === 'orbit'
+            ? `M ${start.x} ${start.y} C ${first.x} ${first.y}, ${last.x} ${last.y}, ${end.x} ${end.y}`
+            : `M ${start.x + 120} ${start.y} C ${start.x + 175} ${start.y}, ${end.x - 55} ${end.y}, ${end.x - 17} ${end.y}`,
           fill: 'none',
-          class: `campaign-edge ${edge.kind}`,
+          class: `campaign-edge ${edge.kind} ${pivotRoles.get(edge.source) || ''}`,
           'data-graph-edge': '',
           'data-source': edge.source,
           'data-target': edge.target,
@@ -3901,7 +4816,7 @@
           ? node.score >= 80 ? 'critical' : node.score >= 60 ? 'elevated' : node.score >= 40 ? 'moderate' : 'aging'
           : '';
         const group = createSvg('g', {
-          class: `campaign-node ${node.kind} ${node.pivotKind || ''} ${riskBand}`,
+          class: `campaign-node ${node.kind} ${node.pivotKind || ''} ${node.role || ''} ${riskBand}`,
           transform: `translate(${position.x} ${position.y})`,
           role: 'button',
           tabindex: '0',
@@ -3919,17 +4834,20 @@
           }));
         }
         const circle = node.kind === 'pivot'
-          ? createSvg('rect', { x: -120, y: -27, width: 240, height: 54, rx: 6, class: 'campaign-node-core' })
+          ? createSvg('rect', layout.style === 'orbit'
+            ? { x: -72, y: -22, width: 144, height: 44, rx: 15, class: 'campaign-node-core' }
+            : { x: -120, y: -27, width: 240, height: 54, rx: 6, class: 'campaign-node-core' })
           : createSvg('circle', { r: 14 + Math.min(Math.max(node.sourceCount - 1, 0), 4) * 0.8, class: 'campaign-node-core' });
         const label = createSvg('text', {
-          y: node.kind === 'pivot' ? -3 : 3,
+          y: node.kind === 'pivot' ? (layout.style === 'orbit' ? -2 : -3) : 3,
           'text-anchor': 'middle',
         });
         label.textContent = node.kind === 'pivot'
-          ? (node.label.length > 32 ? node.label.slice(0, 31) + '…' : node.label)
+          ? (node.label.length > (layout.style === 'orbit' ? 17 : 32)
+            ? node.label.slice(0, layout.style === 'orbit' ? 16 : 31) + '…' : node.label)
           : String(node.score);
         const subtitle = createSvg('text', {
-          y: node.kind === 'pivot' ? 17 : 31,
+          y: node.kind === 'pivot' ? (layout.style === 'orbit' ? 13 : 17) : 31,
           'text-anchor': 'middle',
           class: 'campaign-node-subtitle',
         });
@@ -3942,6 +4860,10 @@
           : `${node.label} · ${node.row?.type || 'indicator'} · score ${node.score} · ${node.sourceCount} mapped provider${node.sourceCount === 1 ? '' : 's'}${node.row?.lastSeenDisplay ? ` · last seen ${node.row.lastSeenDisplay}` : ''}`;
         group.append(circle, label, subtitle, tooltip);
         group.addEventListener('click', () => selectNode(node));
+        group.addEventListener('pointerenter', () => { hovered = node; paintHighlight(); });
+        group.addEventListener('pointerleave', () => { if (hovered?.id === node.id) { hovered = null; paintHighlight(); } });
+        group.addEventListener('focus', () => { hovered = node; paintHighlight(); });
+        group.addEventListener('blur', () => { if (hovered?.id === node.id) { hovered = null; paintHighlight(); } });
         group.addEventListener('keydown', (event) => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
@@ -3970,25 +4892,65 @@
       });
       svg.appendChild(nodeLayer);
       if (nextSelected) selectNode(nextSelected);
+      else paintHighlight();
     };
 
     svg.addEventListener('click', (event) => {
+      if (ignoreNextClick) { ignoreNextClick = false; return; }
       if (!selected || event.target.closest('[data-graph-node]')) return;
       selected = null;
       render();
     });
+    svg.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse' || event.button !== 0 || zoom <= 1 || event.target.closest('[data-graph-node]') || !graph?.edges.length) return;
+      drag = { x: event.clientX, y: event.clientY, viewX, viewY, moved: false };
+      svg.setPointerCapture(event.pointerId);
+    });
+    svg.addEventListener('pointermove', (event) => {
+      if (!drag) return;
+      const dx = event.clientX - drag.x, dy = event.clientY - drag.y;
+      if (Math.abs(dx) + Math.abs(dy) > 4) drag.moved = true;
+      if (!drag.moved) return;
+      svg.classList.add('is-panning');
+      const bounds = svg.getBoundingClientRect();
+      viewX = drag.viewX - dx * baseView.width / zoom / bounds.width;
+      viewY = drag.viewY - dy * baseView.height / zoom / bounds.height;
+      applyViewport();
+    });
+    const endDrag = (event) => {
+      if (!drag) return;
+      ignoreNextClick = drag.moved;
+      drag = null;
+      svg.classList.remove('is-panning');
+      if (svg.hasPointerCapture(event.pointerId)) svg.releasePointerCapture(event.pointerId);
+    };
+    svg.addEventListener('pointerup', endDrag);
+    svg.addEventListener('pointercancel', endDrag);
+    zoomIn?.addEventListener('click', () => zoomBy(1.3));
+    zoomOut?.addEventListener('click', () => zoomBy(1 / 1.3));
+    fit?.addEventListener('click', () => { zoom = 1; viewX = 0; viewY = 0; applyViewport(); });
     search?.addEventListener('input', updateSearch);
     reset?.addEventListener('click', () => {
       selected = null;
+      focusMode = false;
       if (search) search.value = '';
       render();
     });
     root.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && selected) {
         selected = null;
+        focusMode = false;
         render();
         search?.focus();
       }
+    });
+    focusButton?.addEventListener('click', () => {
+      if (!selected) return;
+      focusMode = !focusMode;
+      hovered = null;
+      paintHighlight();
+      if (focusMode) centerNeighborhood();
+      else { zoom = 1; viewX = 0; viewY = 0; applyViewport(); }
     });
     exportGraph?.addEventListener('click', () => {
       if (!graph?.edges.length) return;
@@ -4008,10 +4970,11 @@
         nodes, edges,
       }, null, 2) + '\n', 'swiftioc-graph-evidence.json', 'application/json');
     });
-    mode?.addEventListener('change', render);
-    density?.addEventListener('change', render);
+    mode?.addEventListener('change', () => { zoom = 1; viewX = 0; viewY = 0; render(); });
+    density?.addEventListener('change', () => { zoom = 1; viewX = 0; viewY = 0; render(); });
+    style?.addEventListener('change', () => { zoom = 1; viewX = 0; viewY = 0; rotation = 0; render(); });
     remix?.addEventListener('click', () => {
-      rotation = (rotation + Math.PI / 7) % (Math.PI * 2);
+      rotation += 1;
       render();
     });
     queue?.addEventListener('click', () => {
@@ -4029,6 +4992,7 @@
     window.addEventListener('swiftioc:preview-filtered', (event) => {
       if (!Array.isArray(event.detail?.rows)) return;
       entries = event.detail.rows;
+      zoom = 1; viewX = 0; viewY = 0;
       render();
     });
 
@@ -4064,7 +5028,7 @@
     pills.className = 'threat-pills';
     pills.appendChild(makeThreatPill('type', row.type || 'unknown'));
     if ((row.sourceCount || 0) >= 2) {
-      const p = makeThreatPill('confirmed', `${row.sourceCount}× confirmed`);
+      const p = makeThreatPill('confirmed', `${row.sourceCount} reporting groups`);
       if (Array.isArray(row.sourceList)) p.title = row.sourceList.join(', ');
       pills.appendChild(p);
     }
@@ -4192,9 +5156,13 @@
       if (!resultBox) return;
       resultBox.hidden = false;
       resultBox.dataset.state = state;
+      delete resultBox.dataset.iocType;
+      delete resultBox.dataset.iocValue;
 
       if (state === 'found' && row) {
         resultBox.innerHTML = '';
+        resultBox.dataset.iocType = row.type;
+        resultBox.dataset.iocValue = row.indicator;
         const scoreClass = confidenceClassFor(row.score ?? row.confidence);
         const head = document.createElement('div');
         head.className = 'lookup-hit-header';
@@ -4267,6 +5235,9 @@
         actions.appendChild(makeInvestigationButton(row));
         syncInvestigationButtons();
         actions.appendChild(
+          makeAction('Copy smart SPL', () => copySplQuery(row))
+        );
+        actions.appendChild(
           makeAction('Download JSON', () => downloadJson(row))
         );
         actions.appendChild(
@@ -4288,6 +5259,7 @@
           actions.appendChild(reference);
         }
         resultBox.appendChild(actions);
+        window.SwiftIOCGroupIntel?.decorate(row.type, row.indicator, resultBox);
         return;
       }
 
@@ -4577,6 +5549,23 @@
   // Fragment lookup uses IDs, not CSS selectors: malformed/shared IOC fragments
   // cannot throw or accidentally select another element.
   const initialiseSectionNavigation = () => {
+    const sectionLinks = qsa('.top-nav .nav-links a[href^="#"]')
+      .map((link) => ({ link, target: document.getElementById(link.hash.slice(1)) }))
+      .filter(({ target }) => target);
+    let navFrame = 0;
+    const highlightSection = () => {
+      navFrame = 0;
+      const threshold = document.querySelector('.top-nav')?.getBoundingClientRect().height + 32 || 96;
+      const reached = sectionLinks.filter(({ target }) => target.getBoundingClientRect().top <= threshold)
+        .sort((a, b) => b.target.getBoundingClientRect().top - a.target.getBoundingClientRect().top)[0];
+      sectionLinks.forEach(({ link }) => {
+        if (link === reached?.link) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    const scheduleHighlight = () => { if (!navFrame) navFrame = window.requestAnimationFrame(highlightSection); };
+    window.addEventListener('scroll', scheduleHighlight, { passive: true });
+    window.addEventListener('resize', scheduleHighlight, { passive: true });
     const reveal = () => {
       let id;
       try { id = decodeURIComponent(window.location.hash.slice(1)); }
@@ -4595,13 +5584,14 @@
       }
       if (opened) window.requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
     };
-    window.addEventListener('hashchange', reveal);
+    window.addEventListener('hashchange', () => { reveal(); scheduleHighlight(); });
     // Clicking the same hash again must also reopen a manually closed tool.
     document.addEventListener('click', (event) => {
       const link = event.target.closest('a[href^="#"]');
       if (link && link.hash === window.location.hash) reveal();
     });
     reveal();
+    scheduleHighlight();
   };
 
   /* ==========================================================================

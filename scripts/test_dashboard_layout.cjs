@@ -23,6 +23,20 @@ const assert = require('node:assert/strict');
     await page.goto(base, { waitUntil: 'networkidle' });
     const rows = page.locator('[data-preview-body] > tr:not(.preview-detail-row)');
     assert.equal(await rows.count(), 12);
+    const firstActions = rows.first().locator('.preview-row-actions');
+    assert.equal(await firstActions.locator(':scope > button').count(), 1);
+    assert.equal(await firstActions.locator('[data-row-actions-menu]').count(), 1);
+    await firstActions.locator('.row-actions-toggle').click();
+    assert.equal(await firstActions.locator('.row-actions-menu-items button').count(), 4);
+    await page.keyboard.press('Escape');
+    assert.equal(await firstActions.locator('[data-row-actions-menu]').getAttribute('open'), null);
+    await firstActions.locator('.row-actions-toggle').click();
+    await firstActions.getByRole('button', { name: /details/i }).click();
+    assert.equal(await page.locator('.preview-detail-row').first().isVisible(), true);
+    assert.equal(await firstActions.locator('[data-row-actions-menu]').getAttribute('open'), null);
+    await firstActions.locator('.queue-action').click();
+    assert.match(await firstActions.locator('.queue-action').innerText(), /Queued/);
+    assert.equal(await firstActions.locator('.queue-action').getAttribute('aria-pressed'), 'true');
     assert.equal(await page.locator('[data-tool-disclosure][open]').count(), 0);
     // Native summary controls must work with the keyboard.
     const exports = page.locator('details').filter({ has: page.locator('#exports') });
@@ -71,11 +85,23 @@ const assert = require('node:assert/strict');
         const rect = el.getBoundingClientRect();
         return { left: rect.left, right: rect.right, height: rect.height };
       }));
-      for (const link of links) {
-        assert.ok(link.left >= 0 && link.right <= width, `Navigation clipped at ${width}px`);
+      for (const [index, link] of links.entries()) {
         assert.ok(link.height >= 44, 'Navigation touch target too short');
+        if (width > 820) assert.ok(link.left >= 0 && link.right <= width, `Navigation clipped at ${width}px`);
+        else {
+          await page.locator('.nav-links a').nth(index).evaluate((element) => element.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' }));
+          const visible = await page.locator('.nav-links a').nth(index).evaluate((element) => {
+            const linkBox = element.getBoundingClientRect(), navBox = element.parentElement.getBoundingClientRect();
+            return linkBox.left >= navBox.left - 1 && linkBox.right <= navBox.right + 1;
+          });
+          assert.ok(visible, `Navigation link ${index + 1} cannot be reached at ${width}px`);
+        }
       }
     }
+    await page.locator('.nav-links a[href="#today"]').click();
+    await page.waitForFunction(() => document.querySelector('.nav-links a[href="#today"]')?.getAttribute('aria-current') === 'location');
+    await page.locator('.nav-links a[href="#vulnerabilities"]').click();
+    await page.waitForFunction(() => document.querySelector('.nav-links a[href="#vulnerabilities"]')?.getAttribute('aria-current') === 'location');
     await page.locator('.analyst-guide > summary').click();
     await page.locator('.analyst-guide a[href="#product-briefing"]').click();
     await page.waitForFunction(() => document.querySelector('[data-briefing-settings]').open);

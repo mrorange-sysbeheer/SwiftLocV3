@@ -14,6 +14,66 @@
       .replace(/hxxp:\/\//gi, 'http://')
       .replace(/\[\.\]/g, '.');
 
+  const splQuote = (value) =>
+    `"${stringValue(value).replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
+
+  const splIndexClause = (value) => {
+    const indexes = stringValue(value)
+      .replace(/^index\s*=\s*/i, '')
+      .split(/[\s,]+/)
+      .filter(Boolean);
+    const safe = indexes.filter((index) => /^[a-z0-9_.\-*]+$/i.test(index));
+    if (!safe.length || safe.length !== indexes.length) return '';
+    const clauses = [...new Set(safe)].map((index) => `index=${index}`);
+    return clauses.length === 1 ? clauses[0] : `(${clauses.join(' OR ')})`;
+  };
+
+  const buildSplQuery = (row, index = '*', earliest = '-30d') => {
+    const original = stringValue(row?.indicator);
+    if (!original) return '';
+    const indicator = refang(original);
+    const type = lower(row?.type).replace(/[\s_-]/g, '');
+    const fieldsByType = {
+      ipv4: ['src_ip', 'dest_ip', 'clientip', 'ip'],
+      ipv6: ['src_ip', 'dest_ip', 'clientip', 'ip'],
+      ip: ['src_ip', 'dest_ip', 'clientip', 'ip'],
+      domain: ['query', 'domain', 'dest_host', 'host'],
+      hostname: ['query', 'domain', 'dest_host', 'host'],
+      url: ['url', 'uri', 'request', 'http_referrer'],
+      md5: ['file_hash', 'hash', 'md5'],
+      sha1: ['file_hash', 'hash', 'sha1'],
+      sha256: ['file_hash', 'hash', 'sha256'],
+      hash: ['file_hash', 'hash'],
+      email: ['sender', 'recipient', 'email'],
+      cve: ['cve', 'vulnerability', 'signature'],
+    };
+    const safeEarliest = /^-[1-9]\d*[smhdw]$/i.test(stringValue(earliest))
+      ? stringValue(earliest)
+      : '-30d';
+    const indexClause = splIndexClause(index);
+    if (!indexClause) return '';
+    const scope = `${indexClause} earliest=${safeEarliest}`;
+    let search;
+    if (type === 'ipv4cidr' || type === 'ipv6cidr') {
+      search = `${scope}\n| where cidrmatch(${splQuote(indicator)}, src_ip) ` +
+        `OR cidrmatch(${splQuote(indicator)}, dest_ip) ` +
+        `OR cidrmatch(${splQuote(indicator)}, clientip) ` +
+        `OR cidrmatch(${splQuote(indicator)}, ip)`;
+    } else {
+      const fields = fieldsByType[type] || ['indicator', 'value'];
+      const values = [...new Set([indicator, original].filter(Boolean))];
+      const terms = [];
+      values.forEach((value) => {
+        terms.push(splQuote(value));
+        fields.forEach((field) => terms.push(`${field}=${splQuote(value)}`));
+      });
+      search = `${scope} (${terms.join(' OR ')})`;
+    }
+    return `${search}\n` +
+      '| stats count min(_time) as first_seen max(_time) as last_seen values(index) as indexes values(sourcetype) as sourcetypes\n' +
+      '| convert ctime(first_seen) ctime(last_seen)';
+  };
+
   const confidenceRank = (value) => {
     if (typeof value === 'number') {
       if (value >= 80) return 3;
@@ -223,11 +283,12 @@
 
   const rowsToSpl = (value, options = {}) => {
     const index = stringValue(options.index ?? 'YOUR_INDEX');
+    const indexClause = splIndexClause(index);
     const earliest = options.earliest ?? '-24h';
     const names = ['src_ip', 'dest_ip', 'query', 'url', 'md5', 'sha1', 'sha256'];
     const mapping = Object.fromEntries(names.map((name) => [name, stringValue(options.fields?.[name] ?? name)]));
     let error = '';
-    if (!/^[a-zA-Z0-9_][a-zA-Z0-9_-]{0,99}$/.test(index)) error = 'Enter one index name using letters, numbers, underscores or hyphens.';
+    if (!indexClause) error = 'Enter *, a wildcard index name, or a comma-separated list of index names.';
     else if (!['-15m', '-1h', '-24h', '-7d', '-30d'].includes(earliest)) error = 'Choose one of the supported time ranges.';
     else if (Object.values(mapping).some((name) => !/^[a-zA-Z_][a-zA-Z0-9_.]{0,99}$/.test(name) || name === 'swiftioc_matches')) error = 'Field names must start with a letter or underscore and contain only letters, numbers, underscores or dots. swiftioc_matches is reserved.';
     if (error) return { included: 0, skipped: [], spl: '', error };
@@ -269,7 +330,7 @@
       clauses.push(`    if(${condition}, ${quote(key)}, null())`);
     }
     return { included: seen.size, skipped,
-      spl: clauses.length ? `index=${index} earliest=${earliest} latest=now\n`
+      spl: clauses.length ? `${indexClause} earliest=${earliest} latest=now\n`
         + `| fields ${outputFields}\n`
         + '| eval swiftioc_matches=mvappend(\n' + clauses.join(',\n') + ',\n    null())\n'
         + '| where mvcount(swiftioc_matches)>0\n'
@@ -377,6 +438,8 @@
   // Explicit aliases from the shipped adapters. Unknown/custom feeds keep
   // their identity; similar spelling is not evidence of a common publisher.
   const providerGroups = [
+    ['cisa', 'CISA', ['cisa_kev']],
+    ['nvd', 'NIST NVD', ['nist_nvd_recent']],
     ['abuse.ch', 'abuse.ch', ['threatfox_export_json', 'threatfox_recent', 'threatfox', 'urlhaus_recent_urls', 'urlhaus', 'malwarebazaar_recent', 'malwarebazaar', 'feodo_ipblocklist', 'feodo', 'sslbl_ja3', 'sslbl']],
     ['cins', 'CINS Army', ['ci_army_list', 'cins']],
     ['spamhaus', 'Spamhaus', ['spamhaus_drop', 'spamhaus_drop_v6', 'spamhaus']],
@@ -569,6 +632,70 @@
     };
   };
 
+  // Layout is presentation only: it never adds or removes evidence edges.
+  // The orbit groups IOCs by their first displayed pivot, then spaces them
+  // evenly so the bounded graph remains readable without a force simulation.
+  const layoutCampaignGraph = (graph, style = 'orbit', rotation = 0) => {
+    const pivots = (graph?.nodes || []).filter((node) => node.kind === 'pivot');
+    const indicators = (graph?.nodes || []).filter((node) => node.kind === 'indicator');
+    const positions = new Map();
+    const turn = Number.isFinite(rotation) ? Math.trunc(rotation) : 0;
+    if (style === 'lanes') {
+      const grouped = new Map(pivots.map((pivot) => [pivot.id, []]));
+      indicators.forEach((node) => {
+        const owners = pivots.filter((pivot) => graph.edges.some((edge) => edge.source === pivot.id && edge.target === node.id));
+        owners.sort((a, b) => grouped.get(a.id).length - grouped.get(b.id).length);
+        if (owners.length) grouped.get(owners[0].id).push(node);
+      });
+      let top = 28;
+      pivots.forEach((pivot) => {
+        const members = grouped.get(pivot.id);
+        if (turn % 2) members.reverse();
+        const height = Math.max(96, Math.ceil(members.length / 5) * 76 + 22);
+        positions.set(pivot.id, { x: 125, y: top + height / 2 });
+        members.forEach((node, index) => positions.set(node.id, {
+          x: 348 + (index % 5) * 142,
+          y: top + 34 + Math.floor(index / 5) * 76,
+        }));
+        top += height;
+      });
+      return { positions, width: 1000, height: Math.max(300, top + 28), style: 'lanes' };
+    }
+    const width = 1000, height = 760, cx = width / 2, cy = height / 2;
+    const pivotIndex = new Map(pivots.map((pivot, index) => [pivot.id, index]));
+    const ownerIndex = (node) => {
+      const linked = graph.edges.filter((edge) => edge.target === node.id).map((edge) => pivotIndex.get(edge.source));
+      return linked.length ? Math.min(...linked) : pivots.length;
+    };
+    const ordered = indicators.slice().sort((a, b) => ownerIndex(a) - ownerIndex(b)
+      || b.score - a.score || a.label.localeCompare(b.label));
+    const offset = pivots.length ? turn * 2 * Math.PI / pivots.length : 0;
+    pivots.forEach((pivot, index) => {
+      const angle = -Math.PI / 2 + offset + index * 2 * Math.PI / pivots.length;
+      positions.set(pivot.id, { x: cx + Math.cos(angle) * 198, y: cy + Math.sin(angle) * 198 });
+    });
+    ordered.forEach((node, index) => {
+      const angle = -Math.PI / 2 + offset + (index + 0.5) * 2 * Math.PI / ordered.length;
+      positions.set(node.id, { x: cx + Math.cos(angle) * 310, y: cy + Math.sin(angle) * 310 });
+    });
+    return { positions, width, height, style: 'orbit' };
+  };
+
+  // A focus view is strictly a presentation subset of observed links. Keep
+  // edge objects intact so exports and the inspector use the same evidence.
+  const campaignGraphNeighborhood = (graph, nodeId) => {
+    const nodes = new Set(nodeId ? [nodeId] : []);
+    const edges = new Set();
+    if (!(graph?.nodes || []).some((node) => node.id === nodeId)) return { nodes: new Set(), edges };
+    for (const edge of graph.edges || []) {
+      if (edge.source !== nodeId && edge.target !== nodeId) continue;
+      nodes.add(edge.source);
+      nodes.add(edge.target);
+      edges.add(edge);
+    }
+    return { nodes, edges };
+  };
+
   // Rank evidence already present in the loaded sample; never infer global
   // rarity, attribution, or new activity from absence in a compact feed.
   const buildDiscovery = (value, mode = 'corroborated', now = Date.now() / 1000) => {
@@ -619,10 +746,13 @@
         label = rare;
         reason = `“${rare}” appears on ${counts.get(rare)} of ${rows.length} indicators in this filtered sample. This is sample rarity, not global rarity.`;
       } else {
-        if (sources.length < 2) continue;
-        rank = sources.length;
-        label = `${sources.length} reporting sources`;
-        reason = `Reported by ${sources.join(', ')}. Multiple reports provide corroboration, but do not establish source independence.`;
+        const groups = sourceProviders(row).filter((provider) =>
+          provider.role === 'reporting' || provider.role === 'unmapped');
+        if (groups.length < 2) continue;
+        rank = groups.length;
+        label = `${groups.length} reporting groups · ${sources.length} feed names`;
+        reason = `Reported by ${groups.map((provider) => provider.label).join(', ')}. ` +
+          'Distinct groups do not prove independent observation.';
       }
       findings.push({ row, label, reason, rank });
     }
@@ -833,20 +963,107 @@
     ransomware: item.exploitation_status === 'known_exploited' && lower(item.reports?.cisa_kev?.ransomware_use) === 'known',
   });
 
+  const vulnerabilityPriority = (item, group = null, now = Date.now() / 1000) => {
+    const facts = vulnerabilityFacts(item, now);
+    const severity = lower(item.reports?.nvd?.severity);
+    const recentKev = facts.added != null && now - facts.added <= 30 * 86400;
+    const groupCount = Array.isArray(group?.groups) ? group.groups.length : 0;
+    const reasons = [];
+    if (item.exploitation_status === 'known_exploited') reasons.push('CISA KEV known exploitation');
+    else if (item.exploitation_status === 'reported_exploitation') reasons.push('reported exploitation');
+    if (facts.ransomware) reasons.push('CISA ransomware campaign evidence');
+    if (groupCount) reasons.push(`associated with ${groupCount} ransomware ${groupCount === 1 ? 'group' : 'groups'}`);
+    if (recentKev) reasons.push('recently added to KEV');
+    if (['critical', 'high'].includes(severity)) reasons.push(`${severity} NVD severity`);
+    if (facts.rejected) reasons.push('NVD record is rejected');
+    let key = 'context';
+    if (!facts.rejected && item.exploitation_status === 'known_exploited' && (facts.ransomware || groupCount || recentKev)) key = 'act';
+    else if (!facts.rejected && ['known_exploited', 'reported_exploitation'].includes(item.exploitation_status)) key = 'investigate';
+    else if (!facts.rejected && (groupCount || ['critical', 'high'].includes(severity))) key = 'monitor';
+    const labels = { act: 'Act now', investigate: 'Investigate', monitor: 'Monitor', context: 'Context only' };
+    const why = reasons.length ? `${reasons.slice(0, 3).join(', ')}.` : 'No structured exploitation, group, or severity signal is available.';
+    return { key, label: labels[key], why, reasons, recentKev, groupCount };
+  };
+
+  const vulnerabilityTimeline = (item, group = null, observations = [], now = Date.now() / 1000) => {
+    const facts = vulnerabilityFacts(item, now);
+    const events = [];
+    const push = (time, label, source) => { if (time != null && Number.isFinite(time) && time >= 0 && time <= now) events.push({ time, label, source }); };
+    push(facts.published, 'Published by NVD', 'NVD');
+    push(facts.added, 'Added to CISA KEV', 'CISA');
+    push(facts.modified, 'NVD record updated', 'NVD');
+    observations.forEach((entry) => {
+      const first = Date.parse(entry?.receipt?.first_observed) / 1000;
+      const last = Date.parse(entry?.receipt?.last_observed) / 1000;
+      push(first, `First observed for ${entry.group}`, 'ransomware.live snapshot');
+      if (last !== first) push(last, `Last confirmed for ${entry.group}`, 'ransomware.live snapshot');
+    });
+    const changed = Date.parse(group?.recentChange?.at) / 1000;
+    push(changed, `${group?.recentChange?.action || 'Association'}: ${group?.recentChange?.group || 'group'}`, 'SwiftIOC evidence history');
+    return events.sort((a, b) => a.time - b.time || a.label.localeCompare(b.label));
+  };
+
+  const vulnerabilityAggregation = (items) => {
+    const count = (values) => [...values.reduce((map, value) => {
+      if (typeof value === 'string' && value.trim()) map.set(value.trim(), (map.get(value.trim()) || 0) + 1);
+      return map;
+    }, new Map())].map(([name, total]) => ({ name, total }))
+      .sort((a, b) => b.total - a.total || a.name.localeCompare(b.name));
+    return {
+      vendors: count(items.map((item) => item.reports?.cisa_kev?.vendor)),
+      products: count(items.map((item) => item.reports?.cisa_kev?.product)),
+    };
+  };
+
+  // Compare material evidence rather than ingestion dates or routine catalog checks.
+  const vulnerabilityEvidence = (item, group) => ({
+    ...briefingEvidence(item),
+    groups: [...new Set(group?.groups || [])].sort(),
+    matched: Boolean(group?.matched),
+    title: item.title || '', description: item.description || '',
+    vendor: item.reports?.cisa_kev?.vendor || '', product: item.reports?.cisa_kev?.product || '',
+  });
+  const vulnerabilityChanges = (previous, current) => {
+    if (!previous) return ['New to this browser'];
+    const changes = briefingChanges(previous, current);
+    if (JSON.stringify(previous.groups) !== JSON.stringify(current.groups)) changes.push('Group associations changed');
+    if (previous.matched !== current.matched) changes.push('SwiftIOC match changed');
+    if (['title', 'description', 'vendor', 'product'].some((key) => previous[key] !== current[key])) changes.push('Provider details changed');
+    return changes;
+  };
+  const normaliseVulnerabilityView = (state) => {
+    if (!state || typeof state !== 'object' || Array.isArray(state)) return null;
+    const choice = (key, values, fallback) => values.includes(state[key]) ? state[key] : fallback;
+    const str = (key, max) => typeof state[key] === 'string' ? state[key].slice(0, max) : '';
+    return { view: choice('view', ['briefing', 'exploited', 'priority', 'group-linked', 'ransomware', 'kev30', 'published7', 'updated7'], 'priority'),
+      search: str('search', 200), exploitation: choice('exploitation', ['all', 'known_exploited', 'reported_exploitation', 'not_established'], 'all'),
+      group: str('group', 200), groupOnly: state.groupOnly === true, includeRejected: state.includeRejected === true,
+      layout: choice('layout', ['cards', 'table'], 'cards'), tier: choice('tier', ['all', 'act', 'investigate', 'monitor', 'context'], 'all'),
+      severity: choice('severity', ['all', 'critical', 'high', 'medium', 'low', 'unknown'], 'all'),
+      change: choice('change', ['all', 'changed', 'unreviewed', 'reviewed'], 'all'), vendor: str('vendor', 100), product: str('product', 160),
+      comparison: Array.isArray(state.comparison) ? [...new Set(state.comparison.filter((name) => typeof name === 'string' && name.length <= 200))].slice(0, 3) : [],
+      comparisonMode: choice('comparisonMode', ['shared', 'union', 'unique'], 'shared'), briefingTriage: choice('briefingTriage', ['all', 'new', 'unreviewed', 'investigating', 'reviewed'], 'all') };
+  };
+
   const filterVulnerabilities = (items, search = '', status = 'all', options = {}) => {
     const query = lower(search).trim();
     const now = options.now ?? Date.now() / 1000;
-    const view = ['exploited', 'ransomware', 'kev30', 'published7', 'updated7'].includes(options.view) ? options.view : 'priority';
+    const view = ['exploited', 'ransomware', 'group-linked', 'kev30', 'published7', 'updated7'].includes(options.view) ? options.view : 'priority';
+    const groupEvidence = options.groupEvidence instanceof Map ? options.groupEvidence : new Map();
+    const selectedGroup = typeof options.group === 'string' ? options.group : '';
     const priority = { known_exploited: 0, reported_exploitation: 1, not_established: 2 };
+    const changePriority = { added: 0, returned: 0, matched: 1 };
     const recent = (time, days) => time != null && now - time <= days * 86400;
     const orderDate = (item, facts) => view === 'updated7' ? facts.modified
       : view === 'published7' ? facts.published
       : item.exploitation_status === 'known_exploited' ? facts.added : facts.published;
-    return items.map((item) => ({ item, facts: vulnerabilityFacts(item, now) })).filter(({ item, facts }) => {
+    return items.map((item) => ({ item, facts: vulnerabilityFacts(item, now), group: groupEvidence.get(lower(item.cve_id)) || null })).filter(({ item, facts, group }) => {
       if (!options.includeRejected && facts.rejected) return false;
       if (status !== 'all' && item.exploitation_status !== status) return false;
       if (view === 'exploited' && item.exploitation_status !== 'known_exploited') return false;
       if (view === 'ransomware' && !facts.ransomware) return false;
+      if ((view === 'group-linked' || options.groupOnly || selectedGroup) && !group) return false;
+      if (selectedGroup && !group.groups?.includes(selectedGroup)) return false;
       if (view === 'kev30' && (item.exploitation_status !== 'known_exploited' || !recent(facts.added, 30))) return false;
       if (view === 'published7' && !recent(facts.published, 7)) return false;
       if (view === 'updated7' && !recent(facts.modified, 7)) return false;
@@ -854,8 +1071,11 @@
       const nvd = item.reports?.nvd || {};
       if (/^cve-\d{4}-\d{4,}$/.test(query)) return lower(item.cve_id) === query;
       return !query || lower([item.cve_id, item.title, item.description, kev.vendor,
-        kev.product, kev.description, nvd.description, ...(item.sources || [])].join(' ')).includes(query);
+        kev.product, kev.description, nvd.description, ...(item.sources || []), ...(group?.groups || [])].join(' ')).includes(query);
     }).sort((a, b) => Number(a.facts.rejected) - Number(b.facts.rejected)
+      || (view === 'group-linked' ? (priority[a.item.exploitation_status] ?? 3) - (priority[b.item.exploitation_status] ?? 3) : 0)
+      || (view === 'group-linked' ? (changePriority[a.group?.recentChange?.action] ?? 2) - (changePriority[b.group?.recentChange?.action] ?? 2) : 0)
+      || (view === 'group-linked' ? (b.group?.groups?.length || 0) - (a.group?.groups?.length || 0) : 0)
       || (view === 'priority' ? (priority[a.item.exploitation_status] ?? 3) - (priority[b.item.exploitation_status] ?? 3) : 0)
       || (orderDate(b.item, b.facts) ?? -Infinity) - (orderDate(a.item, a.facts) ?? -Infinity)
       || a.item.cve_id.localeCompare(b.item.cve_id)).map(({ item }) => item);
@@ -950,11 +1170,18 @@
   };
 
   return {
+    buildSplQuery,
     emptyBriefing, normaliseBriefing, matchesWatch, watchKey, briefingEvidence, briefingChanges, seedBriefing, buildBriefing,
     filterVulnerabilities,
     vulnerabilityFacts,
+    vulnerabilityPriority,
+    vulnerabilityTimeline,
+    vulnerabilityAggregation,
+    vulnerabilityEvidence, vulnerabilityChanges, normaliseVulnerabilityView,
     compareRows,
     buildCampaignGraph,
+    layoutCampaignGraph,
+    campaignGraphNeighborhood,
     graphNodeMatches,
     sourceProviders,
     buildDiscovery,

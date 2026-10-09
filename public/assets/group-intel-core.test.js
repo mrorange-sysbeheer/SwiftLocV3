@@ -1,0 +1,86 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const core = require('./group-intel-core.js');
+const dashboard = require('./dashboard-core.js');
+
+test('hunt packs preserve provenance, separate techniques, and validate indexes', () => {
+  const model = core.build(fixture());
+  const pack = core.huntPack(model, 'A', '*', '-7d', dashboard.buildSplQuery);
+  assert.match(pack.ioc_hunts[0].spl, /index=\* earliest=-7d/);
+  assert.equal(pack.cve_checklist.length, 1);
+  assert.equal(pack.techniques[0].id, 'T1486');
+  assert.equal(pack.snapshot_at, model.generatedAt);
+  assert.equal(pack.ioc_hunts[0].evidence, null);
+  assert.throws(() => core.huntPack(model, 'A', '* | delete', '-7d', dashboard.buildSplQuery));
+  assert.throws(() => core.huntPack(model, 'missing', '*', '-7d', dashboard.buildSplQuery));
+});
+
+test('receipts are specific to the group and evidence type', () => {
+  const data = fixture();
+  data.evidence_history = { observations: { a: { group: 'A', kind: 'cves', type: 'cve', value: 'CVE-2025-1234', first_observed: '2026-09-22' } } };
+  const model = core.build(data);
+  const cve = model.records.find((r) => r.kind === 'cves');
+  assert.equal(core.receipt(model, cve, 'A').first_observed, '2026-09-22');
+  assert.equal(core.receipt(model, cve, 'B'), null);
+});
+test('official CVE context is concise and stays separate from group associations', () => {
+  const signals = { items: { 'CVE-2025-1234': { official_cve: {
+    description: 'A vulnerable product.\nAffected versions require review.', affected: [{ vendor: 'Example', product: 'Gateway' }],
+  } } } };
+  assert.deepEqual(core.officialCveContext(signals, 'CVE-2025-1234'),
+    { product: 'Example · Gateway', description: 'A vulnerable product. Affected versions require review.' });
+  assert.equal(core.officialCveContext(signals, 'CVE-2025-5678'), null);
+  signals.items['CVE-2025-1234'].official_cve.description = 'x'.repeat(300);
+  assert.match(core.officialCveContext(signals, 'CVE-2025-1234').description, /^x+…$/);
+});
+
+const fixture = () => ({ schema_version: 1, generated_at: '2026-09-22T00:00:00Z',
+  groups: [{ name: 'A', ttps: ['T1486'] }, { name: 'B', ttps: ['T1486', 'T1059.001'] }, { name: 'C', ttps: [] }],
+  cves: [{ cve_id: 'CVE-2025-1234', groups: ['A', 'B'], in_swiftioc: true }],
+  iocs: [{ type: 'url', indicator: 'https://example.org/Case', groups: ['A', 'C'], in_swiftioc: false }],
+});
+test('group graph uses direct reported links and keeps IOC, CVE and technique evidence distinct', () => {
+  const model = core.build(fixture());
+  assert.deepEqual(core.graph(model, 'A', 'cves').related, ['B']);
+  assert.deepEqual(core.graph(model, 'A', 'cves').summary, { exactFeedMatches: 1, sharedRecords: 1 });
+  assert.deepEqual(core.graph(model, 'A', 'iocs').related, ['C']);
+  assert.deepEqual(core.graph(model, 'A', 'iocs').summary, { exactFeedMatches: 0, sharedRecords: 1 });
+  assert.deepEqual(core.graph(model, 'A', 'ttps').related, ['B']);
+  assert.equal(core.filter(model, { group: 'C', kind: 'ttps' }).length, 0);
+  assert.equal(core.filter(model, { kind: 'iocs', coverage: 'matched' }).length, 0);
+});
+test('exact lookup associations preserve URL path case', () => {
+  const model = core.build(fixture());
+  assert.ok(model.byIdentity.has('url:https://example.org/Case'));
+  assert.equal(model.byIdentity.has('url:https://example.org/case'), false);
+});
+test('map caps clutter, reports totals, and includes an explicitly selected record beyond the initial sample', () => {
+  const data = fixture();
+  for (let i = 0; i < 20; i++) data.cves.push({ cve_id: `CVE-2025-${3000 + i}`, groups: ['A', 'B'], in_swiftioc: false });
+  const model = core.build(data);
+  const selected = model.records.find((r) => r.value === 'CVE-2025-3019');
+  const graph = core.graph(model, 'A', 'cves', selected.key);
+  assert.equal(graph.evidence.length, 12);
+  assert.equal(graph.total, 21);
+  assert.equal(graph.selected.value, selected.value);
+  assert.ok(graph.evidence.includes(selected));
+});
+
+test('map shows bounded exact cross-group links for every displayed record', () => {
+  const data = fixture();
+  data.cves.push({ cve_id: 'CVE-2025-5678', groups: ['A', 'C'], in_swiftioc: false });
+  const model = core.build(data);
+  const scene = core.graph(model, 'A', 'cves');
+  assert.deepEqual(scene.visibleGroups, ['B', 'C']);
+  assert.equal(scene.links.length, 4);
+  assert.deepEqual(scene.links.filter((edge) => edge.group === 'C').map((edge) => edge.evidence),
+    [model.records.find((r) => r.value === 'CVE-2025-5678').key]);
+  assert.ok(scene.links.every((edge) => model.groups.has(edge.group) && scene.evidence.some((r) => r.key === edge.evidence)));
+  assert.equal(core.graph(model, 'missing', 'cves').links.length, 0);
+});
+test('unknown groups and empty evidence do not invent connections', () => {
+  const graph = core.graph(core.build(fixture()), 'missing', 'cves');
+  assert.equal(graph.total, 0);
+  assert.equal(graph.selected, null);
+  assert.deepEqual(graph.related, []);
+});
