@@ -2,16 +2,16 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-10-10T04:59:19Z_
+_Generated 2026-10-10T14:19:04Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-10T04:59:19Z |
+| Generated | 2026-10-10T14:19:04Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 7662 |
+| Duplicates removed | 7012 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
 | Multi-group overlaps | 363 |
@@ -19,7 +19,7 @@ _Generated 2026-10-10T04:59:19Z_
 | High-score indicators (≥80) | 10000 |
 | 2+ reporting groups | 363 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-10T04:48:42Z |
+| Newest first_seen | 2026-10-10T14:18:48Z |
 
 ## Top indicators by score
 
@@ -34,50 +34,50 @@ _Generated 2026-10-10T04:59:19Z_
 | ipv4: `45[.]17[.]39[.]120` | score 96, 3 reporting groups |
 | ipv4: `45[.]198[.]224[.]184` | score 96, 3 reporting groups |
 | ipv4: `45[.]78[.]201[.]248` | score 96, 3 reporting groups |
-| ipv4: `156[.]225[.]17[.]60` | score 88, 2 reporting groups |
+| ipv4_cidr: `178.20.210.0/24` | score 88, 2 reporting groups |
 
 ## Per-source totals
 
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| greensnow_blocklist | 5284 |
-| nist_nvd_recent | 4896 |
 | ipsum_level5 | 4798 |
-| blocklist_de_ssh | 4318 |
+| blocklist_de_ssh | 4312 |
+| greensnow_blocklist | 4268 |
 | binarydefense_banlist | 3095 |
-| threatfox_export_json | 2841 |
+| threatfox_export_json | 2682 |
+| nist_nvd_recent | 2600 |
 | cisa_kev | 1739 |
-| urlhaus_recent_urls | 1685 |
 | spamhaus_drop | 1684 |
+| tor_exit_nodes | 1205 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3412 |
-| url | 2038 |
-| sha256 | 1848 |
-| domain | 1273 |
-| ipv4_cidr | 679 |
-| md5 | 256 |
-| sha1 | 255 |
-| ipv4 | 239 |
+| cve | 3779 |
+| sha256 | 1865 |
+| ipv4_cidr | 1683 |
+| domain | 1058 |
+| url | 1034 |
+| ipv4 | 244 |
+| md5 | 169 |
+| sha1 | 168 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3412 |
-| malware | 3289 |
-| threatfox | 3120 |
-| nvd | 2013 |
+| cve | 3779 |
+| threatfox | 2730 |
+| nvd | 2380 |
+| malware | 2352 |
 | exploited-in-the-wild | 1739 |
-| malware_download | 1688 |
-| CheatSheet | 1102 |
-| exe | 920 |
-| github | 734 |
-| Mirai | 695 |
+| drop | 1683 |
+| spamhaus | 1683 |
+| high | 849 |
+| medium | 838 |
+| Mirai | 773 |
 
 ## Multi-group reporting overlaps
 
