@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-10-11T19:59:40Z_
+_Generated 2026-10-11T23:36:26Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-11T19:59:40Z |
+| Generated | 2026-10-11T23:36:26Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6946 |
+| Duplicates removed | 7117 |
 | Sources reporting | 17 |
 | Indicator types | 9 |
-| Multi-group overlaps | 365 |
+| Multi-group overlaps | 366 |
 | Score (min / avg / max) | 79 / 80.3 / 96 |
-| High-score indicators (≥80) | 9781 |
-| 2+ reporting groups | 365 |
+| High-score indicators (≥80) | 9666 |
+| 2+ reporting groups | 366 |
 | Earliest first_seen | 2000-06-07T04:00:00Z |
-| Newest first_seen | 2026-10-11T19:50:18Z |
+| Newest first_seen | 2026-10-11T23:30:48Z |
 
 ## Top indicators by score
 
@@ -34,33 +34,33 @@ _Generated 2026-10-11T19:59:40Z_
 | ipv4: `45[.]17[.]39[.]120` | score 96, 3 reporting groups |
 | ipv4: `45[.]198[.]224[.]184` | score 96, 3 reporting groups |
 | ipv4: `45[.]78[.]201[.]248` | score 96, 3 reporting groups |
-| ipv4: `176[.]65[.]139[.]231` | score 88, 2 reporting groups |
+| ipv4: `156[.]225[.]17[.]60` | score 88, 2 reporting groups |
 
 ## Per-source totals
 
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| blocklist_de_ssh | 4712 |
+| blocklist_de_ssh | 4784 |
+| greensnow_blocklist | 4710 |
 | ipsum_level5 | 4518 |
-| greensnow_blocklist | 4035 |
 | binarydefense_banlist | 3489 |
-| threatfox_export_json | 1966 |
 | cisa_kev | 1739 |
 | spamhaus_drop | 1684 |
-| tor_exit_nodes | 1201 |
-| nist_nvd_recent | 917 |
+| threatfox_export_json | 1530 |
+| nist_nvd_recent | 1255 |
+| tor_exit_nodes | 1198 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 4216 |
-| sha256 | 1756 |
+| cve | 4373 |
+| sha256 | 1786 |
 | ipv4_cidr | 1683 |
-| url | 906 |
-| domain | 771 |
-| ipv4 | 206 |
+| url | 993 |
+| domain | 498 |
+| ipv4 | 205 |
 | md5 | 183 |
 | sha1 | 182 |
 | ja3 | 97 |
@@ -69,16 +69,16 @@ _Generated 2026-10-11T19:59:40Z_
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 4216 |
-| nvd | 2817 |
-| threatfox | 2429 |
-| malware | 2149 |
+| cve | 4373 |
+| nvd | 2975 |
+| threatfox | 2216 |
+| malware | 2206 |
 | exploited-in-the-wild | 1739 |
 | drop | 1683 |
 | spamhaus | 1683 |
-| medium | 1065 |
-| high | 997 |
-| Mirai | 827 |
+| medium | 1242 |
+| high | 970 |
+| Mirai | 844 |
 
 ## Multi-group reporting overlaps
 

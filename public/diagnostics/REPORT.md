@@ -4,19 +4,19 @@
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-11T19:59:40Z |
+| Generated | 2026-10-11T23:36:26Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6946 |
-| Carried forward | 3230 |
+| Duplicates removed | 7117 |
+| Carried forward | 3369 |
 | Expired (score < 20) | 0 |
 | Aged out (> 30d) | 0 |
-| Pruned over cap (10000) | 28030 |
+| Pruned over cap (10000) | 28618 |
 | Stored | 10000 |
 | Score (min / avg / max) | 79 / 80.3 / 96 |
-| High-confidence indicators | 9781 |
+| High-confidence indicators | 9666 |
 | Earliest first_seen | 2000-06-07T04:00:00Z |
-| Newest first_seen | 2026-10-11T19:50:18Z |
+| Newest first_seen | 2026-10-11T23:30:48Z |
 
 ## Per-source coverage
 
@@ -25,33 +25,33 @@ Collected means records returned in the configured window, not a guarantee of co
 | Source | Indicators | State |
 | --- | ---: | --- |
 | binarydefense_banlist | 3489 | collected |
-| blocklist_de_ssh | 4712 | collected |
+| blocklist_de_ssh | 4784 | collected |
 | ci_army_list | 15000 | collected |
 | cisa_kev | 1739 | collected |
 | dshield_block | 20 | collected |
 | et_compromised | 600 | collected |
 | feodo_ipblocklist | 5 | collected |
-| greensnow_blocklist | 4035 | collected |
+| greensnow_blocklist | 4710 | collected |
 | ipsum_level5 | 4518 | collected |
-| malwarebazaar_recent | 859 | collected |
-| nist_nvd_recent | 917 | collected |
+| malwarebazaar_recent | 828 | collected |
+| nist_nvd_recent | 1255 | collected |
 | openphish_feed | 300 | collected |
 | spamhaus_drop | 1684 | collected |
 | sslbl_ja3 | 97 | collected |
-| threatfox_export_json | 1966 | collected |
-| tor_exit_nodes | 1201 | collected |
-| urlhaus_recent_urls | 604 | collected |
+| threatfox_export_json | 1530 | collected |
+| tor_exit_nodes | 1198 | collected |
+| urlhaus_recent_urls | 609 | collected |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 4216 |
-| sha256 | 1756 |
+| cve | 4373 |
+| sha256 | 1786 |
 | ipv4_cidr | 1683 |
-| url | 906 |
-| domain | 771 |
-| ipv4 | 206 |
+| url | 993 |
+| domain | 498 |
+| ipv4 | 205 |
 | md5 | 183 |
 | sha1 | 182 |
 | ja3 | 97 |
