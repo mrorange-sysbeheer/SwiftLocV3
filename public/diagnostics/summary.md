@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-12T04:57:42Z_
+_Generated 2026-10-12T17:30:39Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-12T04:57:42Z |
+| Generated | 2026-10-12T17:30:39Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 7678 |
+| Duplicates removed | 7140 |
 | Sources reporting | 17 |
-| Indicator types | 9 |
-| Multi-group overlaps | 366 |
-| Score (min / avg / max) | 79 / 80.2 / 96 |
-| High-score indicators (≥80) | 9222 |
-| 2+ reporting groups | 366 |
-| Earliest first_seen | 2000-06-07T04:00:00Z |
-| Newest first_seen | 2026-10-12T04:47:06Z |
+| Indicator types | 8 |
+| Multi-group overlaps | 371 |
+| Score (min / avg / max) | 80 / 80.3 / 96 |
+| High-score indicators (≥80) | 10000 |
+| 2+ reporting groups | 371 |
+| Earliest first_seen | 2008-09-18T20:00:00Z |
+| Newest first_seen | 2026-10-12T17:17:38Z |
 
 ## Top indicators by score
 
@@ -39,44 +39,43 @@ _Generated 2026-10-12T04:57:42Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| greensnow_blocklist | 4803 |
-| blocklist_de_ssh | 4760 |
+| greensnow_blocklist | 4757 |
 | ipsum_level5 | 4723 |
+| blocklist_de_ssh | 4718 |
 | binarydefense_banlist | 3698 |
+| nist_nvd_recent | 2077 |
 | cisa_kev | 1739 |
-| spamhaus_drop | 1684 |
-| threatfox_export_json | 1513 |
-| nist_nvd_recent | 1198 |
-| tor_exit_nodes | 1197 |
+| threatfox_export_json | 1737 |
+| spamhaus_drop | 1677 |
+| tor_exit_nodes | 1204 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 4396 |
-| sha256 | 1865 |
-| ipv4_cidr | 1683 |
-| url | 861 |
-| domain | 526 |
-| ipv4 | 207 |
-| md5 | 183 |
-| sha1 | 182 |
-| ja3 | 97 |
+| cve | 4084 |
+| sha256 | 1892 |
+| ipv4_cidr | 1676 |
+| url | 1466 |
+| ipv4 | 305 |
+| domain | 288 |
+| md5 | 145 |
+| sha1 | 144 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 4396 |
-| nvd | 2998 |
-| threatfox | 2232 |
-| malware | 2195 |
+| cve | 4084 |
+| malware | 2819 |
+| nvd | 2686 |
+| threatfox | 2026 |
 | exploited-in-the-wild | 1739 |
-| drop | 1683 |
-| spamhaus | 1683 |
-| medium | 1264 |
-| high | 972 |
-| Mirai | 885 |
+| drop | 1676 |
+| spamhaus | 1676 |
+| malware_download | 1088 |
+| medium | 1078 |
+| high | 899 |
 
 ## Multi-group reporting overlaps
 
@@ -91,6 +90,6 @@ _Generated 2026-10-12T04:57:42Z_
 | ipv4: 45[.]17[.]39[.]120 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 45[.]198[.]224[.]184 | blocklist_de_ssh, et_compromised, ipsum_level5, threatfox_export_json |
 | ipv4: 45[.]78[.]201[.]248 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
-| cve: CVE-2008-4128 | cisa_kev, nist_nvd_recent |
+| ipv4: 45[.]198[.]224[.]34 | et_compromised, ipsum_level5, threatfox_export_json |
 
 For more detail see [diagnostics/REPORT.md](diagnostics/REPORT.md) and the machine-readable feeds in [iocs/](iocs/).

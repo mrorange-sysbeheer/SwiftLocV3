@@ -3,305 +3,305 @@
   <title>SwiftIOC — Newest High-Confidence IOCs</title>
   <link>https://github.com/PKHarsimran/SwiftIOC-Automated-Threat-Intelligence-Collector</link>
   <description>Freshest scored indicators of compromise with publisher-aware provenance.</description>
-  <lastBuildDate>Mon, 12 Oct 2026 04:57:44 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 12 Oct 2026 17:30:42 +0000</lastBuildDate>
     <item>
-      <title>[80] url: hxxp://183[.]35[.]50[.]12:38590/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">3cfa12a6-f52d-5c5f-ac06-79bfb967bc87</guid>
-      <pubDate>Mon, 12 Oct 2026 04:47:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://bfb[.]6666k[.]org</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,b89d843f29af2eed09805e9767a1165f,c2,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">4027b39d-d8c4-580a-983c-4609afbd7470</guid>
-      <pubDate>Mon, 12 Oct 2026 04:36:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] domain: bfb[.]6666k[.]org</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">1f331e84-d971-5da1-9226-f1a9e74297e6</guid>
-      <pubDate>Mon, 12 Oct 2026 04:35:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://bfb[.]6666k[.]org/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">76ac0d1d-1d3b-5c9a-845d-8ba1e5e0cad3</guid>
-      <pubDate>Mon, 12 Oct 2026 04:35:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://182[.]127[.]110[.]188:40844/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">29427e1e-0f89-5cb9-953e-a62b587097d7</guid>
-      <pubDate>Mon, 12 Oct 2026 04:32:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://42[.]234[.]189[.]85:45368/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">20cbbf63-63ea-5896-8443-d6b6c460faa2</guid>
-      <pubDate>Mon, 12 Oct 2026 04:32:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://42[.]238[.]168[.]152:41810/bin[.]sh</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">94f4c7b8-ce2b-52d9-802a-0ede3a08e14e</guid>
-      <pubDate>Mon, 12 Oct 2026 04:32:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://193[.]187[.]101[.]209:55899/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,arm,elf,Mozi</description>
-      <guid isPermaLink="false">bb97ed21-5d46-59d7-8706-80b86b6b2fd9</guid>
-      <pubDate>Mon, 12 Oct 2026 04:22:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] domain: lry[.]6666k[.]org</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">6cdaef31-0e70-539c-9709-727571d60d8a</guid>
-      <pubDate>Mon, 12 Oct 2026 04:20:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://lry[.]6666k[.]org/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">2bf63007-11f7-5e0f-aa06-ca1bac2d4928</guid>
-      <pubDate>Mon, 12 Oct 2026 04:20:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://27[.]219[.]186[.]191:34590/bin[.]sh</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,arm,elf,Mozi</description>
-      <guid isPermaLink="false">85519de2-9463-5f4c-a7e5-ab4daf025b88</guid>
-      <pubDate>Mon, 12 Oct 2026 04:18:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://210[.]208[.]111[.]100:41194/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">814379dd-2242-5a5f-ae8f-953d08356816</guid>
-      <pubDate>Mon, 12 Oct 2026 04:17:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] cve: CVE-2026-108796</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">5c94a38d-af31-5b88-88df-5600489bdc00</guid>
-      <pubDate>Mon, 12 Oct 2026 04:16:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] cve: CVE-2026-108797</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">ed899954-606a-541a-a65c-da0f2ccb0dfb</guid>
-      <pubDate>Mon, 12 Oct 2026 04:16:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] cve: CVE-2026-108798</title>
+      <title>[80] cve: CVE-2026-85973</title>
       <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">a92c3041-73f9-5368-9ce0-afd1d79e4247</guid>
-      <pubDate>Mon, 12 Oct 2026 04:16:48 +0000</pubDate>
+      <guid isPermaLink="false">7ca9dca1-6bd2-542c-ae21-c317e07c6137</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:38 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-108795</title>
+      <title>[80] cve: CVE-2026-85974</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">78dff833-ff63-58bc-bf81-3b9155d5bde1</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85975</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">ae47b017-3bd2-5df8-bb1a-9648e944cce4</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85976</title>
       <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">80274b1f-2be8-5533-81e6-d311a6bb12e3</guid>
-      <pubDate>Mon, 12 Oct 2026 04:16:43 +0000</pubDate>
+      <guid isPermaLink="false">0a3ae8f5-6ad0-5e52-acba-dc26a9abaf90</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:38 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://182[.]123[.]208[.]160:36182/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
-      <guid isPermaLink="false">7bd55486-4458-55d3-b539-1dea00a22b5a</guid>
-      <pubDate>Mon, 12 Oct 2026 04:10:12 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://222[.]141[.]133[.]234:50577/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,cowrie,elf,honeypot,mips,Mozi</description>
-      <guid isPermaLink="false">910612d5-bd8b-532d-8250-3d825f6d0c49</guid>
-      <pubDate>Mon, 12 Oct 2026 04:06:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] ipv4: 118[.]126[.]95[.]117</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: cobaltstrike,threatfox</description>
-      <guid isPermaLink="false">fa2512a8-44af-5006-b975-a8032c274409</guid>
-      <pubDate>Mon, 12 Oct 2026 04:05:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://jte[.]6666k[.]org</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,c7a50169dbc6d842a7e7d349513f88f1,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">757e552c-85b0-5e93-afd8-90386bbcaa8e</guid>
-      <pubDate>Mon, 12 Oct 2026 04:03:01 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://42[.]224[.]114[.]237:54698/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">8c84092f-248f-522b-ba2d-974094218309</guid>
-      <pubDate>Mon, 12 Oct 2026 04:02:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://42[.]228[.]218[.]9:58691/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">b4989fd8-8fdd-52fc-860e-e553d7fd2b15</guid>
-      <pubDate>Mon, 12 Oct 2026 04:02:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://42[.]232[.]227[.]88:40830/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">43d93f6b-8a75-5985-9c01-b291b356916d</guid>
-      <pubDate>Mon, 12 Oct 2026 04:02:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://jte[.]6666k[.]org/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">c18ad5de-7f9e-57e8-918f-da7313319402</guid>
-      <pubDate>Mon, 12 Oct 2026 04:00:49 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] domain: jte[.]6666k[.]org</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">b51d6f50-6b45-55b4-b91e-501ec37dce79</guid>
-      <pubDate>Mon, 12 Oct 2026 04:00:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://122[.]241[.]88[.]118:60851/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,arm,elf,Mozi</description>
-      <guid isPermaLink="false">272b31ed-65d8-56c7-935a-350dfc3173c3</guid>
-      <pubDate>Mon, 12 Oct 2026 03:56:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://46[.]163[.]181[.]104:41767/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
-      <guid isPermaLink="false">06077116-2dbc-5d45-9cba-59cb343e7156</guid>
-      <pubDate>Mon, 12 Oct 2026 03:51:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://182[.]123[.]208[.]160:36182/bin[.]sh</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
-      <guid isPermaLink="false">fdbb57a6-21fc-5efe-8a63-f81e348d5d8e</guid>
-      <pubDate>Mon, 12 Oct 2026 03:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://zxi[.]6666k[.]org</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,ab0a59f4970a96fd6e8daa4f6f8e22cd,c2,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">02cbf316-b870-54cf-84bd-a804d9eb353c</guid>
-      <pubDate>Mon, 12 Oct 2026 03:42:46 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] domain: zxi[.]6666k[.]org</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">205be8ee-6b8b-5dc2-816f-c45fc1d96e69</guid>
-      <pubDate>Mon, 12 Oct 2026 03:40:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://zxi[.]6666k[.]org/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">1b64000c-6201-52f2-8048-8e682a6bf7f2</guid>
-      <pubDate>Mon, 12 Oct 2026 03:40:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] sha256: e3436d9e3050f071c2b8a64791653a6475a84aac130d4268d30a181067de26a1</title>
-      <description>Score 80, confidence high, sources: malwarebazaar_recent, tags: malware</description>
-      <guid isPermaLink="false">6deead12-3b0e-5120-bb9b-0043479fb8b5</guid>
-      <pubDate>Mon, 12 Oct 2026 03:37:33 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://120[.]28[.]215[.]50:48402/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">dcf336af-96cb-56ef-95c1-d8f3fcbd6cea</guid>
-      <pubDate>Mon, 12 Oct 2026 03:32:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://61[.]54[.]41[.]100:59180/bin[.]sh</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
-      <guid isPermaLink="false">b18a5504-4cb6-5825-b6a8-cf17ebd4be8d</guid>
-      <pubDate>Mon, 12 Oct 2026 03:22:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] domain: rtp-k86sportop[.]site</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClearFake,threatfox</description>
-      <guid isPermaLink="false">845864b3-5445-5379-a68b-b58500b3b452</guid>
-      <pubDate>Mon, 12 Oct 2026 03:19:39 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] cve: CVE-2026-108790</title>
+      <title>[80] cve: CVE-2026-94451</title>
       <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">24a2becb-7630-5413-b1b2-7a5b9107f768</guid>
-      <pubDate>Mon, 12 Oct 2026 03:17:18 +0000</pubDate>
+      <guid isPermaLink="false">bf2108cc-45d1-5fda-88ec-2bd399a63e99</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:38 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-108791</title>
+      <title>[80] cve: CVE-2026-85965</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">c9e186ff-d442-544f-99c4-dadadeb8825c</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85966</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">d263c4ed-a0f8-594c-b9c8-1902c3b1486d</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85967</title>
       <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">5b575f51-b022-5b59-a5b9-b36422949f93</guid>
-      <pubDate>Mon, 12 Oct 2026 03:17:18 +0000</pubDate>
+      <guid isPermaLink="false">447a6176-c107-5906-9596-bb7bf64cc1b4</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:37 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-108794</title>
+      <title>[80] cve: CVE-2026-85968</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">f686edb0-7c0f-5e8d-8c16-93cfefb6fc7b</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85969</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">03dec4cc-992a-5c2e-9c4d-5f2d49bebfb0</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85970</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">b4abb193-eaab-5d1b-bdfc-ea2bf5067b0d</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85971</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">337e13da-5f3e-55d3-ad5b-c388e1d13f43</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85972</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">d0a4d228-1edf-572d-963b-dbc2b0729a3a</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85958</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">7d747932-c36b-586d-9e27-27511b048482</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85959</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">3b2a7136-7788-5276-8106-e937c330693c</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85960</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">72b434a8-97fe-57ec-93f1-22f73cbaaa7e</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85961</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">21b6875c-ce85-5a04-bcb4-3999b7a001a5</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85962</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">080218c3-9250-5acd-8c94-f1c61560af15</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85963</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">1b6a17ca-15ba-59ec-be73-14a233342d56</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-85964</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">68ab8de4-a173-5208-a545-4d933b8be160</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109373</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">694ae076-3d1a-5237-b44d-8d620ead5060</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109374</title>
       <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">99da16ad-351c-546b-9a9c-fd588cb7fedc</guid>
-      <pubDate>Mon, 12 Oct 2026 03:17:18 +0000</pubDate>
+      <guid isPermaLink="false">f6d5023b-53a8-5dc0-961b-b1e92cdca7fe</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:35 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-108981</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,low,nvd</description>
-      <guid isPermaLink="false">b3df9fca-22a3-554a-8f26-4d8ea98b7c53</guid>
-      <pubDate>Mon, 12 Oct 2026 03:17:18 +0000</pubDate>
+      <title>[80] cve: CVE-2026-75888</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">02feb2ff-06eb-53f4-8b92-edd9a863ec81</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:35 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-108982</title>
+      <title>[80] cve: CVE-2026-84286</title>
       <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
-      <guid isPermaLink="false">2d5b1b01-1f65-580c-95d8-1c2f2e5c22fa</guid>
-      <pubDate>Mon, 12 Oct 2026 03:17:18 +0000</pubDate>
+      <guid isPermaLink="false">c1a97658-a5ab-5720-a303-14390db61844</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:35 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-108985</title>
+      <title>[80] cve: CVE-2026-85957</title>
       <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
-      <guid isPermaLink="false">bb4f8018-975f-56c9-a599-c88899a0e08c</guid>
-      <pubDate>Mon, 12 Oct 2026 03:17:18 +0000</pubDate>
+      <guid isPermaLink="false">aabd8eba-c49d-55fa-9955-aaf2c5e98f33</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:35 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-107437</title>
+      <title>[80] cve: CVE-2026-109364</title>
       <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">ec999d8d-9fdf-53c2-b380-b964a045f8d9</guid>
-      <pubDate>Mon, 12 Oct 2026 03:17:17 +0000</pubDate>
+      <guid isPermaLink="false">be6085ae-66d0-597d-8d4d-06748d25c388</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:34 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-108789</title>
+      <title>[80] cve: CVE-2026-109365</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,low,nvd</description>
+      <guid isPermaLink="false">4a8b66dc-39d2-58ac-aca1-8a90582d4082</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109366</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,low,nvd</description>
+      <guid isPermaLink="false">f31f321a-899d-5a2a-83f4-a6f60adb7dd1</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109371</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">cace6528-2960-504b-9623-174620b8b74b</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109372</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">c52dd225-c3c1-57f0-ace6-07e90fda5062</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109357</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">c470f772-fa21-55e7-aa2e-6a84d06e4b14</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109358</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">830e69c5-f34e-546a-be72-cc4148d80dcf</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109359</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">ada3a245-dabc-5b8c-bec4-39afb5064669</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109360</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">4cc4452c-3372-5212-be48-49cdc54819fd</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109361</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">f4872f8a-16b2-573a-a178-57d52b3c9ac7</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109362</title>
       <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">7dd4c554-5ea4-54f0-bdaa-80caf44d8085</guid>
-      <pubDate>Mon, 12 Oct 2026 03:17:17 +0000</pubDate>
+      <guid isPermaLink="false">dc400ef4-bd95-5323-948d-a5c4b1213645</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:33 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: vo8[.]6666k[.]org</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">ea4064f8-1812-5ba6-a73d-d5ddc580ef0c</guid>
-      <pubDate>Mon, 12 Oct 2026 03:10:48 +0000</pubDate>
+      <title>[80] cve: CVE-2026-109363</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">660f83ff-b7c3-57c1-9633-07d744b39841</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:33 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://vo8[.]6666k[.]org/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">286798a3-a988-59ed-9508-280bd50a91b7</guid>
-      <pubDate>Mon, 12 Oct 2026 03:10:48 +0000</pubDate>
+      <title>[80] cve: CVE-2026-109351</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">66c78073-94d1-5190-b4a9-5633641d17c1</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:32 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4: 91[.]92[.]41[.]19</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Remcos,RemoteHost,c2,threatfox</description>
-      <guid isPermaLink="false">c425dba1-93d2-5907-9435-098437a66a7d</guid>
-      <pubDate>Mon, 12 Oct 2026 03:10:31 +0000</pubDate>
+      <title>[80] cve: CVE-2026-109352</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">966392b0-6d5a-5d8b-9cbe-e225e79d7e50</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:32 +0000</pubDate>
     </item>
     <item>
-      <title>[80] sha256: d9e039206aab0dffab3ffd6f5f37f2547ce6093bacafada63fc1e0de9a3b72da</title>
-      <description>Score 80, confidence high, sources: malwarebazaar_recent, tags: malware,Formbook</description>
-      <guid isPermaLink="false">07a16848-764a-5a61-b36b-ffdaf55ce6ae</guid>
-      <pubDate>Mon, 12 Oct 2026 03:07:26 +0000</pubDate>
+      <title>[80] cve: CVE-2026-109353</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">3602e108-acfb-5977-b70e-fb602a1c022e</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:32 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4: 178[.]16[.]53[.]76</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: airashi,aisuru,botnet,ddos,mirai,threatfox</description>
-      <guid isPermaLink="false">933bc49c-91fc-571d-8cee-9ebedac86c38</guid>
-      <pubDate>Mon, 12 Oct 2026 02:59:45 +0000</pubDate>
+      <title>[80] cve: CVE-2026-109354</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">4c0389f3-90d4-508c-a3b3-1f09b0c38a4c</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:32 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: mii[.]6666k[.]org</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">efb76d92-98fa-5ac6-afd3-6a3d074c96d7</guid>
-      <pubDate>Mon, 12 Oct 2026 02:50:48 +0000</pubDate>
+      <title>[80] cve: CVE-2026-109355</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">65e74c10-231b-5f6f-8fcf-46bf68557a7e</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:32 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://mii[.]6666k[.]org/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">cde2445f-c969-548c-9ec8-4ba8fe28ce7d</guid>
-      <pubDate>Mon, 12 Oct 2026 02:50:48 +0000</pubDate>
+      <title>[80] cve: CVE-2026-109356</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">7e8d7902-6ada-57e4-9ab0-bd4ec44d98d0</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:32 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109344</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">9bd498cb-074b-5b91-a0d7-e395fe012c55</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109345</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">b62ef7d5-723f-5faf-8169-615b052268a5</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109346</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">9fed81cd-e15d-5f48-b490-3a1a042d8616</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109347</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,high,nvd</description>
+      <guid isPermaLink="false">da9a31e1-d5fb-5621-8e50-414fe09abcd1</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109348</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">f02264d2-9e1f-53bf-9cc8-3542b16a1d64</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109349</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">7fd3edd5-a3e7-559b-8ad4-6251f97d37dc</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] cve: CVE-2026-109350</title>
+      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
+      <guid isPermaLink="false">dc6f3f32-4e16-5eb6-bfe9-a7c230892954</guid>
+      <pubDate>Mon, 12 Oct 2026 17:17:31 +0000</pubDate>
     </item>
 </channel></rss>
