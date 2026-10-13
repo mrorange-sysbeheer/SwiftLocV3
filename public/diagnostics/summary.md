@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-13T01:53:20Z_
+_Generated 2026-10-13T11:31:07Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-13T01:53:20Z |
+| Generated | 2026-10-13T11:31:07Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 8500 |
+| Duplicates removed | 7434 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-group overlaps | 371 |
+| Multi-group overlaps | 373 |
 | Score (min / avg / max) | 80 / 80.3 / 96 |
 | High-score indicators (≥80) | 10000 |
-| 2+ reporting groups | 371 |
+| 2+ reporting groups | 373 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-13T01:49:21Z |
+| Newest first_seen | 2026-10-13T11:30:27Z |
 
 ## Top indicators by score
 
@@ -39,43 +39,43 @@ _Generated 2026-10-13T01:53:20Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| greensnow_blocklist | 5472 |
 | ipsum_level5 | 5079 |
-| blocklist_de_ssh | 4306 |
+| greensnow_blocklist | 4786 |
+| blocklist_de_ssh | 4308 |
 | binarydefense_banlist | 3918 |
-| nist_nvd_recent | 2400 |
-| threatfox_export_json | 2038 |
+| nist_nvd_recent | 2800 |
+| threatfox_export_json | 2357 |
 | cisa_kev | 1739 |
-| spamhaus_drop | 1677 |
-| tor_exit_nodes | 1208 |
+| spamhaus_drop | 1678 |
+| tor_exit_nodes | 1207 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3585 |
-| sha256 | 2008 |
-| url | 1706 |
-| ipv4_cidr | 1676 |
-| ipv4 | 321 |
-| domain | 271 |
-| md5 | 217 |
-| sha1 | 216 |
+| cve | 3482 |
+| url | 2112 |
+| sha256 | 1836 |
+| ipv4_cidr | 1677 |
+| ipv4 | 323 |
+| domain | 268 |
+| md5 | 151 |
+| sha1 | 151 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3585 |
-| malware | 2971 |
-| threatfox | 2455 |
-| nvd | 2187 |
+| cve | 3482 |
+| malware | 2861 |
+| threatfox | 2555 |
+| nvd | 2085 |
 | exploited-in-the-wild | 1739 |
-| drop | 1676 |
-| spamhaus | 1676 |
-| malware_download | 1111 |
-| Mirai | 919 |
-| medium | 857 |
+| drop | 1677 |
+| spamhaus | 1677 |
+| malware_download | 1140 |
+| medium | 837 |
+| Mirai | 820 |
 
 ## Multi-group reporting overlaps
 
