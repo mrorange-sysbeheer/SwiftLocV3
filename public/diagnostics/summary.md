@@ -1,15 +1,15 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-12T17:30:39Z_
+_Generated 2026-10-13T01:53:20Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-12T17:30:39Z |
+| Generated | 2026-10-13T01:53:20Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 7140 |
+| Duplicates removed | 8500 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
 | Multi-group overlaps | 371 |
@@ -17,7 +17,7 @@ _Generated 2026-10-12T17:30:39Z_
 | High-score indicators (≥80) | 10000 |
 | 2+ reporting groups | 371 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-12T17:17:38Z |
+| Newest first_seen | 2026-10-13T01:49:21Z |
 
 ## Top indicators by score
 
@@ -28,54 +28,54 @@ _Generated 2026-10-12T17:30:39Z_
 | ipv4: `114[.]111[.]53[.]214` | score 96, 3 reporting groups |
 | ipv4: `165[.]154[.]162[.]74` | score 96, 3 reporting groups |
 | ipv4: `165[.]154[.]227[.]8` | score 96, 3 reporting groups |
+| ipv4: `165[.]245[.]160[.]178` | score 96, 3 reporting groups |
+| ipv4: `165[.]245[.]171[.]220` | score 96, 3 reporting groups |
+| ipv4: `31[.]59[.]220[.]26` | score 96, 3 reporting groups |
 | ipv4: `36[.]50[.]134[.]86` | score 96, 3 reporting groups |
-| ipv4: `45[.]17[.]39[.]120` | score 96, 3 reporting groups |
 | ipv4: `45[.]198[.]224[.]184` | score 96, 3 reporting groups |
-| ipv4: `45[.]78[.]201[.]248` | score 96, 3 reporting groups |
-| ipv4: `156[.]225[.]17[.]60` | score 88, 2 reporting groups |
 
 ## Per-source totals
 
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| greensnow_blocklist | 4757 |
-| ipsum_level5 | 4723 |
-| blocklist_de_ssh | 4718 |
-| binarydefense_banlist | 3698 |
-| nist_nvd_recent | 2077 |
+| greensnow_blocklist | 5472 |
+| ipsum_level5 | 5079 |
+| blocklist_de_ssh | 4306 |
+| binarydefense_banlist | 3918 |
+| nist_nvd_recent | 2400 |
+| threatfox_export_json | 2038 |
 | cisa_kev | 1739 |
-| threatfox_export_json | 1737 |
 | spamhaus_drop | 1677 |
-| tor_exit_nodes | 1204 |
+| tor_exit_nodes | 1208 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 4084 |
-| sha256 | 1892 |
+| cve | 3585 |
+| sha256 | 2008 |
+| url | 1706 |
 | ipv4_cidr | 1676 |
-| url | 1466 |
-| ipv4 | 305 |
-| domain | 288 |
-| md5 | 145 |
-| sha1 | 144 |
+| ipv4 | 321 |
+| domain | 271 |
+| md5 | 217 |
+| sha1 | 216 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 4084 |
-| malware | 2819 |
-| nvd | 2686 |
-| threatfox | 2026 |
+| cve | 3585 |
+| malware | 2971 |
+| threatfox | 2455 |
+| nvd | 2187 |
 | exploited-in-the-wild | 1739 |
 | drop | 1676 |
 | spamhaus | 1676 |
-| malware_download | 1088 |
-| medium | 1078 |
-| high | 899 |
+| malware_download | 1111 |
+| Mirai | 919 |
+| medium | 857 |
 
 ## Multi-group reporting overlaps
 
@@ -86,10 +86,10 @@ _Generated 2026-10-12T17:30:39Z_
 | ipv4: 114[.]111[.]53[.]214 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 165[.]154[.]162[.]74 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 165[.]154[.]227[.]8 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
+| ipv4: 165[.]245[.]160[.]178 | binarydefense_banlist, ci_army_list, ipsum_level5, threatfox_export_json |
+| ipv4: 165[.]245[.]171[.]220 | binarydefense_banlist, ci_army_list, ipsum_level5, threatfox_export_json |
+| ipv4: 31[.]59[.]220[.]26 | binarydefense_banlist, ci_army_list, ipsum_level5, threatfox_export_json |
 | ipv4: 36[.]50[.]134[.]86 | blocklist_de_ssh, ci_army_list, ipsum_level5, threatfox_export_json |
 | ipv4: 45[.]17[.]39[.]120 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
-| ipv4: 45[.]198[.]224[.]184 | blocklist_de_ssh, et_compromised, ipsum_level5, threatfox_export_json |
-| ipv4: 45[.]78[.]201[.]248 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
-| ipv4: 45[.]198[.]224[.]34 | et_compromised, ipsum_level5, threatfox_export_json |
 
 For more detail see [diagnostics/REPORT.md](diagnostics/REPORT.md) and the machine-readable feeds in [iocs/](iocs/).
