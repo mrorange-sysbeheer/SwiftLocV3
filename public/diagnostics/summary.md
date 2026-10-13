@@ -1,15 +1,15 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-13T19:01:29Z_
+_Generated 2026-10-13T23:39:04Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-13T19:01:29Z |
+| Generated | 2026-10-13T23:39:04Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 7493 |
+| Duplicates removed | 7732 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
 | Multi-group overlaps | 374 |
@@ -17,7 +17,7 @@ _Generated 2026-10-13T19:01:29Z_
 | High-score indicators (≥80) | 10000 |
 | 2+ reporting groups | 374 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-13T19:00:54Z |
+| Newest first_seen | 2026-10-13T23:38:38Z |
 
 ## Top indicators by score
 
@@ -39,43 +39,43 @@ _Generated 2026-10-13T19:01:29Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
+| greensnow_blocklist | 5686 |
 | ipsum_level5 | 5079 |
-| greensnow_blocklist | 4958 |
-| blocklist_de_ssh | 4218 |
+| blocklist_de_ssh | 4154 |
 | binarydefense_banlist | 3918 |
-| threatfox_export_json | 2759 |
-| nist_nvd_recent | 2600 |
-| cisa_kev | 1740 |
-| spamhaus_drop | 1681 |
-| tor_exit_nodes | 1210 |
+| threatfox_export_json | 3261 |
+| nist_nvd_recent | 2800 |
+| cisa_kev | 1741 |
+| spamhaus_drop | 1682 |
+| tor_exit_nodes | 1214 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3309 |
-| url | 2365 |
-| sha256 | 1919 |
-| ipv4_cidr | 1357 |
-| domain | 428 |
-| ipv4 | 320 |
-| md5 | 151 |
-| sha1 | 151 |
+| cve | 3081 |
+| url | 2545 |
+| sha256 | 1729 |
+| ipv4_cidr | 1342 |
+| domain | 572 |
+| ipv4 | 305 |
+| md5 | 213 |
+| sha1 | 213 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3309 |
-| threatfox | 3021 |
-| malware | 2917 |
-| nvd | 1912 |
-| exploited-in-the-wild | 1740 |
-| drop | 1357 |
-| spamhaus | 1357 |
-| malware_download | 1121 |
-| Mirai | 854 |
-| medium | 800 |
+| threatfox | 3377 |
+| cve | 3081 |
+| malware | 2782 |
+| exploited-in-the-wild | 1741 |
+| nvd | 1683 |
+| drop | 1342 |
+| spamhaus | 1342 |
+| malware_download | 1134 |
+| c2 | 872 |
+| Vidar | 861 |
 
 ## Multi-group reporting overlaps
 
