@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-13T11:31:07Z_
+_Generated 2026-10-13T19:01:29Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-13T11:31:07Z |
+| Generated | 2026-10-13T19:01:29Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 7434 |
+| Duplicates removed | 7493 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-group overlaps | 373 |
+| Multi-group overlaps | 374 |
 | Score (min / avg / max) | 80 / 80.3 / 96 |
 | High-score indicators (≥80) | 10000 |
-| 2+ reporting groups | 373 |
+| 2+ reporting groups | 374 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-13T11:30:27Z |
+| Newest first_seen | 2026-10-13T19:00:54Z |
 
 ## Top indicators by score
 
@@ -40,25 +40,25 @@ _Generated 2026-10-13T11:31:07Z_
 | --- | ---: |
 | ci_army_list | 15000 |
 | ipsum_level5 | 5079 |
-| greensnow_blocklist | 4786 |
-| blocklist_de_ssh | 4308 |
+| greensnow_blocklist | 4958 |
+| blocklist_de_ssh | 4218 |
 | binarydefense_banlist | 3918 |
-| nist_nvd_recent | 2800 |
-| threatfox_export_json | 2357 |
-| cisa_kev | 1739 |
-| spamhaus_drop | 1678 |
-| tor_exit_nodes | 1207 |
+| threatfox_export_json | 2759 |
+| nist_nvd_recent | 2600 |
+| cisa_kev | 1740 |
+| spamhaus_drop | 1681 |
+| tor_exit_nodes | 1210 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3482 |
-| url | 2112 |
-| sha256 | 1836 |
-| ipv4_cidr | 1677 |
-| ipv4 | 323 |
-| domain | 268 |
+| cve | 3309 |
+| url | 2365 |
+| sha256 | 1919 |
+| ipv4_cidr | 1357 |
+| domain | 428 |
+| ipv4 | 320 |
 | md5 | 151 |
 | sha1 | 151 |
 
@@ -66,16 +66,16 @@ _Generated 2026-10-13T11:31:07Z_
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3482 |
-| malware | 2861 |
-| threatfox | 2555 |
-| nvd | 2085 |
-| exploited-in-the-wild | 1739 |
-| drop | 1677 |
-| spamhaus | 1677 |
-| malware_download | 1140 |
-| medium | 837 |
-| Mirai | 820 |
+| cve | 3309 |
+| threatfox | 3021 |
+| malware | 2917 |
+| nvd | 1912 |
+| exploited-in-the-wild | 1740 |
+| drop | 1357 |
+| spamhaus | 1357 |
+| malware_download | 1121 |
+| Mirai | 854 |
+| medium | 800 |
 
 ## Multi-group reporting overlaps
 
