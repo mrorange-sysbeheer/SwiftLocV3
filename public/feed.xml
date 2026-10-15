@@ -3,305 +3,305 @@
   <title>SwiftIOC — Newest High-Confidence IOCs</title>
   <link>https://github.com/PKHarsimran/SwiftIOC-Automated-Threat-Intelligence-Collector</link>
   <description>Freshest scored indicators of compromise with publisher-aware provenance.</description>
-  <lastBuildDate>Thu, 15 Oct 2026 09:09:38 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 15 Oct 2026 16:34:32 +0000</lastBuildDate>
     <item>
-      <title>[80] ipv4_cidr: 202.170.75.0/24</title>
+      <title>[80] ipv4_cidr: 173.239.214.0/24</title>
       <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
-      <guid isPermaLink="false">9e9170f5-376e-554d-b1a6-885e82dba073</guid>
-      <pubDate>Thu, 15 Oct 2026 08:57:55 +0000</pubDate>
+      <guid isPermaLink="false">be49be89-588d-5f41-bc25-c7e8206b4c8c</guid>
+      <pubDate>Thu, 15 Oct 2026 16:31:39 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/a0</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,d852ede598d72f2b3a4050576466ec62,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">270480df-71ea-5128-aba0-fc5f09f81408</guid>
-      <pubDate>Thu, 15 Oct 2026 08:54:20 +0000</pubDate>
+      <title>[80] ipv4_cidr: 180.178.180.0/24</title>
+      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
+      <guid isPermaLink="false">d18111e1-96d6-54af-88fc-7d44b6224cc2</guid>
+      <pubDate>Thu, 15 Oct 2026 16:31:39 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/n4</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,d852ede598d72f2b3a4050576466ec62,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">45a24283-334f-5a51-ae27-014e9b981ec3</guid>
-      <pubDate>Thu, 15 Oct 2026 08:52:44 +0000</pubDate>
+      <title>[80] ipv4_cidr: 45.138.12.0/24</title>
+      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
+      <guid isPermaLink="false">b59e4405-9e55-579a-9342-07e46853ad93</guid>
+      <pubDate>Thu, 15 Oct 2026 16:31:39 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/nn/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">ad276cfb-95da-5724-9029-c1355ecd33cb</guid>
-      <pubDate>Thu, 15 Oct 2026 08:50:48 +0000</pubDate>
+      <title>[80] ipv4_cidr: 89.32.41.0/24</title>
+      <description>Score 80, confidence high, sources: spamhaus_drop, tags: spamhaus,drop</description>
+      <guid isPermaLink="false">8ab12fa8-86bb-5ed4-bbb1-acd90c00722f</guid>
+      <pubDate>Thu, 15 Oct 2026 16:31:39 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/nn</title>
+      <title>[80] url: hxxps://news[.]pieset[.]co/profile/policy-css[.]js</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: SmartApeSG,threatfox</description>
+      <guid isPermaLink="false">7cad098b-6054-5198-b473-7de47e25189a</guid>
+      <pubDate>Thu, 15 Oct 2026 16:24:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxps://ek[.]86idn[.]com/mw</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: 6713982832fdd0efe07912b12c5c5b2b,Vidar,c2,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">0c0a1a24-087f-5d3f-9c37-48e00ae7409d</guid>
-      <pubDate>Thu, 15 Oct 2026 08:50:16 +0000</pubDate>
+      <guid isPermaLink="false">d64dd1af-0eb3-53ec-be25-501ad67cfa22</guid>
+      <pubDate>Thu, 15 Oct 2026 16:24:35 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://115[.]55[.]206[.]233:48121/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
-      <guid isPermaLink="false">8144f5ba-a405-57cc-b5b9-ef64751c6644</guid>
-      <pubDate>Thu, 15 Oct 2026 08:49:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://45[.]183[.]184[.]74:38533/bin[.]sh</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,arm,elf,Mozi</description>
-      <guid isPermaLink="false">ae0dc182-50e6-567e-a1c4-840a5052801a</guid>
-      <pubDate>Thu, 15 Oct 2026 08:48:17 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/xe</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,d852ede598d72f2b3a4050576466ec62,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">d95de6b8-5904-5fea-afe7-11dc9d4b8c9b</guid>
-      <pubDate>Thu, 15 Oct 2026 08:47:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://105[.]184[.]177[.]151:35937/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">4a8f9fdc-37b0-5f1c-bf4e-773645a08726</guid>
-      <pubDate>Thu, 15 Oct 2026 08:47:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/xvi/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">87f106ab-1371-5da4-987b-1d9595c1792f</guid>
-      <pubDate>Thu, 15 Oct 2026 08:45:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/xvi</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,b89d843f29af2eed09805e9767a1165f,c2,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">9da6d97e-810e-5c2a-a1bd-232d2dfacb2f</guid>
-      <pubDate>Thu, 15 Oct 2026 08:44:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/qw</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,d852ede598d72f2b3a4050576466ec62,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">506becef-2d89-5367-b5ea-4f7d22e52977</guid>
-      <pubDate>Thu, 15 Oct 2026 08:42:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/nh/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">2fe14609-981c-5170-9f9c-fd3924b840bd</guid>
-      <pubDate>Thu, 15 Oct 2026 08:40:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/nh</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: 5ecaf10790d5f89db8606b207b2143e4,Vidar,c2,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">9638fa6e-46fc-5199-9a01-d4297a678a6e</guid>
-      <pubDate>Thu, 15 Oct 2026 08:40:26 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/wn</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: 6713982832fdd0efe07912b12c5c5b2b,Vidar,c2,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">10f80cd3-946f-5dca-a540-9750bdc06c60</guid>
-      <pubDate>Thu, 15 Oct 2026 08:39:15 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/zuv</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,d852ede598d72f2b3a4050576466ec62,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">0cd7f457-fdcc-55d8-bd30-cc58e566411c</guid>
-      <pubDate>Thu, 15 Oct 2026 08:37:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] ipv4: 147[.]90[.]182[.]38</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: XWorm,threatfox</description>
-      <guid isPermaLink="false">8194a316-446e-5fde-9c86-63e5dc15ea36</guid>
-      <pubDate>Thu, 15 Oct 2026 08:36:27 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/co/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">b9dafae3-dc44-5213-acb9-31a6800dccdc</guid>
-      <pubDate>Thu, 15 Oct 2026 08:35:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://cdn[.]discordapp[.]com/attachments/1557740644179517531/1560206841797939210/bundle_3[.]zip?ex=6ad1df5a&amp;is=6ad08dda&amp;hm=94d7059bfa407e04fa9e30edd05d792a68272c07e2bd3ab74e919b8647f857ae&amp;</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,IRAHook</description>
-      <guid isPermaLink="false">f4ab4681-af50-562f-a977-d00e28cba032</guid>
-      <pubDate>Thu, 15 Oct 2026 08:35:40 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/co</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: 5ecaf10790d5f89db8606b207b2143e4,Vidar,c2,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">48ed6a39-faec-5671-82f7-8adc66ca4dda</guid>
-      <pubDate>Thu, 15 Oct 2026 08:34:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] domain: jb6p5nn8[.]rtplive-miliarbet[.]online</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClearFake,mac-0x0f14,macos,threatfox</description>
-      <guid isPermaLink="false">947b58b0-405e-5b4a-b1ba-a22cd733d088</guid>
-      <pubDate>Thu, 15 Oct 2026 08:34:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/v0</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,d852ede598d72f2b3a4050576466ec62,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">6da4b488-6090-52dd-b488-007c1becbf90</guid>
-      <pubDate>Thu, 15 Oct 2026 08:32:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://202[.]83[.]167[.]117:47317/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">73e78ac4-0e28-5a60-91be-ed59083b0486</guid>
-      <pubDate>Thu, 15 Oct 2026 08:32:10 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxp://115[.]55[.]203[.]30:32869/bin[.]sh</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">e8c32189-ad15-56e9-966f-8713d5fdd1e4</guid>
-      <pubDate>Thu, 15 Oct 2026 08:32:07 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/q1</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,c7a50169dbc6d842a7e7d349513f88f1,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">ada8b90f-c151-5210-9a9b-db91724b6bd3</guid>
-      <pubDate>Thu, 15 Oct 2026 08:32:05 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] domain: basickantoor1[.]nl</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClearFake,threatfox</description>
-      <guid isPermaLink="false">0ffd613f-a309-5f3a-a131-8c49136b4345</guid>
-      <pubDate>Thu, 15 Oct 2026 08:31:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/q1/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">d2438a0c-e4bf-5610-a738-d9bbc478a3b7</guid>
-      <pubDate>Thu, 15 Oct 2026 08:30:48 +0000</pubDate>
-    </item>
-    <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/m7</title>
+      <title>[80] url: hxxps://ek[.]86idn[.]com/d</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,ab0a59f4970a96fd6e8daa4f6f8e22cd,c2,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">eb2aa9b4-6069-5cb6-8754-75e191194d9d</guid>
-      <pubDate>Thu, 15 Oct 2026 08:26:46 +0000</pubDate>
+      <guid isPermaLink="false">f598db46-49d5-5e66-b522-e11980afb01b</guid>
+      <pubDate>Thu, 15 Oct 2026 16:22:34 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/u5/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">7b37a46a-d047-58ab-b189-c8c25c1ce816</guid>
-      <pubDate>Thu, 15 Oct 2026 08:25:48 +0000</pubDate>
+      <title>[80] url: hxxps://fluoriterefrectory[.]info/policy/route-server[.]js</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: SmartApeSG,threatfox</description>
+      <guid isPermaLink="false">4b364bcb-a426-541f-9b0e-cc383c7dc675</guid>
+      <pubDate>Thu, 15 Oct 2026 16:21:52 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/u5</title>
+      <title>[80] url: hxxps://lavendertome[.]co/trace/acl-render[.]js</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: SmartApeSG,threatfox</description>
+      <guid isPermaLink="false">3ae2ec93-5f0c-5503-87f9-e77418c5b7d2</guid>
+      <pubDate>Thu, 15 Oct 2026 16:21:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxps://ek[.]86idn[.]com/v3</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,b89d843f29af2eed09805e9767a1165f,c2,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">98901790-a623-55e4-8f36-c654b96f8ab0</guid>
-      <pubDate>Thu, 15 Oct 2026 08:25:16 +0000</pubDate>
+      <guid isPermaLink="false">e6f65300-1be4-5f34-827f-99fdce6ee82e</guid>
+      <pubDate>Thu, 15 Oct 2026 16:20:52 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/u</title>
+      <title>[80] url: hxxps://ek[.]86idn[.]com/v3/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">c67c0805-31df-507a-8de2-b91aeec83074</guid>
+      <pubDate>Thu, 15 Oct 2026 16:20:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] url: hxxps://ek[.]86idn[.]com/rc</title>
       <description>Score 80, confidence high, sources: threatfox_export_json, tags: 6713982832fdd0efe07912b12c5c5b2b,Vidar,c2,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">c7b01c2c-d465-586d-b304-2124e6992531</guid>
-      <pubDate>Thu, 15 Oct 2026 08:22:30 +0000</pubDate>
+      <guid isPermaLink="false">a7093111-393b-52f3-9d3e-c414351bed64</guid>
+      <pubDate>Thu, 15 Oct 2026 16:19:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/wa</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,d852ede598d72f2b3a4050576466ec62,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">b457204a-8174-52d4-96cd-b0792aecfece</guid>
-      <pubDate>Thu, 15 Oct 2026 08:21:37 +0000</pubDate>
+      <title>[80] url: hxxp://124[.]6[.]169[.]54:35063/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,arm,elf,Mozi</description>
+      <guid isPermaLink="false">b5792bda-787e-5c15-a1b3-f662a3fdc2ce</guid>
+      <pubDate>Thu, 15 Oct 2026 16:18:10 +0000</pubDate>
     </item>
     <item>
-      <title>[80] ipv4: 85[.]137[.]54[.]178</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: tag,threatfox</description>
-      <guid isPermaLink="false">024ad910-52f7-5919-ab1e-caf8dc64b0a6</guid>
-      <pubDate>Thu, 15 Oct 2026 08:21:17 +0000</pubDate>
+      <title>[80] url: hxxps://ek[.]86idn[.]com/r6k</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,ab0a59f4970a96fd6e8daa4f6f8e22cd,c2,loader,stealer,threatfox</description>
+      <guid isPermaLink="false">375d1f4a-7ab8-548c-ad11-7976f76c98b2</guid>
+      <pubDate>Thu, 15 Oct 2026 16:17:11 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/wa/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">e739cae8-1101-515f-b9fc-7ea5a9a24acb</guid>
-      <pubDate>Thu, 15 Oct 2026 08:20:48 +0000</pubDate>
+      <title>[80] domain: www[.]readinghabit[.]com[.]au</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">5db1b48f-414e-501c-97f4-f05858b35ab0</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/uo</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,d852ede598d72f2b3a4050576466ec62,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">565d3bcd-0516-57ab-b9b4-975a037ac80c</guid>
-      <pubDate>Thu, 15 Oct 2026 08:18:31 +0000</pubDate>
+      <title>[80] domain: www[.]readinkbooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">57000fba-8fea-524c-bdb1-aa4971a79abb</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://115[.]55[.]206[.]233:48121/bin[.]sh</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">12530839-4a55-5abf-bd09-a9c31ef363f2</guid>
-      <pubDate>Thu, 15 Oct 2026 08:17:07 +0000</pubDate>
+      <title>[80] domain: www[.]remnantbooks[.]org</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">42c80387-c905-581e-8cf6-06e1de4a7934</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxp://115[.]55[.]238[.]219:32771/i</title>
-      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
-      <guid isPermaLink="false">cb48d717-3383-5859-9786-780d9635837e</guid>
-      <pubDate>Thu, 15 Oct 2026 08:17:07 +0000</pubDate>
+      <title>[80] domain: www[.]robertsbookshop[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">8b197e3e-77ef-5667-8a15-b4e9a350c212</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-101309</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
-      <guid isPermaLink="false">0a48ba95-6410-51ee-9744-2eb17d471556</guid>
-      <pubDate>Thu, 15 Oct 2026 08:16:36 +0000</pubDate>
+      <title>[80] domain: www[.]roundtablebooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">cc5d7e48-ae74-5ac0-a9ff-b686a8ffce25</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-101310</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
-      <guid isPermaLink="false">7b3490c6-e7f7-5ce6-838f-f9ad473125e1</guid>
-      <pubDate>Thu, 15 Oct 2026 08:16:36 +0000</pubDate>
+      <title>[80] domain: www[.]stroudbooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">95c8c473-5af5-5605-88b3-c30ea97a69f3</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-101311</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
-      <guid isPermaLink="false">64f5b34c-5f46-5d20-b2fb-fd7fbed3d5e1</guid>
-      <pubDate>Thu, 15 Oct 2026 08:16:36 +0000</pubDate>
+      <title>[80] domain: www[.]thebooktique[.]org</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">456a0d64-0f0f-537a-8d46-4df6321265c6</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-102465</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
-      <guid isPermaLink="false">ee7c1b15-803f-5494-8231-0e1251312264</guid>
-      <pubDate>Thu, 15 Oct 2026 08:16:36 +0000</pubDate>
+      <title>[80] domain: www[.]thewrightcollection[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">4a2e3144-8847-5eb7-9287-4b77f151a0a0</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-102467</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
-      <guid isPermaLink="false">c66fef4f-9d88-5de1-ac4c-919b20327702</guid>
-      <pubDate>Thu, 15 Oct 2026 08:16:36 +0000</pubDate>
+      <title>[80] domain: www[.]vagabondbooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">eca717ba-f43c-54fb-8c70-5976b1fa4517</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-102475</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,nvd</description>
-      <guid isPermaLink="false">a0de5320-ec3f-517c-b78e-4a9cb672168a</guid>
-      <pubDate>Thu, 15 Oct 2026 08:16:36 +0000</pubDate>
+      <title>[80] domain: www[.]vintage-books[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">59183987-e9df-5160-a824-a5d3343f75e2</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] cve: CVE-2026-108092</title>
-      <description>Score 80, confidence high, sources: nist_nvd_recent, tags: cve,medium,nvd</description>
-      <guid isPermaLink="false">1807f0ea-8647-519b-849f-eaf3a7cf5d3d</guid>
-      <pubDate>Thu, 15 Oct 2026 08:16:36 +0000</pubDate>
+      <title>[80] domain: www[.]whitefoxrarebooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">91dad26a-662c-5f35-8fac-a5e7d46dc339</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:26 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/oo</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,d852ede598d72f2b3a4050576466ec62,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">e792f4f6-efbe-52d5-a449-452d4c864219</guid>
-      <pubDate>Thu, 15 Oct 2026 08:16:19 +0000</pubDate>
+      <title>[80] domain: www[.]bookrackjackson[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">de09d394-3ec9-5095-82e9-ef84b9e85ef7</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/ta/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">d7c3a1cc-71ae-57fe-8271-645dd9e0ae60</guid>
-      <pubDate>Thu, 15 Oct 2026 08:15:48 +0000</pubDate>
+      <title>[80] domain: www[.]bookson7thave[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">a1a05753-d9e0-52ce-9c4a-f0add417d388</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/ta</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,c7a50169dbc6d842a7e7d349513f88f1,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">cd3e71d4-9b99-5bcc-b8c8-2814f8190da4</guid>
-      <pubDate>Thu, 15 Oct 2026 08:14:40 +0000</pubDate>
+      <title>[80] domain: www[.]chaparralbooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">52f18322-fb52-5c3c-ba17-2c1a11573209</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/fw</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,d852ede598d72f2b3a4050576466ec62,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">9b2d3982-8693-5dd8-8c81-bda2b886d9e1</guid>
-      <pubDate>Thu, 15 Oct 2026 08:12:33 +0000</pubDate>
+      <title>[80] domain: www[.]chathambookseller[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">17c1328d-2be1-5be2-b126-058a1f4e6fce</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/vn</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Vidar,c2,d852ede598d72f2b3a4050576466ec62,loader,stealer,threatfox</description>
-      <guid isPermaLink="false">dc6364c1-cf6f-5512-a448-c15faeec113d</guid>
-      <pubDate>Thu, 15 Oct 2026 08:11:12 +0000</pubDate>
+      <title>[80] domain: www[.]crossroadbookstore[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">11d8b4ee-355f-5761-b6e5-b05778d1ccad</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
     </item>
     <item>
-      <title>[80] url: hxxps://r[.]78royal[.]org/vn/</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
-      <guid isPermaLink="false">d096fbf0-5524-50e5-8ee0-b66967bef7e0</guid>
-      <pubDate>Thu, 15 Oct 2026 08:10:48 +0000</pubDate>
+      <title>[80] domain: www[.]fosterbooks[.]co[.]uk</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">40417739-60ef-580c-94f6-e303b5ceb32c</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]gastonrenard[.]com[.]au</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">51a46e22-4f5f-50af-9c44-2d91faa0ff6a</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]gibsonbooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">c6571ed5-70c9-58ef-aca2-b257564f45b4</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]greensleevesbooks[.]co[.]uk</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">5db1443e-fa2c-5843-bde9-0813bae38be4</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]jlawton[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">afd0a528-82fb-58bf-94ca-458968b88089</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]lectioz[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">c009c6d4-2d59-5960-a6d3-efddfebeeaaa</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]literarycatbooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">b0acfece-c758-57f6-8e6c-07e96aeb3df3</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]manyhillsbooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">648fbe8d-cc1e-5933-a683-71a97d5b631d</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]mcdowellsemporium[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">1019ee5d-89c3-57f9-8d31-992fb245008d</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]mcinbooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">f9a95892-4ccf-5669-874a-a9e9f35c7e04</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]midtownscholar[.]us</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">11495845-2214-533e-9f11-c7bbeac18333</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]mostlyusefulfictions[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">ed3e1ffa-7b96-53fc-8b65-fbef581cdf5b</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]navalandmaritimebooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">73aa7da4-d2d2-5851-9969-70321e879304</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]oddballbooks[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">3c8e0e4f-43b6-591c-b278-d1313ead635a</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]oldscrolls[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">828a895c-6d86-580b-bee5-f5f001d69bce</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]puddletownbookshop[.]co[.]uk</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">80e31adc-818e-5ae2-b69a-8e8c5bdbf78f</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: www[.]rbookmark[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">120ca4ad-4804-5f82-8e00-224470f7487d</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: bookrackjackson[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">b4c322a0-128a-58e2-8787-57d9ef63c14c</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: booksofparadise[.]net</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">2c26f66c-cb36-543e-ac3e-d154067df392</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[80] domain: brooklynbooks[.]us</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: skimming,threatfox,victim</description>
+      <guid isPermaLink="false">99f6e67b-98cb-5fda-8274-6cdee5cc1fab</guid>
+      <pubDate>Thu, 15 Oct 2026 16:16:24 +0000</pubDate>
     </item>
 </channel></rss>
