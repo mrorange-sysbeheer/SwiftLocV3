@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-15T03:44:01Z_
+_Generated 2026-10-15T09:09:35Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-15T03:44:01Z |
+| Generated | 2026-10-15T09:09:35Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6054 |
+| Duplicates removed | 5846 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-group overlaps | 378 |
+| Multi-group overlaps | 381 |
 | Score (min / avg / max) | 80 / 80.3 / 96 |
 | High-score indicators (≥80) | 10000 |
-| 2+ reporting groups | 378 |
+| 2+ reporting groups | 381 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-15T03:34:28Z |
+| Newest first_seen | 2026-10-15T08:57:55Z |
 
 ## Top indicators by score
 
@@ -39,26 +39,26 @@ _Generated 2026-10-15T03:44:01Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| greensnow_blocklist | 5588 |
+| nist_nvd_recent | 8618 |
+| greensnow_blocklist | 5528 |
 | ipsum_level5 | 4416 |
-| blocklist_de_ssh | 4116 |
-| threatfox_export_json | 3925 |
-| nist_nvd_recent | 3200 |
+| threatfox_export_json | 4076 |
+| blocklist_de_ssh | 4056 |
 | cisa_kev | 1745 |
 | spamhaus_drop | 1682 |
-| malwarebazaar_recent | 1252 |
-| tor_exit_nodes | 1210 |
+| tor_exit_nodes | 1212 |
+| malwarebazaar_recent | 1195 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 4058 |
-| url | 2088 |
-| ipv4_cidr | 1680 |
-| sha256 | 1112 |
-| domain | 620 |
-| ipv4 | 192 |
+| cve | 4417 |
+| url | 1987 |
+| ipv4_cidr | 1677 |
+| sha256 | 1015 |
+| domain | 460 |
+| ipv4 | 194 |
 | md5 | 125 |
 | sha1 | 125 |
 
@@ -66,16 +66,16 @@ _Generated 2026-10-15T03:44:01Z_
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 4058 |
-| threatfox | 3091 |
-| nvd | 2662 |
+| cve | 4417 |
+| nvd | 3025 |
+| threatfox | 2837 |
 | exploited-in-the-wild | 1745 |
-| drop | 1680 |
-| spamhaus | 1680 |
-| high | 1451 |
-| malware | 1399 |
-| c2 | 1207 |
-| stealer | 1174 |
+| drop | 1677 |
+| spamhaus | 1677 |
+| high | 1618 |
+| malware | 1229 |
+| c2 | 1178 |
+| stealer | 1153 |
 
 ## Multi-group reporting overlaps
 
