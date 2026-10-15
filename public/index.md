@@ -2,16 +2,16 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-10-15T16:34:30Z_
+_Generated 2026-10-15T22:56:39Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-15T16:34:30Z |
+| Generated | 2026-10-15T22:56:39Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 4987 |
+| Duplicates removed | 5097 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
 | Multi-group overlaps | 381 |
@@ -19,7 +19,7 @@ _Generated 2026-10-15T16:34:30Z_
 | High-score indicators (≥80) | 10000 |
 | 2+ reporting groups | 381 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-15T16:31:39Z |
+| Newest first_seen | 2026-10-15T22:49:33Z |
 
 ## Top indicators by score
 
@@ -41,43 +41,43 @@ _Generated 2026-10-15T16:34:30Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| nist_nvd_recent | 6000 |
 | ipsum_level5 | 4416 |
-| greensnow_blocklist | 4400 |
-| threatfox_export_json | 4344 |
-| blocklist_de_ssh | 4078 |
-| cisa_kev | 1745 |
+| greensnow_blocklist | 4323 |
+| blocklist_de_ssh | 4161 |
+| threatfox_export_json | 4063 |
+| nist_nvd_recent | 3200 |
+| cisa_kev | 1746 |
 | spamhaus_drop | 1680 |
 | tor_exit_nodes | 1212 |
-| malwarebazaar_recent | 1029 |
+| malwarebazaar_recent | 1010 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3589 |
-| url | 2335 |
+| cve | 3158 |
+| url | 2455 |
 | ipv4_cidr | 1679 |
-| sha256 | 1372 |
-| domain | 507 |
-| ipv4 | 268 |
-| md5 | 125 |
-| sha1 | 125 |
+| sha256 | 1489 |
+| domain | 553 |
+| ipv4 | 298 |
+| md5 | 184 |
+| sha1 | 184 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| cve | 3589 |
-| threatfox | 3543 |
-| nvd | 2197 |
-| exploited-in-the-wild | 1745 |
+| threatfox | 3945 |
+| cve | 3158 |
+| nvd | 1765 |
+| exploited-in-the-wild | 1746 |
 | drop | 1679 |
 | spamhaus | 1679 |
-| c2 | 1422 |
-| malware | 1354 |
-| stealer | 1349 |
-| Vidar | 1329 |
+| c2 | 1536 |
+| malware | 1462 |
+| stealer | 1442 |
+| Vidar | 1421 |
 
 ## Multi-group reporting overlaps
 
