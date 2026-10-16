@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-10-16T16:17:50Z_
+_Generated 2026-10-16T22:39:40Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-16T16:17:50Z |
+| Generated | 2026-10-16T22:39:40Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 5615 |
+| Duplicates removed | 5570 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-group overlaps | 383 |
+| Multi-group overlaps | 385 |
 | Score (min / avg / max) | 80 / 80.3 / 96 |
 | High-score indicators (≥80) | 10000 |
-| 2+ reporting groups | 383 |
+| 2+ reporting groups | 385 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-16T16:16:56Z |
+| Newest first_seen | 2026-10-16T22:39:19Z |
 
 ## Top indicators by score
 
@@ -42,11 +42,11 @@ _Generated 2026-10-16T16:17:50Z_
 | --- | ---: |
 | ci_army_list | 15000 |
 | ipsum_level5 | 4457 |
-| threatfox_export_json | 4370 |
-| greensnow_blocklist | 4283 |
-| blocklist_de_ssh | 4268 |
-| nist_nvd_recent | 3200 |
-| cisa_kev | 1746 |
+| blocklist_de_ssh | 4377 |
+| threatfox_export_json | 4367 |
+| greensnow_blocklist | 4284 |
+| nist_nvd_recent | 2600 |
+| cisa_kev | 1748 |
 | spamhaus_drop | 1691 |
 | tor_exit_nodes | 1207 |
 | binarydefense_banlist | 734 |
@@ -55,12 +55,12 @@ _Generated 2026-10-16T16:17:50Z_
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3269 |
-| url | 2508 |
-| sha256 | 1839 |
-| ipv4_cidr | 1312 |
-| domain | 415 |
-| ipv4 | 331 |
+| cve | 3160 |
+| url | 2203 |
+| sha256 | 2131 |
+| ipv4_cidr | 1439 |
+| domain | 427 |
+| ipv4 | 314 |
 | md5 | 163 |
 | sha1 | 163 |
 
@@ -68,16 +68,16 @@ _Generated 2026-10-16T16:17:50Z_
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 4098 |
-| cve | 3269 |
-| nvd | 1877 |
-| exploited-in-the-wild | 1746 |
-| malware | 1615 |
-| c2 | 1482 |
-| stealer | 1396 |
-| Vidar | 1394 |
-| loader | 1379 |
-| drop | 1312 |
+| threatfox | 4105 |
+| cve | 3160 |
+| nvd | 1767 |
+| exploited-in-the-wild | 1748 |
+| malware | 1590 |
+| drop | 1439 |
+| spamhaus | 1439 |
+| c2 | 1295 |
+| Vidar | 1218 |
+| stealer | 1214 |
 
 ## Multi-group reporting overlaps
 
