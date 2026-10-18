@@ -2,24 +2,24 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-10-18T03:36:36Z_
+_Generated 2026-10-18T08:41:06Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-18T03:36:36Z |
+| Generated | 2026-10-18T08:41:06Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6679 |
+| Duplicates removed | 6442 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
-| Multi-group overlaps | 384 |
+| Multi-group overlaps | 385 |
 | Score (min / avg / max) | 80 / 80.3 / 96 |
 | High-score indicators (≥80) | 10000 |
-| 2+ reporting groups | 384 |
+| 2+ reporting groups | 385 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-18T03:25:48Z |
+| Newest first_seen | 2026-10-18T08:31:16Z |
 
 ## Top indicators by score
 
@@ -42,42 +42,42 @@ _Generated 2026-10-18T03:36:36Z_
 | --- | ---: |
 | ci_army_list | 15000 |
 | ipsum_level5 | 4946 |
-| greensnow_blocklist | 4873 |
-| blocklist_de_ssh | 4473 |
-| threatfox_export_json | 3332 |
-| nist_nvd_recent | 3200 |
+| greensnow_blocklist | 4833 |
+| blocklist_de_ssh | 4427 |
+| threatfox_export_json | 3144 |
+| nist_nvd_recent | 2800 |
 | cisa_kev | 1748 |
 | spamhaus_drop | 1692 |
-| tor_exit_nodes | 1210 |
-| malwarebazaar_recent | 801 |
+| tor_exit_nodes | 1211 |
+| malwarebazaar_recent | 896 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 3148 |
-| sha256 | 2622 |
+| cve | 3017 |
+| sha256 | 2734 |
 | ipv4_cidr | 1691 |
-| url | 1367 |
-| domain | 483 |
-| ipv4 | 257 |
-| md5 | 216 |
-| sha1 | 216 |
+| url | 1368 |
+| domain | 496 |
+| md5 | 234 |
+| sha1 | 234 |
+| ipv4 | 226 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 3921 |
-| cve | 3148 |
-| nvd | 1755 |
+| threatfox | 3891 |
+| cve | 3017 |
+| malware | 1912 |
 | exploited-in-the-wild | 1748 |
-| malware | 1697 |
 | drop | 1691 |
 | spamhaus | 1691 |
-| elf | 1210 |
-| Mirai | 995 |
-| ClickFix | 767 |
+| nvd | 1624 |
+| elf | 1236 |
+| Mirai | 1052 |
+| ClickFix | 787 |
 
 ## Multi-group reporting overlaps
 
