@@ -3,305 +3,305 @@
   <title>SwiftIOC — Newest High-Confidence IOCs</title>
   <link>https://github.com/PKHarsimran/SwiftIOC-Automated-Threat-Intelligence-Collector</link>
   <description>Freshest scored indicators of compromise with publisher-aware provenance.</description>
-  <lastBuildDate>Sun, 18 Oct 2026 15:33:20 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 18 Oct 2026 18:30:21 +0000</lastBuildDate>
     <item>
-      <title>[80] domain: wellness[.]punkthotel[.]de</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">a709d0b9-bbdf-5101-9246-d685f740e277</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:01 +0000</pubDate>
+      <title>[80] domain: ezn9tfkz[.]bewiseimmunize[.]com</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClearFake,mac-0xdcf2,macos,threatfox</description>
+      <guid isPermaLink="false">3b2e771e-ef0b-53c2-8f98-1903e201af60</guid>
+      <pubDate>Sun, 18 Oct 2026 18:21:06 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: wkaikido[.]pl</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">18543720-bcee-5392-8c63-a4f54e24f81e</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:01 +0000</pubDate>
+      <title>[80] url: hxxps://b[.]9windaftar[.]com/ti/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">97cb6f91-5cd8-54a4-8f7b-43e497c47345</guid>
+      <pubDate>Sun, 18 Oct 2026 18:20:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: wmartasia[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">51045e67-892a-5a45-9f63-ef86a26a5668</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:01 +0000</pubDate>
+      <title>[80] url: hxxp://42[.]226[.]69[.]140:56903/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,elf,iot</description>
+      <guid isPermaLink="false">12976c23-6722-553e-8380-3f300fb539a6</guid>
+      <pubDate>Sun, 18 Oct 2026 18:20:24 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: xn----9sbbkhii6amcahr0b[.]xn--p1ai</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">6322be43-e6fd-50a0-8130-cad129e2bd96</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:01 +0000</pubDate>
+      <title>[80] url: hxxp://176[.]65[.]139[.]76/bins/mips</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: elf,iot,threatfox</description>
+      <guid isPermaLink="false">2f12ceb2-ecf8-5d49-bb43-11eb84ce24e2</guid>
+      <pubDate>Sun, 18 Oct 2026 18:18:56 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: xn--centroholisticoaucena-h4b[.]com[.]br</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">0aacb05c-e9c7-5b57-a080-adc7846acfa9</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:01 +0000</pubDate>
+      <title>[80] url: hxxp://190[.]196[.]253[.]19:11864/Mozi[.]m</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mozi,elf,iot,threatfox</description>
+      <guid isPermaLink="false">6f83be44-a4a2-5718-a06c-ca4237a561cd</guid>
+      <pubDate>Sun, 18 Oct 2026 18:18:56 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: ymvc[.]ie</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">a73f51a5-2c78-5814-82c2-2cc4dc7ac7ee</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:01 +0000</pubDate>
+      <title>[80] url: hxxp://124[.]29[.]251[.]100:50791/Mozi[.]m</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Mozi,elf,iot,threatfox</description>
+      <guid isPermaLink="false">554dce7a-0a9d-55ff-8288-26d65a75557f</guid>
+      <pubDate>Sun, 18 Oct 2026 18:18:55 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: sequimed[.]net</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">c85c5509-2e53-5385-905b-7d175cafb6a7</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxp://182[.]113[.]209[.]116:49963/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">dc980d5f-03ab-5ea7-bfd8-311133777574</guid>
+      <pubDate>Sun, 18 Oct 2026 18:17:14 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: sfsp[.]adv[.]br</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">f4e6827b-d916-5a4b-bae7-37370950fd14</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxp://178[.]207[.]241[.]38:45243/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">79e3bd31-d39c-5248-9233-f8cd6a60268a</guid>
+      <pubDate>Sun, 18 Oct 2026 18:17:13 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: skmetallica[.]ru</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">55c26010-2bc3-5392-9479-09cd981520ca</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxp://182[.]119[.]14[.]2:35763/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">7ecffe4b-2d10-5f2e-902d-2b839d7c4fde</guid>
+      <pubDate>Sun, 18 Oct 2026 18:17:13 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: snskcompany[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">85f696f1-2e13-5f46-b8be-f1c011c221f9</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxp://42[.]226[.]64[.]166:42549/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">79b3ce51-a650-5cbe-a0fc-2ff4b162e6bb</guid>
+      <pubDate>Sun, 18 Oct 2026 18:17:13 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: sophiezirafa[.]cz</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">d7737b1e-ca56-531d-a6a0-0f984441062f</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://b[.]9windaftar[.]com/fuh/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">408cee45-426d-5c1b-8c3c-7d1435d0dafb</guid>
+      <pubDate>Sun, 18 Oct 2026 18:15:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: standart-stroy[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">a507c468-9980-5639-99a1-76bdcf6a8d6e</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxp://61[.]53[.]118[.]139:54611/bin[.]sh</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,elf,mips,Mozi</description>
+      <guid isPermaLink="false">967d5107-b332-5997-8b43-648fb12c2681</guid>
+      <pubDate>Sun, 18 Oct 2026 18:15:16 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: sterrevdberg[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">d994b871-5eaf-588e-ace4-f6dbe3055f39</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxp://118[.]125[.]48[.]121:49307/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,arm,cowrie,elf,honeypot,mirai,Mozi</description>
+      <guid isPermaLink="false">6a65d87f-ffb1-5dad-a4f4-133ae310db10</guid>
+      <pubDate>Sun, 18 Oct 2026 18:14:21 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: suginsa[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">b56a2d76-902d-5d88-898e-e19668cd437d</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://b[.]9windaftar[.]com/yh/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">acd36e9f-0d53-5c01-acec-c7c07c8acc00</guid>
+      <pubDate>Sun, 18 Oct 2026 18:10:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: sungreenorganics[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">4ce6e0dd-c9b9-5d60-8630-90bbdb906a30</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] domain: t7[.]88idn[.]net</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">3b2f29b9-dca9-5fa4-9d05-3847b1b9d0cf</guid>
+      <pubDate>Sun, 18 Oct 2026 18:05:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: tangomagdalena[.]de</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">904ff80d-b4ab-5e1d-b527-be5af9387cd0</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://b[.]9windaftar[.]com/jm/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">c303710f-013f-5ae4-8e3d-45430e885c54</guid>
+      <pubDate>Sun, 18 Oct 2026 18:05:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: taruvatika[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">52c5e9e5-a735-55a1-b6fd-66d66018ad17</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://t7[.]88idn[.]net/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">439629f4-88a2-5912-a07e-f9f393ced7ca</guid>
+      <pubDate>Sun, 18 Oct 2026 18:05:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: tbmesquire[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">b72724cc-4711-5aaa-9d96-85a729ff103e</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://t7[.]88idn[.]net</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: 1718e0679220166cf123fbe6e40c635c,Vidar,c2,loader,stealer,threatfox</description>
+      <guid isPermaLink="false">c8b0c199-f382-5a6a-a0be-cf88346a8eba</guid>
+      <pubDate>Sun, 18 Oct 2026 18:01:37 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: techwire-ua[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">ce6f0de0-08e6-5b87-8b4a-6d827edb25ee</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://vr[.]9windaftar[.]com/w7/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">a9da8990-838b-51d4-b17e-c95f616c9e6c</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:49 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: tgs888v7b[.]net</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">48dea75f-bb23-58b3-9ee2-e80d4e06ba9c</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://b[.]99rtp[.]net/q/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">b0e9090c-d750-5025-979c-f8e711d4a69d</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: thehyttamarket[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">bbc5f910-9e48-5efb-8831-7d673bbb6494</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://milestonedentalassisting[.]com/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">354f90e0-dbe6-5fa8-8db0-7dc2badd6f32</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:46 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: thevrdimension[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">f0c6ec93-428f-5f22-bb2a-f78d20e2f480</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://ngob[.]co[.]za/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">688eac9e-723c-5120-ae36-cb9a5f79842f</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:46 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: threei[.]co[.]za</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">a2d2bb67-4174-515b-8a46-81ac7994a961</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://photographicmemories[.]uk[.]com/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">47537c93-ec1e-5cf5-a8d0-89277bf1ba24</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:46 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: tinlanhtayninh[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">ee43b186-24b2-5082-a811-7f717a6801cf</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://prefirobh[.]com[.]br/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">e11c37a2-047e-51c4-826d-7175355281d8</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:46 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: tokyo-shinsotsu[.]jp</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">a11a39d6-6faf-5a8b-9161-834df2dd06c6</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://roadracerx[.]com/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">95105c33-ae35-5899-86ba-3681a83ef9d6</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:46 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: totaltblank[.]dk</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">2da815cd-e6dc-5ab2-8c69-efb81234a4f0</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://rtpibetslot4[.]co/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">f390edd5-0859-50f9-a9e5-1873d42291a1</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:46 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: touslesregimes[.]fr</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">429270b6-a4bd-55b1-a76d-ce0764b4a50d</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://www[.]nurmas[.]com[.]tr/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">c10acc78-64be-5aa1-943f-fc7abf6530ca</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:46 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: trudy-agin[.]ru</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">0fb549d7-6e85-5774-80e9-91d8d7cabd46</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://moncler-outletjackets[.]us[.]com/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">abcdb8c4-4254-5ab1-b373-8d9e92310557</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:45 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: truelabs[.]in</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">6fb84cc2-2325-5f14-9085-6f0b5607514c</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://nwfc[.]io/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">15380e49-0fdc-52b4-9ff7-589ac593192f</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:45 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: unaster[.]com[.]tw</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">ccf6679c-38de-5512-87ac-9a22e65c18c7</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://pofcolombia[.]com[.]co/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">1764d39d-115b-5d5f-8971-5fe8cd5fb09a</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:45 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: ung-videre[.]dk</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">683f9734-073a-57c8-b9a6-4fa42f592d8f</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://produtecnicaagro[.]com[.]br/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">07fb64f3-5c09-5399-aa5e-9c641441f018</guid>
+      <pubDate>Sun, 18 Oct 2026 18:00:45 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: unitedgulfsahab[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">50bd7db7-1290-5d3a-9d49-55f87b475702</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://vr[.]9windaftar[.]com/oh/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">16ae940e-c100-597e-8951-5e617237ded5</guid>
+      <pubDate>Sun, 18 Oct 2026 17:55:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: vasikotras[.]hu</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">b3689765-00e3-5b8e-a018-37fe58455105</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxp://192[.]162[.]199[.]249/0mug7gt9c94l6fn3</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: AMOS,ClickFix,macOS,threatfox</description>
+      <guid isPermaLink="false">fff53bf8-a018-56b7-8a44-f00a6b1c0e59</guid>
+      <pubDate>Sun, 18 Oct 2026 17:55:23 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: vipbet789-z[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">b2c3c1fe-9319-5f50-89fc-1e2463c40254</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] sha256: e395c5343703a570d12620c81b9593ea6117d2f57c95bd8247704d9dbd256ce6</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: AMOS,ClickFix,macOS,threatfox</description>
+      <guid isPermaLink="false">ebef8924-e20f-52d4-9440-4d532d294f7f</guid>
+      <pubDate>Sun, 18 Oct 2026 17:55:22 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: vuphongrestaurant[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">77af5e98-2ddb-5a84-b025-d0df83d40625</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxps://vr[.]9windaftar[.]com/e/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">082c30e4-5256-5c1d-8828-e14d51cc4596</guid>
+      <pubDate>Sun, 18 Oct 2026 17:50:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: wadirumhappytourandcamp[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">cbb7ed20-7060-5a07-81cd-f41d6e053cef</guid>
-      <pubDate>Sun, 18 Oct 2026 15:30:00 +0000</pubDate>
+      <title>[80] url: hxxp://103[.]140[.]87[.]105:45962/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,32-bit,arm,elf,mirai,Mozi</description>
+      <guid isPermaLink="false">bc335de2-7e57-5653-bd84-b739d5165562</guid>
+      <pubDate>Sun, 18 Oct 2026 17:46:19 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: mumuworkshop[.]site</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">6e4db11f-275c-5d3d-9a79-5207ee230670</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] url: hxxp://61[.]54[.]235[.]31:36551/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,Mozi</description>
+      <guid isPermaLink="false">a1d272db-a95c-5fd4-94b8-6bfadcfade5e</guid>
+      <pubDate>Sun, 18 Oct 2026 17:46:19 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: myuniversetravel[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">53a3130e-189c-5db0-9766-8c79637f5a02</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] url: hxxps://vr[.]9windaftar[.]com/c3/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">93a5bca8-7930-5f10-960b-e3218ea6bcf5</guid>
+      <pubDate>Sun, 18 Oct 2026 17:45:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: nagoagencia[.]com[.]br</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">f23d57f2-3651-5b8c-b7c9-b59cf2d7710f</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] sha256: 818711b296a86b6305cc6435a754f1055ce99684916d70176f2ba24335f94faf</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: AMOS,ClickFix,Foxveil,chant,macOS,threatfox</description>
+      <guid isPermaLink="false">67faa46c-933c-57bf-beca-4cc49c3195a6</guid>
+      <pubDate>Sun, 18 Oct 2026 17:45:40 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: nasirullah[.]org</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">cd392371-1307-50b7-afe7-4e206f585efd</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] sha256: ab09aa9cbe92e3fe0c44393d0dc483324392ee0bcbadf28e21365cdec657a6ae</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: AMOS,ClickFix,Foxveil,macOS,nova,threatfox</description>
+      <guid isPermaLink="false">4afdf401-0c93-5119-92c5-c89ae5b38a5e</guid>
+      <pubDate>Sun, 18 Oct 2026 17:43:50 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: neumaticosmarsili[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">532ed67e-de38-5635-93d9-81ce76944866</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] url: hxxps://vr[.]9windaftar[.]com/ey1/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">8b87525b-8f5a-506b-8da8-a84c8aa6a1c5</guid>
+      <pubDate>Sun, 18 Oct 2026 17:40:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: nickarnett[.]net</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">0acdeba9-93f1-5840-91de-d58d93da70ec</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] sha256: 2947ca3a68468ea4e90db4a519f97ce2a8336627f4687dff138ee05330e5731f</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: AMOS,ClickFix,Foxveil,haven,macOS,threatfox</description>
+      <guid isPermaLink="false">473c2800-7750-5b7f-b979-237db7c69eb8</guid>
+      <pubDate>Sun, 18 Oct 2026 17:37:42 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: nitab[.]de</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">d838fdab-27cf-56f0-866d-7283af43623d</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] ipv4: 68[.]183[.]223[.]7</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Aisuru,c2,threatfox</description>
+      <guid isPermaLink="false">806e5cbf-215f-5c07-9c48-058036239d82</guid>
+      <pubDate>Sun, 18 Oct 2026 17:36:34 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: omo11-12[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">cd87aff6-8fb2-52dc-9e9c-03741d8a5f64</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] url: hxxps://vr[.]9windaftar[.]com/qc/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">3bab6da3-edbd-5259-9474-5b532c066a55</guid>
+      <pubDate>Sun, 18 Oct 2026 17:35:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: open88[.]tv</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">a34c9d82-8bad-5504-a76d-ded2f0b00bf3</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] sha256: b67dcc77e44af12e5f2371f823f55e9ba606ab3ed04e640d78abbff0a5ee403a</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: AMOS,ClickFix,Foxveil,chant,macOS,threatfox</description>
+      <guid isPermaLink="false">cd71d85c-6835-5d28-b64d-dfe9fde1872b</guid>
+      <pubDate>Sun, 18 Oct 2026 17:31:36 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: operationalsurgical[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">d0191501-e888-557c-bf52-92556ebe76e7</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] url: hxxp://191[.]243[.]174[.]35:44365/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,mirai</description>
+      <guid isPermaLink="false">4a9329be-10b2-5b60-8d46-4cbd997bca48</guid>
+      <pubDate>Sun, 18 Oct 2026 17:31:25 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: paxmilenium[.]com[.]br</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">cbd42558-30ac-52d2-8b82-d82243b3f842</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] url: hxxp://60[.]17[.]117[.]178:52362/i</title>
+      <description>Score 80, confidence high, sources: urlhaus_recent_urls, tags: malware,malware_download,None</description>
+      <guid isPermaLink="false">224ec0a2-000b-5154-b42e-e8e817cda069</guid>
+      <pubDate>Sun, 18 Oct 2026 17:31:25 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: personalloanshub[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">6ee50844-4f39-55d4-8dd4-e6587eb29ef0</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] url: hxxps://iberian-trade[.]com/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">c4caf3a8-ca21-51cf-af3e-af4526051fe0</guid>
+      <pubDate>Sun, 18 Oct 2026 17:30:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: petroleumtube[.]com</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">e5647e23-7805-50d1-86a7-92e019afe1c3</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] url: hxxps://leo88vn[.]vip/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: ClickFix,threatfox</description>
+      <guid isPermaLink="false">daa4a1cc-012d-5b50-8d6b-81a4e8492141</guid>
+      <pubDate>Sun, 18 Oct 2026 17:30:48 +0000</pubDate>
     </item>
     <item>
-      <title>[80] domain: pft-plastinnov[.]fr</title>
-      <description>Score 80, confidence high, sources: threatfox_export_json, tags: Polygon,etherhiding,threatfox</description>
-      <guid isPermaLink="false">81ee28d3-3876-56d6-8b1b-ab7a291cba7b</guid>
-      <pubDate>Sun, 18 Oct 2026 15:29:59 +0000</pubDate>
+      <title>[80] url: hxxps://vr[.]9windaftar[.]com/er/</title>
+      <description>Score 80, confidence high, sources: threatfox_export_json, tags: threatfox,vidar</description>
+      <guid isPermaLink="false">a492cf4e-02a9-5cdf-abce-62ff8d99bb40</guid>
+      <pubDate>Sun, 18 Oct 2026 17:30:48 +0000</pubDate>
     </item>
 </channel></rss>
