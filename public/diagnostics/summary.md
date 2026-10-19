@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-18T22:17:13Z_
+_Generated 2026-10-19T03:46:57Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-18T22:17:13Z |
+| Generated | 2026-10-19T03:46:57Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 5755 |
+| Duplicates removed | 6906 |
 | Sources reporting | 17 |
 | Indicator types | 9 |
-| Multi-group overlaps | 384 |
+| Multi-group overlaps | 382 |
 | Score (min / avg / max) | 80 / 80.3 / 96 |
 | High-score indicators (≥80) | 10000 |
-| 2+ reporting groups | 384 |
+| 2+ reporting groups | 382 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-18T22:08:45Z |
+| Newest first_seen | 2026-10-19T03:40:48Z |
 
 ## Top indicators by score
 
@@ -39,26 +39,26 @@ _Generated 2026-10-18T22:17:13Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| ipsum_level5 | 4946 |
-| blocklist_de_ssh | 4376 |
-| greensnow_blocklist | 3692 |
-| threatfox_export_json | 3033 |
-| nist_nvd_recent | 2400 |
+| ipsum_level5 | 5306 |
+| greensnow_blocklist | 4413 |
+| blocklist_de_ssh | 4213 |
+| nist_nvd_recent | 3200 |
+| threatfox_export_json | 2953 |
 | cisa_kev | 1748 |
 | spamhaus_drop | 1692 |
-| tor_exit_nodes | 1204 |
-| malwarebazaar_recent | 886 |
+| tor_exit_nodes | 1205 |
+| binarydefense_banlist | 1065 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 2895 |
-| sha256 | 2766 |
+| cve | 3001 |
+| sha256 | 2565 |
 | ipv4_cidr | 1691 |
-| url | 1268 |
-| domain | 826 |
-| ipv4 | 211 |
+| url | 1368 |
+| domain | 823 |
+| ipv4 | 209 |
 | md5 | 171 |
 | sha1 | 171 |
 | ja3 | 1 |
@@ -67,16 +67,16 @@ _Generated 2026-10-18T22:17:13Z_
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 3914 |
-| cve | 2895 |
-| malware | 1974 |
+| threatfox | 3784 |
+| cve | 3001 |
+| malware | 2027 |
 | exploited-in-the-wild | 1748 |
 | drop | 1691 |
 | spamhaus | 1691 |
-| nvd | 1502 |
-| elf | 1281 |
-| Mirai | 1081 |
-| ClickFix | 942 |
+| nvd | 1608 |
+| Mirai | 1101 |
+| elf | 1067 |
+| ClickFix | 964 |
 
 ## Multi-group reporting overlaps
 
@@ -87,10 +87,10 @@ _Generated 2026-10-18T22:17:13Z_
 | ipv4: 114[.]111[.]53[.]214 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 165[.]154[.]162[.]74 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
 | ipv4: 165[.]154[.]227[.]8 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
-| ipv4: 165[.]245[.]160[.]178 | binarydefense_banlist, ci_army_list, ipsum_level5, threatfox_export_json |
-| ipv4: 165[.]245[.]171[.]220 | binarydefense_banlist, ci_army_list, ipsum_level5, threatfox_export_json |
 | ipv4: 31[.]59[.]220[.]26 | binarydefense_banlist, ci_army_list, ipsum_level5, threatfox_export_json |
 | ipv4: 45[.]198[.]224[.]184 | blocklist_de_ssh, et_compromised, ipsum_level5, threatfox_export_json |
 | ipv4: 45[.]78[.]201[.]248 | blocklist_de_ssh, greensnow_blocklist, ipsum_level5, threatfox_export_json |
+| ipv4: 91[.]92[.]43[.]221 | blocklist_de_ssh, ci_army_list, ipsum_level5, threatfox_export_json |
+| ipv4: 194[.]238[.]29[.]124 | blocklist_de_ssh, ci_army_list, threatfox_export_json |
 
 For more detail see [diagnostics/REPORT.md](diagnostics/REPORT.md) and the machine-readable feeds in [iocs/](iocs/).
