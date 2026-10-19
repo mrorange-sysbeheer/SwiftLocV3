@@ -1,23 +1,23 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-19T09:42:12Z_
+_Generated 2026-10-19T18:29:04Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-19T09:42:12Z |
+| Generated | 2026-10-19T18:29:04Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6620 |
+| Duplicates removed | 6421 |
 | Sources reporting | 17 |
 | Indicator types | 9 |
-| Multi-group overlaps | 381 |
+| Multi-group overlaps | 382 |
 | Score (min / avg / max) | 80 / 80.3 / 96 |
 | High-score indicators (≥80) | 10000 |
-| 2+ reporting groups | 381 |
+| 2+ reporting groups | 382 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-19T09:41:47Z |
+| Newest first_seen | 2026-10-19T18:20:48Z |
 
 ## Top indicators by score
 
@@ -40,26 +40,26 @@ _Generated 2026-10-19T09:42:12Z_
 | --- | ---: |
 | ci_army_list | 15000 |
 | ipsum_level5 | 5306 |
-| greensnow_blocklist | 4461 |
-| blocklist_de_ssh | 4185 |
-| threatfox_export_json | 3022 |
-| nist_nvd_recent | 2400 |
+| blocklist_de_ssh | 5093 |
+| greensnow_blocklist | 4319 |
+| threatfox_export_json | 2688 |
+| nist_nvd_recent | 2600 |
 | cisa_kev | 1748 |
 | spamhaus_drop | 1693 |
-| tor_exit_nodes | 1203 |
-| malwarebazaar_recent | 1145 |
+| tor_exit_nodes | 1201 |
+| malwarebazaar_recent | 1126 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 2831 |
-| cve | 2669 |
+| sha256 | 3028 |
+| cve | 2766 |
 | ipv4_cidr | 1692 |
-| url | 1460 |
-| domain | 797 |
-| ipv4 | 218 |
-| md5 | 166 |
+| url | 1286 |
+| domain | 669 |
+| ipv4 | 225 |
+| md5 | 167 |
 | sha1 | 166 |
 | ja3 | 1 |
 
@@ -67,16 +67,16 @@ _Generated 2026-10-19T09:42:12Z_
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 3809 |
-| cve | 2669 |
-| malware | 2344 |
+| threatfox | 3698 |
+| cve | 2766 |
+| malware | 2368 |
 | exploited-in-the-wild | 1748 |
 | drop | 1692 |
 | spamhaus | 1692 |
-| nvd | 1276 |
-| Mirai | 1112 |
-| elf | 1097 |
-| ClickFix | 976 |
+| nvd | 1373 |
+| Mirai | 1142 |
+| elf | 1043 |
+| ClickFix | 807 |
 
 ## Multi-group reporting overlaps
 
