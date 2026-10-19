@@ -2,16 +2,16 @@
 
 This site is generated automatically from the latest SwiftIOC collection run.
 
-_Generated 2026-10-19T18:29:04Z_
+_Generated 2026-10-19T23:25:47Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-19T18:29:04Z |
+| Generated | 2026-10-19T23:25:47Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 6421 |
+| Duplicates removed | 6913 |
 | Sources reporting | 17 |
 | Indicator types | 9 |
 | Multi-group overlaps | 382 |
@@ -19,7 +19,7 @@ _Generated 2026-10-19T18:29:04Z_
 | High-score indicators (≥80) | 10000 |
 | 2+ reporting groups | 382 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-19T18:20:48Z |
+| Newest first_seen | 2026-10-19T23:15:48Z |
 
 ## Top indicators by score
 
@@ -42,43 +42,43 @@ _Generated 2026-10-19T18:29:04Z_
 | --- | ---: |
 | ci_army_list | 15000 |
 | ipsum_level5 | 5306 |
-| blocklist_de_ssh | 5093 |
-| greensnow_blocklist | 4319 |
-| threatfox_export_json | 2688 |
+| blocklist_de_ssh | 5288 |
+| greensnow_blocklist | 5131 |
 | nist_nvd_recent | 2600 |
+| threatfox_export_json | 2576 |
 | cisa_kev | 1748 |
 | spamhaus_drop | 1693 |
-| tor_exit_nodes | 1201 |
-| malwarebazaar_recent | 1126 |
+| tor_exit_nodes | 1208 |
+| malwarebazaar_recent | 1172 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| sha256 | 3028 |
-| cve | 2766 |
+| sha256 | 3042 |
+| cve | 2980 |
 | ipv4_cidr | 1692 |
-| url | 1286 |
-| domain | 669 |
-| ipv4 | 225 |
-| md5 | 167 |
-| sha1 | 166 |
-| ja3 | 1 |
+| url | 1242 |
+| domain | 556 |
+| ipv4 | 231 |
+| md5 | 127 |
+| sha1 | 125 |
+| ja3 | 5 |
 
 ## Top tags
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 3698 |
-| cve | 2766 |
-| malware | 2368 |
+| threatfox | 3446 |
+| cve | 2980 |
+| malware | 2360 |
 | exploited-in-the-wild | 1748 |
 | drop | 1692 |
 | spamhaus | 1692 |
-| nvd | 1373 |
-| Mirai | 1142 |
-| elf | 1043 |
-| ClickFix | 807 |
+| nvd | 1587 |
+| Mirai | 1157 |
+| elf | 1046 |
+| ClickFix | 656 |
 
 ## Multi-group reporting overlaps
 
