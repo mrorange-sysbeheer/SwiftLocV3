@@ -1,15 +1,15 @@
 # SwiftIOC IOC Summary
 
-_Generated 2026-10-20T16:33:36Z_
+_Generated 2026-10-20T23:00:47Z_
 
 ## Highlights
 
 | Metric | Value |
 | --- | ---: |
-| Generated | 2026-10-20T16:33:36Z |
+| Generated | 2026-10-20T23:00:47Z |
 | Window (hours) | 48 |
 | Total indicators | 10000 |
-| Duplicates removed | 7364 |
+| Duplicates removed | 7356 |
 | Sources reporting | 17 |
 | Indicator types | 8 |
 | Multi-group overlaps | 392 |
@@ -17,7 +17,7 @@ _Generated 2026-10-20T16:33:36Z_
 | High-score indicators (≥80) | 10000 |
 | 2+ reporting groups | 392 |
 | Earliest first_seen | 2008-09-18T20:00:00Z |
-| Newest first_seen | 2026-10-20T16:23:09Z |
+| Newest first_seen | 2026-10-20T22:55:07Z |
 
 ## Top indicators by score
 
@@ -39,26 +39,26 @@ _Generated 2026-10-20T16:33:36Z_
 | Source | Indicators |
 | --- | ---: |
 | ci_army_list | 15000 |
-| nist_nvd_recent | 6400 |
 | ipsum_level5 | 5407 |
-| blocklist_de_ssh | 5200 |
-| greensnow_blocklist | 4814 |
-| threatfox_export_json | 2658 |
-| cisa_kev | 1748 |
+| blocklist_de_ssh | 5350 |
+| greensnow_blocklist | 4728 |
+| nist_nvd_recent | 3800 |
+| threatfox_export_json | 2953 |
+| cisa_kev | 1754 |
 | spamhaus_drop | 1687 |
 | binarydefense_banlist | 1465 |
-| malwarebazaar_recent | 1379 |
+| malwarebazaar_recent | 1435 |
 
 ## Indicator types
 
 | Type | Indicators |
 | --- | ---: |
-| cve | 2982 |
-| sha256 | 2838 |
+| cve | 2937 |
+| sha256 | 2810 |
 | ipv4_cidr | 1686 |
-| url | 1680 |
-| domain | 225 |
-| ipv4 | 225 |
+| url | 1644 |
+| domain | 324 |
+| ipv4 | 235 |
 | md5 | 183 |
 | sha1 | 181 |
 
@@ -66,16 +66,16 @@ _Generated 2026-10-20T16:33:36Z_
 
 | Tag | Indicators |
 | --- | ---: |
-| threatfox | 3205 |
-| malware | 2987 |
-| cve | 2982 |
-| exploited-in-the-wild | 1748 |
+| threatfox | 3340 |
+| cve | 2937 |
+| malware | 2890 |
+| exploited-in-the-wild | 1754 |
 | drop | 1686 |
 | spamhaus | 1686 |
-| nvd | 1599 |
-| Mirai | 834 |
-| high | 812 |
-| malware_download | 769 |
+| nvd | 1548 |
+| Mirai | 817 |
+| high | 776 |
+| malware_download | 701 |
 
 ## Multi-group reporting overlaps
 
